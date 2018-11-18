@@ -221,6 +221,9 @@
         android:id="@+id/rv_hot_server"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/frag_home_server_tips_tv"
         android:overScrollMode="never"/>
 
