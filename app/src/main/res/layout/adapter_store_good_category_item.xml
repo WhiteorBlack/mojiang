@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/color_white">
+    <TextView
+        android:id="@+id/adapter_store_good_category_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_item_height"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_nomal_text"
+        android:text="一级分类名字"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/adapter_store_good_category_child_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_divider_height"
+        android:layout_marginTop="15dp"
+        android:background="@color/activity_bg_common" />
+</LinearLayout>

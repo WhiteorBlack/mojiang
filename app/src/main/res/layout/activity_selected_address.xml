@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common"
+    android:orientation="vertical">
+
+    <cn.idcby.commonlibrary.view.LineView
+        android:id="@+id/lv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0.7dp"
+        android:background="@android:color/white"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        app:rightText="点击选择城市"
+        app:rightTvSize="12"
+        app:rightTextIsShow="true"
+        app:titleText="所在地区"
+        app:titleTvSize="14"/>
+
+    <EditText
+        android:id="@+id/et_address_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:lines="10"
+        android:gravity="top"
+        android:hint="请填写详细地址"
+        android:padding="15dp"
+        android:textColor="@color/color_grey_text"
+        android:textSize="@dimen/textSize_fourteen" />
+
+</LinearLayout>

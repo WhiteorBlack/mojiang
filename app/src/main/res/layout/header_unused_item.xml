@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+    <com.youth.banner.Banner
+        android:id="@+id/acti_unused_banner_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/banner_bot_inde_style"  />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+        <LinearLayout
+            android:id="@+id/acti_unused_search_lay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_gray_search_bg"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="@dimen/index_search_margin_tb"
+            android:paddingTop="@dimen/index_search_margin_tb">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/nomal_search_def"
+                android:textColor="@color/color_light_grey_aa_text"
+                android:textSize="@dimen/textSize_twelve" />
+            <ImageView
+                style="@style/nomal_search_right_iv"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/acti_unused_create_unused_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_green_with_circle_corner"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="@dimen/index_search_margin_tb"
+            android:paddingTop="@dimen/index_search_margin_tb"
+            android:text="发布闲置"
+            android:textColor="@android:color/white"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <!--<cn.idcby.jiajubang.view.AutofitViewPager-->
+        <!--android:id="@+id/header_unused_category_vp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@android:color/white" />-->
+    <!--<LinearLayout-->
+        <!--android:id="@+id/header_unused_category_vp_indicator"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:paddingTop="5dp" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/header_unused_category_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_divider_height"
+        android:background="@color/activity_bg_common" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/header_unused_hot_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_divider_height"
+        android:background="@color/activity_bg_common" />
+    <LinearLayout
+        android:id="@+id/header_unused_nav_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_nav_height"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:background="@color/color_white">
+        <RelativeLayout
+            android:id="@+id/header_unused_nav_latest_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp">
+            <TextView
+                android:id="@+id/header_unused_nav_latest_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/textSize_fourteen"
+                android:textColor="@color/color_nav_checked_two"
+                android:text="最新的"/>
+            <View
+                android:id="@+id/header_unused_nav_latest_dv"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/color_theme"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@id/header_unused_nav_latest_tv"
+                android:layout_alignRight="@id/header_unused_nav_latest_tv" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/header_unused_nav_nearly_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp">
+            <TextView
+                android:id="@+id/header_unused_nav_nearly_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/textSize_fourteen"
+                android:textColor="@color/color_nav_normal_two"
+                android:text="附近的"/>
+            <View
+                android:id="@+id/header_unused_nav_nearly_dv"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:visibility="invisible"
+                android:background="@color/color_theme"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@id/header_unused_nav_nearly_tv"
+                android:layout_alignRight="@id/header_unused_nav_nearly_tv" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_grey_f5" />
+</LinearLayout>

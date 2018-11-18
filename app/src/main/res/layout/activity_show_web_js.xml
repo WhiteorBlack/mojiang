@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style" />
+        <TextView
+            android:id="@+id/acti_show_web_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:maxLength="20"
+            android:textSize="@dimen/textSize_sixteen"
+            android:textColor="@color/color_nomal_text"/>
+        <ImageView
+            android:id="@+id/acti_show_web_right_tv"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            style="@style/title_bar_right_style"
+            android:paddingLeft="12dp"
+            android:src="@mipmap/top_right_share"/>
+    </RelativeLayout>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_grey_f2"/>
+    <ProgressBar 
+        android:id="@+id/show_web_progress"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleHorizontal"/>
+    <WebView
+        android:id="@+id/acti_show_web_web"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"/>
+</LinearLayout>

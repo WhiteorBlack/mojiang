@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/color_theme">
+
+        <LinearLayout
+            android:id="@+id/my_bangmoney_goback_ll"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingTop="25dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="3dp"
+                android:src="@mipmap/ic_back_white" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:text="我的积分"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textSize_sixteen" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/consumer_details_bangmoney_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingRight="15dp"
+            android:paddingTop="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="消费明细"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSize_thirteen" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_theme"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:id="@+id/acti_my_bangmoney_money_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="99"
+            android:textColor="@color/color_white"
+            android:textSize="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/acti_my_bangmoney_money_tv"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/acti_my_bangmoney_money_tv"
+            android:text="个"
+            android:textColor="@color/color_white"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/mybangmoney_nobang_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_theme"
+        android:gravity="center"
+        android:paddingBottom="@dimen/size_level9"
+        android:text="您还没有积分 快去推广赚取积分吧"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/textSize_fourteen" />
+
+    <cn.idcby.commonlibrary.view.LineView
+        android:id="@+id/acti_my_transfer_accounts_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_white"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        app:titleText="积分转帐"
+        app:titleTvSize="14" />
+
+    <cn.idcby.commonlibrary.view.LineView
+        android:id="@+id/acti_my_bangmoney_earn_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/color_white"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        app:titleText="赚取积分"
+        app:titleTvSize="14" />
+
+
+</LinearLayout>

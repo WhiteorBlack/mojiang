@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common">
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:id="@+id/lay_refresh_lv_refresh_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/lay_refresh_lv_list_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:dividerHeight="1dp"
+            android:divider="@color/color_trans" />
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+    <TextView
+        android:id="@+id/lay_refresh_lv_null_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_nomal_text"
+        android:text="暂无内容"/>
+</RelativeLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="activity_bg_common">#F4F5F8</color>
+    <drawable name="activity_bg_drawable">#F4F5F8</drawable>
+
+
+    <color name="color_half_black">#88222222</color>
+    <color name="color_trans">#00FFFFFF</color>
+    <color name="color_black">#000000</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="line_gray">#F4F5F8</color>
+    <color name="goods_detail_line_gray">#E9E9EB</color>
+    <color name="text_half_red_common">#FE8084</color>
+    <color name="text_half_red_press">#AAFE8084</color>
+    <color name="toast_bg">#AA000000</color>
+    <color name="top_bar_bg">#FFFFFF</color>
+    <color name="top_bar_text_color">#101010</color>
+    <color name="bottom_text_color_selected">#FFD664</color>
+    <color name="web_progress_bar">#DD137B</color>
+    <color name="top_bar_text_common_color">#DD137B</color>
+    <color name="top_bar_text_pressed_color">#99DD137B</color>
+    <color name="empty_bg_color">#E8E8E8</color>
+
+    <color name="smart_ui_pullable_layout_text_color">#707070</color>
+    <color name="smart_ui_loading_layout_text_color">#515151</color>
+
+
+    <color name="color_orange">#FF6B00</color>
+    <color name="color_deepSkyBlue">#00BFFF</color>
+
+    <color name="color_nomal_text">#101010</color>
+    <color name="color_light_grey_aa_text">#AAAAAA</color>
+    <color name="color_grey_text">#696969</color>
+    <color name="color_deep55_text">#555555</color>
+    <color name="color_deep44_text">#444444</color>
+    <color name="color_deep33_text">#333333</color>
+    <color name="color_money_one">#FF6B00</color>
+    <color name="color_money_two">#FF1F00</color>
+
+    <color name="color_red">#FF0000</color>
+    <color name="color_grey_88">#888888</color>
+    <color name="color_grey_5c">#5c5c5c</color>
+    <color name="color_grey_aa">#AAAAAA</color>
+    <color name="color_grey_b3">#B3B3B3</color>
+    <color name="color_grey_e0">#E0E0E0</color>
+    <color name="color_grey_f5">#F5F5F5</color>
+    <color name="color_grey_f3">#F3F3F3</color>
+    <color name="color_grey_f2">#F2F2F2</color>
+    <color name="color_grey_f8">#F8F8F8</color>
+    <color name="color_grey_cc">#CCCCCC</color>
+    <color name="color_grey_ee">#EEEEEE</color>
+    <color name="color_half_grey_f2">#88F2F2F2</color>
+
+
+    <color name="line_color">#E0E0E0</color>
+
+
+    <color name="details_bot_nav_tv_color">#888888</color>
+
+
+
+    <!--用户注册协议-->
+    <color name="color_regist_tips">#333333</color>
+
+</resources>

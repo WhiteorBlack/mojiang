@@ -1,0 +1,66 @@
+<resources>
+
+    <dimen name="textSize_six">6dp</dimen>
+    <dimen name="textSize_eight">8dp</dimen>
+    <dimen name="textSize_ten">10dp</dimen>
+    <dimen name="textSize_eleven">11dp</dimen>
+    <dimen name="textSize_twelve">12dp</dimen>
+    <dimen name="textSize_thirteen">13dp</dimen>
+    <dimen name="textSize_fourteen">14dp</dimen>
+    <dimen name="textSize_fifteen">15dp</dimen>
+    <dimen name="textSize_sixteen">16dp</dimen>
+    <dimen name="textSize_eighteen">18dp</dimen>
+    <dimen name="textSize_twenty">20dp</dimen>
+    <dimen name="textSize_twentyFour">24dp</dimen>
+    <dimen name="textSize_fifty">50dp</dimen>
+
+    <dimen name="drawable_corners_radius">5dp</dimen>
+
+    <dimen name="news_list_item_margin">15dp</dimen>
+    <dimen name="home_item_divider_height">3dp</dimen>
+
+
+    <dimen name="radio_style_top_item_margin_tb">8dp</dimen>
+    <dimen name="title_bar_search_margin_tb">10dp</dimen>
+    <dimen name="index_search_margin_tb">4dp</dimen>
+
+    <dimen name="nomal_submit_height">40dp</dimen>
+    <dimen name="nomal_item_height">45dp</dimen>
+    <dimen name="nomal_nav_height">40dp</dimen>
+    <dimen name="nomal_indicator_height">35dp</dimen>
+    <dimen name="nomal_indicator_line_height">3dp</dimen>
+    <dimen name="bottom_bar_height">45dp</dimen>
+    <dimen name="bottom_bar_img_wid">17dp</dimen>
+    <dimen name="bottom_bar_tv_size">10dp</dimen>
+
+    <dimen name="frag_me_option_dv_width">1px</dimen>
+    <dimen name="good_detail_left_margin">12dp</dimen>
+
+
+    <!-- bg_index_cjzg厂家直供 item相关字体大小-->
+    <dimen name="direct_good_money_size">18dp</dimen>
+    <dimen name="direct_good_count_size">10dp</dimen>
+    <dimen name="direct_good_name_size">13dp</dimen>
+
+    <dimen name="direct_good_img_size">80dp</dimen>
+
+    <dimen name="back_nav_img_size">30dp</dimen>
+
+    <!--普通轮播图底部的小点儿大小-->
+    <dimen name="nomal_page_bot_point_size">6dp</dimen>
+    <dimen name="nomal_page_bot_point_margin">3dp</dimen>
+
+
+    <!--圈子列表头像大小-->
+    <dimen name="circle_list_user_img_size">35dp</dimen>
+
+    <!--常规列表底部图标的大小-->
+    <dimen name="lv_item_bot_ic_width">12dp</dimen>
+    <dimen name="lv_item_bot_ic_height">12dp</dimen>
+    <dimen name="lv_item_bot_tv_size">11dp</dimen>
+
+
+    <dimen name="good_comment_star_wid">20dp</dimen>
+    <dimen name="nomal_divider_height">5dp</dimen>
+
+</resources>

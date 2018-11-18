@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontalSpacing" format="dimension"/>
+        <attr name="verticalSpacing" format="dimension"/>
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+        <attr name="debugDraw" format="boolean"/>
+        <attr name="singleLine" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_LayoutParams">
+        <attr name="layout_newLine" format="boolean"/>
+        <attr name="layout_horizontalSpacing" format="dimension"/>
+        <attr name="layout_verticalSpacing" format="dimension"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="Line_textView_styleable">
+        <attr name="line_width" format="dimension" />
+        <attr name="line_height" format="dimension" />
+        <attr name="line_color" format="color|reference" />
+        <attr name="tv_text" format="string|reference" />
+        <attr name="tv_size" format="integer" />
+        <attr name="tv_color" format="color|reference" />
+        <attr name="tv_padding_left" format="dimension" />
+        <attr name="tv_padding_right" format="dimension" />
+        <attr name="tv_bold" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundAngleFrameLayout">
+        <attr name="radius" format="dimension" />
+        <attr name="topLeftRadius" format="dimension" />
+        <attr name="topRightRadius" format="dimension" />
+        <attr name="bottomLeftRadius" format="dimension" />
+        <attr name="bottomRightRadius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MyCornerTextView">
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="borderWidthColor" format="color"/>
+        <attr name="cornersize" format="dimension"/>
+        <!-- 1:边框的宽度 2：边框的颜色   4：边角的大小      -->
+
+    </declare-styleable>
+
+    <declare-styleable name="TagsLayout">
+        <attr name="tagVerticalSpace" format="dimension" />
+        <attr name="tagHorizontalSpace" format="dimension" />
+    </declare-styleable>
+
+</resources>

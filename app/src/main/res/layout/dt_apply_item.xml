@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/dt_apply_icon_iv"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:scaleType="fitCenter"/>
+    <TextView
+        android:id="@+id/dt_apply_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:textSize="@dimen/textSize_twelve"
+        android:textColor="@color/color_grey_text"/>
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:id="@+id/lay_loading_rv_refresh_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/activity_bg_common">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lay_loading_rv_list_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"/>
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+    <ProgressBar
+        android:id="@+id/lay_loading_rv_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true" />
+    <TextView
+        android:id="@+id/lay_loading_rv_null_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:text="暂无内容"
+        android:textColor="@color/color_nomal_text" />
+</RelativeLayout>

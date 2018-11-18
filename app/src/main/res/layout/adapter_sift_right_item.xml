@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/adapter_sift_right_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="@dimen/textSize_thirteen"
+        android:textColor="@color/sift_right_tv_normal"
+        android:gravity="center_vertical"/>
+</LinearLayout>

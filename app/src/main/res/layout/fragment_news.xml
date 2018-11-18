@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <cn.idcby.jiajubang.view.SpecBaseChildListView
+        android:id="@+id/fragment_news_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/color_trans"
+        android:dividerHeight="10dp"
+        android:scrollbars="none"
+        android:overScrollMode="never" />
+    <TextView
+        android:id="@+id/fragment_news_loading_null_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_nomal_text"
+        android:text="暂无信息"/>
+    <ProgressBar
+        android:id="@+id/fragment_news_loading_null_pb"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        style="@style/Base.Widget.AppCompat.ProgressBar"/>
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item type="id" name="back">back</item>
+    <item type="id" name="tv_again">tv_again</item>
+
+    <item type="id" name="statusbarutil_fake_status_bar_view" />
+    <item type="id" name="statusbarutil_translucent_view" />
+
+    <item name="glide_image_tag" type="id"/>
+
+</resources>

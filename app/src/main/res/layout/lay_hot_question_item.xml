@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/lay_hot_question_category_iv"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@mipmap/toupiao" />
+        <TextView
+            android:id="@+id/lay_hot_question_category_name_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="@dimen/textSize_ten" />
+        <TextView
+            android:id="@+id/lay_hot_question_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/textSize_ten" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/lay_hot_question_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/color_deep33_text"
+        android:textSize="@dimen/textSize_thirteen" />
+</LinearLayout>

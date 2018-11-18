@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_top_right_popup"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/popup_top_bar_right_share_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/nomal_item_height"
+            android:layout_height="@dimen/nomal_item_height"
+            android:padding="12dp"
+            android:src="@mipmap/top_right_share"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize_fourteen"
+            android:textColor="@color/color_deep44_text"
+            android:text="分享"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/activity_bg_common"/>
+    <LinearLayout
+        android:id="@+id/popup_top_bar_right_request_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="@dimen/nomal_item_height"
+            android:layout_height="@dimen/nomal_item_height"
+            android:padding="12dp"
+            android:src="@mipmap/ic_user_request"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize_fourteen"
+            android:textColor="@color/color_deep44_text"
+            android:text="投诉"/>
+    </LinearLayout>
+
+</LinearLayout>

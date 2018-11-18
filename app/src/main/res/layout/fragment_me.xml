@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/me_top_bg" />
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:id="@+id/frag_me_refresh_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:is_trans="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/frag_me_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"/>
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+</FrameLayout>

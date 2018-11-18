@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="smart_ui_enable_pull_down" format="boolean" />
+    <attr name="smart_ui_enable_pull_up" format="boolean" />
+    <attr name="smart_ui_background" format="color|reference" />
+
+    <declare-styleable name="SmartPullableLayout">
+        <attr name="smart_ui_enable_pull_down" />
+        <attr name="smart_ui_enable_pull_up" />
+        <attr name="smart_ui_background" />
+    </declare-styleable>
+
+
+    <declare-styleable name="LineView">
+        <attr name="titleText" format="string" />
+        <attr name="titleTvSize" format="integer" />
+        <attr name="rightArrowIsShow" format="boolean" />
+        <attr name="leftIconIsShow" format="boolean" />
+        <attr name="leftIcon" format="integer" />
+        <attr name="rightTextIsShow" format="boolean" />
+        <attr name="rightText" format="string" />
+        <attr name="rightTvSize" format="integer" />
+    </declare-styleable>
+
+</resources>

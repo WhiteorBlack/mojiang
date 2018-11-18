@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/adapter_choose_my_address_main_lay"
+    android:background="@drawable/bg_white_greyf2_selector">
+    <TextView
+        android:id="@+id/adapter_choose_my_address_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:ems="8"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_nomal_text"/>
+    <TextView
+        android:id="@+id/adapter_choose_my_address_phone_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/adapter_choose_my_address_address_tv"
+        android:layout_toEndOf="@+id/adapter_choose_my_address_name_tv"
+        android:layout_toRightOf="@+id/adapter_choose_my_address_name_tv"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/color_nomal_text"
+        android:textSize="@dimen/textSize_fourteen" />
+    <TextView
+        android:id="@+id/adapter_choose_my_address_address_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adapter_choose_my_address_name_tv"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:textSize="@dimen/textSize_thirteen"
+        android:textColor="@color/color_grey_5c"/>
+</RelativeLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/operate_title_name_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="单品浏览量柱状图"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/operate_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="最近一个月"
+            android:gravity="center_vertical"
+            android:paddingLeft="48dp"
+            />
+
+
+    </LinearLayout>
+
+
+    <cn.idcby.jiajubang.view.MyScrollView
+        android:id="@+id/my_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/operate_title_name_frist_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="单品浏览量柱形图"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:gravity="end"
+                    android:paddingRight="15dp"/>
+
+                <LinearLayout
+                    android:id="@+id/operate_customBarChart_frist"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/operate_title_name_second_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="单品成交量柱形图"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:gravity="end"
+                    android:paddingRight="15dp"/>
+
+                <LinearLayout
+                    android:id="@+id/operate_customBarChart_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/operate_title_name_third_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="单品成交额柱形图"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:gravity="end"
+                    android:paddingRight="15dp"/>
+
+                <LinearLayout
+                    android:id="@+id/operate_customBarChart_third"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </cn.idcby.jiajubang.view.MyScrollView>
+
+
+</LinearLayout>

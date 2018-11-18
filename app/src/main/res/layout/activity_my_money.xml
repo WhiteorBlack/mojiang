@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical"
+    android:background="@color/activity_bg_common">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_theme"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:paddingTop="25dp">
+        <ImageView
+            android:id="@id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="3dp"
+            android:src="@mipmap/ic_back_white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="余额"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSize_sixteen" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_theme"
+        android:paddingLeft="15dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/textSize_fourteen"
+        android:text="账户余额（元）"/>
+    <TextView
+        android:id="@+id/acti_my_money_money_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_white"
+        android:background="@color/color_theme"
+        android:paddingLeft="12dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="30dp"
+        android:textSize="40dp"
+        android:text="0.00"/>
+
+    <cn.idcby.commonlibrary.view.LineView
+        android:id="@+id/acti_my_money_withdraw_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_white"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        app:titleText="提现"
+        app:titleTvSize="14"/>
+
+    <cn.idcby.commonlibrary.view.LineView
+        android:id="@+id/acti_my_money_rechange_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/color_white"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        app:titleText="充值"
+        app:titleTvSize="14"/>
+
+    <cn.idcby.commonlibrary.view.LineView
+        android:id="@+id/acti_my_money_details_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/color_white"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        app:titleText="资金明细"
+        app:titleTvSize="14"/>
+
+</LinearLayout>

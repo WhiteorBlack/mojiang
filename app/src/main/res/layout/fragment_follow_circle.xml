@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:id="@+id/frag_follow_circle_refresh_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/frag_follow_circle_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+    <ImageView
+        android:id="@+id/acti_lv_to_top_iv"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="20dp"
+        style="@style/lv_to_top_iv_style"/>
+</RelativeLayout>

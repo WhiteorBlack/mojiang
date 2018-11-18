@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#37BA30</color>
+    <color name="colorPrimaryDark">#37BA30</color>
+    <color name="colorAccent">#37BA30</color>
+
+    <color name="color_theme">#FF37BA30</color>
+    <color name="color_theme_lighter">#FF40db38</color>
+
+    <color name="color_zhaobiao">#FF1F00</color>
+    <color name="color_xuqiu">#FF37BA30</color>
+
+    <!--筛选按钮字体颜色-->
+    <color name="color_nav_normal">#FF333333</color>
+    <color name="color_nav_checked">#FF37BA30</color>
+    <!--非筛选功能颜色，切换按钮颜色，理论上跟上面的一样-->
+    <color name="color_nav_normal_two">#FF333333</color>
+    <color name="color_nav_checked_two">#FF37BA30</color>
+
+
+    <color name="bottom_gray_text_color">#C8C8C8</color>
+    <color name="home_need_address_text_color">#54BCF6</color>
+    <color name="hot_server_text_bg">#F5F5F7</color>
+    <color name="home_job_text_color">#47CEB7</color>
+    <color name="home_find_job_text_color">#FFBE3E</color>
+    <color name="banner_text_bg">#547270</color>
+    <color name="money_red_text_color">#FF0000</color>
+    <color name="home_recommend_shop_bg_color">#F5F5F5</color>
+    <color name="indicator_color">#ededed</color>
+    <color name="gray">#33000000</color>
+    <color name="et_bg">#FAFAFA</color>
+    <color name="news_comment_bg">#FAFAFA</color>
+    <color name="search_gray_bg">#F2F2F2</color>
+    <color name="red_1f">#FF001F</color>
+
+    <!--筛选 省份背景色 -->
+    <color name="sift_left_normal">#F0F0F0</color>
+    <color name="sift_left_selected">#FFFFFF</color>
+    <color name="sift_right_tv_normal">#333333</color>
+    <color name="sift_right_tv_selected">#37BA30</color>
+
+    <!--工作、简历 全职、兼职颜色-->
+    <color name="job_resume_type_all_color">#FF9B32</color>
+    <color name="job_resume_type_half_color">#37BA30</color>
+
+
+    <color name="near_user_age_color_man">#16A0DB</color>
+    <color name="near_user_age_color_women">#FF85B1</color>
+    <color name="near_user_age_color_other">#AAAAAA</color>
+
+    <color name="color_good_param_nomal">#F3F3F3</color>
+    <color name="color_good_param_checked">#F2F2F2</color>
+    <color name="color_good_param_theme">#FF6800</color>
+
+
+    <color name="user_ic_border_color">#E6E6E6</color>
+    <color name="lv_item_bot_tv_color">#BBBBBB</color>
+
+    <drawable name="drawable_lightgrey_fc">#FCFCFC</drawable>
+    <drawable name="drawable_lightgrey_f7">#FCFCFC</drawable>
+    <drawable name="drawable_lightgrey_f2">#F2F2F2</drawable>
+    <drawable name="drawable_white_trans">#00FFFFFF</drawable>
+    <drawable name="drawable_white">#FFFFFF</drawable>
+    <drawable name="drawable_grey_aa">#aaaaaa</drawable>
+    <drawable name="drawable_black">#000000</drawable>
+    <drawable name="drawable_ac_bg">#F4F5F8</drawable>
+
+</resources>

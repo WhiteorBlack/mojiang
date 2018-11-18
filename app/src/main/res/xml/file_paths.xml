@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path path="Android/data/cn.idcby.jiajubang/" name="files_root" />
+    <external-path path="." name="external_storage_root" />
+    <cache-path name="cache_file" path="."/>
+    <files-path name="files" path="."/>
+    <external-files-path name="external_files_path" path="." />
+    <external-cache-path name="external_catch_path" path="." />
+</paths>

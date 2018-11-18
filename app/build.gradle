@@ -1,0 +1,105 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "cn.idcby.jiajubang"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 71
+        versionName "1.0.71"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86'
+        }
+    }
+
+    signingConfigs {
+        release {
+            try {
+                storeFile file("jiajubang.jks")
+                storePassword "123456"
+                keyAlias "jiajubang"
+                keyPassword "123456"
+            } catch (ex) {
+                throw new Exception(ex.toString())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+            minifyEnabled false //debug模式不要混淆
+            signingConfig signingConfigs.release
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.youth.banner:banner:1.4.8'
+    implementation project(':magicindicator')
+    implementation project(':photoview')
+    implementation project(':easeui')
+    //    api project(':imagepicker')
+    //    api project(':magicindicator')
+    //    api project(':photoview')
+    //    api project(':easeui')
+    implementation 'me.grantland:autofittextview:0.2.+'
+    implementation 'cn.bingoogolapple:bga-photopicker:1.2.8@aar'
+    implementation 'cn.bingoogolapple:bga-baseadapter:1.2.7@aar'
+    implementation 'pub.devrel:easypermissions:1.0.1'
+    implementation 'de.halfbit:pinned-section-listview:1.0.0'
+    //    implementation files('libs/alipaySDK-20150724.jar')
+    //    implementation files('libs/BaiduLBS_Android.jar')
+    implementation files('libs/pinyin4j-2.5.0.jar')
+    implementation files('libs/eventbus-3.0.0.jar')
+    implementation files('libs/libammsdk.jar')
+    implementation files('libs/umeng-common-1.5.1.jar')
+    implementation files('libs/umeng-common-1.5.1.jar')
+    implementation files('libs/umeng-share-core-6.9.1.jar')
+    implementation files('libs/umeng-share-QQ-simplify-6.9.1.jar')
+    implementation files('libs/umeng-share-wechat-simplify-6.9.1.jar')
+    implementation files('libs/umeng-shareboard-widget-6.9.1.jar')
+    implementation files('libs/umeng-sharetool-6.9.1.jar')
+    implementation files('libs/umeng-debug-1.0.0.jar')
+    implementation files('libs/umeng-debug-1.0.0.jar')
+    implementation files('libs/jcore-android-1.2.0.jar')
+    implementation files('libs/jpush-android-3.1.2.jar')
+    implementation project(':imagepicker')
+    implementation files('libs/mma_sdk.jar')
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    //sdk
+    compile(name: 'YoukuPlayerOpenSDK-release', ext: 'aar')
+    implementation files('libs/alipaySdk-20180601.jar')
+    implementation files('libs/utdid4all-1.1.5.5.jar')
+}

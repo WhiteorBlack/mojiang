@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common">
+    <RelativeLayout
+        android:id="@+id/acti_feedback_top_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height"
+        android:background="@color/color_white">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="问题反馈"
+            android:textColor="@color/color_nomal_text"
+            android:textSize="@dimen/textSize_sixteen" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/feedback_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/acti_feedback_top_lay"
+        android:hint="填写反馈内容"
+        android:padding="15dp"
+        android:background="@color/white"
+        android:lines="10"
+        android:gravity="top"
+        android:ellipsize="end"
+        android:includeFontPadding="true"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_nomal_text"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_item_height"
+        android:layout_below="@id/feedback_et"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="@dimen/textSize_fourteen"
+            android:textColor="@color/color_nomal_text"
+            android:text="联系方式"/>
+        <EditText
+            android:id="@+id/feedback_phone_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_trans"
+            android:hint="填写联系方式"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:maxLength="11"
+            android:inputType="number"
+            android:textSize="@dimen/textSize_fourteen"
+            android:textColor="@color/color_nomal_text"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/acti_feedback_submit_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_submit_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_theme"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/textSize_fourteen" />
+
+</RelativeLayout>

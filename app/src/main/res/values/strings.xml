@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">陌匠</string>
+
+    <!--厂家直供提示-->
+    <string name="send_good_tips">请至商家后台上传商品信息，或进入-我的-点击帮助与反馈中查看教程。</string>
+
+    <!--搜索框提示-->
+    <string name="nomal_search_def">搜索...</string>
+
+    <string name="daodile">"------到底了------"</string>
+    <!--热卖好货的分类标识-->
+    <string name="hotgoods">HotGoods</string>
+    <!--最新上架的分类标识-->
+    <string name="betternew">BetterNew</string>
+    <!--热销爆款的分类标识-->
+    <string name="selling">Selling</string>
+
+
+    <string name="addcarts">加入购物车</string>
+    <string name="buynow">立即购买</string>
+    <string name="edited">编辑</string>
+    <string name="shoppingcart">购物车</string>
+    <string name="total_money">总金额:</string>
+    <string name="jiesuan">去结算</string>
+
+
+
+    <string name="delete">删除</string>
+
+    <!--认证相关-->
+    <string name="apply_add_text">提交审核</string>
+    <string name="apply_modify_text">修改认证</string>
+    <string name="apply_submit_success">认证已提交</string>
+
+    <!--对话框-->
+
+    <string name="dialog_password_title">温馨提示</string>
+    <string name="dialog_nopassword_msg">您还没有设置支付密码，是否现在去设置？</string>
+
+    <!---->
+    <string name="regist_tips_def">注册即代表同意《%1$s》</string>
+    <string name="login_tips_def">登录即代表同意《%1$s》</string>
+    <string name="send_tips_def">发布即代表同意《%1$s》</string>
+    <string name="desc_tips_def">《%1$s》</string>
+
+    <!--退保说明-->
+    <string name="pay_bonds_tips">尊敬的用户，只有您申请退出平台时才能申请退还剩余保证金至您的账户余额中。同时，您在退出诚信保证金时，还需满足以下条件：\n1、无未处理完成的举报维权；\n2、无未偿还的平台垫付款项；\n3、无未结束的交易；\n4、最后一笔已完结的交易的完结时间已经超过90天。\n温馨提醒：如果您目前的条件不能全部达到，建议您过段时间满足条件后再来申请退出。</string>
+
+    <!--身份证-->
+    <string name="input_style_id_card">0123456789Xx</string>
+    <!--实名认证-->
+    <string name="apply_person_str">实名认证</string>
+
+    <!--关于付款等订单操作提示-->
+    <string name="order_pay_tips">支付完成后付款至平台担保账户</string>
+    <string name="order_finish_tips">请确认收到货物，完成后打款到卖家账号</string>
+    <string name="server_finish_tips">请确认服务完成，完成后打款到卖家账号</string>
+    <string name="need_finish_tips">请确认需求完成，完成后打款到卖家账号</string>
+    <string name="good_before_pay_tips">请联系卖家确定运费，才能及时发货哟</string>
+    <!--订单不允许确认收货的提示-->
+    <string name="order_no_finish_tips">您有商品正在售后处理,请等待售后处理完成之后再进行下一步操作!</string>
+
+    <string name="footer_loading_string">加载中...</string>
+    <string name="footer_no_string">没有更多了</string>
+
+    <!--认证信息-->
+    <string name="apply_text_person_no">实名认证未通过</string>
+    <string name="apply_text_person">实名认证已通过</string>
+    <string name="apply_text_company">公司认证已通过</string>
+    <string name="apply_text_factory">工厂认证已通过</string>
+    <string name="apply_text_store">店铺认证已通过</string>
+    <string name="apply_text_install">安装认证已通过</string>
+    <string name="apply_text_server">服务认证已通过</string>
+    <string name="apply_text_car">有货车</string>
+
+    <string name="need_send_tips_title"><Data><![CDATA[<font color="#ff0000"><b>*</b></font> 需交纳保证金]]></Data></string>
+
+    <string name="server_hidden_tips">功能正在建设中，请耐心等待...</string>
+    
+</resources>

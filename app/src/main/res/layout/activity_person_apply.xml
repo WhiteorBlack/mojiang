@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                style="@style/apply_item_line_lay_style">
+                <TextView
+                    style="@style/apply_item_left_style"
+                    android:text="个人姓名"/>
+                <EditText
+                    android:id="@+id/acti_person_apply_name_ev"
+                    style="@style/apply_item_right_ev_style"
+                    android:hint="请输入个人姓名" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="1dp"
+                style="@style/apply_item_line_lay_style">
+                <TextView
+                    style="@style/apply_item_left_style"
+                    android:text="身份证号"/>
+                <EditText
+                    android:id="@+id/acti_person_apply_card_ev"
+                    style="@style/apply_item_right_ev_style"
+                    android:inputType="number"
+                    android:digits="@string/input_style_id_card"
+                    android:hint="请输入身份证号" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="1dp"
+                android:visibility="gone"
+                style="@style/apply_item_line_lay_style">
+                <TextView
+                    style="@style/apply_item_left_style"
+                    android:text="支付宝账户"/>
+                <EditText
+                    android:id="@+id/acti_person_apply_alipay_ev"
+                    style="@style/apply_item_right_ev_style"
+                    android:hint="请输入支付宝账户" />
+            </LinearLayout>
+
+            <View
+                android:visibility="gone"
+                style="@style/user_info_item_dv_style" />
+            <LinearLayout
+                android:visibility="gone"
+                style="@style/apply_item_line_lay_no_style">
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="行        业"/>
+                <TextView
+                    android:id="@+id/acti_person_apply_category_tv"
+                    style="@style/apply_item_right_tv_no_style"
+                    android:text="请选择"/>
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@mipmap/arrow_right"/>
+            </LinearLayout>
+            <View
+                android:visibility="gone"
+                style="@style/user_info_item_dv_style" />
+            <LinearLayout
+                android:visibility="gone"
+                style="@style/apply_item_line_lay_style">
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="职        位"/>
+                <EditText
+                    android:id="@+id/acti_person_apply_work_name_ev"
+                    style="@style/apply_item_right_ev_style"
+                    android:hint="请输入职位名称"/>
+            </LinearLayout>
+
+            <View
+                style="@style/user_info_item_dv_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nomal_divider_height"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="12dp"
+                    android:text="身份证件上传"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/textSize_fourteen" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.7dp"
+                    android:background="@color/activity_bg_common"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp">
+                    <LinearLayout
+                        android:id="@+id/ll_id_card_front"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/img_id_card_front"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/addpic" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="身份证正面"
+                            android:textSize="@dimen/textSize_twelve" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_id_card_back"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/img_id_card_back"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/addpic" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="身份证反面"
+                            android:textSize="@dimen/textSize_twelve" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_id_card_with_hand"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:id="@+id/img_id_card_with_hand"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/addpic" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="手持身份证"
+                            android:textSize="@dimen/textSize_twelve" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <TextView
+        android:id="@+id/tv_apply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_submit_height"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/apply_add_text"
+        android:textColor="@android:color/white" />
+</LinearLayout>

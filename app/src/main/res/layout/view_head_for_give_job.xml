@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.youth.banner.Banner
+        android:id="@+id/header_for_give_job_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/banner_bot_inde_style"  />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <LinearLayout
+            android:id="@+id/header_give_job_search_lay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_gray_search_bg"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="@dimen/index_search_margin_tb"
+            android:paddingTop="@dimen/index_search_margin_tb">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/nomal_search_def"
+                android:textColor="@color/color_light_grey_aa_text"
+                android:textSize="@dimen/textSize_twelve" />
+            <ImageView
+                style="@style/nomal_search_right_iv"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/header_give_job_create_resume_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_green_with_circle_corner"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="@dimen/index_search_margin_tb"
+            android:paddingTop="@dimen/index_search_margin_tb"
+            android:text="创建简历"
+            android:textColor="@android:color/white"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:paddingBottom="10dp"
+        android:paddingTop="5dp">
+        <LinearLayout
+            android:id="@+id/header_give_job_resume_all_lay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_job_all" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全职简历"
+                android:textColor="@color/color_nomal_text"
+                android:textSize="@dimen/textSize_twelve" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/header_give_job_resume_half_lay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_job_half" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="兼职简历"
+                android:textColor="@color/color_nomal_text"
+                android:textSize="@dimen/textSize_twelve"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/header_give_job_company_job_lay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_job_com" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公司招聘"
+                android:textColor="@color/color_nomal_text"
+                android:textSize="@dimen/textSize_twelve"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/header_give_job_my_collection_lay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="6dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/ic_job_fav" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的收藏"
+                android:textColor="@color/color_nomal_text"
+                android:textSize="@dimen/textSize_twelve"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/header_for_give_job_mid_left_iv"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/default_icon" />
+
+            <TextView
+                android:id="@+id/header_for_give_job_mid_left_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                android:padding="10dp"
+                android:text="职位推荐"
+                android:textStyle="bold"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/textSize_fourteen" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/header_for_give_job_mid_right_iv"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/default_icon" />
+
+            <TextView
+                android:id="@+id/header_for_give_job_mid_right_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                android:padding="10dp"
+                android:text="人才推荐"
+                android:textStyle="bold"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/textSize_fourteen" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/nomal_divider_height"
+        android:background="@color/color_white"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="推荐职位"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize_fourteen" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="实时掌握行业动态"
+            android:visibility="gone"
+            android:textColor="@color/color_deep44_text"
+            android:textSize="@dimen/textSize_twelve" />
+
+    </LinearLayout>
+
+    <cn.idcby.jiajubang.view.StationaryGridView
+        android:id="@+id/gv_job"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@android:color/white"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:paddingBottom="10dp"
+        android:verticalSpacing="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/nomal_divider_height"
+        android:background="@color/color_white"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="推荐企业"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize_fourteen"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="实时掌握行业动态"
+            android:visibility="gone"
+            android:textColor="@color/color_deep44_text"
+            android:textSize="@dimen/textSize_twelve"  />
+    </LinearLayout>
+</LinearLayout>

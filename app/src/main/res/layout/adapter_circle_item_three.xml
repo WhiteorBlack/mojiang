@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/adapter_circle_item_main_lay"
+    android:background="@drawable/bg_white_greyf2_selector">
+    <include
+        android:id="@+id/adapter_circle_item_top_lay"
+        layout="@layout/adapter_circle_item_top" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/adapter_circle_item_img_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adapter_circle_item_top_lay"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"/>
+    <include
+        android:id="@+id/adapter_circle_item_bottom_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adapter_circle_item_img_rv"
+        layout="@layout/adapter_circle_item_bottom" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_divider_height"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/adapter_circle_item_bottom_lay"
+        android:background="@color/activity_bg_common" />
+</RelativeLayout>

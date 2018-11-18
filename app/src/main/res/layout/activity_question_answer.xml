@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/acti_question_answer_top_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height"
+        android:background="@color/color_white">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/textSize_sixteen"
+            android:textColor="@color/color_nomal_text"
+            android:text="行业顾问"/>
+        <TextView
+            android:id="@+id/acti_question_answer_right_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingRight="15dp"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/textSize_thirteen"
+            android:textColor="@color/color_nomal_text"
+            android:text="成为顾问"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/acti_question_answer_top_lay"
+        android:background="@color/line_gray" />
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:id="@+id/acti_question_answer_refresh_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/acti_question_answer_top_lay"
+        android:layout_marginTop="1dp">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/acti_question_answer_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"/>
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+    <ProgressBar
+        android:id="@+id/acti_question_answer_load_pb"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true" />
+    <TextView
+        android:id="@+id/acti_question_answer_null_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:text="暂无顾问"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_grey_text" />
+    <ImageView
+        android:id="@+id/acti_lv_to_top_iv"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="50dp"
+        style="@style/lv_to_top_iv_style" />
+</RelativeLayout>

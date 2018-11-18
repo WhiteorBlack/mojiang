@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="#F2F2F2">
+    <TextView
+        android:id="@+id/adapter_work_exp_money_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/textSize_twelve"
+        android:textColor="@color/color_grey_text"/>
+    <TextView
+        android:id="@+id/adapter_work_exp_time_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_marginBottom="15dp"
+        android:textSize="@dimen/textSize_twelve"
+        android:textColor="@color/color_nomal_text"/>
+    <TextView
+        android:id="@+id/adapter_work_exp_type_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/adapter_work_exp_time_tv"
+        android:textSize="@dimen/textSize_twelve"
+        android:textColor="@color/color_nomal_text"/>
+    <TextView
+        android:id="@+id/adapter_work_exp_com_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_below="@id/adapter_work_exp_time_tv"
+        android:textSize="@dimen/textSize_twelve"
+        android:textColor="@color/color_nomal_text"/>
+</RelativeLayout>

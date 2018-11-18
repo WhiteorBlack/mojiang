@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common">
+    <RelativeLayout
+        android:id="@+id/acti_job_list_recommend_top_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height"
+        android:background="@color/color_white">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style"/>
+        <cn.idcby.jiajubang.view.TopBarRightView
+            android:id="@+id/acti_job_list_recommend_right_iv"
+            android:visibility="invisible"
+            style="@style/unread_message_lay_style" />
+        <LinearLayout
+            android:id="@+id/acti_job_list_recommend_search_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_search_bg"
+            android:layout_toLeftOf="@id/acti_job_list_recommend_right_iv"
+            android:layout_toRightOf="@id/back"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="@dimen/title_bar_search_margin_tb"
+            android:layout_marginBottom="@dimen/title_bar_search_margin_tb"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/nomal_search_right_iv"/>
+            <TextView
+                android:id="@+id/acti_job_list_recommend_search_key_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/textSize_twelve"
+                android:textColor="@color/color_light_grey_aa_text"
+                android:text="@string/nomal_search_def"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/acti_job_list_recommend_top_lay"
+        android:background="@color/line_gray" />
+
+    <ProgressBar
+        android:id="@+id/acti_job_list_recommend_loading_lay"
+        style="?android:attr/progressBarStyle"
+        android:layout_centerInParent="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true" />
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:id="@+id/acti_job_list_recommend_refresh_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:layout_below="@id/acti_job_list_recommend_top_lay">
+        <ListView
+            android:id="@+id/acti_job_list_recommend_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:dividerHeight="1dp"
+            android:divider="@color/color_grey_f5" />
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+    <TextView
+        android:id="@+id/acti_job_list_recommend_null_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:paddingTop="80dp"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_grey_text"
+        android:text="暂无内容"/>
+    <ImageView
+        android:id="@+id/acti_lv_to_top_iv"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="50dp"
+        style="@style/lv_to_top_iv_style"/>
+</RelativeLayout>

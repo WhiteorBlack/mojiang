@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/color_grey_b3"
+        android:gravity="center"
+        android:textSize="@dimen/textSize_sixteen"
+        android:textColor="@color/color_nomal_text"
+        android:text="请选择"/>
+    <TextView
+        android:id="@+id/dialog_check_sex_man_tv"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/bg_trans_greyf2_selector"
+        android:gravity="center"
+        android:textSize="@dimen/textSize_sixteen"
+        android:textColor="@color/color_nomal_text"
+        android:text="男"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_grey_f5" />
+    <TextView
+        android:id="@+id/dialog_check_sex_women_tv"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/bg_trans_greyf2_selector"
+        android:gravity="center"
+        android:textSize="@dimen/textSize_sixteen"
+        android:textColor="@color/color_nomal_text"
+        android:text="女"/>
+</LinearLayout>

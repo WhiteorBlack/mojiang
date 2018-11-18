@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/acti_needs_main_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common"
+    android:fitsSystemWindows="false">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/layout_top" />
+
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:id="@+id/acti_unused_parent_sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/acti_unused_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+
+    <ImageView
+        android:id="@id/back"
+        style="@style/top_bar_back_trans_style"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/acti_lv_to_top_iv"
+        style="@style/lv_to_top_iv_style"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="50dp"
+        android:visibility="gone" />
+</RelativeLayout>

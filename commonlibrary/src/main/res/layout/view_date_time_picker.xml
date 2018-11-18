@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <cn.idcby.commonlibrary.widget.DatePicker.WheelView
+        android:id="@+id/wheelview_dialog_year"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4" />
+
+    <cn.idcby.commonlibrary.widget.DatePicker.WheelView
+        android:id="@+id/wheelview_dialog_month"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3" />
+
+    <cn.idcby.commonlibrary.widget.DatePicker.WheelView
+        android:id="@+id/wheelview_dialog_day"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3" />
+    <cn.idcby.commonlibrary.widget.DatePicker.WheelView
+        android:id="@+id/wheelview_dialog_time"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"  />
+
+    <cn.idcby.commonlibrary.widget.DatePicker.WheelView
+        android:id="@+id/wheelview_dialog_min"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"  />
+    <cn.idcby.commonlibrary.widget.DatePicker.WheelView
+        android:id="@+id/wheelview_dialog_sec"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"  />
+</LinearLayout>

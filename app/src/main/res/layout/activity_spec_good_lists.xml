@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white">
+    <RelativeLayout
+        android:id="@+id/acti_spec_good_list_top_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style"/>
+        <LinearLayout
+            android:id="@+id/acti_spec_good_list_search_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/titleBar_height"
+            android:background="@drawable/round_search_bg"
+            android:layout_toRightOf="@id/back"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="@dimen/title_bar_search_margin_tb"
+            android:layout_marginBottom="@dimen/title_bar_search_margin_tb"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/nomal_search_right_iv"/>
+            <TextView
+                android:id="@+id/acti_spec_good_list_search_key_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/textSize_twelve"
+                android:textColor="@color/color_light_grey_aa_text"
+                android:text="@string/nomal_search_def"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:id="@+id/acti_spec_good_nav_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_nav_height"
+        android:layout_below="@id/acti_spec_good_list_top_lay"
+        android:background="#ADADAD">
+
+    </net.lucode.hackware.magicindicator.MagicIndicator>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/acti_spec_good_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/acti_spec_good_nav_lay"/>
+</RelativeLayout>

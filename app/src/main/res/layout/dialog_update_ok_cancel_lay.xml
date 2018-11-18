@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical" >
+    <TextView 
+        android:id="@+id/dialog_update_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/color_theme"
+        android:gravity="center"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/textSize_sixteen"
+        android:text="更新" />
+   
+    <ProgressBar 
+        android:id="@+id/dialog_update_progress"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_margin="10dp"
+        style="@style/update_app_progress_style"/>
+
+    <TextView 
+        android:id="@+id/dialog_update_progress_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="@dimen/textSize_ten"
+        android:textColor="@color/color_nomal_text"
+        android:text="0 M/0 M"/>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_grey_f2"/>
+    
+    <TextView 
+        android:id="@+id/dialog_update_cancel_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_greyf2_selector"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textSize="@dimen/textSize_sixteen"
+        android:textColor="@color/color_deepSkyBlue"
+        android:text="取消下载"/>
+	<View 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_grey_f2"/>
+</LinearLayout>

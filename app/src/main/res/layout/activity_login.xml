@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_bg">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#22000000"/>
+    <ImageView
+        android:id="@id/back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="17dp"
+        android:src="@mipmap/ic_publish_close"/>
+    <RelativeLayout
+        android:id="@+id/acti_login_content_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerInParent="true">
+        <LinearLayout
+            android:id="@+id/acti_login_number_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/login_user"/>
+            <EditText
+                android:id="@+id/acti_login_number_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/transparent"
+                android:inputType="number"
+                android:maxLength="11"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textSize="@dimen/textSize_twenty"
+                android:textColor="@color/color_white"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_white"
+            android:layout_below="@id/acti_login_number_lay" />
+        <LinearLayout
+            android:id="@+id/acti_login_pass_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/acti_login_number_lay"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/login_pwd"/>
+            <EditText
+                android:id="@+id/acti_login_pass_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/transparent"
+                android:inputType="textPassword"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="@dimen/textSize_twenty"
+                android:textColor="@color/color_white"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_white"
+            android:layout_below="@id/acti_login_pass_lay" />
+
+        <TextView
+            android:id="@+id/acti_login_sub_tv"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/acti_login_pass_lay"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:background="@drawable/shape_green_with_circle_corner"
+            android:text="登      录"
+            android:textSize="@dimen/textSize_fifteen"
+            android:textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/acti_login_regist_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/acti_login_sub_tv"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:text="注册"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/textSize_fourteen" />
+
+        <TextView
+            android:id="@+id/acti_login_forget_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/acti_login_sub_tv"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:text="忘记密码？"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/textSize_fourteen" />
+    </RelativeLayout>
+    <ImageView
+        android:layout_width="113dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_above="@id/acti_login_content_lay"
+        android:src="@mipmap/login_logo" />
+    <TextView
+        android:id="@+id/acti_login_regist_tips_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="登录即代表同意《用户协议》"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/textSize_fourteen" />
+</RelativeLayout>

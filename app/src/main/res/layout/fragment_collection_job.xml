@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frag_collection_job_refresh_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/frag_collection_job_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+</cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>

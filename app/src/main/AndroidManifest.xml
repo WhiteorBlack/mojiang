@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.idcby.jiajubang">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!--允许安装未知来源的apk-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <!--环信-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!--位置权限-->
+
+    <!--友盟分享登录需要权限-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <!--极光推送-->
+    <!-- Required -->
+    <permission
+        android:name="${applicationId}.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <!-- Required  一些系统要求的权限，如访问网络等-->
+    <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <application
+        android:name="cn.idcby.jiajubang.application.MyApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SplashActivity"
+            android:theme="@style/AppTransparentTheme"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.FirstGuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.PublishActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyApplyInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChangeLoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NewsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NewsListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.PersonApplyActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.CompanyApplyActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.GetTypeByCodeActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SelectedProvinceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SelectedAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SelectedCityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SelectedAreaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SelectProvinceBySortActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SelectProvinceBySortCityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseMapLocationActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.FactoryApplyActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ServerApplyActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.InstallApplyActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NewsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NewsDetailVideoActivity"
+            android:hardwareAccelerated="true"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode" />
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.CircleSendActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.CircleTransportActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.GiveJobActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.JobListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.JobListHotActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.JobListRecommendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.CreateZhaopinActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.JobDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyReceiveResumeActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.HelperParentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.HelperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.AboutUsActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyMultiImgShowActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.CircleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.CircleListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.CircleDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseCircleCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.TopicHotActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.TopicDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.VicUserActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SearchNomalActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.SearchIndexActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MessageCenterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MessageListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MessageChatActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.CreateResumeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.JobPostListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.JobPostChildListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseWelfareActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.AddWorkExpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ResumeListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ResumeHotListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ResumeDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCollectionResumeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseResumeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ResumeBuyActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.QuestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.QuestionListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.QuestionAnswersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.QuestionCreateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.QuestionReAskActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseQuestionCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.QuestionAnswerApplyActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.IndustryVApplyActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.QuestionDetailsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NeedsListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NeedsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NeedsDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NeedsBidSellerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseNeedCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NeedsSendActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NeedsConfirmBidActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseStartEndTimeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ActivityBondPay"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCollectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyPayBondsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyPayBandsCancelActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyAddressEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyResumeListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyQuestionListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.UserInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.UserInfoOtherActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.UserIndexActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyMoneyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.RechargeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.WithdrawActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyMoneyBillListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCommentListActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyNeedsOfferActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyNeedsOfferSendPayActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyNeedsOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyNeedOrderDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyNeedsOrderCancelActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MySubscriptionActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ServerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ServerDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ServerListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ServerCommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ServerConfirmActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ServerCarPictureActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseServerCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseServerCategoryChildActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyServerOrderDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyServerOrderCommentActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ChooseAddressActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NearServerListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NearJobListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NearUserListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NearStoreActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ActivityShowWeb"
+            android:screenOrientation="portrait" />
+
+
+        <!--闲置 直供-->
+        <activity
+            android:name="cn.idcby.jiajubang.activity.DirectGoodListsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.UnusedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.UnuseGoodListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.UnuseGoodCommentList"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.UnuseGoodDetailsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.ShoppingCartActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.GoodOrderConfirmActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.GoodOrderCommentListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.GoodOrderCommentSendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.GoodOrderSendActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.GoodOrderCommentEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.GoodOrderCommentResendActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyGoodOrderDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.StoreIndexActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.StoreGoodCategoryActivity"
+            android:screenOrientation="portrait" />
+
+        <!--2018-05-19 13:14:16  新版界面 -->
+        <activity
+            android:name="cn.idcby.jiajubang.activity.PayManagerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.PayManagerBindActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MoneyManagerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCenterStoreActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCenterUnuseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCenterInstallActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCenterServerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCenterNeedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCenterCircleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyCenterJobsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyJobCompanyEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyOrderCenterAllActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyOrderAfterSaleActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyOrderAfterSaleDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyOrderAfterSaleEditReceiveAddressActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name="cn.idcby.jiajubang.activity.MyNeedOfferFinishActivity"
+            android:screenOrientation="portrait"/>
+
+
+        <activity
+            android:name="cn.idcby.jiajubang.activity.NewsCategoryActivity"
+            android:screenOrientation="portrait"/>
+
+
+
+        <!--下载service-->
+        <service android:name=".update.UpdateService"
+            android:enabled="true" />
+
+        <!--退出登录service-->
+        <service android:name=".service.LoginOutService"
+            android:enabled="true" />
+
+        <!--微信pay  start-->
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <!--微信pay  end-->
+
+
+        <!-- alipay sdk begin -->
+
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+
+        <!-- alipay sdk end -->
+
+        <!--百度定位 start-->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="mk0WlBlI2iMbHqrsd23tGsuRX5khNu3z" />     <!--key:开发者申请的Key-->
+        <!--百度定位 end-->
+
+        <!--环信  start-->
+        <!-- 设置环信应用的AppKey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="idcby#furnituregang" />
+        <!-- 声明SDK所需的service SDK核心功能-->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 语音通话 -->
+        <activity
+            android:name=".hxmsg.VoiceCallActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/nornal_style" />
+        <!-- 视频通话 -->
+        <activity
+            android:name=".hxmsg.VideoCallActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <!-- 地图 -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+
+        <!-- 显示下载大图页面 -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+        <!-- 下载文件 -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseShowNormalFileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" />
+
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- Ding msg send activity -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseDingMsgSendActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- Ding ack user list activity -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseDingAckUserListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!--环信  end-->
+
+
+        <!-- <activity android:name=".activity.MySubscriptionActivity"
+             android:screenOrientation="portrait"/>-->
+        <!-- 添加订阅-->
+        <activity
+            android:name=".activity.AddSubscriptionActivity"
+            android:screenOrientation="portrait" />
+        <!-- 选择订阅分类-->
+        <activity
+            android:name=".activity.SubClassificationActivity"
+            android:screenOrientation="portrait" />
+        <!-- 厂家直供展示页面-->
+        <activity
+            android:name=".activity.DirectSellingActivity"
+            android:screenOrientation="portrait" />
+        <!-- 发布行业闲置-->
+        <activity
+            android:name=".activity.UnusedSendActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <!-- 发布行业闲置分类选择-->
+        <activity
+            android:name=".activity.ChooseUnuesdCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ChooseUnusedCategoryChildActivity"
+            android:screenOrientation="portrait" />
+        <!--  发布行业闲置 分类列表选择&ndash;&gt;-->
+
+        <activity
+            android:name=".activity.CategoryGoodListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SearchGoodListActivity"
+            android:screenOrientation="portrait" />
+        <!--  商品详情 -->
+        <activity
+            android:name=".activity.GoodsDetailsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activity.GoodDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activity.GoodCommentListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <!--  关注的人 -->
+        <activity
+            android:name=".activity.MyFollowsActivity"
+            android:screenOrientation="portrait" />
+        <!--  关注店铺 -->
+        <activity
+            android:name=".activity.MyFocusStoreActivity"
+            android:screenOrientation="portrait" />
+        <!--  我的店铺 -->
+        <activity
+            android:name=".activity.MyStoreActivity"
+            android:screenOrientation="portrait" />
+        <!--  我要开店 -->
+        <activity
+            android:name=".activity.OpenStoreActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!--  我的积分 -->
+        <activity
+            android:name=".activity.MyBangMoneyActivity"
+            android:screenOrientation="portrait" />
+        <!--  我的积分消费明细 -->
+        <activity
+            android:name=".activity.MyBangMoneyBillListActivity"
+            android:screenOrientation="portrait" />
+        <!--  我的积分转账 -->
+        <activity
+            android:name=".activity.MyBangMoneyTransferActivity"
+            android:screenOrientation="portrait" />
+        <!--  我的积分转账 -->
+        <activity
+            android:name=".activity.MyOperateActivity"
+            android:screenOrientation="portrait" />
+        <!--  我的积分转账 -->
+        <activity
+            android:name=".activity.FeedBackActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity
+            android:name=".activity.MyServerPictureEditActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+
+
+
+
+        <!-- ###############友盟########################  -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+
+        <!--极光推送 start-->
+
+        <!-- For test only 测试状态通知栏，需要打开的Activity -->
+        <!--<activity android:name="com.example.jpushdemo.TestActivity" android:exported="false">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="jpush.testAction" />-->
+                <!--<category android:name="jpush.testCategory" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <!-- Rich push 核心功能 since 2.0.6-->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:theme="@style/MyDialogStyle"
+            android:exported="false">
+        </activity>
+
+        <!-- Required SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </activity>
+
+        <!-- Required SDK 核心功能-->
+        <!-- 可配置android:process参数将PushService放在其他进程中 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:process=":mult"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+        <!-- since 3.0.9 Required SDK 核心功能-->
+        <provider
+            android:authorities="${applicationId}.DataProvider"
+            android:name="cn.jpush.android.service.DataProvider"
+            android:exported="false"
+            />
+
+        <!--&lt;!&ndash; since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 &ndash;&gt;-->
+        <!--&lt;!&ndash; 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 &ndash;&gt;-->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+                <category android:name="${applicationId}" />
+            </intent-filter>
+
+        </service>
+        <!-- since 3.1.0 Required SDK 核心功能-->
+        <provider
+            android:authorities="${applicationId}.DownloadProvider"
+            android:name="cn.jpush.android.service.DownloadProvider"
+            android:exported="true"
+            />
+        <!-- Required SDK核心功能-->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />   <!--Required  显示通知栏 -->
+                <category android:name="${applicationId}" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能-->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
+
+        <!-- User defined.  For test only  用户自定义的广播接收器-->
+        <receiver
+            android:name=".receiver.MyReceiver"
+            android:exported="false"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required  用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required  用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <action android:name="cn.idcby.push.MSG_DIMESS" /><!-- 自定义的action，用于接收通知被清除 -->
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </receiver>
+
+        <!--&lt;!&ndash; User defined.  For test only  用户自定义接收消息器,3.0.7开始支持,目前新tag/alias接口设置结果会在该广播接收器对应的方法中回调&ndash;&gt;-->
+        <receiver android:name=".receiver.MyJPushMessageReceiver">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="${applicationId}"></category>
+            </intent-filter>
+        </receiver>
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="9e06cf5b307cf8d754fcf4aa" /> <!--  </>值来自开发者平台取得的AppKey-->
+
+        <!--极光推送 end-->
+
+
+
+
+
+
+
+    </application>
+
+</manifest>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_white_greyf2_selector">
+
+    <include layout="@layout/adapter_my_receive_order_top" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/adapter_my_receive_order_user_iv"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/default_head_icon"/>
+        <TextView
+            android:id="@+id/adapter_my_receive_order_desc_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textSize="@dimen/textSize_thirteen"
+            android:textColor="@color/color_deep33_text"/>
+        <TextView
+            android:id="@+id/adapter_my_receive_order_after_sale_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="@drawable/bg_order_after_sale"
+            android:textSize="@dimen/textSize_twelve"
+            android:textColor="@color/color_deep33_text"
+            android:text="申请售后"/>
+        <TextView
+            android:id="@+id/adapter_my_receive_order_after_sale_finish_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="@drawable/round_grey_ee_bg"
+            android:textSize="@dimen/textSize_twelve"
+            android:textColor="@color/color_grey_text"
+            android:text="已售后"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|right"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize_fourteen"
+            android:textColor="@color/color_money_two"
+            android:text="¥"/>
+        <TextView
+            android:id="@+id/adapter_my_receive_order_money_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:gravity="right"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="@dimen/textSize_fifteen"
+            android:textColor="@color/color_money_two"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/color_grey_f2" />
+
+    <include layout="@layout/adapter_my_receive_order_bottom" />
+</LinearLayout>

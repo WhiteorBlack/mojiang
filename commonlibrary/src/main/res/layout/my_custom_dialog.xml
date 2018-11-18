@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_white_bg" >
+    
+    <TextView 
+        android:id="@+id/my_cus_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="16dp"
+        android:textColor="#303030" />
+    
+    <View 
+        android:id="@+id/my_cus_title_mess_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/my_cus_title"
+        android:background="#F0F0F0"/>
+    
+    <LinearLayout 
+        android:id="@+id/my_cus_message_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        android:layout_below="@id/my_cus_title_mess_divider"
+        android:orientation="vertical">
+        <TextView 
+	        android:id="@+id/my_cus_message"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:maxLines="20"
+	        android:ellipsize="end"
+	        android:textSize="14dp"
+	        android:textColor="#606060" />
+    </LinearLayout>
+    
+    <View 
+        android:id="@+id/my_cus_title_option_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/my_cus_message_layout"
+        android:background="#F0F0F0"/>
+
+    <LinearLayout 
+        android:id="@+id/my_cus_bottom_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_cus_title_option_divider"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/my_cus_negativeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:background="@null"
+            android:textSize="14dp"
+            android:textColor="#606060"
+            android:text="取消"/>
+        <View 
+	        android:layout_width="1px"
+	        android:layout_height="match_parent"
+	        android:background="#F0F0F0"/>
+        <Button
+            android:id="@+id/my_cus_positiveButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:padding="10dp"
+            android:textSize="14dp"
+            android:textColor="#37BA30"
+            android:text="确定"/>
+    </LinearLayout>
+</RelativeLayout>

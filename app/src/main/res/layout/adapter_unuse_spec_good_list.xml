@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
+    <LinearLayout
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/adapter_unuse_spec_user_iv"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/default_head_icon"
+            android:scaleType="centerCrop" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/adapter_unuse_spec_user_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_nomal_text"
+                android:textSize="@dimen/textSize_fifteen" />
+            <TextView
+                android:id="@+id/adapter_unuse_spec_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize_twelve"
+                android:textColor="@color/color_grey_text"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥"
+            android:textSize="@dimen/textSize_fifteen"
+            android:textColor="@color/money_red_text_color" />
+
+        <TextView
+            android:id="@+id/adapter_unuse_spec_money_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:text="0"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@color/money_red_text_color"
+            android:textSize="@dimen/textSize_eighteen"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/adapter_unuse_spec_img_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/adapter_unuse_spec_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/color_nomal_text"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize_fourteen" />
+
+    <TextView
+        android:id="@+id/adapter_unuse_spec_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/color_nomal_text"
+        android:textSize="@dimen/textSize_fourteen" />
+
+    <LinearLayout
+        android:id="@+id/adapter_unuse_spec_comment_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/unuse_left_border_bg"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/adapter_unuse_spec_comment_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@color/color_grey_text"
+            android:textSize="@dimen/textSize_thirteen"/>
+        <TextView
+            android:id="@+id/adapter_unuse_spec_comment_reply_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@color/color_grey_text"
+            android:textSize="@dimen/textSize_thirteen"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/line_gray" />
+
+    <LinearLayout
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/adapter_unuse_spec_location_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@color/color_deepSkyBlue"
+            android:textSize="@dimen/lv_item_bot_tv_size" />
+
+        <ImageView
+            style="@style/nomal_item_bot_ic_style"
+            android:src="@mipmap/ic_support_lv_nomal"/>
+        <TextView
+            android:id="@+id/adapter_unuse_spec_like_count_tv"
+            style="@style/nomal_item_bot_tv_style"
+            android:text="0"/>
+
+        <ImageView
+            style="@style/nomal_item_bot_ic_style"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/gray_comment"/>
+        <TextView
+            android:id="@+id/adapter_unuse_spec_comment_count_tv"
+            style="@style/nomal_item_bot_tv_style"
+            android:text="0"/>
+    </LinearLayout>
+</LinearLayout>

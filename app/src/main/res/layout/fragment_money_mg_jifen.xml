@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_theme"
+        android:paddingLeft="15dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/textSize_fourteen"
+        android:text="我的积分"/>
+    <TextView
+        android:id="@+id/frag_money_mg_jifen_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_white"
+        android:background="@color/color_theme"
+        android:paddingLeft="12dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="30dp"
+        android:textSize="40dp"
+        android:text="0.00"/>
+
+    <cn.idcby.commonlibrary.view.LineView
+        android:id="@+id/frag_money_mg_jifen_withdraw_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_white"
+        android:visibility="gone"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        app:titleText="积分转账"
+        app:titleTvSize="14"/>
+
+    <cn.idcby.commonlibrary.view.LineView
+        android:id="@+id/frag_money_mg_jifen_rechange_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/color_white"
+        android:visibility="gone"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        app:titleText="赚取积分"
+        app:titleTvSize="14"/>
+
+    <cn.idcby.commonlibrary.view.LineView
+        android:id="@+id/frag_money_mg_jifen_details_lay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/color_white"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        app:titleText="积分明细"
+        app:titleTvSize="14"/>
+
+</LinearLayout>

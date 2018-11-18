@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common"
+    android:id="@+id/acti_needs_dt_parent_lay">
+    <RelativeLayout
+        android:id="@+id/acti_needs_dt_top_lay"
+        android:background="@color/color_white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style"/>
+        <TextView
+            android:id="@+id/acti_needs_details_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/textSize_sixteen"
+            android:textColor="@color/color_nomal_text"/>
+        <ImageView
+            android:id="@+id/acti_needs_dt_right_iv"
+            android:layout_alignParentRight="true"
+            style="@style/title_bar_right_style"
+            android:src="@mipmap/ic_top_more_grey" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_trans" />
+    <ListView
+        android:id="@+id/acti_needs_dt_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/acti_needs_dt_bot_lay"
+        android:layout_below="@id/acti_needs_dt_top_lay"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:dividerHeight="1dp"
+        android:divider="@color/color_trans"/>
+    <LinearLayout
+        android:id="@+id/acti_needs_dt_bot_lay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_item_height"
+        android:background="@color/color_white"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/acti_needs_dt_support_lay"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/acti_needs_dt_support_iv"
+                style="@style/nomal_item_dt_ic_style"
+                android:src="@mipmap/ic_support_nomal" />
+            <TextView
+                android:id="@+id/acti_needs_dt_support_tv"
+               style="@style/nomal_item_dt_tv_style"
+                android:text="点赞"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            android:background="@color/activity_bg_common" />
+
+        <LinearLayout
+            android:id="@+id/acti_needs_dt_collection_lay"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/acti_needs_dt_collection_iv"
+                style="@style/nomal_item_dt_ic_style"
+                android:src="@mipmap/ic_collection_nomal" />
+            <TextView
+                android:id="@+id/acti_needs_dt_collection_tv"
+                style="@style/nomal_item_dt_tv_style"
+                android:text="收藏"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            android:background="@color/line_gray" />
+
+        <LinearLayout
+            android:id="@+id/acti_needs_dt_comment_lay"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                style="@style/nomal_item_dt_ic_style"
+                android:src="@mipmap/gray_comment" />
+            <TextView
+                style="@style/nomal_item_dt_tv_style"
+                android:text="留言"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/acti_needs_dt_connection_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_dt_bot_options_left"
+            android:gravity="center"
+            android:text="联系TA"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSize_fourteen" />
+        <TextView
+            android:id="@+id/acti_needs_dt_send_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_dt_bot_options_right"
+            android:gravity="center"
+            android:text="报价"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSize_fourteen" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/acti_needs_dt_finish_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_item_height"
+        android:background="@color/color_theme"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_white"
+        android:text="完成"/>
+
+    <ImageView
+        android:id="@+id/acti_lv_to_top_iv"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"
+        style="@style/lv_to_top_iv_style"/>
+</RelativeLayout>

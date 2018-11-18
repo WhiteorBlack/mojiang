@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frag_news_refresh_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/activity_bg_common"
+        android:divider="@color/line_gray"
+        android:dividerHeight="0.7dp"
+        android:scrollbars="none" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="暂无数据"
+        android:gravity="center"
+        android:id="@+id/tv_nodatas"
+        android:visibility="gone"/>
+</cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>

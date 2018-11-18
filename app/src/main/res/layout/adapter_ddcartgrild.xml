@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white" >
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/adapter_direct_category_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--<cn.idcby.jiajubang.view.AutofitViewPager-->
+        <!--android:id="@+id/dd_adapter_grildcart"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--/>-->
+
+   <!--&lt;!&ndash; <cn.idcby.jiajubang.view.AutofitViewPager-->
+        <!--android:id="@+id/dd_adapter_grildcart"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+    <!--</cn.idcby.jiajubang.view.AutofitViewPager>&ndash;&gt;-->
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/dd_adapter_grildcart_indicator"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="10dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:gravity="center"/>-->
+</LinearLayout>

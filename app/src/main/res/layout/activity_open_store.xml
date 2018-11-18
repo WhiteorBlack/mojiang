@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common">
+
+    <TextView
+        android:id="@+id/acti_openstore_sub_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_submit_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_theme"
+        android:gravity="center"
+        android:text="提交认证"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/textSize_fourteen" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/acti_openstore_sub_tv"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/color_white"
+                android:paddingLeft="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:visibility="invisible"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/textSize_ten" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="店铺名称"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+
+                <EditText
+                    android:id="@+id/acti_openstore_storename_ev"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入店铺名称"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:singleLine="true"
+                    android:textColor="@color/color_grey_text"
+                    android:textSize="@dimen/textSize_thirteen" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="center_vertical"
+                android:background="@color/color_white"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="经营范围"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+
+                <TextView
+                    android:id="@+id/acti_openstore_scope_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="45dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:hint="请选择"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/color_grey_text"
+                    android:textSize="@dimen/textSize_thirteen" />
+
+                <ImageView
+                    android:id="@+id/acti_store_apply_scope_iv"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/arrow_right" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="45dp"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/nomal_divider_height"
+                android:background="@color/color_white"
+                android:paddingLeft="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="详细地址"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+                <TextView
+                    android:id="@+id/acti_store_apply_address_tips_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|left"
+                    android:text="（请点击右侧在地图上选点）"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+
+                <ImageView
+                    android:id="@+id/acti_store_apply_address_iv"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/near_selected" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/activity_bg_common" />
+                <EditText
+                    android:id="@+id/acti_openstore_location_detail_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_trans"
+                    android:gravity="top|left"
+                    android:hint="选择店铺地址"
+                    android:maxLength="100"
+                    android:lines="4"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/color_grey_text"
+                    android:textSize="@dimen/textSize_thirteen" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/nomal_divider_height"
+                android:background="@color/color_white"
+                android:paddingLeft="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:visibility="invisible"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/textSize_ten" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="店主帐号"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+                <EditText
+                    android:id="@+id/acti_openstore_manager_num_ev"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入店主帐号"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textColor="@color/color_grey_text"
+                    android:textSize="@dimen/textSize_thirteen" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/color_white"
+                android:paddingLeft="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:visibility="invisible"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/textSize_ten" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="店主身份证号"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+                <EditText
+                    android:id="@+id/acti_openstore_manager_card_ev"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入店主身份证号"
+                    android:inputType="number"
+                    android:maxLength="18"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="5dp"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:digits="@string/input_style_id_card"
+                    android:textColor="@color/color_grey_text"
+                    android:textSize="@dimen/textSize_thirteen" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/nomal_divider_height"
+                android:background="@color/color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="企业店铺简介（限200字以内）"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/activity_bg_common" />
+                <EditText
+                    android:id="@+id/acti_openstore_desce_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_trans"
+                    android:gravity="top|left"
+                    android:hint="填写店铺介绍"
+                    android:maxLength="200"
+                    android:lines="6"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/color_grey_text"
+                    android:textSize="@dimen/textSize_thirteen" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/nomal_divider_height"
+                android:background="@color/color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="上传店铺logo"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/activity_bg_common" />
+
+                <ImageView
+                    android:id="@+id/acti_openstore_storepic_iv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/addpic" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/nomal_divider_height"
+                android:background="@color/color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/textSize_ten"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="上传营业执照"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/activity_bg_common" />
+
+                <ImageView
+                    android:id="@+id/acti_openstore_license_iv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/addpic" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/nomal_divider_height"
+                android:background="@color/color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:text="*"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/textSize_ten"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="上传店铺实景照片（3张）"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="15dp">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/activity_bg_common" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/acti_openstore_goodspic_rv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginBottom="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/nomal_divider_height"
+                android:background="@color/color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="1dp"
+                    android:text="*"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="审核通过后需要缴纳保证金"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp">
+                <TextView
+                    android:id="@+id/acti_store_apply_help_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/round_theme_small_bg"
+                    android:ems="6"
+                    android:gravity="center"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:textSize="@dimen/textSize_thirteen"
+                    android:textColor="@color/color_white"
+                    android:text="保证金介绍"/>
+                <TextView
+                    android:id="@+id/acti_store_apply_pay_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_theme_small_bg"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:ems="6"
+                    android:gravity="center"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:textSize="@dimen/textSize_thirteen"
+                    android:textColor="@color/color_white"
+                    android:text="缴纳保证金"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

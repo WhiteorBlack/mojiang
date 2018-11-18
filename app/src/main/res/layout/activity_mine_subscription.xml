@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height"
+        android:background="@color/color_white">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/textSize_sixteen"
+            android:textColor="@color/color_nomal_text"
+            android:text="我的订阅"/>
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:paddingRight="12dp"
+            android:text="取消订阅"
+            android:textColor="@color/color_theme"
+            android:textSize="13dp"/>
+    </RelativeLayout>
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:id="@+id/acti_my_subscription_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_grey_f2" />
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/subviewpager"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:text="暂无订阅信息，快去添加"
+        android:gravity="center"
+        android:textColor="#000"
+        android:id="@+id/tv_nodata"
+        android:visibility="gone"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_submit_height"
+        android:background="@color/color_theme"
+        android:text="添加订阅"
+        android:gravity="center"
+        android:textColor="#FFF"
+        android:id="@+id/tv_addsub"/>
+
+</LinearLayout>

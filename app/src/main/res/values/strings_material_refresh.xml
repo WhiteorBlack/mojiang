@@ -1,0 +1,5 @@
+<resources>
+    <string name="refresh_pull_text">下拉刷新</string>
+    <string name="refresh_loading_text">正在刷新</string>
+    <string name="refresh_release_text">松开刷新</string>
+</resources>

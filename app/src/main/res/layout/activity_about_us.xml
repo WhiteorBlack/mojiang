@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/acti_about_version_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_grey_text"
+        android:text="版本号1.0.0"/>
+    <TextView
+        android:id="@+id/acti_about_company_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/acti_about_version_tv"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_grey_text"
+        android:text="河南海马信息技术有限公司"/>
+    <ListView
+        android:id="@+id/acti_about_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@id/acti_about_company_tv"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:dividerHeight="1dp"
+        android:divider="@color/color_trans"/>
+</RelativeLayout>

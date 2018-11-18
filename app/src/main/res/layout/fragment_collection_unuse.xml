@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common">
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frag_collection_unuse_refresh_lay">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/frag_collection_unuse_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+    <TextView
+        android:id="@+id/frag_collection_unuse_null_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_nomal_text"
+        android:text="暂无内容"/>
+</RelativeLayout>

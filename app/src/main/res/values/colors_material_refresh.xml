@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_head_bg">#F2F2F2</color>
+    <color name="color_head_tv">#333333</color>
+    <color name="color_head_white">#FFFFFF</color>
+</resources>

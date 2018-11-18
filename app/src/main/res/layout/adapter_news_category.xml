@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:background="@drawable/round_grey_f2_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <me.grantland.widget.AutofitTextView
+        android:id="@+id/adapter_news_category_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:gravity="center"
+        app:minTextSize="@dimen/textSize_six"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_nomal_text"/>
+</LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="@drawable/shape_news_comment_bg" >
+    <TextView
+        android:id="@+id/adapter_news_comment_reply_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="#5c5c5c"/>
+    <TextView
+        android:id="@+id/adapter_news_comment_reply_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="#595959"/>
+</FrameLayout>

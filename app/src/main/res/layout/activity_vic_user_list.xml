@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/acti_vic_user_list_top_lay"
+        android:layout_width="match_parent"
+        android:background="@color/color_white"
+        android:layout_height="@dimen/titleBar_height">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style" />
+        <TextView
+            android:id="@+id/acti_vic_user_right_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="15dp"
+            android:gravity="center"
+            android:textSize="@dimen/textSize_thirteen"
+            android:textColor="@color/color_grey_text"
+            android:text="认证大咖"/>
+        <LinearLayout
+            android:id="@+id/acti_vic_user_list_search_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/round_search_bg"
+            android:layout_toLeftOf="@id/acti_vic_user_right_tv"
+            android:layout_toRightOf="@id/back"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/title_bar_search_margin_tb"
+            android:layout_marginBottom="@dimen/title_bar_search_margin_tb"
+            android:orientation="horizontal">
+            <ImageView
+                style="@style/nomal_search_right_iv"/>
+            <TextView
+                android:id="@+id/acti_vic_user_list_search_key_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/textSize_twelve"
+                android:textColor="@color/color_light_grey_aa_text"
+                android:text="搜索昵称/手机号"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:id="@+id/acti_vic_user_refresh_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp">
+        <ListView
+            android:id="@+id/acti_vic_user_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/color_grey_f5"
+            android:dividerHeight="1dp"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+</LinearLayout>

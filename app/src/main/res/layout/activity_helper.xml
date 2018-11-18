@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ListView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/acti_helper_lv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="@color/color_trans"
+    android:dividerHeight="1dp"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+</ListView>

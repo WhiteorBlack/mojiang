@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height"
+        android:background="@color/color_white">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/textSize_sixteen"
+            android:textColor="@color/color_nomal_text"
+            android:text="我发布的圈子"/>
+        <TextView
+            android:id="@+id/acti_my_center_circle_send_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="15dp"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/textSize_thirteen"
+            android:textColor="@color/color_nomal_text"
+            android:text="发布"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_grey_f5" />
+    <FrameLayout
+        android:id="@+id/acti_my_center_circle_content_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+            <ImageView
+                android:id="@id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="2dp"
+                android:src="@drawable/selector_arrow_back" />
+
+            <net.lucode.hackware.magicindicator.MagicIndicator
+                android:id="@+id/acti_circle_magic_indicator"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/titleBar_height"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/white" />
+
+            <RelativeLayout
+                android:id="@+id/img_circle_right"
+                android:layout_width="30dp"
+                android:layout_height="30dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@mipmap/green_msg" />
+                <TextView
+                    android:id="@+id/frag_circle_msg_tv"
+                    android:layout_width="@dimen/unread_message_tv_height"
+                    android:layout_height="@dimen/unread_message_tv_height"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@drawable/msg_tips_bg"
+                    android:textSize="@dimen/textSize_eight"
+                    android:textColor="@color/color_white"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_gray" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/acti_circle_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/acti_circle_add_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:src="@mipmap/home_add"/>
+</FrameLayout>

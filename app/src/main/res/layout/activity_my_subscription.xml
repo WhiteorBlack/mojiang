@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height"
+        android:background="@color/color_white">
+        <ImageView
+            android:id="@id/back"
+            style="@style/title_bar_back_style" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/textSize_sixteen"
+            android:textColor="@color/color_nomal_text"
+            android:text="我的订阅"/>
+        <TextView
+            android:id="@+id/acti_my_subscription_right_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:textSize="@dimen/textSize_twelve"
+            android:textColor="@color/color_theme"
+            android:text="取消订阅"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_gray" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/acti_my_subscription_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nomal_indicator_height"
+            android:background="@android:color/white" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/acti_my_subscription_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/acti_my_subscription_indicator"
+            android:layout_marginTop="1dp"
+            android:overScrollMode="never"/>
+        <TextView
+            android:id="@+id/acti_my_subscription_null_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/textSize_fourteen"
+            android:textColor="@color/color_grey_text"
+            android:text="暂无订阅"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/acti_my_subscription_add_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_submit_height"
+        android:gravity="center"
+        android:background="@color/color_theme"
+        android:textSize="@dimen/textSize_fourteen"
+        android:textColor="@color/color_white"
+        android:text="添加订阅"/>
+</LinearLayout>

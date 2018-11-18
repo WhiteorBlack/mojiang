@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_common"
+    android:fitsSystemWindows="false">
+    <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/acti_give_job_refresh_lay"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/acti_give_job_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:divider="@color/color_trans"
+            android:dividerHeight="@dimen/nomal_divider_height"
+            android:scrollbars="none" />
+    </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
+
+    <ImageView
+        android:id="@id/back"
+        style="@style/top_bar_back_trans_style"/>
+    <ImageView
+        android:id="@+id/acti_lv_to_top_iv"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"
+        style="@style/lv_to_top_iv_style"/>
+</RelativeLayout>
