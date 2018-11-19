@@ -61,6 +61,7 @@ import cn.idcby.jiajubang.fragment.CircleFragment;
 import cn.idcby.jiajubang.fragment.FragmentHome;
 import cn.idcby.jiajubang.fragment.MeFragment;
 import cn.idcby.jiajubang.fragment.NearFragment;
+import cn.idcby.jiajubang.fragment.NearNewFragment;
 import cn.idcby.jiajubang.hxmsg.CallReceiver;
 import cn.idcby.jiajubang.interf.OnCityChanged;
 import cn.idcby.jiajubang.interf.OnLayClickListener;
@@ -87,6 +88,8 @@ import pub.devrel.easypermissions.EasyPermissions;
  * 2018-06-08 13:21:25
  * 消息角标问题，暂时做成每次启动app就清空消息数量，
  * 即：角标只统计当前app打开的时间内的数量，当app重新打开了，就会重新计数
+ * 2018-11-19
+ * 修改附近页面
  */
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks
         ,OnCityChanged,OnLayClickListener,OnLocationRefresh,View.OnClickListener{
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     private FragmentHome mHomeFragment;
     private NearFragment mNearFragment;
+//    private NearNewFragment mNearFragment;
     private CircleFragment mCircleFragment;
     private MeFragment mMeFragment;
     private FragmentManager fragmentManager;
@@ -303,6 +307,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         }
         if(null == mNearFragment){
             mNearFragment = new NearFragment();
+//            mNearFragment=new NearNewFragment();
             mNearFragment.setLocationRefreshListener(this);
         }
         if(null == mCircleFragment){

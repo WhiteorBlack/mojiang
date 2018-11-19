@@ -1,5 +1,6 @@
 package cn.idcby.jiajubang.adapter;
 
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -39,11 +40,18 @@ import cn.idcby.commonlibrary.utils.LogUtils;
 public class IndicatorFragmentAdapter extends FragmentStatePagerAdapter {
 
     private List<Fragment> fragmentList = new ArrayList<>();
+    private String[] titles;
 
     public IndicatorFragmentAdapter(FragmentManager fm, List<Fragment> fragmentList) {
         super(fm);
         this.fragmentList = fragmentList;
-        LogUtils.showLog("fragmentList>>>"+fragmentList.size());
+        LogUtils.showLog("fragmentList>>>" + fragmentList.size());
+    }
+
+    public IndicatorFragmentAdapter(FragmentManager fm, List<Fragment> fragmentList, String[] titles) {
+        super(fm);
+        this.fragmentList = fragmentList;
+        this.titles = titles;
     }
 
     @Override
@@ -54,5 +62,15 @@ public class IndicatorFragmentAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return fragmentList.size();
+    }
+
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        if (titles == null) {
+            return "";
+        }
+        return titles[position];
     }
 }
