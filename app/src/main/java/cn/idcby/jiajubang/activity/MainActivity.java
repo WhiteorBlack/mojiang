@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     private View mPublishIv ;
 
     private FragmentHome mHomeFragment;
-    private NearFragment mNearFragment;
-//    private NearNewFragment mNearFragment;
+//    private NearFragment mNearFragment;
+    private NearNewFragment mNearFragment;
     private CircleFragment mCircleFragment;
     private MeFragment mMeFragment;
     private FragmentManager fragmentManager;
@@ -306,8 +306,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             mHomeFragment.setLayClickListener(this);
         }
         if(null == mNearFragment){
-            mNearFragment = new NearFragment();
-//            mNearFragment=new NearNewFragment();
+//            mNearFragment = new NearFragment();
+            mNearFragment=new NearNewFragment();
             mNearFragment.setLocationRefreshListener(this);
         }
         if(null == mCircleFragment){

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <RelativeLayout
+        android:id="@+id/acti_login_content_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密码登录"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/acti_login_number_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_tip"
+            android:layout_marginTop="40dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/login_pwd" />
+
+            <EditText
+                android:id="@+id/acti_login_number_ev"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:hint="设置8-16位字母、数字组成密码"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:singleLine="true"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/textSize_twelve" />
+
+            <CheckBox
+                android:id="@+id/chb_watch"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:button="@drawable/chb_watch"
+                android:enabled="false" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/acti_login_number_lay"
+            android:background="@color/color_grey_f8" />
+
+
+        <TextView
+            android:id="@+id/tv_forgetPwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tv_server_tip"
+            android:text="忘记密码"
+            android:textColor="@color/yancy_green500"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tv_server_tip"
+            android:text="验证码登录"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/acti_login_sub_tv"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_forgetPwd"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_green_with_round_corner"
+            android:gravity="center"
+            android:text="下一步"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSize_fifteen" />
+
+
+        <TextView
+            android:id="@+id/acti_login_forget_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/acti_login_sub_tv"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:text="忘记密码？"
+            android:textColor="@color/yancy_green500"
+            android:textSize="@dimen/textSize_ten"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="113dp"
+        android:layout_height="60dp"
+        android:layout_above="@id/acti_login_content_lay"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/greenlight2"
+        android:src="@mipmap/login_logo" />
+
+
+</RelativeLayout>

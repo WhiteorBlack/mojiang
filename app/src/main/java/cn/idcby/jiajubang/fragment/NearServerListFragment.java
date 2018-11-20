@@ -132,11 +132,11 @@ public class NearServerListFragment extends BaseFragment {
         paramMap.put("Latitude", MyApplication.getLatitude());
         paramMap.put("AreaId", MyApplication.getCurrentCityId());
         paramMap.put("AreaType", "" + MyApplication.getCurrentCityType());
-        paramMap.put("CategoryId", StringUtils.convertNull(mCategoryId));
+//        paramMap.put("CategoryId", StringUtils.convertNull(mCategoryId));
 
         //附近服务，直接调用服务列表即可，以后接口会调整，所有信息都是经纬度倒序排列，附近的相关接口可能会废弃
 //        String url = mIsInstallSer ? Urls.API_NEAR_SERVER_INSTALL : Urls.API_NEAR_SERVER ;
-        String url = Urls.SERVER_LIST_SERVER;
+        String url = Urls.API_NEAR_SERVER;
 
         NetUtils.getDataFromServerByPost(mContext, url, paramMap
                 , new RequestListCallBack<ServiceList>("getServerList", mContext, ServiceList.class) {

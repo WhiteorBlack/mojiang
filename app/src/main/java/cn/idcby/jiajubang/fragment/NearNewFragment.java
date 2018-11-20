@@ -18,8 +18,8 @@ import cn.idcby.jiajubang.interf.OnLocationRefresh;
 public class NearNewFragment extends BaseFragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-//    private String[] titls = new String[]{"附近服务", "附近商家", "附近工作", "附近的人", "附近的闲置"};
-    private List<String> titls=new ArrayList<>();
+    //    private String[] titls = new String[]{"附近服务", "附近商家", "附近工作", "附近的人", "附近的闲置"};
+    private List<String> titls = new ArrayList<>();
     private OnLocationRefresh mLocationRefreshListener;
 
     public void setLocationRefreshListener(OnLocationRefresh mLocationRefreshListener) {
@@ -54,8 +54,16 @@ public class NearNewFragment extends BaseFragment {
         viewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager(), getFragemnts(), titls));
 
         View statusView = view.findViewById(R.id.frag_near_status_view);
-        statusView.getLayoutParams().height = ResourceUtils.getStatusBarHeight(mContext) ;
+        statusView.getLayoutParams().height = ResourceUtils.getStatusBarHeight(mContext);
         statusView.setBackgroundColor(StatusBarUtil.DEFAULT_STATUS_BAR_COLOR);
+        disableTabClick();
+    }
+
+    private void disableTabClick() {
+//        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+//            TabLayout.Tab tab=tabLayout.getTabAt(i);
+//
+//        }
     }
 
     private List<Fragment> getFragemnts() {
