@@ -29,6 +29,7 @@ import android.widget.TextView;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.Poi;
+import com.gyf.barlibrary.ImmersionBar;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
@@ -194,8 +195,9 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
         EventBus.getDefault().register(this);
 
-        StatusBarUtil.setTransparentForImageView(mContext ,null);
-
+//        StatusBarUtil.setTransparentForImageView(mContext ,null);
+//        StatusBarUtil.setColor(this,getResources().getColor(R.color.white));
+            ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).flymeOSStatusBarFontColor(R.color.black).init();
         //消息数量变化的广播
         msgCountChangeReceiver = new MsgCountChangeReceiver();
         IntentFilter msgFilter =

@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adapter_home_hot_news_main_lay"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/adapter_home_hot_news_main_lay"
     android:background="@android:color/white"
-    android:paddingBottom="10dp"
     android:paddingLeft="15dp"
+    android:paddingTop="10dp"
     android:paddingRight="15dp"
-    android:paddingTop="10dp">
+    android:paddingBottom="10dp">
+
     <ImageView
         android:id="@+id/img_photo"
         android:layout_width="125dp"
         android:layout_height="85dp"
-        android:layout_marginLeft="20dp"
         android:layout_alignParentRight="true"
+        android:layout_marginLeft="20dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/default_icon" />
+
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/img_photo"
         android:layout_toLeftOf="@id/img_photo"
-        android:maxLines="3"
         android:ellipsize="end"
+        android:maxLines="3"
         android:text="家居界盛会！预计10+万专业买家涵盖家居全产业、中国北方最具影"
         android:textColor="@color/color_nomal_text"
         android:textSize="@dimen/textSize_fifteen" />
@@ -33,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/img_photo"
         android:layout_toLeftOf="@id/img_photo">
+
         <TextView
             android:id="@+id/tv_source"
             android:layout_width="wrap_content"
@@ -41,27 +44,30 @@
             android:text="家居网"
             android:textColor="@color/lv_item_bot_tv_color"
             android:textSize="@dimen/lv_item_bot_tv_size" />
+
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
-            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/tv_source"
             android:text="0秒前"
             android:textColor="@color/lv_item_bot_tv_color"
             android:textSize="@dimen/lv_item_bot_tv_size" />
+
         <ImageView
             style="@style/nomal_item_bot_ic_style"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/tv_comment"
             android:src="@mipmap/gray_comment" />
+
         <TextView
             android:id="@+id/tv_comment"
             style="@style/nomal_item_bot_tv_style"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:text="0"/>
+            android:layout_centerVertical="true"
+            android:text="0" />
     </RelativeLayout>
 </RelativeLayout>

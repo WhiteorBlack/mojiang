@@ -970,7 +970,7 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
                             mLeftCountTv.setText(bean.getResumeCount() + "人");
                             mRightCountTv.setText(bean.getRecruitCount() + "份");
                             mNeedCountTv.setText(bean.getNeedCount() + "人");
-                            mUnuseCountTv.setText(bean.getOldProductCountt() + "人");
+                            mUnuseCountTv.setText(bean.getOldProductCountt() + "件");
                         }
 
                         if (mIsRefresh) {

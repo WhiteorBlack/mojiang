@@ -1,6 +1,7 @@
 package cn.idcby.jiajubang.activity;
 
 
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
@@ -53,7 +54,9 @@ public class LoginPwdActivityNew extends BaseActivity implements CompoundButton.
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         if (b) {
-
+            etPhone.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        }else {
+            etPhone.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
         }
     }
 }

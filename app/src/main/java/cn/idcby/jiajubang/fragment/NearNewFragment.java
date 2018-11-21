@@ -55,7 +55,7 @@ public class NearNewFragment extends BaseFragment {
 
         View statusView = view.findViewById(R.id.frag_near_status_view);
         statusView.getLayoutParams().height = ResourceUtils.getStatusBarHeight(mContext);
-        statusView.setBackgroundColor(StatusBarUtil.DEFAULT_STATUS_BAR_COLOR);
+        statusView.setBackgroundColor(getResources().getColor(R.color.white));
         disableTabClick();
     }
 

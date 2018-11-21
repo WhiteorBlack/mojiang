@@ -3,11 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/color_white">
+
     <com.youth.banner.Banner
         android:id="@+id/banner"
+        style="@style/banner_bot_inde_style"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        style="@style/banner_bot_inde_style"/>
+        android:layout_height="170dp" />
+
     <LinearLayout
         android:id="@+id/frag_home_top_nav_lay"
         android:layout_width="match_parent"
@@ -15,71 +17,88 @@
         android:layout_below="@id/banner"
         android:orientation="horizontal"
         android:paddingLeft="8dp"
-        android:paddingRight="8dp"
         android:paddingTop="10dp"
+        android:paddingRight="8dp"
         android:paddingBottom="10dp"
         android:weightSum="5">
+
         <LinearLayout
             android:id="@+id/frag_home_top_nav_one_lay"
             style="@style/frag_home_top_nav_lay_style">
+
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/bg_index_cjzg"/>
+                android:src="@drawable/bg_index_cjzg" />
+
             <TextView
                 style="@style/frag_home_top_nav_tv_style"
-                android:text="厂家直供"/>
+                android:text="厂家直供" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/frag_home_top_nav_two_lay"
             style="@style/frag_home_top_nav_lay_style">
+
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/bg_index_hyxq"/>
+                android:src="@drawable/bg_index_hyxq" />
+
             <TextView
                 style="@style/frag_home_top_nav_tv_style"
-                android:text="需求大厅"/>
+                android:text="需求大厅" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/frag_home_top_nav_three_lay"
             style="@style/frag_home_top_nav_lay_style">
+
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/bg_index_hyzp"/>
+                android:src="@drawable/bg_index_hyzp" />
+
             <TextView
                 style="@style/frag_home_top_nav_tv_style"
-                android:text="行业招聘"/>
+                android:text="行业招聘" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/frag_home_top_nav_four_lay"
             style="@style/frag_home_top_nav_lay_style">
+
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/bg_index_hyxz"/>
+                android:src="@drawable/bg_index_hyxz" />
+
             <TextView
                 style="@style/frag_home_top_nav_tv_style"
-                android:text="行业闲置"/>
+                android:text="行业闲置" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/frag_home_top_nav_five_lay"
             style="@style/frag_home_top_nav_lay_style">
+
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:src="@drawable/bg_index_hywd"/>
+                android:src="@drawable/bg_index_hywd" />
+
             <TextView
                 style="@style/frag_home_top_nav_tv_style"
-                android:text="行业问答"/>
+                android:text="行业问答" />
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/nomal_divider_height"
         android:layout_below="@id/frag_home_top_nav_lay"
         android:background="@color/activity_bg_common" />
+
     <LinearLayout
         android:id="@+id/frag_home_toutiao_lay"
         android:layout_width="match_parent"
@@ -87,35 +106,40 @@
         android:layout_below="@id/frag_home_top_nav_lay"
         android:layout_marginTop="@dimen/nomal_divider_height"
         android:gravity="center"
-        android:paddingBottom="2dp"
         android:paddingLeft="15dp"
+        android:paddingTop="2dp"
         android:paddingRight="15dp"
-        android:paddingTop="2dp">
+        android:paddingBottom="2dp">
+
         <ImageView
             android:layout_width="66dp"
             android:layout_height="22dp"
             android:src="@mipmap/hot_question" />
+
         <View
             android:layout_width="0.7dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@color/activity_bg_common" />
+
         <ViewFlipper
             android:id="@+id/frag_home_hot_question_vf"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="30dp"
+            android:layout_weight="1"
             android:autoStart="false"
             android:flipInterval="2000"
             android:inAnimation="@anim/anim_flipper_in"
-            android:outAnimation="@anim/anim_flipper_out"/>
+            android:outAnimation="@anim/anim_flipper_out" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/nomal_divider_height"
         android:layout_below="@id/frag_home_toutiao_lay"
         android:background="@color/activity_bg_common" />
+
     <LinearLayout
         android:id="@+id/header_frag_home_need_more_lay"
         android:layout_width="match_parent"
@@ -123,10 +147,11 @@
         android:layout_below="@id/frag_home_toutiao_lay"
         android:layout_marginTop="@dimen/nomal_divider_height"
         android:gravity="center"
-        android:paddingBottom="5dp"
         android:paddingLeft="15dp"
+        android:paddingTop="10dp"
         android:paddingRight="15dp"
-        android:paddingTop="10dp">
+        android:paddingBottom="5dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -134,6 +159,7 @@
             android:textColor="@color/color_nomal_text"
             android:textSize="@dimen/textSize_fourteen"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/frag_home_need_count_tv"
             android:layout_width="0dp"
@@ -142,8 +168,9 @@
             android:layout_weight="1"
             android:gravity="right"
             android:text="0人"
-            android:textSize="@dimen/textSize_twelve"
-            android:textColor="@color/color_money_two"/>
+            android:textColor="@color/color_money_two"
+            android:textSize="@dimen/textSize_twelve" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -156,23 +183,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/header_frag_home_need_more_lay"
-        android:overScrollMode="never"
         android:divider="@color/activity_bg_common"
-        android:dividerHeight="0.7dp" />
+        android:dividerHeight="0.7dp"
+        android:overScrollMode="never" />
+
     <TextView
         android:id="@+id/frag_home_needs_send_tv"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:layout_below="@id/lv_need"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/round_theme_small_bg"
-        android:textSize="@dimen/textSize_fourteen"
+        android:gravity="center"
+        android:text="一键发布您的需求"
         android:textColor="@color/color_white"
-        android:text="一键发布您的需求"/>
+        android:textSize="@dimen/textSize_fourteen" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/nomal_divider_height"
@@ -187,8 +216,8 @@
         android:layout_marginTop="@dimen/nomal_divider_height"
         android:gravity="center"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp"
         android:paddingTop="10dp"
+        android:paddingRight="15dp"
         android:paddingBottom="5dp">
 
         <TextView
@@ -204,9 +233,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
-            android:visibility="invisible"
             android:layout_weight="1"
-            android:textSize="@dimen/textSize_twelve" />
+            android:textSize="@dimen/textSize_twelve"
+            android:visibility="invisible" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -221,18 +250,18 @@
         android:id="@+id/rv_hot_server"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/frag_home_server_tips_tv"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/frag_home_server_tips_tv"
-        android:overScrollMode="never"/>
+        android:overScrollMode="never" />
 
     <View
         android:id="@+id/frag_home_hot_server_dv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nomal_divider_height"
-        android:layout_marginTop="5dp"
         android:layout_below="@id/rv_hot_server"
+        android:layout_marginTop="5dp"
         android:background="@color/activity_bg_common" />
 
     <LinearLayout
@@ -242,8 +271,8 @@
         android:layout_below="@id/frag_home_hot_server_dv"
         android:gravity="center"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="10dp">
+        android:paddingTop="10dp"
+        android:paddingRight="15dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -258,10 +287,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
-            android:visibility="invisible"
             android:layout_weight="1"
             android:text="高薪工作，专业人才"
-            android:textSize="@dimen/textSize_twelve" />
+            android:textSize="@dimen/textSize_twelve"
+            android:visibility="invisible" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -278,32 +307,34 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/header_frag_home_job_more_lay"
         android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingTop="5dp"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:paddingTop="5dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:id="@+id/header_frag_home_job_left_lay"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginRight="15dp"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:paddingLeft="10dp"
+            android:paddingTop="15dp"
             android:paddingRight="10dp"
-            android:gravity="center">
+            android:paddingBottom="15dp">
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@mipmap/zhiwei" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/header_home_left_count_tv"
                     android:layout_width="wrap_content"
@@ -312,6 +343,7 @@
                     android:textColor="@color/home_job_text_color"
                     android:textSize="@dimen/textSize_twenty"
                     android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -332,20 +364,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
+            android:gravity="center"
             android:paddingLeft="10dp"
+            android:paddingTop="15dp"
             android:paddingRight="10dp"
-            android:gravity="center">
+            android:paddingBottom="15dp">
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@mipmap/job" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/header_home_right_count_tv"
                     android:layout_width="wrap_content"
@@ -354,6 +389,7 @@
                     android:textColor="@color/home_find_job_text_color"
                     android:textSize="@dimen/textSize_twenty"
                     android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -376,79 +412,81 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/header_frag_home_job_lay"
         android:layout_marginTop="@dimen/nomal_divider_height"
-        android:gravity="center"
-        android:paddingBottom="6dp"
+        android:gravity="center_vertical"
         android:paddingLeft="15dp"
+        android:paddingTop="10dp"
         android:paddingRight="15dp"
-        android:paddingTop="10dp">
+        android:paddingBottom="10dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="行业闲置"
             android:textColor="@color/color_nomal_text"
             android:textSize="@dimen/textSize_fourteen"
             android:textStyle="bold" />
-        <TextView
-            android:id="@+id/frag_home_unuse_count_tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="0人"
-            android:textSize="@dimen/textSize_twelve"
-            android:textColor="@color/color_money_two"/>
+
         <TextView
             android:id="@+id/frag_home_unuse_count_tip_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发布了自己的闲置物品"
-            android:textSize="@dimen/textSize_twelve"
-            android:textColor="@color/color_grey_text"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/frag_home_unuse_send_lay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:padding="3dp"
-        android:background="@drawable/round_home_unuse_send_bg"
-        android:layout_below="@id/header_frag_home_unuse_lay"
-        android:layout_alignTop="@+id/frag_home_unuse_lv"
-        android:layout_alignBottom="@+id/frag_home_unuse_lv"
-        android:gravity="center"
-        android:orientation="vertical">
+            android:layout_marginLeft="10dp"
+            android:text="发布商品:"
+            android:textColor="@color/color_grey_text"
+            android:textSize="@dimen/textSize_ten" />
+
         <TextView
+            android:id="@+id/frag_home_unuse_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textSize_thirteen"
-            android:textColor="@color/color_nomal_text"
-            android:textStyle="bold"
-            android:text="30秒发布"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="@dimen/textSize_thirteen"
-            android:textColor="@color/color_nomal_text"
-            android:textStyle="bold"
-            android:text="闲置宝贝"/>
+            android:layout_marginLeft="7dp"
+            android:text="0人"
+            android:textColor="@color/color_grey_text"
+            android:textSize="@dimen/textSize_ten" />
+
+        <LinearLayout
+            android:id="@+id/frag_home_unuse_send_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30s"
+                android:textColor="@color/yancy_green500"
+                android:textSize="@dimen/textSize_thirteen"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发布闲置宝贝"
+                android:textColor="@color/color_deep44_text"
+                android:textSize="@dimen/textSize_thirteen" />
+        </LinearLayout>
+
     </LinearLayout>
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/frag_home_unuse_lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="60dp"
-        android:layout_toRightOf="@id/frag_home_unuse_send_lay"
         android:layout_below="@id/header_frag_home_unuse_lay"
-        android:overScrollMode="never"/>
+        android:minHeight="60dp"
+        android:overScrollMode="never" />
 
     <View
         android:id="@+id/frag_home_unuse_dv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nomal_divider_height"
-        android:layout_marginTop="8dp"
         android:layout_below="@id/frag_home_unuse_lv"
+        android:layout_marginTop="8dp"
         android:background="@color/activity_bg_common" />
 
     <RelativeLayout
@@ -456,21 +494,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/frag_home_unuse_dv">
+
         <com.youth.banner.Banner
             android:id="@+id/header_frag_home_banner_middle"
+            style="@style/banner_bot_inde_style"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            style="@style/banner_bot_inde_style" />
+            android:layout_height="170dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:background="@color/banner_text_bg"
-            android:paddingBottom="2dp"
             android:paddingLeft="4dp"
-            android:paddingRight="4dp"
             android:paddingTop="2dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="2dp"
             android:text="广告"
             android:textColor="@android:color/white"
             android:textSize="@dimen/textSize_ten" />
@@ -489,5 +529,5 @@
         android:layout_height="36dp"
         android:layout_below="@id/frag_home_mid_adv_lay"
         android:layout_marginTop="@dimen/nomal_divider_height"
-        android:paddingLeft="10dp"/>
+        android:paddingLeft="10dp" />
 </RelativeLayout>
