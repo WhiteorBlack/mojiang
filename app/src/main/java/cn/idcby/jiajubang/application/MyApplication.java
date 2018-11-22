@@ -60,6 +60,7 @@ public class MyApplication extends Application {
     public static String LOCATION_PROVINCE = "";//当前定位的省
     public static String LOCATION_CITY = "";//当前定位的城市
     public static String LOCATION_DISTRICT = "";//当前定位的区
+    public static String LOCATION_ROAD="";//当前定位街道
 
     //当前选择的城市--影响模块有：附近、直供、闲置、安装、服务、同城（圈子）、需求、招聘
     private static String CURRENT_LOCATION_ID ;
@@ -231,6 +232,14 @@ public class MyApplication extends Application {
         CURRENT_LOCATION_ID = id ;
         CURRENT_LOCATION_NAME = name ;
         CURRENT_LOCATION_TYPE = type ;
+    }
+
+    public static String getLocationRoad() {
+        return LOCATION_ROAD;
+    }
+
+    public static void setLocationRoad(String locationRoad) {
+        LOCATION_ROAD = locationRoad;
     }
 
     /**

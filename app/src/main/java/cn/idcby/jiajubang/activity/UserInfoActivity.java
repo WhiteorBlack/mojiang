@@ -40,6 +40,7 @@ import cn.idcby.jiajubang.utils.RequestObjectCallBack;
 import cn.idcby.jiajubang.utils.SkipUtils;
 import cn.idcby.jiajubang.utils.StringUtils;
 import cn.idcby.jiajubang.utils.Urls;
+import cn.idcby.jiajubang.view.DoubleSelectionDialog;
 import idcby.cn.imagepicker.GlideImageLoader;
 import idcby.cn.imagepicker.ImageConfig;
 import idcby.cn.imagepicker.ImageSelector;
@@ -77,6 +78,7 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
     private TextView mWorkTypeTv ;
     private EditText mCompanyNameEv ;
     private TextView mSubmitTv ;
+    private TextView tvWorkName;
 
     private LoadingDialog mDialog ;
 
@@ -113,12 +115,13 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
 
     @Override
     public void initView() {
-        StatusBarUtil.setTransparentForImageView(mActivity ,null);
+//        StatusBarUtil.setTransparentForImageView(mActivity ,null);
 
         mUserInfo = (UserInfo) getIntent().getSerializableExtra(SkipUtils.INTENT_USER_INFO);
-
-        View topLay = findViewById(R.id.acti_user_info_head_lay) ;
-        topLay.getLayoutParams().height = (int) (ResourceUtils.getScreenWidth(mContext) / 2.1F);
+        View statusView = findViewById(R.id.view_status);
+        statusView.getLayoutParams().height = ResourceUtils.getStatusBarHeight(mContext);
+//        View topLay = findViewById(R.id.acti_user_info_head_lay) ;
+//        topLay.getLayoutParams().height = (int) (ResourceUtils.getScreenWidth(mContext) / 2.1F);
 
         mUserIv = findViewById(R.id.acti_user_info_head_iv) ;
         mNickNameEv = findViewById(R.id.acti_user_info_nickName_ev) ;
@@ -134,6 +137,8 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         mWorkTypeTv = findViewById(R.id.acti_user_info_category_tv);
         mCompanyNameEv = findViewById(R.id.acti_user_info_company_name_ev);
         mSubmitTv = findViewById(R.id.acti_user_info_submit_tv) ;
+        tvWorkName=findViewById(R.id.acti_user_info_work_name_tv);
+        tvWorkName.setOnClickListener(this);
     }
 
     @Override
@@ -169,7 +174,18 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
 
         } else if(R.id.acti_user_info_submit_tv == vId){//提交
             submitModify() ;
+        }else if (R.id.acti_user_info_work_name_tv==vId){
+            showWordDialog();
         }
+    }
+
+    private DoubleSelectionDialog workDialog;
+    private void showWordDialog() {
+        if (workDialog==null){
+            workDialog=new DoubleSelectionDialog(this);
+            workDialog.getFirstData();
+        }
+        workDialog.show();
     }
 
     /**

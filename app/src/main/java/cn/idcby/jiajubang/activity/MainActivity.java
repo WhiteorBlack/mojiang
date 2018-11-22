@@ -20,6 +20,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -85,7 +86,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * 主页
- *
+ * <p>
  * 2018-06-08 13:21:25
  * 消息角标问题，暂时做成每次启动app就清空消息数量，
  * 即：角标只统计当前app打开的时间内的数量，当app重新打开了，就会重新计数
@@ -93,9 +94,9 @@ import pub.devrel.easypermissions.EasyPermissions;
  * 修改附近页面
  */
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks
-        ,OnCityChanged,OnLayClickListener,OnLocationRefresh,View.OnClickListener{
+        , OnCityChanged, OnLayClickListener, OnLocationRefresh, View.OnClickListener {
 
-    private Activity mContext ;
+    private Activity mContext;
     private MsgCountChangeReceiver msgCountChangeReceiver;
 
     private LinearLayout mLlHome;
@@ -110,10 +111,10 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     private LinearLayout mLlMe;
     private ImageView mImgMe;
     private TextView mTvMe;
-    private View mPublishIv ;
+    private View mPublishIv;
 
     private FragmentHome mHomeFragment;
-//    private NearFragment mNearFragment;
+    //    private NearFragment mNearFragment;
     private NearNewFragment mNearFragment;
     private CircleFragment mCircleFragment;
     private MeFragment mMeFragment;
@@ -121,40 +122,40 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     private LocationService mLocationService;
 
-    private static final int REQUEST_CODE_TO_ME = 1001 ;
+    private static final int REQUEST_CODE_TO_ME = 1001;
 
-    private boolean mIsLocateSuccess = false ;//是否定位成功
-    private boolean mIsCityIdGeted = false ;//是否从定位获取了相关id
-    private boolean mIsNearLocaChange = false ;//是否从附近刷新定位的操作
+    private boolean mIsLocateSuccess = false;//是否定位成功
+    private boolean mIsCityIdGeted = false;//是否从定位获取了相关id
+    private boolean mIsNearLocaChange = false;//是否从附近刷新定位的操作
 
-//    环信
-    private CallReceiver callReceiver ;
+    //    环信
+    private CallReceiver callReceiver;
 
     //版本更新
-    private UpdateManager mUpdateManager ;
+    private UpdateManager mUpdateManager;
 
-    private int mCurPosition = -1 ;
-    private static final int INDEX_HOME = 0 ;
-    private static final int INDEX_NEAR = 1 ;
-    private static final int INDEX_CIRCLE = 2 ;
-    private static final int INDEX_ME = 3 ;
-    private static final String TAG_HOME = "indexTagHome" ;
-    private static final String TAG_NEAR = "indexTagNear" ;
-    private static final String TAG_CIRCLE = "indexTagCircle" ;
-    private static final String TAG_ME = "indexTagMe" ;
+    private int mCurPosition = -1;
+    private static final int INDEX_HOME = 0;
+    private static final int INDEX_NEAR = 1;
+    private static final int INDEX_CIRCLE = 2;
+    private static final int INDEX_ME = 3;
+    private static final String TAG_HOME = "indexTagHome";
+    private static final String TAG_NEAR = "indexTagNear";
+    private static final String TAG_CIRCLE = "indexTagCircle";
+    private static final String TAG_ME = "indexTagMe";
 
 
-    private boolean mCanExit = false ;
-    private Handler handler = new Handler(){
+    private boolean mCanExit = false;
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-            if(0 == msg.what){
-                mCanExit = false ;
+            if (0 == msg.what) {
+                mCanExit = false;
             }
         }
-    } ;
+    };
 
 
     /***
@@ -165,10 +166,10 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         public void onReceive(Context context, Intent intent) {
             LogUtils.showLog("MsgCountChangeReceiver--onReceive");
 
-            if(intent != null && FlagUtils.FLAG_BROADCAST_MSG_COUNT_CHANGE.equals(intent.getAction())){
+            if (intent != null && FlagUtils.FLAG_BROADCAST_MSG_COUNT_CHANGE.equals(intent.getAction())) {
                 //获取数量并且设置显隐
 //                int count = intent.getIntExtra(FlagUtils.FLAG_MSG_COUNT ,0) ;
-                onMessageCountChange(SPUtils.newIntance(mContext).getUnreadMessageCountAll()) ;
+                onMessageCountChange(SPUtils.newIntance(mContext).getUnreadMessageCountAll());
             }
         }
     }
@@ -179,9 +180,9 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AppManager.getAppManager().addActivity(this) ;
+        AppManager.getAppManager().addActivity(this);
 
-        initView(savedInstanceState != null) ;
+        initView(savedInstanceState != null);
     }
 
     private void initView(boolean reCreate) {
@@ -197,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
 //        StatusBarUtil.setTransparentForImageView(mContext ,null);
 //        StatusBarUtil.setColor(this,getResources().getColor(R.color.white));
-            ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).flymeOSStatusBarFontColor(R.color.black).init();
+        ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).flymeOSStatusBarFontColor(R.color.black).init();
         //消息数量变化的广播
         msgCountChangeReceiver = new MsgCountChangeReceiver();
         IntentFilter msgFilter =
@@ -219,8 +220,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         mTvMe = findViewById(R.id.tv_me);
         mPublishIv = findViewById(R.id.img_home_publish);
 
-        SPUtils.newIntance(mContext).resetUnreadMessage() ;
-        ShortcutBadger.applyCount(mContext ,0) ;
+        SPUtils.newIntance(mContext).resetUnreadMessage();
+        ShortcutBadger.applyCount(mContext, 0);
 
 //        //模拟消息数量
 //        SPUtils spUtils = SPUtils.newIntance(mContext) ;
@@ -229,51 +230,56 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 //        spUtils.modifyUnreadMessageCount(SPUtils.MSG_TYPE_GOOD ,true ,10) ;
 //        spUtils.modifyUnreadMessageCount(SPUtils.MSG_TYPE_CIRCLE ,true ,6) ;
 //        spUtils.modifyUnreadMessageCount(SPUtils.MSG_TYPE_COMMENT ,true ,2) ;
-        initListener() ;
-        initData(reCreate) ;
+        initListener();
+        initData(reCreate);
     }
 
     private void initData(boolean reCreate) {
-        checkAppVersion() ;
+        checkAppVersion();
 
         initFragment(reCreate);
-        startLocations() ;
-        loginWithSel() ;
+        startLocations();
+        loginWithSel();
 
         EMClient.getInstance().chatManager().addMessageListener(new EMMessageListener() {
             @Override
             public void onMessageReceived(List<EMMessage> list) {
 
-                String curHxId = "" ;
+                String curHxId = "";
                 //当前正在显示的activity就是聊天窗口
-                if(AppManager.getAppManager().currentActivity()
-                        .getClass().getName().equals(MessageChatActivity.class.getName())){
+                if (AppManager.getAppManager().currentActivity()
+                        .getClass().getName().equals(MessageChatActivity.class.getName())) {
                     MessageChatActivity chatActivity = (MessageChatActivity) AppManager.getAppManager().currentActivity();
-                    curHxId = chatActivity.getCurrentChatUserId() ;
+                    curHxId = chatActivity.getCurrentChatUserId();
                 }
 
 //                LogUtils.showLog("testMessageReceive" ,"onMessageReceived---curHxId=" + curHxId );
 
-                for(EMMessage message : list){
+                for (EMMessage message : list) {
 //                    LogUtils.showLog("testMessageReceive" ,"onMessageReceived---fromId=" + message.getFrom() );
-                    if(!message.getFrom().equals(curHxId)){
+                    if (!message.getFrom().equals(curHxId)) {
                         EaseUI.getInstance().getNotifier().onNewMsgWithNotify(message);
-                        EventBus.getDefault().post(new BusEvent.UnreadMsgEvent(true)) ;
+                        EventBus.getDefault().post(new BusEvent.UnreadMsgEvent(true));
                     }
                 }
             }
+
             @Override
             public void onCmdMessageReceived(List<EMMessage> list) {
             }
+
             @Override
             public void onMessageRead(List<EMMessage> list) {
             }
+
             @Override
             public void onMessageDelivered(List<EMMessage> list) {
             }
+
             @Override
             public void onMessageRecalled(List<EMMessage> list) {
             }
+
             @Override
             public void onMessageChanged(EMMessage emMessage, Object o) {
             }
@@ -285,15 +291,15 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         NotificationChannel channel = new NotificationChannel(channelId, channelName, importance);
         NotificationManager notificationManager = (NotificationManager) getSystemService(
                 NOTIFICATION_SERVICE);
-        if(notificationManager != null){
+        if (notificationManager != null) {
             notificationManager.createNotificationChannel(channel);
         }
     }
 
     private void initFragment(boolean reCreate) {
-        fragmentManager = getSupportFragmentManager() ;
+        fragmentManager = getSupportFragmentManager();
 
-        if(reCreate){
+        if (reCreate) {
             fragmentManager.beginTransaction()
                     .remove(fragmentManager.findFragmentByTag(TAG_HOME))
                     .remove(fragmentManager.findFragmentByTag(TAG_NEAR))
@@ -302,31 +308,31 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                     .commitAllowingStateLoss();
         }
 
-        if(null == mHomeFragment){
+        if (null == mHomeFragment) {
             mHomeFragment = new FragmentHome();
             mHomeFragment.setCityChangeListener(this);
             mHomeFragment.setLayClickListener(this);
         }
-        if(null == mNearFragment){
+        if (null == mNearFragment) {
 //            mNearFragment = new NearFragment();
-            mNearFragment=new NearNewFragment();
+            mNearFragment = new NearNewFragment();
             mNearFragment.setLocationRefreshListener(this);
         }
-        if(null == mCircleFragment){
+        if (null == mCircleFragment) {
             mCircleFragment = new CircleFragment();
         }
-        if(null == mMeFragment){
+        if (null == mMeFragment) {
             mMeFragment = new MeFragment();
         }
 
         fragmentManager.beginTransaction()
-                .add(R.id.fl_container, mHomeFragment,TAG_HOME)
-                .add(R.id.fl_container, mNearFragment,TAG_NEAR)
-                .add(R.id.fl_container, mCircleFragment,TAG_CIRCLE)
-                .add(R.id.fl_container, mMeFragment,TAG_ME)
+                .add(R.id.fl_container, mHomeFragment, TAG_HOME)
+                .add(R.id.fl_container, mNearFragment, TAG_NEAR)
+                .add(R.id.fl_container, mCircleFragment, TAG_CIRCLE)
+                .add(R.id.fl_container, mMeFragment, TAG_ME)
                 .commit();
 
-        changeTabShow(INDEX_HOME) ;
+        changeTabShow(INDEX_HOME);
     }
 
     private void setBottomItemSelect(boolean flagHome, boolean flagNear, boolean flagCircle,
@@ -354,7 +360,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
         IntentFilter callFilter = new IntentFilter(EMClient.getInstance().callManager().getIncomingCallBroadcastAction());
         callReceiver = new CallReceiver();
-        registerReceiver(callReceiver,callFilter) ;
+        registerReceiver(callReceiver, callFilter);
 
         //2018-08-23 14:55:13 由于莫名会各种挤掉帐号，所以不用环信的功能，直接用接口的
 //        EMClient.getInstance().addConnectionListener(new EMConnectionListener() {
@@ -405,11 +411,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     }
 
     private void showTokenOutTimeDialog() {
-        final Activity context ;
-        if(null == AppManager.getAppManager().currentActivity()){
-            context = mContext ;
-        }else{
-            context = AppManager.getAppManager().currentActivity() ;
+        final Activity context;
+        if (null == AppManager.getAppManager().currentActivity()) {
+            context = mContext;
+        } else {
+            context = AppManager.getAppManager().currentActivity();
         }
 
         DialogUtils.showCustomViewDialog(context, "温馨提示", "您的帐号已经在其他设备登录", null
@@ -418,18 +424,18 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
 
-                        Intent toLoIt = new Intent(context , LoginActivity.class) ;
-                        toLoIt.putExtra("isGoMain" ,false) ;
-                        context.startActivityForResult(toLoIt,1234) ;
+                        Intent toLoIt = new Intent(context, LoginActivity.class);
+                        toLoIt.putExtra("isGoMain", false);
+                        context.startActivityForResult(toLoIt, 1234);
                     }
                 }, "取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
 
-                        EventBus.getDefault().post(new BusEvent.LoginOutEvent(true)) ;
+                        EventBus.getDefault().post(new BusEvent.LoginOutEvent(true));
 
-                        AppManager.getAppManager().finishOtherActivity(MainActivity.class) ;
+                        AppManager.getAppManager().finishOtherActivity(MainActivity.class);
 
 //                        Intent toMiIt = new Intent(context , MainActivity.class) ;
 //                        toMiIt.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -444,30 +450,30 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         switch (view.getId()) {
             case R.id.ll_home:
 
-                changeTabShow(INDEX_HOME) ;
+                changeTabShow(INDEX_HOME);
 
                 break;
             case R.id.ll_near:
 
-                changeTabShow(INDEX_NEAR) ;
+                changeTabShow(INDEX_NEAR);
 
                 break;
             case R.id.ll_circle:
 
-                changeTabShow(INDEX_CIRCLE) ;
+                changeTabShow(INDEX_CIRCLE);
 
 //                toCircleActivity() ;
 
                 break;
             case R.id.ll_me:
 
-                changeTabShow(INDEX_ME) ;
+                changeTabShow(INDEX_ME);
 
                 break;
             case R.id.img_home_publish:
 
-                Intent toPbIt = new Intent(mContext ,PublishActivity.class) ;
-                startActivity(toPbIt) ;
+                Intent toPbIt = new Intent(mContext, PublishActivity.class);
+                startActivity(toPbIt);
 
                 break;
         }
@@ -475,14 +481,15 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     /**
      * 切换显示
+     *
      * @param index index
      */
-    private void changeTabShow(int index){
+    private void changeTabShow(int index) {
 //        if(mCurPosition == index){
 //            return ;
 //        }
 
-        switch (index){
+        switch (index) {
             case 0:
                 fragmentManager.beginTransaction()
                         .show(mHomeFragment)
@@ -511,9 +518,9 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                 setBottomItemSelect(false, false, true, false);
                 break;
             case 3:
-                if(LoginHelper.isNotLogin(mContext)){
-                    SkipUtils.toLoginActivityForResult(mContext ,REQUEST_CODE_TO_ME);
-                }else{
+                if (LoginHelper.isNotLogin(mContext)) {
+                    SkipUtils.toLoginActivityForResult(mContext, REQUEST_CODE_TO_ME);
+                } else {
                     fragmentManager.beginTransaction()
                             .show(mMeFragment)
                             .hide(mNearFragment)
@@ -527,17 +534,17 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                 break;
         }
 
-        mCurPosition = index ;
+        mCurPosition = index;
     }
 
-    private void checkAppVersion(){
+    private void checkAppVersion() {
         String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE
-                ,Manifest.permission.WRITE_EXTERNAL_STORAGE} ;
-        if(!EasyPermissions.hasPermissions(mContext,permissions)){
+                , Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (!EasyPermissions.hasPermissions(mContext, permissions)) {
             EasyPermissions.requestPermissions(MainActivity.this
-                    ,"应用需要存储权限，拒绝会导致部分功能异常",1001
+                    , "应用需要存储权限，拒绝会导致部分功能异常", 1001
                     , permissions);
-            return ;
+            return;
         }
         //版本检查
         mUpdateManager = new UpdateManager(this, false);
@@ -545,20 +552,20 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     }
 
     private void startLocations() {
-        if(!EasyPermissions.hasPermissions(mContext
+        if (!EasyPermissions.hasPermissions(mContext
                 , Manifest.permission.READ_PHONE_STATE
                 , Manifest.permission.ACCESS_COARSE_LOCATION
                 , Manifest.permission.ACCESS_FINE_LOCATION
                 , Manifest.permission.READ_EXTERNAL_STORAGE
-                ,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                , Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
             EasyPermissions.requestPermissions(MainActivity.this
-                    ,"应用需要定位权限来获取当前位置，拒绝会导致部分功能异常",1000
+                    , "应用需要定位权限来获取当前位置，拒绝会导致部分功能异常", 1000
                     , Manifest.permission.READ_PHONE_STATE
                     , Manifest.permission.ACCESS_COARSE_LOCATION
                     , Manifest.permission.ACCESS_FINE_LOCATION
-                    ,Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            return ;
+                    , Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            return;
         }
 
         // -----------location config ------------
@@ -567,15 +574,15 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         mLocationService.registerListener(mListener);
         //注册监听
         mLocationService.setLocationOption(mLocationService.getDefaultLocationClientOption());
-        mLocationService.start() ;
+        mLocationService.start();
     }
 
     //发送当前位置
     private void UpdatePosition() {
-        if(LoginHelper.isNotLogin(mContext)){
-            return ;
+        if (LoginHelper.isNotLogin(mContext)) {
+            return;
         }
-        Map<String, String> param = ParaUtils.getParaNece(mContext) ;
+        Map<String, String> param = ParaUtils.getParaNece(mContext);
         param.put("ProvinceName", MyApplication.LOCATION_PROVINCE);
         param.put("CityName", MyApplication.LOCATION_CITY);
         param.put("CountyName", MyApplication.LOCATION_DISTRICT);
@@ -585,11 +592,12 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         NetUtils.getDataFromServerByPost(mContext, Urls.UPLOAD_LOCATION, param, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                LogUtils.showLog("uploadLocation" ,"e=" + e.toString());
+                LogUtils.showLog("uploadLocation", "e=" + e.toString());
             }
+
             @Override
             public void onResponse(String response, int id) {
-                LogUtils.showLog("uploadLocation" ,"response=" + response);
+                LogUtils.showLog("uploadLocation", "response=" + response);
             }
         });
     }
@@ -598,38 +606,40 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
      * 根据定位城市，获取id
      */
     private void getCityIdByName(final String cityName) {
-        Map<String, String> param = ParaUtils.getPara(mContext) ;
+        Map<String, String> param = ParaUtils.getPara(mContext);
         param.put("AreaName", cityName);
         param.put("AreaType", MyApplication.getCurrentCityType());
 
         NetUtils.getDataFromServerByPost(mContext, Urls.API_HOME_GET_CITY_ID_BY_NAME, param
-                , new RequestObjectCallBack<Address>("getCityIdByName" ,mContext ,Address.class) {
+                , new RequestObjectCallBack<Address>("getCityIdByName", mContext, Address.class) {
                     @Override
                     public void onSuccessResult(Address bean) {
-                        if(bean != null){
-                            mIsCityIdGeted = true ;
-                            MyApplication.updateCurrentCityId(bean.getAreaId()) ;
+                        if (bean != null) {
+                            mIsCityIdGeted = true;
+                            MyApplication.updateCurrentCityId(bean.getAreaId());
                         }
 
-                        if(!mIsNearLocaChange){
-                            mHomeFragment.setCurLocation(cityName) ;
+                        if (!mIsNearLocaChange) {
+                            mHomeFragment.setCurLocation(cityName);
                         }
 
-                        mIsNearLocaChange = false ;
+                        mIsNearLocaChange = false;
                     }
+
                     @Override
                     public void onErrorResult(String str) {
-                        if(!mIsNearLocaChange){
-                            mHomeFragment.setCurLocation(cityName) ;
+                        if (!mIsNearLocaChange) {
+                            mHomeFragment.setCurLocation(cityName);
                         }
-                        mIsNearLocaChange = false ;
+                        mIsNearLocaChange = false;
                     }
+
                     @Override
                     public void onFail(Exception e) {
-                        if(!mIsNearLocaChange){
-                            mHomeFragment.setCurLocation(cityName) ;
+                        if (!mIsNearLocaChange) {
+                            mHomeFragment.setCurLocation(cityName);
                         }
-                        mIsNearLocaChange = false ;
+                        mIsNearLocaChange = false;
                     }
                 });
     }
@@ -637,17 +647,17 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     /**
      * 静默登录
      */
-    private void loginWithSel(){
-        String userId = StringUtils.convertNull(SPUtils.newIntance(mContext).getUserLoginId()) ;
-        String userPass = StringUtils.convertNull(SPUtils.newIntance(mContext).getUserLoginPass()) ;
+    private void loginWithSel() {
+        String userId = StringUtils.convertNull(SPUtils.newIntance(mContext).getUserLoginId());
+        String userPass = StringUtils.convertNull(SPUtils.newIntance(mContext).getUserLoginPass());
 
-        if(!"".equals(userId)
-                && !"".equals(userPass)){
+        if (!"".equals(userId)
+                && !"".equals(userPass)) {
             Map<String, String> para = ParaUtils.getPara(mContext);
             para.put("UserAccount", userId);
             para.put("Password", userPass);
             NetUtils.getDataFromServerByPost(mContext, Urls.LOGIN, true, para,
-                    new RequestObjectCallBack<LoginInfo>("登录",false, mContext, LoginInfo.class) {
+                    new RequestObjectCallBack<LoginInfo>("登录", false, mContext, LoginInfo.class) {
                         @Override
                         public void onSuccessResult(LoginInfo bean) {
                             LoginHelper.login(mContext, bean);
@@ -655,9 +665,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
                             getSelfInfo();
                         }
+
                         @Override
                         public void onErrorResult(String str) {
                         }
+
                         @Override
                         public void onFail(Exception e) {
                         }
@@ -668,11 +680,11 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     private void getSelfInfo() {
         Map<String, String> paramMap = ParaUtils.getParaWithToken(mContext);
         NetUtils.getDataFromServerByPost(mContext, Urls.MY_INFO, paramMap
-                , new RequestObjectCallBack<UserInfo>("getMyInfo",false, mContext, UserInfo.class) {
+                , new RequestObjectCallBack<UserInfo>("getMyInfo", false, mContext, UserInfo.class) {
                     @Override
                     public void onSuccessResult(UserInfo bean) {
                         if (bean != null) {
-                            LoginHelper.saveUserInfoToLocal(mContext,bean);
+                            LoginHelper.saveUserInfoToLocal(mContext, bean);
                         }
                     }
 
@@ -691,20 +703,22 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
      */
     private void checkServerShowState() {
         Map<String, String> paramMap = ParaUtils.getPara(mContext);
-        paramMap.put("Code","IsShowService") ;
+        paramMap.put("Code", "IsShowService");
 
         NetUtils.getDataFromServerByPost(mContext, Urls.GET_ENTIRY_BY_CODE, paramMap
-                , new RequestObjectCallBack<WordType>("checkServerShowState",false, mContext, WordType.class) {
+                , new RequestObjectCallBack<WordType>("checkServerShowState", false, mContext, WordType.class) {
                     @Override
                     public void onSuccessResult(WordType bean) {
-                        if(bean != null){
-                            String value = bean.getItemValue() ;
-                            MyApplication.setServerHidden("0".equals(value)) ;
+                        if (bean != null) {
+                            String value = bean.getItemValue();
+                            MyApplication.setServerHidden("0".equals(value));
                         }
                     }
+
                     @Override
                     public void onErrorResult(String str) {
                     }
+
                     @Override
                     public void onFail(Exception e) {
                     }
@@ -714,19 +728,20 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     /**
      * 判断环信登录状态，如果异常，重试
      */
-    private void checkHxLoginState(){
-        boolean isReloadHx = (MyApplication.isHxLoginFail() && LoginHelper.isHxCanLogin(mContext)) ;
+    private void checkHxLoginState() {
+        boolean isReloadHx = (MyApplication.isHxLoginFail() && LoginHelper.isHxCanLogin(mContext));
 
-        LogUtils.showLog("testHxLogin" ,"---checkHxLoginState=" + isReloadHx) ;
+        LogUtils.showLog("testHxLogin", "---checkHxLoginState=" + isReloadHx);
 
-        if(isReloadHx){
+        if (isReloadHx) {
             //可能帐号异常，先退出登录
             EMClient.getInstance().logout(true, new EMCallBack() {
                 @Override
                 public void onSuccess() {
                     Log.d("main", "退出聊天服务器成功！");
-                    loginHx() ;
+                    loginHx();
                 }
+
                 @Override
                 public void onProgress(int progress, String status) {
                 }
@@ -742,36 +757,38 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     /**
      * 登录环信
      */
-    private void loginHx(){
-        LogUtils.showLog("testHxLogin" ,"---loginHx--") ;
+    private void loginHx() {
+        LogUtils.showLog("testHxLogin", "---loginHx--");
 
         EMClient.getInstance().login(SPUtils.newIntance(mContext).getHxName()
-                ,SPUtils.newIntance(mContext).getHxPass(),new EMCallBack() {//回调
+                , SPUtils.newIntance(mContext).getHxPass(), new EMCallBack() {//回调
                     @Override
                     public void onSuccess() {
                         EMClient.getInstance().groupManager().loadAllGroups();
                         EMClient.getInstance().chatManager().loadAllConversations();
 
                         Log.d("main", "登录聊天服务器成功！");
-                        MyApplication.setHxLoginSuccess(true) ;
+                        MyApplication.setHxLoginSuccess(true);
                     }
+
                     @Override
                     public void onProgress(int progress, String status) {
                     }
+
                     @Override
                     public void onError(int code, String message) {
                         Log.d("main", "登录聊天服务器失败！code=" + code + ",message=" + message);
-                        MyApplication.setHxLoginSuccess(false) ;
+                        MyApplication.setHxLoginSuccess(false);
                     }
                 });
     }
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
-        if(1000 == requestCode){
-            startLocations() ;
-        }else if(1001 == requestCode){
-            checkAppVersion() ;
+        if (1000 == requestCode) {
+            startLocations();
+        } else if (1001 == requestCode) {
+            checkAppVersion();
         }
 //        else if(UpdateManager.INSTALL_PACKAGES_REQUESTCODE== requestCode){
 //            if(mUpdateManager != null){
@@ -782,10 +799,10 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        if(1000 == requestCode){
-            ToastUtils.showToast(mContext ,"拒绝了相关权限，会导致定位功能失败");
-        }else if(1001 == requestCode){
-            ToastUtils.showToast(mContext ,"拒绝了相关权限，会导致部分功能异常");
+        if (1000 == requestCode) {
+            ToastUtils.showToast(mContext, "拒绝了相关权限，会导致定位功能失败");
+        } else if (1001 == requestCode) {
+            ToastUtils.showToast(mContext, "拒绝了相关权限，会导致部分功能异常");
         }
 //        else if(UpdateManager.INSTALL_PACKAGES_REQUESTCODE== requestCode){
 //            if(mUpdateManager != null){
@@ -798,39 +815,39 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if(UpdateManager.INSTALL_PACKAGES_REQUESTCODE== requestCode){
+        if (UpdateManager.INSTALL_PACKAGES_REQUESTCODE == requestCode) {
             //有注册权限且用户允许安装
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if(mUpdateManager != null){
-                    mUpdateManager.startUploadApk(true) ;
+                if (mUpdateManager != null) {
+                    mUpdateManager.startUploadApk(true);
                 }
             } else {
-                if(Build.VERSION.SDK_INT >= 26){
+                if (Build.VERSION.SDK_INT >= 26) {
                     DialogUtils.showCustomViewDialog(mContext, "温馨提示"
                             , "需要系统允许安装未知来源权限，请设置之后，重启app", null
                             , "确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
 
-                            //将用户引导至安装未知应用界面。
-                            Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
-                            startActivity(intent);
-                        }
-                    }, "取消", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
+                                    //将用户引导至安装未知应用界面。
+                                    Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+                                    startActivity(intent);
+                                }
+                            }, "取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
 
-                            if(mUpdateManager != null){
-                                mUpdateManager.startUploadApk(false) ;
-                            }
-                        }
-                    });
+                                    if (mUpdateManager != null) {
+                                        mUpdateManager.startUploadApk(false);
+                                    }
+                                }
+                            });
                 }
             }
-        }else{
-            EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults ,this);
+        } else {
+            EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
         }
     }
 
@@ -923,28 +940,29 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                     sb.append("无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机");
                 }
 
-                LogUtils.showLog("BaiduLocationApiDem" ,sb.toString()) ;
+                LogUtils.showLog("BaiduLocationApiDem", sb.toString());
 
-                if(location.getCity() != null && location.getProvince() != null){
-                    mIsLocateSuccess = true ;
+                if (location.getCity() != null && location.getProvince() != null) {
+                    mIsLocateSuccess = true;
 
-                    if(!mIsNearLocaChange){
+                    if (!mIsNearLocaChange) {
                         MyApplication.updateCurLocation(location);
-                        MyApplication.updateCurrentCityNameAndType("" ,location.getCity() ,SkipUtils.LOCATION_TYPE_CITY) ;
+                        MyApplication.updateCurrentCityNameAndType("", location.getCity(), SkipUtils.LOCATION_TYPE_CITY);
                     }
+                    MyApplication.setLocationRoad(TextUtils.isEmpty(location.getStreet()) ? "无名路" : location.getStreet());
 
                     getCityIdByName(location.getCity());
                     UpdatePosition();
 
-                    final String locationDesc ;
-                    List<Poi> poiList = location.getPoiList() ;
-                    if(poiList.size() > 0){
-                        locationDesc = poiList.get(0).getName() ;
-                    }else{
-                        locationDesc = location.getLocationDescribe() ;
+                    final String locationDesc;
+                    List<Poi> poiList = location.getPoiList();
+                    if (poiList.size() > 0) {
+                        locationDesc = poiList.get(0).getName();
+                    } else {
+                        locationDesc = location.getLocationDescribe();
                     }
-
-                    mNearFragment.setCurLocation(locationDesc) ;
+                    String road =TextUtils.isEmpty(location.getStreet()) ? "无名路" : location.getStreet();
+                    mNearFragment.setCurLocation(road);
 
                     mLocationService.unregisterListener(mListener); //注销掉监听
                     mLocationService.stop(); //停止定位服务
@@ -957,46 +975,46 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(REQUEST_CODE_TO_ME == requestCode){
-            if(RESULT_OK == resultCode){
-                changeTabShow(INDEX_ME) ;
+        if (REQUEST_CODE_TO_ME == requestCode) {
+            if (RESULT_OK == resultCode) {
+                changeTabShow(INDEX_ME);
             }
-        }else if(UpdateManager.REQUEST_CODE_INSTALL_APK == requestCode){
-            finish() ;
+        } else if (UpdateManager.REQUEST_CODE_INSTALL_APK == requestCode) {
+            finish();
         }
     }
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateEventBus(BusEvent.UpdateEvent ev){
-        if(!ev.isNext()){//取消了下载
-            finish() ;
+    public void updateEventBus(BusEvent.UpdateEvent ev) {
+        if (!ev.isNext()) {//取消了下载
+            finish();
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateEventBusLogin(BusEvent.LoginOutEvent ev){
-        if(ev.isOut()){
+    public void updateEventBusLogin(BusEvent.LoginOutEvent ev) {
+        if (ev.isOut()) {
             MyApplication.setHxLoginSuccess(false);
-            LoginHelper.resetHxInfo(mContext) ;
-            JPushInterface.stopPush(MyApplication.getInstance()) ;
-            LoginHelper.logout(mContext) ;
+            LoginHelper.resetHxInfo(mContext);
+            JPushInterface.stopPush(MyApplication.getInstance());
+            LoginHelper.logout(mContext);
 
-            changeTabShow(INDEX_HOME) ;
+            changeTabShow(INDEX_HOME);
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateEventBusLocation(BusEvent.LocationUpdate ev){
-        if(ev.isUpdate()){
+    public void updateEventBusLocation(BusEvent.LocationUpdate ev) {
+        if (ev.isUpdate()) {
             UpdatePosition();
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateHxLoginState(BusEvent.HxLoginStateEvent ev){
-        if(ev.isReLogin()){
-           checkHxLoginState() ;
+    public void updateHxLoginState(BusEvent.HxLoginStateEvent ev) {
+        if (ev.isReLogin()) {
+            checkHxLoginState();
         }
     }
 
@@ -1004,18 +1022,18 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     protected void onDestroy() {
         super.onDestroy();
 
-        NetUtils.cancelTag("checkServerShowState") ;
+        NetUtils.cancelTag("checkServerShowState");
 
-        if (msgCountChangeReceiver != null){
+        if (msgCountChangeReceiver != null) {
             unregisterReceiver(msgCountChangeReceiver);
         }
 
-        if(handler != null){
-            handler.removeCallbacksAndMessages(null) ;
+        if (handler != null) {
+            handler.removeCallbacksAndMessages(null);
         }
 
-        if(!"".equals(SPUtils.newIntance(mContext).getToken())){
-            startService(new Intent(mContext ,LoginOutService.class)) ;
+        if (!"".equals(SPUtils.newIntance(mContext).getToken())) {
+            startService(new Intent(mContext, LoginOutService.class));
         }
 
         EventBus.getDefault().unregister(this);
@@ -1023,22 +1041,22 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         //2018-06-05 15:18:09 客户貌似要退出app了还有消息能接收，所以暂时不要清空未读消息
 //        JPushInterface.clearAllNotifications(this) ;
 
-        if(mLocationService != null){
+        if (mLocationService != null) {
             mLocationService.unregisterListener(mListener); //注销掉监听
             mLocationService.stop(); //停止定位服务
         }
 
-        if(callReceiver != null){
-            unregisterReceiver(callReceiver) ;
+        if (callReceiver != null) {
+            unregisterReceiver(callReceiver);
         }
 
-        AppManager.getAppManager().AppExit(mContext) ;
+        AppManager.getAppManager().AppExit(mContext);
     }
 
     @Override
     public void onCityChanged(int type, String cId, String content) {
 
-        MyApplication.updateCurrentCityNameAndType(cId ,content ,type) ;
+        MyApplication.updateCurrentCityNameAndType(cId, content, type);
 
         mHomeFragment.updateCityChangeDisplay();
         mNearFragment.updateCityChangeDisplay();
@@ -1049,62 +1067,61 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     protected void onResume() {
         super.onResume();
 
-        if(mIsLocateSuccess && !mIsCityIdGeted){
-            getCityIdByName(MyApplication.getCurrentCityName()) ;
+        if (mIsLocateSuccess && !mIsCityIdGeted) {
+            getCityIdByName(MyApplication.getCurrentCityName());
         }
 
-        int allCount = SPUtils.newIntance(mContext).getUnreadMessageCountAll() ;
-        onMessageCountChange(allCount) ;
+        int allCount = SPUtils.newIntance(mContext).getUnreadMessageCountAll();
+        onMessageCountChange(allCount);
 
-        checkHxLoginState() ;
-        checkJpushAlisaState() ;
-        checkServerShowState() ;
+        checkHxLoginState();
+        checkJpushAlisaState();
+        checkServerShowState();
     }
 
-    private void checkJpushAlisaState(){
-        if(!SPUtils.newIntance(mContext).getUserAliasState()){
-            if(LoginHelper.isNotLogin(mContext)){
-                JPushInterface.deleteAlias(mContext , MyApplication.getJpushSequence());
-            }else{
-                JPushInterface.setAlias(mContext , MyApplication.getJpushSequence() ,SPUtils.newIntance(mContext).getUserNumber()) ;
+    private void checkJpushAlisaState() {
+        if (!SPUtils.newIntance(mContext).getUserAliasState()) {
+            if (LoginHelper.isNotLogin(mContext)) {
+                JPushInterface.deleteAlias(mContext, MyApplication.getJpushSequence());
+            } else {
+                JPushInterface.setAlias(mContext, MyApplication.getJpushSequence(), SPUtils.newIntance(mContext).getUserNumber());
             }
         }
     }
 
     @Override
     public void onLayClick(int type) {
-        if(FragmentHome.LAY_TYPE_CIRCLE == type){
+        if (FragmentHome.LAY_TYPE_CIRCLE == type) {
 //            toCircleActivity() ;
 
-            mCircleFragment.changeItem(2) ;
-            changeTabShow(INDEX_CIRCLE) ;
+            mCircleFragment.changeItem(2);
+            changeTabShow(INDEX_CIRCLE);
         }
     }
 
     @Override
     public void onRefresh() {
-        mIsNearLocaChange = true ;
-        startLocations() ;
+        mIsNearLocaChange = true;
+        startLocations();
     }
 
     private void onMessageCountChange(int count) {
-        if(mHomeFragment != null){
-            mHomeFragment.changeUnreadMessageCount(count) ;
+        if (mHomeFragment != null) {
+            mHomeFragment.changeUnreadMessageCount(count);
         }
     }
 
     @Override
     public void onBackPressed() {
 
-        if(!mCanExit){
-            ToastUtils.showToast(mContext ,"再按一次退出");
-            mCanExit = true ;
-            handler.sendEmptyMessageDelayed(0 ,1500) ;
-        }else{
-           super.onBackPressed() ;
+        if (!mCanExit) {
+            ToastUtils.showToast(mContext, "再按一次退出");
+            mCanExit = true;
+            handler.sendEmptyMessageDelayed(0, 1500);
+        } else {
+            super.onBackPressed();
         }
     }
-
 
 
 }

@@ -3,7 +3,9 @@ package cn.idcby.jiajubang.fragment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.commonlibrary.utils.StatusBarUtil;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.adapter.FragmentPagerAdapter;
+import cn.idcby.jiajubang.application.MyApplication;
 import cn.idcby.jiajubang.interf.OnLocationRefresh;
 
 public class NearNewFragment extends BaseFragment {
@@ -21,17 +24,18 @@ public class NearNewFragment extends BaseFragment {
     //    private String[] titls = new String[]{"附近服务", "附近商家", "附近工作", "附近的人", "附近的闲置"};
     private List<String> titls = new ArrayList<>();
     private OnLocationRefresh mLocationRefreshListener;
+    private TextView tvLocation;
 
     public void setLocationRefreshListener(OnLocationRefresh mLocationRefreshListener) {
         this.mLocationRefreshListener = mLocationRefreshListener;
     }
 
     public void setCurLocation(String locationDesc) {
-//        if (locationDesc != null) {
-//            mLocationTv.setText(locationDesc);
-//        } else {
-//            mLocationTv.setText("正在定位");
-//        }
+        if (locationDesc != null) {
+            tvLocation.setText(locationDesc);
+        } else {
+            tvLocation.setText("正在定位");
+        }
     }
 
     /**
@@ -52,10 +56,12 @@ public class NearNewFragment extends BaseFragment {
         viewPager = view.findViewById(R.id.viewpager);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager(), getFragemnts(), titls));
-
-        View statusView = view.findViewById(R.id.frag_near_status_view);
+        tvLocation = view.findViewById(R.id.tv_location);
+        tvLocation.setText(MyApplication.getLocationRoad());
+        View statusView = view.findViewById(R.id.view_status);
         statusView.getLayoutParams().height = ResourceUtils.getStatusBarHeight(mContext);
-        statusView.setBackgroundColor(getResources().getColor(R.color.white));
+//        statusView.setBackgroundColor(getResources().getColor(R.color.white));
+
         disableTabClick();
     }
 
@@ -65,6 +71,7 @@ public class NearNewFragment extends BaseFragment {
 //
 //        }
     }
+
 
     private List<Fragment> getFragemnts() {
         List<Fragment> fragments = new ArrayList<>();

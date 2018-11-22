@@ -165,7 +165,7 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:background">@drawable/bg_white_greyf2_selector</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">10dp</item>
     </style>
     <style name="user_info_item_left_style">

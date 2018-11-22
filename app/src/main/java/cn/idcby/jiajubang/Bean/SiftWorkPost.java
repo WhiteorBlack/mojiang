@@ -1,5 +1,9 @@
 package cn.idcby.jiajubang.Bean;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import cn.idcby.jiajubang.BR;
 import cn.idcby.jiajubang.utils.StringUtils;
 
 /**
@@ -7,11 +11,11 @@ import cn.idcby.jiajubang.utils.StringUtils;
  * Created on 2018/9/12.
  */
 
-public class SiftWorkPost {
-    private boolean isSelected = false ;
+public class SiftWorkPost extends BaseObservable {
+    private boolean isSelected = false;
 
-    public String Name ;
-    public String WorkPostID ;
+    public String Name;
+    public String WorkPostID;
 
     public SiftWorkPost() {
     }
@@ -21,12 +25,14 @@ public class SiftWorkPost {
         WorkPostID = workPostID;
     }
 
+    @Bindable
     public boolean isSelected() {
         return isSelected;
     }
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+        notifyPropertyChanged(BR.selected);
     }
 
     public String getName() {

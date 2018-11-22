@@ -63,4 +63,6 @@
     <dimen name="good_comment_star_wid">20dp</dimen>
     <dimen name="nomal_divider_height">5dp</dimen>
 
+    <dimen name="bar_height">40dp</dimen>
+
 </resources>
