@@ -1,9 +1,12 @@
 package cn.idcby.jiajubang.Bean;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.text.TextUtils;
 
 import cn.idcby.jiajubang.utils.PingYinUtil;
 import cn.idcby.jiajubang.utils.StringUtils;
+import cn.idcby.jiajubang.BR;
 
 /**
  * //                                  _oo8oo_
@@ -32,12 +35,12 @@ import cn.idcby.jiajubang.utils.StringUtils;
  * Created by mrrlb on 2018/2/10.
  */
 
-public class Address {
+public class Address extends BaseObservable {
     public String AreaId;
     public String AreaName;
     public String AreaCode;
     public String ParentId;
-
+    public boolean isSelected=false;
     public String pinyi;
 
     public Address() {
@@ -57,6 +60,16 @@ public class Address {
         }else {
             return pinyi;
         }
+    }
+
+    @Bindable
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+        notifyPropertyChanged(BR.selected);
     }
 
     public String getAreaId() {

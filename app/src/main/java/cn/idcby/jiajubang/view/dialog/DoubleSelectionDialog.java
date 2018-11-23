@@ -1,4 +1,4 @@
-package cn.idcby.jiajubang.view;
+package cn.idcby.jiajubang.view.dialog;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -8,8 +8,6 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.flyco.animation.BounceEnter.BounceBottomEnter;
-import com.flyco.animation.BounceEnter.BounceEnter;
 import com.flyco.dialog.widget.base.BottomBaseDialog;
 
 import java.util.HashMap;
@@ -20,17 +18,26 @@ import cn.idcby.jiajubang.Bean.SiftWorkPost;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.adapter.DoubleSelectionAdapter;
 import cn.idcby.jiajubang.databinding.DialogDoubleSelectionBinding;
+import cn.idcby.jiajubang.interf.DoubleSelectionInterface;
 import cn.idcby.jiajubang.utils.NetUtils;
 import cn.idcby.jiajubang.utils.ParaUtils;
 import cn.idcby.jiajubang.utils.RequestListCallBack;
-import cn.idcby.jiajubang.utils.ScreenUtil;
 import cn.idcby.jiajubang.utils.StringUtils;
 import cn.idcby.jiajubang.utils.Urls;
 
 public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialog> {
     private DialogDoubleSelectionBinding binding;
-    private DoubleSelectionAdapter firstAdapter,secondAdapter;
+    private DoubleSelectionAdapter firstAdapter, secondAdapter;
     private Map<String, List<SiftWorkPost>> dataMap = new HashMap<>();
+    private DoubleSelectionInterface doubleSelectionInterface;
+
+    public DoubleSelectionInterface getDoubleSelectionInterface() {
+        return doubleSelectionInterface;
+    }
+
+    public void setDoubleSelectionInterface(DoubleSelectionInterface doubleSelectionInterface) {
+        this.doubleSelectionInterface = doubleSelectionInterface;
+    }
 
     public DoubleSelectionDialog(Context context) {
         super(context);
@@ -44,13 +51,13 @@ public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialo
     }
 
     private void initView() {
-        getWindow().setDimAmount(0f);
-        heightScale(2f/5);
+//        getWindow().setDimAmount(0f);
+        heightScale(2f / 5);
         firstAdapter = new DoubleSelectionAdapter(R.layout.item_double_first);
         binding.rvFirst.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvFirst.setAdapter(firstAdapter);
         binding.rvFirst.addOnItemTouchListener(firstOnItemListener());
-        secondAdapter=new DoubleSelectionAdapter(R.layout.item_double_second);
+        secondAdapter = new DoubleSelectionAdapter(R.layout.item_double_second);
         binding.rvSecond.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvSecond.setAdapter(secondAdapter);
         binding.rvSecond.addOnItemTouchListener(secondOnItemListener());
@@ -66,9 +73,9 @@ public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialo
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
                 SiftWorkPost post = firstAdapter.getData().get(position);
-                if (dataMap.get(post.WorkPostID)==null||dataMap.get(post.WorkPostID).isEmpty()) {
+                if (dataMap.get(post.WorkPostID) == null || dataMap.get(post.WorkPostID).isEmpty()) {
                     getSecondData(post.WorkPostID);
-                }else {
+                } else {
                     secondAdapter.setNewData(dataMap.get(post.WorkPostID));
                 }
                 changeSelectState(position, firstAdapter.getData());
@@ -85,8 +92,11 @@ public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialo
     public RecyclerView.OnItemTouchListener secondOnItemListener() {
         return new OnItemClickListener() {
             @Override
-            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+            public void onSimpleItemClick(BaseQuickAdapter adaptera, View view, int position) {
+                if (doubleSelectionInterface != null) {
+                    doubleSelectionInterface.onSelection(secondAdapter.getData().get(position));
+                }
+                dismiss();
             }
         };
     }

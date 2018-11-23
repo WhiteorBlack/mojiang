@@ -4,18 +4,16 @@
     <data>
 
         <import type="android.view.View" />
-        <import type="cn.idcby.jiajubang.utils.StringUtil"/>
-        <import type="cn.idcby.jiajubang.R"/>
 
         <variable
             name="item"
-            type="cn.idcby.jiajubang.Bean.SiftWorkPost" />
+            type="cn.idcby.jiajubang.Bean.Address" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@{StringUtil.getColor(item.selected?R.color.white:R.color.sift_left_normal)}"
+        android:background="@color/white"
         android:orientation="horizontal">
 
         <View
@@ -30,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@{item.Name}" />
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="@{item.AreaName}" />
     </LinearLayout>
 </layout>
