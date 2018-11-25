@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_status"
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titleBar_height"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@id/back"
+            android:layout_width="@dimen/back_nav_img_size"
+            android:layout_height="@dimen/back_nav_img_size"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/arrow_back" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_grey_aa"
+                android:src="@mipmap/login_logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="26dp"
+                android:text="完善个人信息"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize_eighteen"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="完善度高的用户，能更高效连接人脉，获取商机"
+                android:textSize="@dimen/textSize_fourteen" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:text="头像" />
+
+                <ImageView
+                    android:id="@+id/acti_user_info_head_iv"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="16dp"
+                    android:src="@mipmap/icon_entry_page_photo" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+            <LinearLayout
+                android:id="@+id/acti_user_info_head_lay"
+                style="@style/user_info_item_line_lay_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="姓名" />
+
+                <EditText
+                    android:id="@+id/acti_user_info_nickName_ev"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_trans"
+                    android:ellipsize="end"
+                    android:maxEms="10"
+                    android:minEms="2"
+                    android:singleLine="true"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/textSize_fifteen" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+            <LinearLayout style="@style/user_info_item_line_lay_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="所在位置" />
+
+                <TextView
+                    android:id="@+id/acti_user_info_area_tv"
+                    style="@style/user_info_item_right_tv_style"
+                    android:text="请选择" />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@mipmap/arrow_right" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+            <LinearLayout style="@style/apply_item_line_lay_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="公司" />
+
+                <EditText
+                    android:id="@+id/acti_user_info_company_name_ev"
+                    style="@style/apply_item_right_ev_style"
+                    android:hint="请输入公司名称" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+            <LinearLayout style="@style/apply_item_line_lay_no_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="行业类别" />
+
+                <TextView
+                    android:id="@+id/acti_user_info_category_tv"
+                    style="@style/apply_item_right_tv_no_style"
+                    android:text="请选择" />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@mipmap/arrow_right" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+
+            <LinearLayout style="@style/apply_item_line_lay_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="职位" />
+
+                <TextView
+                    android:id="@+id/acti_user_info_work_name_tv"
+                    style="@style/user_info_item_right_tv_style"
+                    android:text="请选择" />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@mipmap/arrow_right" />
+
+                <EditText
+                    android:id="@+id/acti_user_info_work_name_ev"
+                    style="@style/apply_item_right_ev_style"
+                    android:hint="请输入职位名称"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+            <LinearLayout style="@style/user_info_item_line_lay_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="生日" />
+
+                <TextView
+                    android:id="@+id/acti_user_info_birthday_tv"
+                    style="@style/user_info_item_right_tv_style"
+                    android:text="请选择" />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@mipmap/arrow_right" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+            <LinearLayout style="@style/user_info_item_line_lay_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="性别" />
+
+                <TextView
+                    android:id="@+id/acti_user_info_sex_tv"
+                    style="@style/user_info_item_right_tv_style"
+                    android:text="请选择" />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@mipmap/arrow_right" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+            <LinearLayout style="@style/user_info_item_line_lay_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="微信" />
+
+                <EditText
+                    android:id="@+id/acti_user_info_weChat_ev"
+                    style="@style/user_info_item_right_ev_style"
+                    android:hint="请输入微信号" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+            <LinearLayout style="@style/user_info_item_line_lay_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="手机号" />
+
+                <EditText
+                    android:id="@+id/acti_user_info_qq_ev"
+                    style="@style/user_info_item_right_ev_style"
+                    android:hint="请输入手机号"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+            <LinearLayout style="@style/user_info_item_line_lay_style">
+
+                <TextView
+                    style="@style/user_info_item_left_style"
+                    android:text="邮箱" />
+
+                <EditText
+                    android:id="@+id/acti_user_info_email_ev"
+                    style="@style/user_info_item_right_ev_style"
+                    android:hint="请输入邮箱"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
+
+            <View style="@style/user_info_item_dv_style" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="个性签名"
+                    android:textColor="@color/color_nomal_text"
+                    android:textSize="@dimen/textSize_fourteen" />
+
+                <EditText
+                    android:id="@+id/acti_user_info_desc_ev"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_trans"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|right"
+                    android:hint="个性签名"
+                    android:lines="2"
+                    android:padding="15dp"
+                    android:textColor="@color/color_grey_text"
+                    android:textSize="@dimen/textSize_thirteen" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/color_grey_f5" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/acti_user_info_submit_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nomal_submit_height"
+        android:layout_gravity="bottom"
+        android:background="@color/color_theme"
+        android:gravity="center"
+        android:text="保存修改"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/textSize_fourteen" />
+</LinearLayout>
