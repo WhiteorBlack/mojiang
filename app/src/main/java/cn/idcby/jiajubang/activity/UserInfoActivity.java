@@ -80,6 +80,7 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
     private EditText mCompanyNameEv;
     private TextView mSubmitTv;
     private TextView tvWorkName;
+    private TextView tvName;
 
     private LoadingDialog mDialog;
 
@@ -119,11 +120,11 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
 //        StatusBarUtil.setTransparentForImageView(mActivity ,null);
 
         mUserInfo = (UserInfo) getIntent().getSerializableExtra(SkipUtils.INTENT_USER_INFO);
-        View statusView = findViewById(R.id.view_status);
-        statusView.getLayoutParams().height = ResourceUtils.getStatusBarHeight(mContext);
+//        View statusView = findViewById(R.id.view_status);
+//        statusView.getLayoutParams().height = ResourceUtils.getStatusBarHeight(mContext);
 //        View topLay = findViewById(R.id.acti_user_info_head_lay) ;
 //        topLay.getLayoutParams().height = (int) (ResourceUtils.getScreenWidth(mContext) / 2.1F);
-
+        tvName=findViewById(R.id.tv_name);
         mUserIv = findViewById(R.id.acti_user_info_head_iv);
         mNickNameEv = findViewById(R.id.acti_user_info_nickName_ev);
         mSexTv = findViewById(R.id.acti_user_info_sex_tv);
@@ -252,6 +253,7 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         String desc = mUserInfo.getPersonalitySignature();
 
         GlideUtils.loaderRound(StringUtils.convertNull(mHeadUrl), mUserIv, 3);
+        tvName.setText(StringUtils.convertNull(nickName));
         mNickNameEv.setText(StringUtils.convertNull(nickName));
         mSexTv.setText(1 == mSex ? "男" : (2 == mSex ? "女" : "请选择"));
         mBirthdayTv.setText("".equals(StringUtils.convertNull(mBirthday)) ? "请选择" : mBirthday);

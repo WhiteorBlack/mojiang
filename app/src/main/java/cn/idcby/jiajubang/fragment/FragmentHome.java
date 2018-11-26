@@ -681,18 +681,18 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
         } else if (i == R.id.frag_home_needs_send_tv) {//一键发布需求
             goNextActivity(NeedsSendActivity.class);
         } else if (i == R.id.frag_home_server_tips_tv) {//服务
-            if (MyApplication.isServerHidden()) {
-                DialogUtils.showCustomViewDialog(mContext,
-                        getResources().getString(R.string.server_hidden_tips)
-                        , "确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        });
-
-                return;
-            }
+//            if (MyApplication.isServerHidden()) {
+//                DialogUtils.showCustomViewDialog(mContext,
+//                        getResources().getString(R.string.server_hidden_tips)
+//                        , "确定", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                dialogInterface.dismiss();
+//                            }
+//                        });
+//
+//                return;
+//            }
 
             goNextActivity(ServerActivity.class);
         } else if (i == R.id.frag_home_unuse_send_lay) {//闲置发布

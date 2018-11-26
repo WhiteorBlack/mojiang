@@ -23,7 +23,7 @@ import cn.idcby.commonlibrary.utils.StatusBarUtil;
 /**
  * Created on 2016/8/4.
  */
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseBindActivity extends AppCompatActivity implements View.OnClickListener {
     public Activity mActivity ;
     public Context mContext;
 
@@ -36,8 +36,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         AppManager.getAppManager().addActivity(this);
         //LogUtils.showLog("result?>>>" + result);
+        initBinding();
         initSDK();
-        setContentView(getLayoutID());
+//        setContentView(getLayoutID());
         StatusBarUtil.resetStatusBarColor(this) ;
 
         //消息数量变化的广播
@@ -55,6 +56,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         dealCommon();
     }
+
+    protected abstract void initBinding();
 
     public void initSDK() {
     }

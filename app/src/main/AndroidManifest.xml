@@ -101,6 +101,9 @@
             android:name="cn.idcby.jiajubang.activity.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="cn.idcby.jiajubang.activity.RegisterInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="cn.idcby.jiajubang.activity.NewsActivity"
             android:screenOrientation="portrait" />
         <activity
