@@ -128,7 +128,7 @@
         android:id="@+id/frag_home_news_category_top_rv"
         android:layout_width="match_parent"
         android:layout_height="36dp"
-        android:layout_below="@id/frag_home_refresh_lay"
+        android:layout_below="@+id/ll_top_fixed_main_top_lay"
         android:background="@color/color_white"
         android:paddingLeft="10dp"
         android:visibility="invisible" />

@@ -22,6 +22,7 @@
             android:id="@+id/back"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:onClick="onClick"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view"
             app:srcCompat="@mipmap/arrow_back" />
@@ -34,21 +35,34 @@
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="48dp"
             android:layout_marginRight="48dp"
-            android:text="TextView"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/back"
-            app:layout_constraintTop_toTopOf="@+id/back" />
+            app:layout_constraintTop_toTopOf="@+id/back"
+            tools:text="标题" />
+
+        <ImageView
+            android:id="@+id/iv_message"
+            android:onClick="onClick"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerInside"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_title"
+            android:src="@mipmap/icon_information" />
 
         <View
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/grayLine2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/back" />
 
         <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
@@ -60,6 +74,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line">
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout>
 
     </android.support.constraint.ConstraintLayout>

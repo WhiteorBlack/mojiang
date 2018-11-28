@@ -121,7 +121,15 @@
             android:name="cn.idcby.jiajubang.activity.GetTypeByCodeActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.ServiceActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
 
+        <activity
+            android:name=".activity.ServiceListNewActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name="cn.idcby.jiajubang.activity.SelectedProvinceActivity"
             android:screenOrientation="portrait" />

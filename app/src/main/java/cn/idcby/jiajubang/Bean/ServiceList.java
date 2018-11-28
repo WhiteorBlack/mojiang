@@ -17,6 +17,7 @@ public class ServiceList{
     public String NickName ;
     public String HeadIcon ;
     public String SingleAmount ;
+    public double Distance;
     public String Position ;
     public String PraiseRate ;
     public String ServiceDescription ;
@@ -24,6 +25,14 @@ public class ServiceList{
     public List<WordType> TypeList ;//注意：虽然用的字典项bean，但是服务分类已经不用字典项了，为了偷懒，要求的接口返回字典项同字段的返回
     public List<WordType> PromiseList ;
     public List<ImageThumb> AlbumsList ;
+
+    public double getDistance() {
+        return Distance;
+    }
+
+    public void setDistance(double distance) {
+        Distance = distance;
+    }
 
     public boolean isEnabledMark(){
         return "1".equals(EnabledMark) ;

@@ -1,5 +1,7 @@
 package cn.idcby.jiajubang.Bean;
 
+import android.databinding.BaseObservable;
+
 import java.io.Serializable;
 
 import cn.idcby.jiajubang.utils.StringUtils;
@@ -8,7 +10,7 @@ import cn.idcby.jiajubang.utils.StringUtils;
  * Created on 2018/4/10.
  */
 
-public class BaseCategory implements Serializable {
+public class BaseCategory extends BaseObservable implements Serializable {
     public String ParentID ;
     public String CategoryTitle ;
     public String CategoryCode ;

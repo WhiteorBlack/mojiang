@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="cn.idcby.jiajubang.viewmodel.ServiceHeaderViewModel" />
+    </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -34,7 +39,7 @@
             android:paddingBottom="5dp"
             android:text="发布服务需求"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/linearLayout" />
@@ -42,7 +47,7 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="30dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
@@ -56,18 +61,21 @@
             app:layout_constraintTop_toBottomOf="@+id/banner">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
-                android:src="@mipmap/icon_search" />
+                android:background="@mipmap/icon_search" />
 
             <EditText
                 android:id="@+id/et_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
                 android:background="@null"
                 android:hint="搜索"
+                android:singleLine="true"
                 android:paddingLeft="10dp"
+                android:text="@={viewModel.search}"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
         </LinearLayout>

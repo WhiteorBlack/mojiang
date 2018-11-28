@@ -27,6 +27,7 @@ import cn.idcby.commonlibrary.utils.DialogUtils;
 import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
+import cn.idcby.jiajubang.Bean.Address;
 import cn.idcby.jiajubang.Bean.SiftWorkPost;
 import cn.idcby.jiajubang.Bean.UnusedCategory;
 import cn.idcby.jiajubang.Bean.UserInfo;
@@ -41,7 +42,9 @@ import cn.idcby.jiajubang.utils.RequestObjectCallBack;
 import cn.idcby.jiajubang.utils.SkipUtils;
 import cn.idcby.jiajubang.utils.StringUtils;
 import cn.idcby.jiajubang.utils.Urls;
+import cn.idcby.jiajubang.view.dialog.DoubleCityDialog;
 import cn.idcby.jiajubang.view.dialog.DoubleSelectionDialog;
+import cn.idcby.jiajubang.view.dialog.SingleSelectionDialog;
 import idcby.cn.imagepicker.GlideImageLoader;
 import idcby.cn.imagepicker.ImageConfig;
 import idcby.cn.imagepicker.ImageSelector;
@@ -124,7 +127,7 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
 //        statusView.getLayoutParams().height = ResourceUtils.getStatusBarHeight(mContext);
 //        View topLay = findViewById(R.id.acti_user_info_head_lay) ;
 //        topLay.getLayoutParams().height = (int) (ResourceUtils.getScreenWidth(mContext) / 2.1F);
-        tvName=findViewById(R.id.tv_name);
+        tvName = findViewById(R.id.tv_name);
         mUserIv = findViewById(R.id.acti_user_info_head_iv);
         mNickNameEv = findViewById(R.id.acti_user_info_nickName_ev);
         mSexTv = findViewById(R.id.acti_user_info_sex_tv);
@@ -169,16 +172,61 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         } else if (R.id.acti_user_info_birthday_tv == vId) {
             datePicker("选择出生日期", mBirthdayTv);
         } else if (R.id.acti_user_info_area_tv == vId) {//区域
-            SelectedProvinceActivity.launch(mActivity, REQUEST_CODE_AREA);
+            showCityDialog();
+//            SelectedProvinceActivity.launch(mActivity, REQUEST_CODE_AREA);
         } else if (vId == R.id.acti_user_info_category_tv) {
-            ChooseUnuesdCategoryActivity.launch(mActivity, mIsHasChild, mIsMoreCheck
-                    , mSelectedCategory, REQUEST_CODE_FOR_CATEGORY);
+            showCategoryDialog();
+//            ChooseUnuesdCategoryActivity.launch(mActivity, mIsHasChild, mIsMoreCheck
+//                    , mSelectedCategory, REQUEST_CODE_FOR_CATEGORY);
 
         } else if (R.id.acti_user_info_submit_tv == vId) {//提交
             submitModify();
         } else if (R.id.acti_user_info_work_name_tv == vId) {
             showWordDialog();
         }
+    }
+
+    private SingleSelectionDialog categoryDialog;
+
+    private void showCategoryDialog() {
+        if (categoryDialog == null) {
+            categoryDialog = new SingleSelectionDialog(this);
+            categoryDialog.setDoubleSelectionInterface(new DoubleSelectionInterface() {
+                @Override
+                public void onSelection(Object post) {
+                    if (post == null) {
+                        return;
+                    }
+                    UnusedCategory category = (UnusedCategory) post;
+                    mCategoryIds = category.CategoryID;
+                    mWorkTypeTv.setText(category.CategoryTitle);
+                }
+            });
+            categoryDialog.getCategory();
+        }
+
+        categoryDialog.show();
+    }
+
+    private DoubleCityDialog cityDialog;
+
+    private void showCityDialog() {
+        if (cityDialog == null) {
+            cityDialog = new DoubleCityDialog(this);
+            cityDialog.getFirstData();
+            cityDialog.setDoubleSelectionInterface(new DoubleSelectionInterface() {
+                @Override
+                public void onSelection(Object post) {
+                    if (post == null) {
+                        return;
+                    }
+                    Address address = (Address) post;
+                    mAreaTv.setText(address.AreaName);
+                    mAreaId = address.AreaId;
+                }
+            });
+        }
+        cityDialog.show();
     }
 
     private DoubleSelectionDialog workDialog;

@@ -50,6 +50,7 @@ import cn.idcby.jiajubang.activity.SearchIndexActivity;
 import cn.idcby.jiajubang.activity.SelectProvinceBySortActivity;
 import cn.idcby.jiajubang.activity.ServerActivity;
 import cn.idcby.jiajubang.activity.ServerListActivity;
+import cn.idcby.jiajubang.activity.ServiceActivity;
 import cn.idcby.jiajubang.activity.TopicDetailActivity;
 import cn.idcby.jiajubang.activity.UnuseGoodListActivity;
 import cn.idcby.jiajubang.activity.UnusedActivity;
@@ -265,18 +266,18 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
             @Override
             public void onItemClickListener(int type, int position) {
                 if (0 == type) {
-                    if (MyApplication.isServerHidden()) {
-                        DialogUtils.showCustomViewDialog(mContext,
-                                getResources().getString(R.string.server_hidden_tips)
-                                , "确定", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
-                                    }
-                                });
-
-                        return;
-                    }
+//                    if (MyApplication.isServerHidden()) {
+//                        DialogUtils.showCustomViewDialog(mContext,
+//                                getResources().getString(R.string.server_hidden_tips)
+//                                , "确定", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialogInterface, int i) {
+//                                        dialogInterface.dismiss();
+//                                    }
+//                                });
+//
+//                        return;
+//                    }
 
                     ServerCategory serviceList = mHotServiceList.get(position);
                     if (serviceList != null) {
@@ -694,7 +695,8 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
 //                return;
 //            }
 
-            goNextActivity(ServerActivity.class);
+            goNextActivity(ServiceActivity.class);
+//            goNextActivity(ServerActivity.class);
         } else if (i == R.id.frag_home_unuse_send_lay) {//闲置发布
             goNextActivity(UnusedSendActivity.class);
         }

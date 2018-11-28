@@ -68,7 +68,7 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
 
     @Override
     public void setUiBeforShow() {
-
+        binding.tvTitle.setVisibility(View.VISIBLE);
     }
 
     public RecyclerView.OnItemTouchListener firstOnItemListener() {

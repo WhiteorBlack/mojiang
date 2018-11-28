@@ -14,21 +14,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.idcby.jiajubang.Bean.SiftWorkPost;
+import cn.idcby.commonlibrary.utils.ResourceUtils;
+import cn.idcby.jiajubang.Bean.Address;
 import cn.idcby.jiajubang.R;
-import cn.idcby.jiajubang.adapter.DoubleSelectionAdapter;
-import cn.idcby.jiajubang.databinding.DialogDoubleSelectionBinding;
+import cn.idcby.jiajubang.adapter.DoubleCityAdapter;
+import cn.idcby.jiajubang.databinding.DialogDoubleDownSelectionBinding;
 import cn.idcby.jiajubang.interf.DoubleSelectionInterface;
 import cn.idcby.jiajubang.utils.NetUtils;
 import cn.idcby.jiajubang.utils.ParaUtils;
 import cn.idcby.jiajubang.utils.RequestListCallBack;
-import cn.idcby.jiajubang.utils.StringUtils;
+import cn.idcby.jiajubang.utils.ScreenUtil;
 import cn.idcby.jiajubang.utils.Urls;
 
-public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialog> {
-    private DialogDoubleSelectionBinding binding;
-    private DoubleSelectionAdapter firstAdapter, secondAdapter;
-    private Map<String, List<SiftWorkPost>> dataMap = new HashMap<>();
+public class DoubleCityDownDialog extends BottomBaseDialog<DoubleCityDownDialog> {
+    private DialogDoubleDownSelectionBinding binding;
+    private DoubleCityAdapter firstAdapter, secondAdapter;
+    private Map<String, List<Address>> dataMap = new HashMap<>();
     private DoubleSelectionInterface doubleSelectionInterface;
 
     public DoubleSelectionInterface getDoubleSelectionInterface() {
@@ -39,25 +40,24 @@ public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialo
         this.doubleSelectionInterface = doubleSelectionInterface;
     }
 
-    public DoubleSelectionDialog(Context context) {
+    public DoubleCityDownDialog(Context context) {
         super(context);
     }
 
     @Override
     public View onCreateView() {
-        binding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.dialog_double_selection, null, false);
+        binding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.dialog_double_down_selection, null, false);
         initView();
         return binding.getRoot();
     }
 
+
     private void initView() {
-//        getWindow().setDimAmount(0f);
-        heightScale(2f / 5);
-        firstAdapter = new DoubleSelectionAdapter(R.layout.item_double_first);
+        firstAdapter = new DoubleCityAdapter(R.layout.item_city_first);
         binding.rvFirst.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvFirst.setAdapter(firstAdapter);
         binding.rvFirst.addOnItemTouchListener(firstOnItemListener());
-        secondAdapter = new DoubleSelectionAdapter(R.layout.item_double_second);
+        secondAdapter = new DoubleCityAdapter(R.layout.item_city_second);
         binding.rvSecond.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvSecond.setAdapter(secondAdapter);
         binding.rvSecond.addOnItemTouchListener(secondOnItemListener());
@@ -65,25 +65,29 @@ public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialo
 
     @Override
     public void setUiBeforShow() {
-        binding.tvTitle.setVisibility(View.GONE);
+        dimEnabled(false);
+        int barheight = ResourceUtils.getStatusBarHeight(mContext);
+        float height = (ScreenUtil.dip2px(81) + ResourceUtils.getStatusBarHeight(mContext)) * 1.0f / ScreenUtil.getWidthAndHeight().heightPixels;
+        heightScale(1 - height);
+        setCanceledOnTouchOutside(true);
     }
 
     public RecyclerView.OnItemTouchListener firstOnItemListener() {
         return new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-                SiftWorkPost post = firstAdapter.getData().get(position);
-                if (dataMap.get(post.WorkPostID) == null || dataMap.get(post.WorkPostID).isEmpty()) {
-                    getSecondData(post.WorkPostID);
+                Address post = firstAdapter.getData().get(position);
+                if (dataMap.get(post.AreaId) == null || dataMap.get(post.AreaId).isEmpty()) {
+                    getSecondData(post.AreaId);
                 } else {
-                    secondAdapter.setNewData(dataMap.get(post.WorkPostID));
+                    secondAdapter.setNewData(dataMap.get(post.AreaId));
                 }
                 changeSelectState(position, firstAdapter.getData());
             }
         };
     }
 
-    private void changeSelectState(int position, List<SiftWorkPost> data) {
+    private void changeSelectState(int position, List<Address> data) {
         for (int i = 0; i < data.size(); i++) {
             data.get(i).setSelected(i == position);
         }
@@ -102,20 +106,17 @@ public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialo
     }
 
     public void getFirstData() {
-        Map<String, String> paramMap = ParaUtils.getPara(mContext);
-        paramMap.put("Page", "1");
-        paramMap.put("PageSize", "999");
-        paramMap.put("ID", "1");
 
-        NetUtils.getDataFromServerByPost(mContext, Urls.JOB_POST_LIST, paramMap
-                , new RequestListCallBack<SiftWorkPost>("getParentPost", mContext, SiftWorkPost.class) {
+        Map<String, String> para = ParaUtils.getPara(mContext);
+        NetUtils.getDataFromServerByPost(mContext, Urls.GET_PROVINCE, false, para,
+                new RequestListCallBack<Address>("省份", mContext,
+                        Address.class) {
                     @Override
-                    public void onSuccessResult(List<SiftWorkPost> bean) {
+                    public void onSuccessResult(List<Address> bean) {
                         if (!bean.isEmpty()) {
                             bean.get(0).setSelected(true);
                             firstAdapter.setNewData(bean);
-                            getSecondData(bean.get(0).WorkPostID);
-
+                            getSecondData(bean.get(0).getAreaId());
                         }
                     }
 
@@ -130,18 +131,15 @@ public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialo
     }
 
     private void getSecondData(final String workPostId) {
-        Map<String, String> paramMap = ParaUtils.getPara(mContext);
-        paramMap.put("Page", "1");
-        paramMap.put("PageSize", "999");
-        paramMap.put("ID", "2");
-        paramMap.put("Keyword", StringUtils.convertNull(workPostId));
-
-        NetUtils.getDataFromServerByPost(mContext, Urls.JOB_POST_LIST, paramMap
-                , new RequestListCallBack<SiftWorkPost>("getChildPost", mContext, SiftWorkPost.class) {
+        Map<String, String> para = ParaUtils.getPara(mContext);
+        para.put("Code", workPostId);
+        NetUtils.getDataFromServerByPost(mContext, Urls.GET_CITY, false, para,
+                new RequestListCallBack<Address>("城市", mContext,
+                        Address.class) {
                     @Override
-                    public void onSuccessResult(List<SiftWorkPost> bean) {
-                        dataMap.put(workPostId, bean);
+                    public void onSuccessResult(List<Address> bean) {
                         secondAdapter.setNewData(bean);
+                        dataMap.put(workPostId, bean);
                     }
 
                     @Override
@@ -153,5 +151,4 @@ public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialo
                     }
                 });
     }
-
 }

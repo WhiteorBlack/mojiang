@@ -1,5 +1,7 @@
 package cn.idcby.jiajubang.Bean;
 
+import android.databinding.Bindable;
+import cn.idcby.jiajubang.BR;
 import java.util.ArrayList;
 
 /**
@@ -20,12 +22,14 @@ public class UnusedCategory extends BaseCategory{
         return CategoryID;
     }
 
+    @Bindable
     public boolean isSelected() {
         return isSelected;
     }
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+        notifyPropertyChanged(BR.selected);
     }
 
     public ArrayList<UnusedCategory> getSelectedCategory() {

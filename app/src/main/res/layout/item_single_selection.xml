@@ -5,9 +5,13 @@
 
         <import type="android.view.View" />
 
+        <import type="cn.idcby.jiajubang.R" />
+
+        <import type="cn.idcby.jiajubang.utils.StringUtil" />
+
         <variable
             name="item"
-            type="cn.idcby.jiajubang.Bean.SiftWorkPost" />
+            type="cn.idcby.jiajubang.Bean.UnusedCategory" />
     </data>
 
     <LinearLayout
@@ -22,7 +26,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="@color/yancy_green500"
-            android:visibility="@{item.selected?View.VISIBLE:View.INVISIBLE}" />
+            android:visibility="gone" />
 
         <TextView
             android:layout_width="match_parent"
@@ -30,6 +34,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:paddingLeft="15dp"
-            android:text="@{item.Name}" />
+            android:text="@{item.CategoryTitle}"
+            android:textColor="@{StringUtil.getColor(item.selected?R.color.yancy_green500:R.color.text_gray)}" />
     </LinearLayout>
 </layout>

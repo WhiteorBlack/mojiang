@@ -18,10 +18,12 @@
             <TextView
                 android:id="@+id/tv_first_title"
                 android:layout_width="match_parent"
-                android:visibility="gone"
-                android:layout_height="30dp"
-                android:background="@color/sift_left_normal"
-                android:gravity="center" />
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="职位选择"
+                android:textColor="@color/blacktext"
+                android:textSize="15sp"
+                android:visibility="visible" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_first"
@@ -29,10 +31,5 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_second"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.35" />
     </LinearLayout>
 </layout>

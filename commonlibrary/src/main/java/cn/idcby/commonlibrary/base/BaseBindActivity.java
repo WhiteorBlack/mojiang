@@ -29,7 +29,6 @@ public abstract class BaseBindActivity extends AppCompatActivity implements View
 
     private MyAppNomalReceiver msgCountChangeReceiver;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,7 @@ public abstract class BaseBindActivity extends AppCompatActivity implements View
         initBinding();
         initSDK();
 //        setContentView(getLayoutID());
-        StatusBarUtil.resetStatusBarColor(this) ;
+//        StatusBarUtil.resetStatusBarColor(this) ;
 
         //消息数量变化的广播
         msgCountChangeReceiver = new MyAppNomalReceiver();
@@ -57,13 +56,21 @@ public abstract class BaseBindActivity extends AppCompatActivity implements View
         dealCommon();
     }
 
+    public void refreshOk(){
+
+    }
+
+    public void refreshFail(){
+
+    }
+
     protected abstract void initBinding();
 
     public void initSDK() {
     }
 
 
-    public abstract int getLayoutID();
+//    public abstract int getLayoutID();
 
     public void initView(){
 

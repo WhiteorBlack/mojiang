@@ -318,16 +318,6 @@ public class ServerActivity extends BaseActivity {
 
         String urls = mIsInstall ? Urls.SERVER_INSTALL_LIST_RECOMMEND : Urls.SERVER_SERVER_LIST_RECOMMEND;
 
-//        Map<String,String> paramMap = ParaUtils.getPara(mContext) ;
-//        paramMap.put("TypeId" , "1") ;
-//        paramMap.put("Keyword" , "") ;
-//        paramMap.put("CategoryId" , "") ;
-//        paramMap.put("Page" , "" + mCurPage) ;
-//        paramMap.put("PageSize" , "10") ;
-//        paramMap.put("AreaId", "" + MyApplication.getCurrentCityId());
-//        paramMap.put("AreaType", "" + MyApplication.getCurrentCityType());
-//
-//        String urls = mIsInstall ? Urls.SERVER_LIST_INSTALL : Urls.SERVER_LIST_SERVER ;
 
         NetUtils.getDataFromServerByPost(mContext, urls , paramMap
                 , new RequestListCallBack<ServiceList>("getRecommendServer"
