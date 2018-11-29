@@ -999,7 +999,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             LoginHelper.resetHxInfo(mContext);
             JPushInterface.stopPush(MyApplication.getInstance());
             LoginHelper.logout(mContext);
-
+            AppManager.getAppManager().finishActivity(MainActivity.this);
             changeTabShow(INDEX_HOME);
         }
     }

@@ -117,4 +117,5 @@
     <color name="notice_apply_inherit">#86B3AE</color>
     <color name="bg_inherit_person">#DDDDDD</color>
     <color name="inherit_person_line_color">#A98825</color>
+    <color name="gray_alpha">#4f0d0d0d</color>
 </resources>

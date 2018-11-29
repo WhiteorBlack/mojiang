@@ -20,6 +20,7 @@ import cn.idcby.jiajubang.update.UpdateManager;
 import cn.idcby.jiajubang.utils.FileUtil;
 import cn.idcby.jiajubang.utils.GlideUtils;
 import cn.idcby.jiajubang.utils.LoginHelper;
+import cn.idcby.jiajubang.utils.SkipUtils;
 
 public class SplashActivity extends BaseActivity {
 
@@ -34,7 +35,12 @@ public class SplashActivity extends BaseActivity {
                     if(SPUtils.newIntance(mContext).getIsFirst()){
                         FirstGuideActivity.launch(mContext);
                     }else{
-                        goNextActivity(MainActivity.class);
+                        if (LoginHelper.isNotLogin(SplashActivity.this)){
+                            SkipUtils.toLoginActivity(SplashActivity.this);
+                        }else {
+
+                            goNextActivity(MainActivity.class);
+                        }
                     }
                     finish();
                     break;

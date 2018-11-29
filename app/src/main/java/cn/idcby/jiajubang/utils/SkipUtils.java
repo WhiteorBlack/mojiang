@@ -28,6 +28,7 @@ import cn.idcby.jiajubang.activity.GetTypeByCodeActivity;
 import cn.idcby.jiajubang.activity.GoodDetailActivity;
 import cn.idcby.jiajubang.activity.JobDetailActivity;
 import cn.idcby.jiajubang.activity.LoginActivity;
+import cn.idcby.jiajubang.activity.LoginActivityNew;
 import cn.idcby.jiajubang.activity.MessageCenterActivity;
 import cn.idcby.jiajubang.activity.MessageChatActivity;
 import cn.idcby.jiajubang.activity.MyApplyInfoActivity;
@@ -361,11 +362,9 @@ public class SkipUtils {
 
 
     public static void toLoginActivity(Context context) {
-
-        Intent intent = new Intent(context, LoginActivity.class);
+        Intent intent = new Intent(context, LoginActivityNew.class);
         intent.putExtra("isGoMain", false);
         context.startActivity(intent);
-
     }
 
     public static void toLoginActivityForResult(Activity context, int requestCode) {

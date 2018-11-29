@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import cn.idcby.commonlibrary.base.BaseBindActivity;
+import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.adapter.ServiceAdapter;
 import cn.idcby.jiajubang.databinding.ActivityServiceListActivityBinding;
@@ -28,6 +29,7 @@ public class ServiceListNewActivity extends BaseBindActivity {
     @Override
     public void initView() {
         super.initView();
+        binding.viewBar.getLayoutParams().height=ResourceUtils.getStatusBarHeight(this);
         binding.rvList.setLayoutManager(new LinearLayoutManager(this));
         binding.rvList.setAdapter(adapter);
         adapter.setEnableLoadMore(true);

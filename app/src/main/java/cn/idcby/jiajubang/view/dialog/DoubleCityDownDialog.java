@@ -8,6 +8,10 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.flyco.animation.BounceEnter.BounceBottomEnter;
+import com.flyco.animation.BounceEnter.BounceTopEnter;
+import com.flyco.animation.FlipEnter.FlipTopEnter;
+import com.flyco.dialog.widget.base.BaseDialog;
 import com.flyco.dialog.widget.base.BottomBaseDialog;
 
 import java.util.HashMap;
@@ -18,6 +22,7 @@ import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.jiajubang.Bean.Address;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.adapter.DoubleCityAdapter;
+import cn.idcby.jiajubang.anim.BounceTopToBottomEnter;
 import cn.idcby.jiajubang.databinding.DialogDoubleDownSelectionBinding;
 import cn.idcby.jiajubang.interf.DoubleSelectionInterface;
 import cn.idcby.jiajubang.utils.NetUtils;
@@ -26,7 +31,7 @@ import cn.idcby.jiajubang.utils.RequestListCallBack;
 import cn.idcby.jiajubang.utils.ScreenUtil;
 import cn.idcby.jiajubang.utils.Urls;
 
-public class DoubleCityDownDialog extends BottomBaseDialog<DoubleCityDownDialog> {
+public class DoubleCityDownDialog extends BaseDialog<DoubleCityDownDialog> {
     private DialogDoubleDownSelectionBinding binding;
     private DoubleCityAdapter firstAdapter, secondAdapter;
     private Map<String, List<Address>> dataMap = new HashMap<>();
@@ -42,6 +47,11 @@ public class DoubleCityDownDialog extends BottomBaseDialog<DoubleCityDownDialog>
 
     public DoubleCityDownDialog(Context context) {
         super(context);
+    }
+
+    public DoubleCityDownDialog(Context context, boolean isPopupStyle) {
+        super(context, isPopupStyle);
+        this.binding = binding;
     }
 
     @Override
@@ -66,8 +76,8 @@ public class DoubleCityDownDialog extends BottomBaseDialog<DoubleCityDownDialog>
     @Override
     public void setUiBeforShow() {
         dimEnabled(false);
-        int barheight = ResourceUtils.getStatusBarHeight(mContext);
-        float height = (ScreenUtil.dip2px(81) + ResourceUtils.getStatusBarHeight(mContext)) * 1.0f / ScreenUtil.getWidthAndHeight().heightPixels;
+        showAnim(new BounceTopToBottomEnter());
+        float height = (ScreenUtil.dip2px(82) + ResourceUtils.getStatusBarHeight(mContext)) * 1.0f / ScreenUtil.getWidthAndHeight().heightPixels;
         heightScale(1 - height);
         setCanceledOnTouchOutside(true);
     }

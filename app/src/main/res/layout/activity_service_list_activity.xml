@@ -71,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:paddingLeft="5dp"
                 android:gravity="center"
                 android:onClick="onClick"
                 android:orientation="horizontal">
@@ -78,7 +79,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="郑州"
+                    android:text="@{viewModel.selectCity}"
+                    android:maxLength="3"
                     android:textColor="@color/blacktext"
                     android:textSize="14sp" />
 
@@ -86,6 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="false"
+                    android:background="@null"
                     android:button="@drawable/chb_arrow_up_down" />
 
 
@@ -169,6 +172,7 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:clickable="false"
+                    android:background="@null"
                     android:layout_height="wrap_content"
                     android:button="@drawable/chb_arrow_up_down" />
 
@@ -187,8 +191,10 @@
 
         <cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout
             android:id="@+id/refresh"
-            android:layout_width="match_parent"
-            android:layout_height="556dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line">

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <data></data>
+    <data>
+
+    </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/gray_alpha"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -19,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:gravity="center"
+                android:paddingLeft="3dp"
                 android:text="省份"
                 android:textColor="@color/blacktext"
                 android:textSize="14sp" />
@@ -35,7 +39,7 @@
             android:background="@color/line_color" />
 
         <LinearLayout
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="match_parent"
             android:background="@color/white"
             android:orientation="vertical">
@@ -44,7 +48,8 @@
                 android:id="@+id/tv_title_left"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:gravity="center"
+                android:gravity="center_vertical"
+                android:paddingLeft="18dp"
                 android:text="城市"
                 android:textColor="@color/blacktext"
                 android:textSize="14sp" />
@@ -52,8 +57,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_second"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.35" />
+                android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
 </layout>

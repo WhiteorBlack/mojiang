@@ -1,16 +1,17 @@
 package cn.idcby.jiajubang.activity;
 
 
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import cn.idcby.commonlibrary.base.BaseActivity;
 import cn.idcby.commonlibrary.dialog.LoadingDialog;
 import cn.idcby.commonlibrary.utils.ToastUtils;
+import cn.idcby.jiajubang.Bean.CheckPhone;
 import cn.idcby.jiajubang.Bean.NewsDetail;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.utils.NetUtils;
@@ -55,6 +56,7 @@ public class LoginActivityNew extends BaseActivity {
                 ToastUtils.showToast(LoginActivityNew.this, "请输入手机号码");
                 return;
             }
+            checkPhone(phone);
         } else if (i == R.id.acti_login_regist_tips_tv) {
             getRegistTipsAndToWeb(true);
         } else if (i == R.id.iv_wechat) {//微信登录
@@ -62,6 +64,33 @@ public class LoginActivityNew extends BaseActivity {
         } else if (i == R.id.iv_weibo) {//微博登录
 
         }
+    }
+
+    /**
+     * 检查手机号是否已经注册
+     *
+     * @param phone
+     */
+    private void checkPhone(String phone) {
+        Map<String, String> paramMap = new HashMap<>();
+        paramMap.put("Phone", phone);
+        NetUtils.getDataFromServerByPost(this, Urls.CHECK_PHONE, paramMap,
+                new RequestObjectCallBack<CheckPhone>("checkPhone", this, CheckPhone.class) {
+                    @Override
+                    public void onSuccessResult(CheckPhone bean) {
+
+                    }
+
+                    @Override
+                    public void onErrorResult(String str) {
+
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+
+                    }
+                });
     }
 
     /**

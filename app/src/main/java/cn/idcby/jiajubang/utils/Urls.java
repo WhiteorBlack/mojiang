@@ -53,6 +53,8 @@ public class Urls {
     public static String GET_PHOTO_CODE = BASE_URL + "/Public/GetImage";
     //登录
     public static String LOGIN = BASE_URL + "/Account/Login";
+    //检查手机号
+    public static String CHECK_PHONE=BASE_URL+"/Account/CheckExist";
     //注册
     public static String REGISTER = BASE_URL + "/Account/Register";
     //注册获取验证码
