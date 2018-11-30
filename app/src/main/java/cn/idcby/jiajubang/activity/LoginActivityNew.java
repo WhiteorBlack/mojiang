@@ -10,6 +10,7 @@ import java.util.Map;
 
 import cn.idcby.commonlibrary.base.BaseActivity;
 import cn.idcby.commonlibrary.dialog.LoadingDialog;
+import cn.idcby.commonlibrary.utils.AppManager;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.CheckPhone;
 import cn.idcby.jiajubang.Bean.NewsDetail;
@@ -78,7 +79,9 @@ public class LoginActivityNew extends BaseActivity {
                 new RequestObjectCallBack<CheckPhone>("checkPhone", this, CheckPhone.class) {
                     @Override
                     public void onSuccessResult(CheckPhone bean) {
-
+                        if (bean.errorcode==0){
+                            SkipUtils.goActivity(mContext,RegisterActivity.class);
+                        }
                     }
 
                     @Override
@@ -92,6 +95,8 @@ public class LoginActivityNew extends BaseActivity {
                     }
                 });
     }
+
+
 
     /**
      * 获取用户注册协议，并且跳转

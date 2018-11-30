@@ -97,19 +97,18 @@ public class SkipUtils {
     public static final int PAY_ORDER_TYPE_BOND_REQ_BID = 10;//招标--报价--保证金
 
     //认证状态
-    public static final String APPLY_TYPE_PERSON_NO = "0" ;
-    public static final String APPLY_TYPE_PERSON = "1" ;
-    public static final String APPLY_TYPE_FACTORY = "2" ;
-    public static final String APPLY_TYPE_COMPANY = "3" ;
-    public static final String APPLY_TYPE_INSTALL = "4" ;
-    public static final String APPLY_TYPE_SERVER = "5" ;
-    public static final String APPLY_TYPE_STORE = "6" ;
-    public static final String APPLY_TYPE_CAR = "7" ;//有货车
+    public static final String APPLY_TYPE_PERSON_NO = "0";
+    public static final String APPLY_TYPE_PERSON = "1";
+    public static final String APPLY_TYPE_FACTORY = "2";
+    public static final String APPLY_TYPE_COMPANY = "3";
+    public static final String APPLY_TYPE_INSTALL = "4";
+    public static final String APPLY_TYPE_SERVER = "5";
+    public static final String APPLY_TYPE_STORE = "6";
+    public static final String APPLY_TYPE_CAR = "7";//有货车
 
     //售后服务状态
-    public static final String AFTER_SERVER_TYPE_MONEY = "1" ;//仅退款
-    public static final String AFTER_SERVER_TYPE_GOOD = "2" ;//退货退款
-
+    public static final String AFTER_SERVER_TYPE_MONEY = "1";//仅退款
+    public static final String AFTER_SERVER_TYPE_GOOD = "2";//退货退款
 
 
     public static final String INTENT_USER_ID = "userId";
@@ -236,19 +235,19 @@ public class SkipUtils {
     public static final int PAY_PASSWORD_RECALL = 0x7f000001;//找回密码
 
     //订单相关
-    public static final String ORDER_TYPE_GOOD = "1" ;
-    public static final String ORDER_TYPE_UNUSE = "2" ;
-    public static final String ORDER_TYPE_SERVER = "3" ;
+    public static final String ORDER_TYPE_GOOD = "1";
+    public static final String ORDER_TYPE_UNUSE = "2";
+    public static final String ORDER_TYPE_SERVER = "3";
 
     @Deprecated
-    public static final String ORDER_TYPE_NEED = "6" ;//需求订单不存在了
+    public static final String ORDER_TYPE_NEED = "6";//需求订单不存在了
 
 
     //需求类型相关
-    public static final int NEED_STYLE_TYPE_GOOD = 1 ;
-    public static final int NEED_STYLE_TYPE_UNUSE = 2 ;
-    public static final int NEED_STYLE_TYPE_INSTALL = 3 ;
-    public static final int NEED_STYLE_TYPE_SERVER = 4 ;
+    public static final int NEED_STYLE_TYPE_GOOD = 1;
+    public static final int NEED_STYLE_TYPE_UNUSE = 2;
+    public static final int NEED_STYLE_TYPE_INSTALL = 3;
+    public static final int NEED_STYLE_TYPE_SERVER = 4;
 
 
     public static void toApplyActivity(Context context) {
@@ -262,6 +261,7 @@ public class SkipUtils {
         intent.putExtra("articleID", articleID);
         context.startActivity(intent);
     }
+
     public static void toNewsDetailVideoActivity(Context context, String articleID, String videoPath) {
         Intent intent = new Intent(context, NewsDetailVideoActivity.class);
         intent.putExtra("articleID", articleID);
@@ -277,10 +277,10 @@ public class SkipUtils {
     }
 
     public static void toOtherUserInfoActivity(Context context, String userId) {
-        toOtherUserInfoActivity(context ,userId ,false) ;
+        toOtherUserInfoActivity(context, userId, false);
     }
 
-    public static void toOtherUserInfoActivity(Context context, String userId,boolean isHx) {
+    public static void toOtherUserInfoActivity(Context context, String userId, boolean isHx) {
         Intent toOtIt = new Intent(context, UserIndexActivity.class);
         toOtIt.putExtra(isHx ? SkipUtils.INTENT_USER_HX_ID : SkipUtils.INTENT_USER_ID, userId);
         context.startActivity(toOtIt);
@@ -304,14 +304,15 @@ public class SkipUtils {
 
     /**
      * 跳转到投诉界面
+     *
      * @param context context
-     * @param bundle bundle
+     * @param bundle  bundle
      */
-    public static void toRequestActivity(Context context , Bundle bundle){
+    public static void toRequestActivity(Context context, Bundle bundle) {
 
         //2018-07-04 17:50:28 暂时跳转到反馈界面
-        Intent toRiIt = new Intent(context , FeedBackActivity.class) ;
-        context.startActivity(toRiIt) ;
+        Intent toRiIt = new Intent(context, FeedBackActivity.class);
+        context.startActivity(toRiIt);
 
     }
 
@@ -319,46 +320,50 @@ public class SkipUtils {
 
     /**
      * 跳转到商品搜索结果
+     *
      * @param context context
-     * @param key key
+     * @param key     key
      * @param storeId storeId
      */
-    public static void toSearchGoodList(Context context ,String key,String storeId){
-        Intent toLiIt = new Intent(context , SearchGoodListActivity.class) ;
-        toLiIt.putExtra(SkipUtils.INTENT_STORE_ID,storeId) ;
-        toLiIt.putExtra(SkipUtils.INTENT_SEARCH_KEY,key) ;
-        context.startActivity(toLiIt) ;
+    public static void toSearchGoodList(Context context, String key, String storeId) {
+        Intent toLiIt = new Intent(context, SearchGoodListActivity.class);
+        toLiIt.putExtra(SkipUtils.INTENT_STORE_ID, storeId);
+        toLiIt.putExtra(SkipUtils.INTENT_SEARCH_KEY, key);
+        context.startActivity(toLiIt);
     }
 
-    public static void toSearchGoodList(Context context ,String key){
-        toSearchGoodList(context ,key,"") ;
-    }
-
-
-    public static void toNomalGoodList(Context context ,String parentCateId,String parentCateName
-            ,String childCateName,String childCateId,String mStoreId){
-        Intent toLiIt = new Intent(context , CategoryGoodListActivity.class) ;
-        toLiIt.putExtra(SkipUtils.INTENT_CATEGOTY_ID,parentCateId) ;
-        toLiIt.putExtra(SkipUtils.INTENT_CATEGOTY_NAME,parentCateName) ;
-        toLiIt.putExtra(SkipUtils.INTENT_CATEGOTY_CHILD_NAME,childCateName) ;
-        toLiIt.putExtra(SkipUtils.INTENT_CATEGOTY_CHILD_ID,childCateId) ;
-        toLiIt.putExtra(SkipUtils.INTENT_STORE_ID,mStoreId) ;
-        context.startActivity(toLiIt) ;
-    }
-
-    public static void toNomalGoodList(Context context ,String parentCateId,String parentCateName,String storeId){
-        toNomalGoodList(context ,parentCateId ,parentCateName ,"" ,"" ,storeId) ;
-    }
-
-    public static void toNomalGoodList(Context context ,String parentCateId,String parentCateName){
-        toNomalGoodList(context ,parentCateId ,parentCateName ,"" ,"" ,"") ;
+    public static void toSearchGoodList(Context context, String key) {
+        toSearchGoodList(context, key, "");
     }
 
 
+    public static void toNomalGoodList(Context context, String parentCateId, String parentCateName
+            , String childCateName, String childCateId, String mStoreId) {
+        Intent toLiIt = new Intent(context, CategoryGoodListActivity.class);
+        toLiIt.putExtra(SkipUtils.INTENT_CATEGOTY_ID, parentCateId);
+        toLiIt.putExtra(SkipUtils.INTENT_CATEGOTY_NAME, parentCateName);
+        toLiIt.putExtra(SkipUtils.INTENT_CATEGOTY_CHILD_NAME, childCateName);
+        toLiIt.putExtra(SkipUtils.INTENT_CATEGOTY_CHILD_ID, childCateId);
+        toLiIt.putExtra(SkipUtils.INTENT_STORE_ID, mStoreId);
+        context.startActivity(toLiIt);
+    }
+
+    public static void toNomalGoodList(Context context, String parentCateId, String parentCateName, String storeId) {
+        toNomalGoodList(context, parentCateId, parentCateName, "", "", storeId);
+    }
+
+    public static void toNomalGoodList(Context context, String parentCateId, String parentCateName) {
+        toNomalGoodList(context, parentCateId, parentCateName, "", "", "");
+    }
+
+
+    public static void goActivity(Context conte, Class<?> tClass) {
+        Intent intent = new Intent(conte, tClass);
+        conte.startActivity(intent);
+    }
 
 
     /*********************商品列表相关********************/
-
 
 
     public static void toLoginActivity(Context context) {
@@ -385,10 +390,10 @@ public class SkipUtils {
         context.startActivity(intent);
     }
 
-    public static void toSendCircleActivity(Context context,String categoryId,String categoryName) {
+    public static void toSendCircleActivity(Context context, String categoryId, String categoryName) {
         Intent intent = new Intent(context, CircleSendActivity.class);
-        intent.putExtra(SkipUtils.INTENT_CATEGOTY_ID ,categoryId) ;
-        intent.putExtra(SkipUtils.INTENT_CATEGOTY_NAME ,categoryName) ;
+        intent.putExtra(SkipUtils.INTENT_CATEGOTY_ID, categoryId);
+        intent.putExtra(SkipUtils.INTENT_CATEGOTY_NAME, categoryName);
         context.startActivity(intent);
 
     }
@@ -398,17 +403,17 @@ public class SkipUtils {
         context.startActivityForResult(intent, requestCode);
     }
 
-    public static void toSendCircleActivity(Activity context,String categoryId,String categoryName , int requestCode) {
+    public static void toSendCircleActivity(Activity context, String categoryId, String categoryName, int requestCode) {
         Intent intent = new Intent(context, CircleSendActivity.class);
-        intent.putExtra(SkipUtils.INTENT_CATEGOTY_ID ,categoryId) ;
-        intent.putExtra(SkipUtils.INTENT_CATEGOTY_NAME ,categoryName) ;
+        intent.putExtra(SkipUtils.INTENT_CATEGOTY_ID, categoryId);
+        intent.putExtra(SkipUtils.INTENT_CATEGOTY_NAME, categoryName);
         context.startActivityForResult(intent, requestCode);
     }
 
-    public static void toSearchNomalActivity(Activity context,String mSearchKey, int requestCode) {
-        Intent toShIt = new Intent(context ,SearchNomalActivity.class) ;
-        toShIt.putExtra(SkipUtils.INTENT_SEARCH_KEY , mSearchKey) ;
-        context.startActivityForResult(toShIt , requestCode) ;
+    public static void toSearchNomalActivity(Activity context, String mSearchKey, int requestCode) {
+        Intent toShIt = new Intent(context, SearchNomalActivity.class);
+        toShIt.putExtra(SkipUtils.INTENT_SEARCH_KEY, mSearchKey);
+        context.startActivityForResult(toShIt, requestCode);
     }
 
     public static void toJobDetailActivity(Context context, String jobId) {
@@ -419,7 +424,7 @@ public class SkipUtils {
 
     }
 
-    public static void toGoodDetailsActivity(Context context, String goodId, String skuId,boolean isFromStore) {
+    public static void toGoodDetailsActivity(Context context, String goodId, String skuId, boolean isFromStore) {
         Intent intent = new Intent(context, GoodDetailActivity.class);
         intent.putExtra(SkipUtils.INTENT_GOOD_ID, goodId);
         intent.putExtra(SkipUtils.INTENT_GOOD_SKU_ID, skuId);
@@ -428,13 +433,15 @@ public class SkipUtils {
     }
 
     public static void toGoodDetailsActivity(Context context, String goodId, String skuId) {
-        toGoodDetailsActivity(context,goodId ,skuId ,false) ;
+        toGoodDetailsActivity(context, goodId, skuId, false);
     }
-    public static void toGoodDetailsActivity(Context context, String goodId,boolean isFromStore) {
-        toGoodDetailsActivity(context,goodId ,null ,isFromStore) ;
+
+    public static void toGoodDetailsActivity(Context context, String goodId, boolean isFromStore) {
+        toGoodDetailsActivity(context, goodId, null, isFromStore);
     }
+
     public static void toGoodDetailsActivity(Context context, String goodId) {
-        toGoodDetailsActivity(context,goodId ,null ,false) ;
+        toGoodDetailsActivity(context, goodId, null, false);
     }
 
     public static void toImageShowActivityWithThumb(Activity mContext, List<ImageThumb> thumbImageList, int position) {
@@ -470,8 +477,9 @@ public class SkipUtils {
 
     /**
      * 根据CODE选择相关的item项，用于 Urls.GET_TYPE_BY_CODE 接口
-     * @param context ac
-     * @param code code
+     *
+     * @param context     ac
+     * @param code        code
      * @param requestCode requestCode
      */
     public static void toWordTypeActivity(Activity context, String code, int requestCode) {
@@ -480,10 +488,11 @@ public class SkipUtils {
 
     /**
      * 根据CODE选择相关的item项，用于 Urls.GET_TYPE_BY_CODE 接口
-     * @param context ac
-     * @param code code
+     *
+     * @param context      ac
+     * @param code         code
      * @param selectedData selectedData
-     * @param requestCode requestCode
+     * @param requestCode  requestCode
      */
     public static void toWordTypeActivity(Activity context, String code, ArrayList<WordType> selectedData, int requestCode) {
         toWordTypeMoreActivity(context, code, false, selectedData, requestCode);
@@ -491,8 +500,9 @@ public class SkipUtils {
 
     /**
      * 根据CODE选择相关的item项，用于 Urls.GET_TYPE_BY_CODE 接口
-     * @param context ac
-     * @param code code
+     *
+     * @param context     ac
+     * @param code        code
      * @param requestCode requestCode
      */
     public static void toWordTypeMoreActivity(Activity context
@@ -503,8 +513,9 @@ public class SkipUtils {
 
     /**
      * 根据CODE选择相关的item项，用于 Urls.GET_TYPE_BY_CODE 接口
-     * @param context ac
-     * @param code code
+     *
+     * @param context     ac
+     * @param code        code
      * @param isMoreCheck isMoreCheck
      * @param requestCode requestCode
      */
@@ -533,43 +544,46 @@ public class SkipUtils {
 
     /**
      * 跳转到 订单售后界面
-     * @param context context
+     *
+     * @param context   context
      * @param orderType 1 直供 2闲置 3服务 ；
-     * @param orderId id
-     * @param itemId itemId
-     * @param name name
-     * @param img img
-     * @param amount money
+     * @param orderId   id
+     * @param itemId    itemId
+     * @param name      name
+     * @param img       img
+     * @param amount    money
      * @param isReceive true 是买的订单 ；false 是卖的订单
      */
-    public static void toOrderAfterSaleActivity(Context context,String orderType , String orderId , String itemId
-            , String name , String img, String amount,boolean isReceive){
-        toOrderAfterSaleActivity(context,true,null ,orderType ,orderId ,itemId,name ,img ,amount,isReceive);
+    public static void toOrderAfterSaleActivity(Context context, String orderType, String orderId, String itemId
+            , String name, String img, String amount, boolean isReceive) {
+        toOrderAfterSaleActivity(context, true, null, orderType, orderId, itemId, name, img, amount, isReceive);
     }
 
     /**
      * 跳转到 订单售后界面
-     * @param context context
-     * @param isEdit isEdit
+     *
+     * @param context     context
+     * @param isEdit      isEdit
      * @param afterSaleId afterSaleId
      */
-    public static void toOrderAfterSaleActivity(Context context,boolean isEdit  , String afterSaleId,boolean isReceive){
-        toOrderAfterSaleActivity(context,isEdit,afterSaleId ,null ,null ,null,null ,null ,null,isReceive);
+    public static void toOrderAfterSaleActivity(Context context, boolean isEdit, String afterSaleId, boolean isReceive) {
+        toOrderAfterSaleActivity(context, isEdit, afterSaleId, null, null, null, null, null, null, isReceive);
     }
 
     /**
      * 跳转到 订单售后界面
      */
-    public static void toOrderAfterSaleActivity(Context context,boolean isEdit , String afterSaleId, String orderType , String orderId , String itemId
-            , String name , String img, String amount,boolean isReceive){
-        MyOrderAfterSaleActivity.launch(context,isEdit,afterSaleId ,orderType ,orderId ,itemId,name ,img ,amount,isReceive);
+    public static void toOrderAfterSaleActivity(Context context, boolean isEdit, String afterSaleId, String orderType, String orderId, String itemId
+            , String name, String img, String amount, boolean isReceive) {
+        MyOrderAfterSaleActivity.launch(context, isEdit, afterSaleId, orderType, orderId, itemId, name, img, amount, isReceive);
     }
 
     /**
      * 跳转到付款界面
-     * @param context con
-     * @param money money
-     * @param orderId orderId
+     *
+     * @param context   con
+     * @param money     money
+     * @param orderId   orderId
      * @param orderCode code
      * @param orderType type
      */
@@ -585,12 +599,13 @@ public class SkipUtils {
 
     /**
      * 跳转到付款界面
-     * @param context con
+     *
+     * @param context     con
      * @param requestCode requestCode
-     * @param money money
-     * @param orderId orderId
-     * @param orderCode code
-     * @param orderType type
+     * @param money       money
+     * @param orderId     orderId
+     * @param orderCode   code
+     * @param orderType   type
      */
     public static void toPayBondActivity(Activity context, int requestCode, String money, String orderId
             , String orderCode, int orderType) {
@@ -604,12 +619,13 @@ public class SkipUtils {
 
     /**
      * 跳转到付款界面
-     * @param fragment con
+     *
+     * @param fragment    con
      * @param requestCode requestCode
-     * @param money money
-     * @param orderId orderId
-     * @param orderCode code
-     * @param orderType type
+     * @param money       money
+     * @param orderId     orderId
+     * @param orderCode   code
+     * @param orderType   type
      */
     public static void toPayBondActivity(Fragment fragment, int requestCode, String money, String orderId
             , String orderCode, int orderType) {
@@ -624,6 +640,7 @@ public class SkipUtils {
 
     /**
      * 根据广告位跳转到指定界面
+     *
      * @param context context
      * @param advInfo info
      */
@@ -644,6 +661,7 @@ public class SkipUtils {
 
     /**
      * 跳转到消息列表
+     *
      * @param context con
      */
     public static void toMessageCenterActivity(Context context) {
@@ -653,6 +671,7 @@ public class SkipUtils {
 
     /**
      * 跳转到聊天界面
+     *
      * @param activity ac
      * @param userHxId hxid
      */
@@ -665,9 +684,10 @@ public class SkipUtils {
 
     /**
      * 对androidN支持
+     *
      * @param context c
-     * @param intent i
-     * @param uri u
+     * @param intent  i
+     * @param uri     u
      */
     public static void grantUriPermissionForAndrondN(Context context, Intent intent, Uri uri) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -684,8 +704,9 @@ public class SkipUtils {
 
     /**
      * 拨打电话
+     *
      * @param context context
-     * @param phone phone
+     * @param phone   phone
      */
     public static void toCallPhoneAutoActivity(Context context, String phone) {
         //用intent启动拨打电话
@@ -699,8 +720,9 @@ public class SkipUtils {
 
     /**
      * 拨打电话
+     *
      * @param context context
-     * @param phone phone
+     * @param phone   phone
      */
     public static void toCallPhoneDialActivity(Context context, String phone) {
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone));
