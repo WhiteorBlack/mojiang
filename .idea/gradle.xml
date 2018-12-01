@@ -12,8 +12,10 @@
             <option value="$PROJECT_DIR$/commonlibrary" />
             <option value="$PROJECT_DIR$/easeui" />
             <option value="$PROJECT_DIR$/imagepicker" />
+            <option value="$PROJECT_DIR$/loopview" />
             <option value="$PROJECT_DIR$/magicindicator" />
             <option value="$PROJECT_DIR$/photoview" />
+            <option value="$PROJECT_DIR$/vcedittext-lib" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

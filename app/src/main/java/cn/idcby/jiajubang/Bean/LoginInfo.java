@@ -35,6 +35,7 @@ public class LoginInfo implements Serializable{
     public String token;
     public String HxPwd;
     public String HxName;
+    public boolean PersonalInfoPerfect;
 
     public String getToken() {
         return token;
@@ -46,5 +47,13 @@ public class LoginInfo implements Serializable{
 
     public String getHxName() {
         return StringUtils.convertNull(HxName);
+    }
+
+    public boolean isPersonalInfoPerfect() {
+        return PersonalInfoPerfect;
+    }
+
+    public void setPersonalInfoPerfect(boolean personalInfoPerfect) {
+        PersonalInfoPerfect = personalInfoPerfect;
     }
 }

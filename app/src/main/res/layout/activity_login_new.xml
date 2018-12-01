@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_tip"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -67,7 +67,7 @@
             android:layout_marginTop="20dp"
             android:text="登录即同意"
             android:textColor="@color/black"
-            android:textSize="@dimen/textSize_ten" />
+            android:textSize="@dimen/textSize_twelve" />
 
         <TextView
             android:id="@+id/acti_login_regist_tips_tv"
@@ -78,7 +78,7 @@
             android:layout_toRightOf="@+id/tv_server_tip"
             android:text="《陌匠服务条款及协议》"
             android:textColor="@color/yancy_green500"
-            android:textSize="@dimen/textSize_ten" />
+            android:textSize="@dimen/textSize_twelve" />
 
         <TextView
             android:id="@+id/acti_login_sub_tv"
@@ -111,9 +111,8 @@
         android:layout_width="113dp"
         android:layout_height="60dp"
         android:layout_above="@id/acti_login_content_lay"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="40dp"
-        android:background="@color/greenlight2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="30dp"
         android:src="@mipmap/login_logo" />
 
     <LinearLayout

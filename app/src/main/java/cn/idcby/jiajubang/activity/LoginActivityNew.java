@@ -1,9 +1,12 @@
 package cn.idcby.jiajubang.activity;
 
 
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+
+import com.gyf.barlibrary.ImmersionBar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +17,7 @@ import cn.idcby.commonlibrary.utils.AppManager;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.CheckPhone;
 import cn.idcby.jiajubang.Bean.NewsDetail;
+import cn.idcby.jiajubang.Bean.ResultBean;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.utils.NetUtils;
 import cn.idcby.jiajubang.utils.ParaUtils;
@@ -36,6 +40,7 @@ public class LoginActivityNew extends BaseActivity {
     @Override
     public void initView() {
         super.initView();
+        ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).flymeOSStatusBarFontColor(R.color.black).init();
         etPhone = findViewById(R.id.acti_login_number_ev);
 
     }
@@ -76,17 +81,26 @@ public class LoginActivityNew extends BaseActivity {
         Map<String, String> paramMap = new HashMap<>();
         paramMap.put("Phone", phone);
         NetUtils.getDataFromServerByPost(this, Urls.CHECK_PHONE, paramMap,
-                new RequestObjectCallBack<CheckPhone>("checkPhone", this, CheckPhone.class) {
+                new RequestObjectCallBack<ResultBean>("checkPhone",false, this, ResultBean.class) {
                     @Override
-                    public void onSuccessResult(CheckPhone bean) {
-                        if (bean.errorcode==0){
-                            SkipUtils.goActivity(mContext,RegisterActivity.class);
+                    public void onSuccessResult(ResultBean bean) {
+                        if (bean.getErrorCode() == 0) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("phone", phone);
+                            SkipUtils.goActivity(mContext, RegisterNewActivity.class, bundle);
+                            onBackPressed();
                         }
                     }
 
                     @Override
                     public void onErrorResult(String str) {
-
+                            if (str.contains("已被注册")){
+                                Bundle bundle = new Bundle();
+                                bundle.putString("phone", phone);
+                                SkipUtils.goActivity(mContext,LoginPwdActivityNew.class,bundle);
+                                onBackPressed();
+                            }
+//                        ToastUtils.showToast(LoginActivityNew.this, str);
                     }
 
                     @Override
@@ -95,7 +109,6 @@ public class LoginActivityNew extends BaseActivity {
                     }
                 });
     }
-
 
 
     /**

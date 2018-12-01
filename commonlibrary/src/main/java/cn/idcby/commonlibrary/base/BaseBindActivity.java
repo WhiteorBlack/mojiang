@@ -45,7 +45,6 @@ public abstract class BaseBindActivity extends AppCompatActivity implements View
         IntentFilter msgFilter =
                 new IntentFilter(FlagUtils.FLAG_BROADCAST_MSG_COUNT_CHANGE);
         registerReceiver(msgCountChangeReceiver, msgFilter);
-
         mActivity = this;
         mContext = this;
         initView();

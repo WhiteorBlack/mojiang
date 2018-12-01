@@ -1,1 +1,1 @@
-include ':app', ':commonlibrary', ':magicindicator', ':imagepicker', ':photoview', ':easeui'
+include ':app', ':commonlibrary', ':magicindicator', ':imagepicker', ':photoview', ':easeui', ':loopview', ':vcedittext-lib'

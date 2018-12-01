@@ -7,12 +7,19 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.flyco.dialog.listener.OnOperItemClickL;
+import com.flyco.dialog.widget.ActionSheetDialog;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,6 +49,7 @@ import cn.idcby.jiajubang.utils.RequestObjectCallBack;
 import cn.idcby.jiajubang.utils.SkipUtils;
 import cn.idcby.jiajubang.utils.StringUtils;
 import cn.idcby.jiajubang.utils.Urls;
+import cn.idcby.jiajubang.view.dialog.DatePop;
 import cn.idcby.jiajubang.view.dialog.DoubleCityDialog;
 import cn.idcby.jiajubang.view.dialog.DoubleSelectionDialog;
 import cn.idcby.jiajubang.view.dialog.SingleSelectionDialog;
@@ -166,11 +174,11 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         int vId = view.getId();
 
         if (R.id.acti_user_info_sex_tv == vId) {
-            showSexDialog();
+            showSexDialog(view);
         } else if (R.id.acti_user_info_head_iv == vId) {
             checkPhoto();
         } else if (R.id.acti_user_info_birthday_tv == vId) {
-            datePicker("选择出生日期", mBirthdayTv);
+            datePicker(mBirthdayTv);
         } else if (R.id.acti_user_info_area_tv == vId) {//区域
             showCityDialog();
 //            SelectedProvinceActivity.launch(mActivity, REQUEST_CODE_AREA);
@@ -221,8 +229,9 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
                         return;
                     }
                     Address address = (Address) post;
-                    mAreaTv.setText(address.AreaName);
-                    mAreaId = address.AreaId;
+                    mAreaTv.setText(address.getParentName()+" "+address.AreaName);
+                    mCityId = address.AreaId;
+                    mProvinceId=address.getParentId();
                 }
             });
         }
@@ -322,73 +331,118 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         mNickNameEv.setSelection(mNickNameEv.getText().length());
     }
 
+
     /**
      * 选择性别
      */
-    private void showSexDialog() {
-        if (null == mSexDialog) {
-            mSexDialog = new Dialog(mContext, cn.idcby.commonlibrary.R.style.my_custom_dialog);
-            View v = LayoutInflater.from(mContext).inflate(R.layout.dialog_check_sex, null);
-            mSexDialog.setContentView(v);
+    private String[] sexString = new String[]{"男", "女"};
+    ActionSheetDialog actionSheetDialog;
 
-            v.getLayoutParams().width = (int) (ResourceUtils.getScreenWidth(mContext) * 0.6F);
-
-            TextView sexM = v.findViewById(R.id.dialog_check_sex_man_tv);
-            TextView sexW = v.findViewById(R.id.dialog_check_sex_women_tv);
-
-            sexM.setOnClickListener(new View.OnClickListener() {
+    private void showSexDialog(View view) {
+        if (actionSheetDialog == null) {
+            actionSheetDialog = new ActionSheetDialog(this, sexString, view);
+            actionSheetDialog.cancelText("取消");
+            actionSheetDialog.setCanceledOnTouchOutside(true);
+            actionSheetDialog.isTitleShow(true);
+            actionSheetDialog.titleTextSize_SP(14);
+            actionSheetDialog.title("请选择您的性别");
+            actionSheetDialog.setOnOperItemClickL(new OnOperItemClickL() {
                 @Override
-                public void onClick(View view) {
-                    mSex = 1;
-                    mSexTv.setText("男");
-                    mSexDialog.dismiss();
-                }
-            });
-            sexW.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mSex = 2;
-                    mSexTv.setText("女");
-                    mSexDialog.dismiss();
+                public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mSex = position + 1;
+                    mSexTv.setText(sexString[position]);
+                    actionSheetDialog.cancel();
                 }
             });
         }
-
-        mSexDialog.show();
+        actionSheetDialog.show();
     }
 
+//    /**
+//     * 选择性别
+//     */
+//    private void showSexDialog() {
+//        if (null == mSexDialog) {
+//            mSexDialog = new Dialog(mContext, cn.idcby.commonlibrary.R.style.my_custom_dialog);
+//            View v = LayoutInflater.from(mContext).inflate(R.layout.dialog_check_sex, null);
+//            mSexDialog.setContentView(v);
+//
+//            v.getLayoutParams().width = (int) (ResourceUtils.getScreenWidth(mContext) * 0.6F);
+//
+//            TextView sexM = v.findViewById(R.id.dialog_check_sex_man_tv);
+//            TextView sexW = v.findViewById(R.id.dialog_check_sex_women_tv);
+//
+//            sexM.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    mSex = 1;
+//                    mSexTv.setText("男");
+//                    mSexDialog.dismiss();
+//                }
+//            });
+//            sexW.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    mSex = 2;
+//                    mSexTv.setText("女");
+//                    mSexDialog.dismiss();
+//                }
+//            });
+//        }
+//
+//        mSexDialog.show();
+//    }
 
-    //日期选择器
-    private void datePicker(String str, final TextView view) {
-        view.setEnabled(false);
-        dialogDatePicker = new DialogDatePicker(this, false);
-        dialogDatePicker.setTitle(str);
-        dialogDatePicker.setOnNegativeListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                view.setEnabled(true);
-                dialogDatePicker.dismiss();
-            }
-        });
-        dialogDatePicker.setOnPositiveListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //格式化时间
-                SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String currentDate = sDateFormat.format(new java.util.Date());
-                if (DateCompareUtils.compareDay(currentDate, dialogDatePicker.getDate())) {
-                    view.setEnabled(true);
-                    view.setText(dialogDatePicker.getDate());
-                    mBirthday = dialogDatePicker.getDate();
-                    dialogDatePicker.dismiss();
-                } else {
-                    ToastUtils.showErrorToast(mContext, "出生日期不能大于当前时间");
-                    return;
+    private DatePop datePop;
+
+    private void datePicker(View view) {
+        if (datePop == null) {
+            datePop = new DatePop(this, new DatePop.WheelViewCallBack2() {
+
+                @Override
+                public void position(@NotNull String position1, @NotNull String position2, @NotNull String position3) {
+                    String date = position1 + "-" + position2 + "-" + position3;
+                    mBirthday = date;
+                    mBirthdayTv.setText(date);
                 }
-            }
-        });
-        dialogDatePicker.show();
+            });
+        }
+        if (!datePop.isShowing()) {
+            datePop.showAtLocation(view, Gravity.CENTER | Gravity.BOTTOM, 0, 0);
+        }
     }
+
+//    //日期选择器
+//    private void datePicker(String str, final TextView view) {
+//        view.setEnabled(false);
+//        dialogDatePicker = new DialogDatePicker(this, false);
+//        dialogDatePicker.setTitle(str);
+//        dialogDatePicker.setOnNegativeListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                view.setEnabled(true);
+//                dialogDatePicker.dismiss();
+//            }
+//        });
+//        dialogDatePicker.setOnPositiveListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //格式化时间
+//                SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                String currentDate = sDateFormat.format(new java.util.Date());
+//                if (DateCompareUtils.compareDay(currentDate, dialogDatePicker.getDate())) {
+//                    view.setEnabled(true);
+//                    view.setText(dialogDatePicker.getDate());
+//                    mBirthday = dialogDatePicker.getDate();
+//                    dialogDatePicker.dismiss();
+//                } else {
+//                    ToastUtils.showErrorToast(mContext, "出生日期不能大于当前时间");
+//                    return;
+//                }
+//            }
+//        });
+//        dialogDatePicker.show();
+//    }
 
     private void checkPhoto() {
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};

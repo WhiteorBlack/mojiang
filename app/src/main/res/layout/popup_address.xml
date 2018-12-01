@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_enter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:text="确定"
+            android:textColor="@color/yancy_green500"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_enter"
+            android:orientation="horizontal">
+
+            <com.weigan.loopview.LoopView
+                android:id="@+id/loopView"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                app:awv_textsize="14" />
+
+            <TextView
+                android:id="@+id/year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="12dp"
+                android:text="年"
+                android:textColor="@color/blacktext"
+                android:textSize="15sp" />
+
+            <com.weigan.loopview.LoopView
+                android:id="@+id/loopView2"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                app:awv_textsize="14" />
+
+            <TextView
+                android:id="@+id/month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="月"
+                android:paddingRight="12dp"
+                android:textColor="@color/blacktext"
+                android:textSize="15sp" />
+
+            <com.weigan.loopview.LoopView
+                android:id="@+id/loopView3"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                app:awv_textsize="14" />
+
+            <TextView
+                android:id="@+id/day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="日"
+                android:paddingRight="12dp"
+                android:textColor="@color/blacktext"
+                android:textSize="15sp" />
+
+            <com.weigan.loopview.LoopView
+                android:id="@+id/loopView4"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:visibility="gone"
+                android:layout_weight="1"
+                app:awv_textsize="14" />
+
+            <TextView
+                android:id="@+id/hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="时"
+                android:visibility="gone"
+                android:paddingRight="12dp"
+                android:textColor="@color/blacktext"
+                android:textSize="15sp" />
+
+            <com.weigan.loopview.LoopView
+                android:id="@+id/loopView5"
+                android:layout_width="0dp"
+                android:visibility="gone"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                app:awv_textsize="14" />
+            <TextView
+                android:id="@+id/min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="分"
+                android:visibility="gone"
+                android:paddingRight="12dp"
+                android:textColor="@color/blacktext"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

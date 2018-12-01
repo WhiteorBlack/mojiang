@@ -42,6 +42,19 @@ public class Address extends BaseObservable {
     public String ParentId;
     public boolean isSelected=false;
     public String pinyi;
+    public String ParentName;
+
+    public void setParentId(String parentId) {
+        ParentId = parentId;
+    }
+
+    public String getParentName() {
+        return ParentName;
+    }
+
+    public void setParentName(String parentName) {
+        ParentName = parentName;
+    }
 
     public Address() {
     }

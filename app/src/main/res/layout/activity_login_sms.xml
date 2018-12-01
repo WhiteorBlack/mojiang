@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -17,47 +18,48 @@
             android:id="@+id/tv_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="密码登录"
+            android:text="验证码登录"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_tip"
+            android:layout_marginTop="10dp"
+            android:text="验证码已发送到您的手机"
+            android:textColor="@color/gray_normal"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_notify_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_notify"
+            android:layout_marginTop="6dp"
+            android:text="150" />
 
         <LinearLayout
             android:id="@+id/acti_login_number_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_tip"
+            android:layout_below="@+id/tv_notify_phone"
             android:layout_marginTop="30dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@mipmap/login_pwd" />
-
-            <EditText
-                android:id="@+id/acti_login_number_ev"
+            <com.kenny.separatededittext.SeparatedEditText
+                android:id="@+id/edit_underline"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:hint="输入登录密码"
-                android:inputType="textPassword"
-                android:maxLength="16"
-                android:singleLine="true"
-                android:textColor="@color/blacktext"
-                android:textSize="@dimen/textSize_fourteen" />
+                android:layout_height="50dp"
+                android:inputType="number"
+                app:blockSpacing="10dp"
+                app:borderColor="@color/lightGrey"
+                app:separateType="@integer/type_underline"
+                app:textColor="@color/blacktext" />
 
-            <CheckBox
-                android:id="@+id/chb_watch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/chb_watch"
-                 />
         </LinearLayout>
 
         <View
@@ -74,11 +76,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/line"
             android:layout_marginTop="10dp"
-            android:onClick="onClick"
             android:layout_toRightOf="@+id/tv_server_tip"
+            android:onClick="onClick"
             android:text="忘记密码"
             android:textColor="@color/yancy_green500"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_code"
@@ -87,11 +90,12 @@
             android:layout_below="@id/line"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
-            android:onClick="onClick"
             android:layout_toRightOf="@+id/tv_server_tip"
+            android:onClick="onClick"
             android:text="验证码登录"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/acti_login_sub_tv"
@@ -101,11 +105,33 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/shape_green_with_round_corner"
             android:gravity="center"
-            android:text="下一步"
             android:onClick="onClick"
+            android:text="验证"
             android:textColor="@android:color/white"
             android:textSize="@dimen/textSize_fifteen" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/acti_login_sub_tv"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="没有收到验证码?"
+                android:textColor="@color/gray_normal"
+                android:textSize="14sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_count"
+                android:textSize="14sp"
+                android:textColor="@color/yancy_green500"
+                android:layout_marginLeft="4dp"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/acti_login_forget_tv"

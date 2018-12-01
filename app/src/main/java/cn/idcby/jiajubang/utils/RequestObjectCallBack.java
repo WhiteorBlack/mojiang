@@ -15,6 +15,7 @@ import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.ResultBean;
 import cn.idcby.jiajubang.activity.LoginActivity;
+import cn.idcby.jiajubang.activity.LoginActivityNew;
 import cn.idcby.jiajubang.activity.MainActivity;
 import cn.idcby.jiajubang.activity.MyApplyInfoActivity;
 import cn.idcby.jiajubang.events.BusEvent;
@@ -127,7 +128,7 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
                     onSuccessResult(t);
 
                 } else {
-                    onSuccessResult(null);
+                    onSuccessResult((T) resultBean);
                 }
 
             } else if (103 == resultBean.errorCode) {
@@ -156,7 +157,7 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
 
-                        Intent toLoIt = new Intent(null == mContext ? mActivity : mContext , LoginActivity.class) ;
+                        Intent toLoIt = new Intent(null == mContext ? mActivity : mContext , LoginActivityNew.class) ;
                         toLoIt.putExtra("isGoMain" ,false) ;
                         (null == mContext ? mActivity : mContext).startActivity(toLoIt) ;
                     }
@@ -166,10 +167,10 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
                         dialogInterface.dismiss();
                         EventBus.getDefault().post(new BusEvent.LoginOutEvent(true)) ;
 
-                        Intent toMiIt = new Intent(null == mContext ? mActivity : mContext , MainActivity.class) ;
-                        toMiIt.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        toMiIt.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        (null == mContext ? mActivity : mContext).startActivity(toMiIt) ;
+//                        Intent toMiIt = new Intent(null == mContext ? mActivity : mContext , MainActivity.class) ;
+//                        toMiIt.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        toMiIt.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                        (null == mContext ? mActivity : mContext).startActivity(toMiIt) ;
                     }
                 });
     }

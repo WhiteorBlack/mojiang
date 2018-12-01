@@ -67,7 +67,9 @@ public class ParaUtils {
     }
 
     public static Map<String, String> getPara(Context context){
-        return new LinkedHashMap<String, String>();
+        LinkedHashMap<String, String> para = new LinkedHashMap<>();
+        para.put("Token", SPUtils.newIntance(context).getToken());
+        return para;
     }
 
     public static Map<String, String> getParaNece(Context context){

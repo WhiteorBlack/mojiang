@@ -70,12 +70,12 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
     public void setUiBeforShow() {
         binding.tvTitle.setVisibility(View.VISIBLE);
     }
-
+    Address post;
     public RecyclerView.OnItemTouchListener firstOnItemListener() {
         return new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Address post = firstAdapter.getData().get(position);
+                 post = firstAdapter.getData().get(position);
                 if (dataMap.get(post.AreaId) == null || dataMap.get(post.AreaId).isEmpty()) {
                     getSecondData(post.AreaId);
                 } else {
@@ -97,7 +97,10 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adaptera, View view, int position) {
                 if (doubleSelectionInterface != null) {
-                    doubleSelectionInterface.onSelection(secondAdapter.getData().get(position));
+                    Address address=secondAdapter.getData().get(position);
+                    address.setParentId(post.AreaId);
+                    address.setParentName(post.AreaName);
+                    doubleSelectionInterface.onSelection(address);
                 }
                 dismiss();
             }
@@ -113,6 +116,7 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
                     @Override
                     public void onSuccessResult(List<Address> bean) {
                         if (!bean.isEmpty()) {
+                            post=bean.get(0);
                             bean.get(0).setSelected(true);
                             firstAdapter.setNewData(bean);
                             getSecondData(bean.get(0).getAreaId());
@@ -151,4 +155,10 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
                 });
     }
 
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        NetUtils.cancelTag("城市");
+        NetUtils.cancelTag("省份");
+    }
 }

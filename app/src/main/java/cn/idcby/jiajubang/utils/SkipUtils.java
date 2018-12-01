@@ -362,6 +362,12 @@ public class SkipUtils {
         conte.startActivity(intent);
     }
 
+    public static void goActivity(Context conte, Class<?> tClass,Bundle bundle) {
+        Intent intent = new Intent(conte, tClass);
+        intent.putExtras(bundle);
+        conte.startActivity(intent);
+    }
+
 
     /*********************商品列表相关********************/
 

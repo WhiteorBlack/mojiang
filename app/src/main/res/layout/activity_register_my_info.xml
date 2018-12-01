@@ -68,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -106,9 +107,10 @@
                     android:background="@color/color_trans"
                     android:ellipsize="end"
                     android:maxEms="10"
+                    android:gravity="right"
                     android:minEms="2"
                     android:singleLine="true"
-                    android:textColor="@color/color_white"
+                    android:textColor="@color/blacktext"
                     android:textSize="@dimen/textSize_fifteen" />
             </LinearLayout>
 

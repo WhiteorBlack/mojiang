@@ -7,12 +7,21 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.flyco.dialog.listener.OnOperItemClickL;
+import com.flyco.dialog.widget.ActionSheetDialog;
+import com.gyf.barlibrary.ImmersionBar;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +36,8 @@ import cn.idcby.commonlibrary.utils.DialogUtils;
 import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
+import cn.idcby.jiajubang.Bean.Address;
+import cn.idcby.jiajubang.Bean.LoginInfo;
 import cn.idcby.jiajubang.Bean.SiftWorkPost;
 import cn.idcby.jiajubang.Bean.UnusedCategory;
 import cn.idcby.jiajubang.Bean.UserInfo;
@@ -41,7 +52,10 @@ import cn.idcby.jiajubang.utils.RequestObjectCallBack;
 import cn.idcby.jiajubang.utils.SkipUtils;
 import cn.idcby.jiajubang.utils.StringUtils;
 import cn.idcby.jiajubang.utils.Urls;
+import cn.idcby.jiajubang.view.dialog.DatePop;
+import cn.idcby.jiajubang.view.dialog.DoubleCityDialog;
 import cn.idcby.jiajubang.view.dialog.DoubleSelectionDialog;
+import cn.idcby.jiajubang.view.dialog.SingleSelectionDialog;
 import idcby.cn.imagepicker.GlideImageLoader;
 import idcby.cn.imagepicker.ImageConfig;
 import idcby.cn.imagepicker.ImageSelector;
@@ -75,7 +89,7 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
     private EditText mEmailEv;
     private TextView mAreaTv;
     private EditText mDescEv;
-    private EditText mWorkNameEv;
+    private TextView mWorkNameEv;
     private TextView mWorkTypeTv;
     private EditText mCompanyNameEv;
     private TextView mSubmitTv;
@@ -107,6 +121,7 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
     private static final int REQUEST_CODE_FOR_CATEGORY = 1000;
 
     private ImageConfig imageConfig;
+    private String phone, pwd;
 
 
     @Override
@@ -116,6 +131,7 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
 
     @Override
     public void initView() {
+        ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN).flymeOSStatusBarFontColor(R.color.black).init();
 //        StatusBarUtil.setTransparentForImageView(mActivity ,null);
 
         mUserInfo = (UserInfo) getIntent().getSerializableExtra(SkipUtils.INTENT_USER_INFO);
@@ -134,7 +150,7 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         mAreaTv = findViewById(R.id.acti_user_info_area_tv);
         mDescEv = findViewById(R.id.acti_user_info_desc_ev);
 
-        mWorkNameEv = findViewById(R.id.acti_user_info_work_name_ev);
+        mWorkNameEv = findViewById(R.id.acti_user_info_work_name_tv);
         mWorkTypeTv = findViewById(R.id.acti_user_info_category_tv);
         mCompanyNameEv = findViewById(R.id.acti_user_info_company_name_ev);
         mSubmitTv = findViewById(R.id.acti_user_info_submit_tv);
@@ -144,7 +160,9 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
 
     @Override
     public void initData() {
-        getUserInfo();
+//        getUserInfo();
+        phone = getIntent().getExtras().getString("phone");
+        pwd = getIntent().getExtras().getString("pwd");
     }
 
     @Override
@@ -162,22 +180,68 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         int vId = view.getId();
 
         if (R.id.acti_user_info_sex_tv == vId) {
-            showSexDialog();
+            showSexDialog(view);
         } else if (R.id.acti_user_info_head_iv == vId) {
             checkPhoto();
         } else if (R.id.acti_user_info_birthday_tv == vId) {
-            datePicker("选择出生日期", mBirthdayTv);
+            datePicker( mBirthdayTv);
         } else if (R.id.acti_user_info_area_tv == vId) {//区域
-            SelectedProvinceActivity.launch(mActivity, REQUEST_CODE_AREA);
+            showCityDialog();
+//            SelectedProvinceActivity.launch(mActivity, REQUEST_CODE_AREA);
         } else if (vId == R.id.acti_user_info_category_tv) {
-            ChooseUnuesdCategoryActivity.launch(mActivity, mIsHasChild, mIsMoreCheck
-                    , mSelectedCategory, REQUEST_CODE_FOR_CATEGORY);
+            showCategoryDialog();
+//            ChooseUnuesdCategoryActivity.launch(mActivity, mIsHasChild, mIsMoreCheck
+//                    , mSelectedCategory, REQUEST_CODE_FOR_CATEGORY);
 
         } else if (R.id.acti_user_info_submit_tv == vId) {//提交
             submitModify();
         } else if (R.id.acti_user_info_work_name_tv == vId) {
             showWordDialog();
         }
+    }
+
+    private DoubleCityDialog cityDialog;
+
+    private void showCityDialog() {
+        if (cityDialog == null) {
+            cityDialog = new DoubleCityDialog(this);
+            cityDialog.getFirstData();
+            cityDialog.setDoubleSelectionInterface(new DoubleSelectionInterface() {
+                @Override
+                public void onSelection(Object post) {
+                    if (post == null) {
+                        return;
+                    }
+                    Address address = (Address) post;
+                    mAreaTv.setText(address.getParentName()+" "+address.AreaName);
+                    mCityId = address.AreaId;
+                    mProvinceId=address.getParentId();
+                }
+            });
+        }
+        cityDialog.show();
+    }
+
+    private SingleSelectionDialog categoryDialog;
+
+    private void showCategoryDialog() {
+        if (categoryDialog == null) {
+            categoryDialog = new SingleSelectionDialog(this);
+            categoryDialog.setDoubleSelectionInterface(new DoubleSelectionInterface() {
+                @Override
+                public void onSelection(Object post) {
+                    if (post == null) {
+                        return;
+                    }
+                    UnusedCategory category = (UnusedCategory) post;
+                    mCategoryIds = category.CategoryID;
+                    mWorkTypeTv.setText(category.CategoryTitle);
+                }
+            });
+            categoryDialog.getCategory();
+        }
+
+        categoryDialog.show();
     }
 
     private DoubleSelectionDialog workDialog;
@@ -275,70 +339,111 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
     /**
      * 选择性别
      */
-    private void showSexDialog() {
-        if (null == mSexDialog) {
-            mSexDialog = new Dialog(mContext, cn.idcby.commonlibrary.R.style.my_custom_dialog);
-            View v = LayoutInflater.from(mContext).inflate(R.layout.dialog_check_sex, null);
-            mSexDialog.setContentView(v);
+    private String[] sexString = new String[]{"男", "女"};
 
-            v.getLayoutParams().width = (int) (ResourceUtils.getScreenWidth(mContext) * 0.6F);
+    ActionSheetDialog actionSheetDialog;
 
-            TextView sexM = v.findViewById(R.id.dialog_check_sex_man_tv);
-            TextView sexW = v.findViewById(R.id.dialog_check_sex_women_tv);
-
-            sexM.setOnClickListener(new View.OnClickListener() {
+    private void showSexDialog(View view) {
+        if (actionSheetDialog == null) {
+            actionSheetDialog = new ActionSheetDialog(this, sexString, view);
+            actionSheetDialog.cancelText("取消");
+            actionSheetDialog.setCanceledOnTouchOutside(true);
+            actionSheetDialog.isTitleShow(true);
+            actionSheetDialog.titleTextSize_SP(14);
+            actionSheetDialog.title("请选择您的性别");
+            actionSheetDialog.setOnOperItemClickL(new OnOperItemClickL() {
                 @Override
-                public void onClick(View view) {
-                    mSex = 1;
-                    mSexTv.setText("男");
-                    mSexDialog.dismiss();
-                }
-            });
-            sexW.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mSex = 2;
-                    mSexTv.setText("女");
-                    mSexDialog.dismiss();
+                public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mSex = position + 1;
+                    mSexTv.setText(sexString[position]);
+                    actionSheetDialog.cancel();
                 }
             });
         }
-
-        mSexDialog.show();
+        actionSheetDialog.show();
     }
+//    private void showSexDialog() {
+//        if (null == mSexDialog) {
+//            mSexDialog = new Dialog(mContext, cn.idcby.commonlibrary.R.style.my_custom_dialog);
+//            View v = LayoutInflater.from(mContext).inflate(R.layout.dialog_check_sex, null);
+//            mSexDialog.setContentView(v);
+//
+//            v.getLayoutParams().width = (int) (ResourceUtils.getScreenWidth(mContext) * 0.6F);
+//
+//            TextView sexM = v.findViewById(R.id.dialog_check_sex_man_tv);
+//            TextView sexW = v.findViewById(R.id.dialog_check_sex_women_tv);
+//
+//            sexM.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    mSex = 1;
+//                    mSexTv.setText("男");
+//                    mSexDialog.dismiss();
+//                }
+//            });
+//            sexW.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    mSex = 2;
+//                    mSexTv.setText("女");
+//                    mSexDialog.dismiss();
+//                }
+//            });
+//        }
+//
+//        mSexDialog.show();
+//    }
 
+    private DatePop datePop;
 
-    //日期选择器
-    private void datePicker(String str, final TextView view) {
-        view.setEnabled(false);
-        dialogDatePicker = new DialogDatePicker(this, false);
-        dialogDatePicker.setTitle(str);
-        dialogDatePicker.setOnNegativeListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                view.setEnabled(true);
-                dialogDatePicker.dismiss();
-            }
-        });
-        dialogDatePicker.setOnPositiveListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //格式化时间
-                SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String currentDate = sDateFormat.format(new java.util.Date());
-                if (DateCompareUtils.compareDay(currentDate, dialogDatePicker.getDate())) {
-                    view.setEnabled(true);
-                    view.setText(dialogDatePicker.getDate());
-                    mBirthday = dialogDatePicker.getDate();
-                    dialogDatePicker.dismiss();
-                } else {
-                    ToastUtils.showErrorToast(mContext, "出生日期不能大于当前时间");
-                    return;
+    private void datePicker(View view) {
+        if (datePop == null) {
+            datePop = new DatePop(this, new DatePop.WheelViewCallBack2() {
+
+                @Override
+                public void position(@NotNull String position1, @NotNull String position2, @NotNull String position3) {
+                    String date = position1 + "-" + position2 + "-" + position3;
+                    mBirthday = date;
+                    mBirthdayTv.setText(date);
                 }
-            }
-        });
-        dialogDatePicker.show();
+            });
+        }
+        if (!datePop.isShowing()) {
+            datePop.showAtLocation(view, Gravity.CENTER | Gravity.BOTTOM, 0, 0);
+        }
     }
+
+//    //日期选择器
+//    private void datePicker(String str, final TextView view) {
+//        view.setEnabled(false);
+//        dialogDatePicker = new DialogDatePicker(this, false);
+//        dialogDatePicker.setTitle(str);
+//        dialogDatePicker.setOnNegativeListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                view.setEnabled(true);
+//                dialogDatePicker.dismiss();
+//            }
+//        });
+//        dialogDatePicker.setOnPositiveListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //格式化时间
+//                SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                String currentDate = sDateFormat.format(new java.util.Date());
+//                if (DateCompareUtils.compareDay(currentDate, dialogDatePicker.getDate())) {
+//                    view.setEnabled(true);
+//                    view.setText(dialogDatePicker.getDate());
+//                    mBirthday = dialogDatePicker.getDate();
+//                    dialogDatePicker.dismiss();
+//                } else {
+//                    ToastUtils.showErrorToast(mContext, "出生日期不能大于当前时间");
+//                    return;
+//                }
+//            }
+//        });
+//        dialogDatePicker.show();
+//    }
 
     private void checkPhoto() {
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
@@ -452,18 +557,20 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         paramMap.put("PostText", postName);
         paramMap.put("CompanyName", companyName);
 
-        NetUtils.getDataFromServerByPost(mContext, Urls.MY_INFO_UPDATE, paramMap
+        NetUtils.getDataFromServerByPost(mContext, Urls.MY_INFO_UPDATE,true, paramMap
                 , new RequestObjectCallBack<String>("submitModify", mContext, String.class) {
                     @Override
                     public void onSuccessResult(String bean) {
-                        if (mDialog != null) {
-                            mDialog.dismiss();
-                        }
+//                        if (mDialog != null) {
+//                            mDialog.dismiss();
+//                        }
 
-                        ToastUtils.showToast(mContext, "修改成功");
-                        if (!mActivity.isFinishing()) {
-                            finish();
-                        }
+//                        ToastUtils.showToast(mContext, "修改成功");
+//                        if (!mActivity.isFinishing()) {
+//                            finish();
+//                        }
+
+                        login(phone, pwd);
                     }
 
                     @Override
@@ -472,13 +579,13 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
                             mDialog.dismiss();
                         }
 
-                        DialogUtils.showCustomViewDialog(mContext, "温馨提示", "修改失败", null
-                                , "确定", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
-                                    }
-                                });
+//                        DialogUtils.showCustomViewDialog(mContext, "温馨提示", "修改失败", null
+//                                , "确定", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialogInterface, int i) {
+//                                        dialogInterface.dismiss();
+//                                    }
+//                                });
                     }
 
                     @Override
@@ -487,13 +594,44 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
                             mDialog.dismiss();
                         }
 
-                        DialogUtils.showCustomViewDialog(mContext, "温馨提示", "修改失败", null
-                                , "确定", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
-                                    }
-                                });
+//                        DialogUtils.showCustomViewDialog(mContext, "温馨提示", "修改失败", null
+//                                , "确定", new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialogInterface, int i) {
+//                                        dialogInterface.dismiss();
+//                                    }
+//                                });
+                    }
+                });
+    }
+
+    private void login(String phone, String pwd) {
+        Map<String, String> para = ParaUtils.getPara(this);
+        para.put("UserAccount", phone);
+        para.put("Password", pwd);
+        NetUtils.getDataFromServerByPost(this, Urls.LOGIN, true, para,
+                new RequestObjectCallBack<LoginInfo>("登录", this, LoginInfo.class) {
+                    @Override
+                    public void onSuccessResult(LoginInfo bean) {
+                        LoginHelper.login(RegisterInfoActivity.this, bean);
+//                        getSelfInfo();
+
+                        Intent toSiIt = new Intent(RegisterInfoActivity.this, MainActivity.class);
+                        startActivity(toSiIt);
+//                        setResult(RESULT_OK);
+                        onBackPressed();
+                    }
+
+                    @Override
+                    public void onErrorResult(String str) {
+                        if (mDialog != null)
+                            mDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        if (mDialog != null)
+                            mDialog.dismiss();
                     }
                 });
     }
@@ -590,14 +728,14 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
 
         if (REQUEST_CODE_AREA == requestCode) {
             if (resultCode == SelectedProvinceActivity.RESULT_CODE_FOR_SELECTED_CITY) {
-                mProvinceId = data.getStringExtra("provinceId");
-                mCityId = data.getStringExtra("cityId");
-                mAreaId = data.getStringExtra("areaId");
-                String provinceName = data.getStringExtra("provinceName");
-                String cityName = data.getStringExtra("cityName");
-                String areaName = data.getStringExtra("areaName");
-
-                mAreaTv.setText(provinceName + cityName + areaName);
+//                mProvinceId = data.getStringExtra("provinceId");
+//                mCityId = data.getStringExtra("cityId");
+//                mAreaId = data.getStringExtra("areaId");
+//                String provinceName = data.getStringExtra("provinceName");
+//                String cityName = data.getStringExtra("cityName");
+//                String areaName = data.getStringExtra("areaName");
+//
+//                mAreaTv.setText(provinceName + cityName + areaName);
             }
         } else if (REQUEST_CODE_IMAGE == requestCode) {//头像
             if (RESULT_OK == resultCode && data != null) {
