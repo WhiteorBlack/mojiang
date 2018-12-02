@@ -950,9 +950,10 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                         MyApplication.updateCurrentCityNameAndType("", location.getCity(), SkipUtils.LOCATION_TYPE_CITY);
                     }
                     MyApplication.setLocationRoad(TextUtils.isEmpty(location.getStreet()) ? "无名路" : location.getStreet());
-
-                    getCityIdByName(location.getCity());
-                    UpdatePosition();
+                    if (!mIsCityIdGeted) {
+                        getCityIdByName(location.getCity());
+                        UpdatePosition();
+                    }
 
                     final String locationDesc;
                     List<Poi> poiList = location.getPoiList();
@@ -961,7 +962,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                     } else {
                         locationDesc = location.getLocationDescribe();
                     }
-                    String road =TextUtils.isEmpty(location.getStreet()) ? "无名路" : location.getStreet();
+                    String road = TextUtils.isEmpty(location.getStreet()) ? "无名路" : location.getStreet();
                     mNearFragment.setCurLocation(road);
 
                     mLocationService.unregisterListener(mListener); //注销掉监听

@@ -120,6 +120,7 @@ dependencies {
     implementation project(':loopview')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.github.WGwangguan:SeparatedEditText:v1.0'
+    compile 'com.ms-square:expandableTextView:0.1.4'
 }
 repositories {
     mavenCentral()

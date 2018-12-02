@@ -89,7 +89,7 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
     private TextView mCountTv;
     private TextView mComScaleTv;
     private TextView mBondMoneyTv;
-
+    private TextView tvMoney;
     private FlowLayout mApplyLay;
 
     private TextView mServerTimeTv;
@@ -162,7 +162,7 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
         mEditIv = findViewById(R.id.acti_server_dt_edit_iv);
         mEditIv.setOnClickListener(this);
         mEditIv.setVisibility(mIsSelf ? View.VISIBLE : View.GONE);
-
+        tvMoney = findViewById(R.id.tv_money);
         mBanner = findViewById(R.id.acti_server_dt_banner);
         mTitleTv = findViewById(R.id.acti_server_dt_title_tv);
         mStateTv = findViewById(R.id.acti_server_dt_state_tv);
@@ -592,13 +592,13 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
         String serverDesc = mServerDetails.getServiceDescription();
 
         String commentCount = mServerDetails.getEvaluateListCount();
-
+        tvMoney.setText("¥" + singleAm);
         mTitleTv.setText(name);
-        mCountTv.setText("月接单：" + singleAm);
-        mComScaleTv.setText("好评率：" + comRote);
-        mBondMoneyTv.setText("保证金：" + bondMoney);
+        mCountTv.setText(singleAm + "人付款");
+        mComScaleTv.setText("好评率" + comRote);
+        mBondMoneyTv.setText(serverArea);
         mServerTimeTv.setText(time);
-        mServerAreaTv.setText(serverArea);
+        mServerAreaTv.setText(sellerArea);
         mSellerAddressTv.setText(sellerArea);
         mServerDescTv.setText(serverDesc);
         mCommentCountTv.setText("评价（" + commentCount + "）");

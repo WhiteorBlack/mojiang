@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <ListView
         android:id="@+id/acti_circle_details_lv"
         android:layout_width="match_parent"
@@ -11,59 +12,118 @@
         android:divider="@color/color_trans"
         android:dividerHeight="1dp"
         android:scrollbars="none" />
+
+    <RelativeLayout
+        android:id="@+id/rl_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+       >
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
+
+        <EditText
+            android:id="@+id/et_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_below="@id/line"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/tv_send"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:hint="说点什么吧"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/bg_send"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:text="发送"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/acti_circle_details_bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color_white"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
+
         <TextView
             android:id="@+id/acti_circle_details_add_comment_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
             android:layout_weight="1"
+            android:paddingLeft="15dp"
             android:text="请填写您的评论..."
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/textSize_fourteen" />
+
         <View
             android:layout_width="0.7dp"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            android:background="@color/line_gray" />
+            android:background="@color/line_gray"
+            android:visibility="gone" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center"
+            android:orientation="vertical"
             android:paddingLeft="15dp"
-            android:paddingRight="15dp"
             android:paddingTop="4dp"
+            android:paddingRight="15dp"
             android:paddingBottom="4dp">
+
             <RelativeLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp">
+
                 <ImageView
                     android:id="@+id/acti_circle_details_comment_count_iv"
                     style="@style/nomal_item_dt_ic_style"
                     android:layout_centerInParent="true"
                     android:src="@mipmap/gray_comment" />
+
                 <TextView
                     android:id="@+id/acti_circle_details_comment_count_tv"
-                    android:visibility="gone"
+                    style="@style/nomal_item_dt_count_style"
                     android:layout_alignParentRight="true"
-                    style="@style/nomal_item_dt_count_style" />
+                    android:visibility="gone" />
             </RelativeLayout>
+
             <TextView
                 style="@style/nomal_item_dt_tv_style"
-                android:text="评论"/>
+                android:text="评论" />
         </LinearLayout>
+
         <View
             android:layout_width="0.7dp"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            android:background="@color/line_gray" />
+            android:background="@color/line_gray"
+            android:visibility="gone" />
+
         <LinearLayout
             android:id="@+id/acti_circle_details_support_lay"
             android:layout_width="wrap_content"
@@ -71,33 +131,39 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingLeft="15dp"
-            android:paddingRight="15dp"
             android:paddingTop="4dp"
+            android:paddingRight="15dp"
             android:paddingBottom="4dp">
+
             <RelativeLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp">
+
                 <ImageView
                     android:id="@+id/acti_circle_details_support_iv"
                     style="@style/nomal_item_dt_ic_style"
                     android:layout_centerInParent="true"
                     android:src="@mipmap/ic_support_nomal" />
+
                 <TextView
                     android:id="@+id/acti_circle_details_support_count_tv"
+                    style="@style/nomal_item_dt_count_style"
                     android:layout_alignParentRight="true"
-                    android:visibility="invisible"
-                    style="@style/nomal_item_dt_count_style"/>
+                    android:visibility="invisible" />
             </RelativeLayout>
+
             <TextView
                 android:id="@+id/tv_admire_tv"
                 style="@style/nomal_item_dt_tv_style"
-                android:text="点赞"/>
+                android:text="点赞" />
         </LinearLayout>
+
         <View
             android:layout_width="0.7dp"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            android:background="@color/line_gray" />
+            android:background="@color/line_gray"
+            android:visibility="gone" />
+
         <LinearLayout
             android:id="@+id/acti_circle_details_collect_lay"
             android:layout_width="wrap_content"
@@ -105,28 +171,33 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingLeft="15dp"
-            android:paddingRight="15dp"
             android:paddingTop="4dp"
+            android:paddingRight="15dp"
             android:paddingBottom="4dp">
+
             <RelativeLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp">
+
                 <ImageView
                     android:id="@+id/acti_circle_details_collect_iv"
                     style="@style/nomal_item_dt_ic_style"
                     android:layout_centerInParent="true"
                     android:src="@mipmap/ic_collection_nomal" />
             </RelativeLayout>
+
             <TextView
                 android:id="@+id/tv_collection_tv"
                 style="@style/nomal_item_dt_tv_style"
-                android:text="收藏"/>
+                android:text="收藏" />
         </LinearLayout>
+
         <View
             android:layout_width="0.7dp"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            android:background="@color/line_gray" />
+            android:background="@color/line_gray"
+            android:visibility="gone" />
+
         <LinearLayout
             android:id="@+id/acti_circle_details_trans_lay"
             android:layout_width="wrap_content"
@@ -134,26 +205,30 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingLeft="15dp"
-            android:paddingRight="15dp"
             android:paddingTop="4dp"
+            android:paddingRight="15dp"
             android:paddingBottom="4dp">
+
             <RelativeLayout
                 android:layout_width="20dp"
                 android:layout_height="20dp">
+
                 <ImageView
                     style="@style/nomal_item_dt_ic_style"
                     android:layout_centerInParent="true"
                     android:padding="1.5dp"
                     android:src="@mipmap/ic_zhuanfa" />
+
                 <TextView
                     android:id="@+id/acti_circle_details_trans_count_tv"
+                    style="@style/nomal_item_dt_count_style"
                     android:layout_alignParentRight="true"
-                    android:visibility="invisible"
-                    style="@style/nomal_item_dt_count_style"/>
+                    android:visibility="invisible" />
             </RelativeLayout>
+
             <TextView
                 style="@style/nomal_item_dt_tv_style"
-                android:text="转发"/>
+                android:text="转发" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

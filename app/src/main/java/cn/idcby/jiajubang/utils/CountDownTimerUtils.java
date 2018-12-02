@@ -12,7 +12,7 @@ import cn.idcby.jiajubang.R;
 public class CountDownTimerUtils extends CountDownTimer {
 
     private TextView mTextView;
-
+    private boolean change = true;
     private OnTimeFinishListener onTimeFinishListener;
 
     public interface OnTimeFinishListener {
@@ -28,13 +28,20 @@ public class CountDownTimerUtils extends CountDownTimer {
         this.mTextView = mTextView;
     }
 
+    public CountDownTimerUtils(TextView mTextView, boolean change) {
+        super(60000, 1000);
+        this.mTextView = mTextView;
+        this.change = change;
+    }
+
     @Override
     public void onTick(long millisUntilFinished) {
 
         mTextView.setClickable(false); //设置不可点击
         mTextView.setEnabled(false);
         mTextView.setText(millisUntilFinished / 1000 + "S重新发送");  //设置倒计时时间
-        mTextView.setBackgroundResource(R.drawable.shape_gray_bg); //设置按钮为灰色，这时是不能点击的
+        if (change)
+            mTextView.setBackgroundResource(R.drawable.shape_gray_bg); //设置按钮为灰色，这时是不能点击的
 
         /**
          * 超链接 URLSpan
@@ -64,7 +71,8 @@ public class CountDownTimerUtils extends CountDownTimer {
         mTextView.setText("获取验证码");
         mTextView.setClickable(true);//重新获得点击
         mTextView.setEnabled(true);
-        mTextView.setBackgroundResource(R.drawable.shape_green_with_circle_corner);  //还原背景色
+        if (change)
+            mTextView.setBackgroundResource(R.drawable.shape_green_with_circle_corner);  //还原背景色
         if (onTimeFinishListener != null)
             onTimeFinishListener.onTimeFinish();
     }

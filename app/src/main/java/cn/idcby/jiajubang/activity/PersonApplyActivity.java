@@ -26,6 +26,7 @@ import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.MyUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.PersonApplyInfo;
+import cn.idcby.jiajubang.Bean.ResultBean;
 import cn.idcby.jiajubang.Bean.UnusedCategory;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.utils.FileUtil;
@@ -444,9 +445,9 @@ public class PersonApplyActivity extends BaseMoreStatusActivity
         loadingDialog.show();
 
         NetUtils.getDataFromServerByPost(mContext, Urls.PERSON_APPLY, false, para,
-                new RequestObjectCallBack<String>("个人认证申请", mContext, String.class) {
+                new RequestObjectCallBack<ResultBean>("个人认证申请", mContext, ResultBean.class) {
                     @Override
-                    public void onSuccessResult(String bean) {
+                    public void onSuccessResult(ResultBean bean) {
                         if (loadingDialog != null)
                             loadingDialog.dismiss();
 

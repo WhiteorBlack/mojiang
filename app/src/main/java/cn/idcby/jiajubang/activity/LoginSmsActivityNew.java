@@ -23,6 +23,7 @@ import java.util.Map;
 
 import cn.idcby.commonlibrary.base.BaseActivity;
 import cn.idcby.commonlibrary.dialog.LoadingDialog;
+import cn.idcby.commonlibrary.utils.SPUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.LoginInfo;
 import cn.idcby.jiajubang.Bean.UserInfo;
@@ -37,7 +38,7 @@ import cn.idcby.jiajubang.utils.SkipUtils;
 import cn.idcby.jiajubang.utils.Urls;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class LoginSmsActivityNew extends BaseActivity implements CompoundButton.OnCheckedChangeListener, EasyPermissions.PermissionCallbacks {
+public class LoginSmsActivityNew extends BaseActivity implements  EasyPermissions.PermissionCallbacks {
     private EditText etPhone;
     private LoadingDialog loadingDialog;
     private String phone;
@@ -73,7 +74,7 @@ public class LoginSmsActivityNew extends BaseActivity implements CompoundButton.
 
         Map<String, String> para = ParaUtils.getPara(this);
         para.put("Phone", phone);
-        NetUtils.getDataFromServerByPost(this, Urls.GET_MSG_CODE_FOR_REGISTER, false, para,
+        NetUtils.getDataFromServerByPost(this, Urls.GET_MSG_CODE, false, para,
                 new RequestObjectCallBack<String>("注册获取短信验证码", this, String.class) {
                     @Override
                     public void onSuccessResult(String bean) {
@@ -99,7 +100,6 @@ public class LoginSmsActivityNew extends BaseActivity implements CompoundButton.
 
     @Override
     public void initListener() {
-        ((CheckBox) findViewById(R.id.chb_watch)).setOnCheckedChangeListener(this);
         findViewById(R.id.acti_login_sub_tv).setOnClickListener(this);
     }
 
@@ -134,20 +134,18 @@ public class LoginSmsActivityNew extends BaseActivity implements CompoundButton.
         Map<String, String> para = ParaUtils.getPara(mContext);
         para.put("UserAccount", phone);
         para.put("SmsCode", code);
-        NetUtils.getDataFromServerByPost(mContext, Urls.LOGIN, true, para,
+        NetUtils.getDataFromServerByPost(mContext, Urls.LOGIN_SMS, true, para,
                 new RequestObjectCallBack<LoginInfo>("登录", mContext, LoginInfo.class) {
                     @Override
                     public void onSuccessResult(LoginInfo bean) {
+                        SPUtils.newIntance(mContext).saveToken(bean.token);
                         if (bean.PersonalInfoPerfect) {
-
-//                            LoginHelper.saveUserLoginInfo(mContext, phone, pwd);
                             LoginHelper.login(mContext, bean);
                             EventBus.getDefault().post(new BusEvent.LocationUpdate(true));
                             getSelfInfo();
                         } else {
                             Bundle bundle = new Bundle();
                             bundle.putString("phone", phone);
-//                            bundle.putString("pwd", pwd);
                             SkipUtils.goActivity(mActivity, RegisterInfoActivity.class, bundle);
                             onBackPressed();
                         }
@@ -155,14 +153,10 @@ public class LoginSmsActivityNew extends BaseActivity implements CompoundButton.
 
                     @Override
                     public void onErrorResult(String str) {
-                        if (loadingDialog != null)
-                            loadingDialog.dismiss();
                     }
 
                     @Override
                     public void onFail(Exception e) {
-                        if (loadingDialog != null)
-                            loadingDialog.dismiss();
                         ToastUtils.showToast(mContext, "网络异常");
                     }
                 });
@@ -201,14 +195,6 @@ public class LoginSmsActivityNew extends BaseActivity implements CompoundButton.
                 });
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        if (b) {
-            etPhone.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-        } else {
-            etPhone.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        }
-    }
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {

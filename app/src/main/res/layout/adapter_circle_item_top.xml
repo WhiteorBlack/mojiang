@@ -1,95 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <ImageView
         android:id="@+id/adapter_circle_item_user_iv"
         android:layout_width="@dimen/circle_list_user_img_size"
         android:layout_height="@dimen/circle_list_user_img_size"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="6dp"
-        android:src="@mipmap/default_head_icon"/>
+        android:layout_marginBottom="10dp"
+        android:src="@mipmap/default_head_icon" />
+
     <TextView
         android:id="@+id/adapter_circle_item_focus_tv"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
-        android:layout_alignParentRight="true"
-        android:visibility="invisible"
         android:gravity="center"
-        android:textSize="@dimen/textSize_fourteen"
+        android:text="关注"
         android:textColor="@color/color_theme"
-        android:text="关注"/>
+        android:textSize="@dimen/textSize_fourteen"
+        android:visibility="invisible" />
+
     <ImageView
         android:id="@+id/adapter_circle_item_delete_iv"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:visibility="gone"
-        android:padding="2dp"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:layout_alignParentRight="true"
-        android:src="@mipmap/ic_delete_grey"/>
+        android:padding="2dp"
+        android:src="@mipmap/ic_delete_grey"
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/adapter_circle_item_focus_tv"
         android:layout_alignTop="@id/adapter_circle_item_user_iv"
+        android:layout_toLeftOf="@id/adapter_circle_item_focus_tv"
         android:layout_toRightOf="@id/adapter_circle_item_user_iv"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/adapter_circle_item_user_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:ellipsize="end"
             android:maxEms="10"
-            android:textSize="@dimen/textSize_fifteen"
-            android:textColor="@color/color_nomal_text"/>
+            android:singleLine="true"
+            android:textColor="@color/color_nomal_text"
+            android:textSize="@dimen/textSize_fifteen" />
+
         <ImageView
             android:id="@+id/adapter_circle_item_user_v_iv"
             android:layout_width="10dp"
             android:layout_height="13dp"
-            android:visibility="invisible"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/ic_cirlce_user_v"/>
+            android:src="@mipmap/ic_cirlce_user_v"
+            android:visibility="invisible" />
     </LinearLayout>
+
     <TextView
         android:id="@+id/adapter_circle_item_send_time_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/adapter_circle_item_user_iv"
         android:layout_alignBottom="@id/adapter_circle_item_user_iv"
-        android:textSize="@dimen/textSize_twelve"
-        android:textColor="@color/color_grey_text"/>
+        android:layout_toRightOf="@id/adapter_circle_item_user_iv"
+        android:textColor="@color/color_grey_text"
+        android:textSize="@dimen/textSize_twelve" />
+
     <TextView
         android:id="@+id/adapter_circle_item_send_company_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
+        android:layout_alignBottom="@id/adapter_circle_item_user_iv"
         android:layout_marginLeft="5dp"
-        android:singleLine="true"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/adapter_circle_item_send_time_tv"
         android:ellipsize="end"
         android:maxEms="15"
-        android:layout_alignBottom="@id/adapter_circle_item_user_iv"
-        android:layout_toRightOf="@id/adapter_circle_item_send_time_tv"
-        android:textSize="@dimen/textSize_twelve"
-        android:textColor="@color/color_grey_text"/>
+        android:singleLine="true"
+        android:textColor="@color/color_grey_text"
+        android:textSize="@dimen/textSize_twelve" />
+
     <TextView
         android:id="@+id/adapter_circle_item_send_post_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
-        android:singleLine="true"
-        android:ellipsize="end"
         android:layout_alignBottom="@id/adapter_circle_item_user_iv"
+        android:layout_marginRight="5dp"
         android:layout_toRightOf="@id/adapter_circle_item_send_company_tv"
-        android:textSize="@dimen/textSize_twelve"
-        android:textColor="@color/color_grey_text"/>
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/color_grey_text"
+        android:textSize="@dimen/textSize_twelve" />
+
+    <TextView
+        android:id="@+id/adapter_circle_item_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/adapter_circle_item_user_iv"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/adapter_circle_item_send_post_tv"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="2km"
+        android:textColor="@color/color_grey_text"
+        android:textSize="@dimen/textSize_twelve" />
+
     <TextView
         android:id="@+id/adapter_circle_item_content_tv"
         android:layout_width="match_parent"
@@ -98,6 +122,33 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:ellipsize="end"
+        android:textColor="@color/color_nomal_text"
         android:textSize="@dimen/textSize_fourteen"
-        android:textColor="@color/color_nomal_text"/>
+        android:visibility="gone" />
+
+    <com.ms.square.android.expandabletextview.ExpandableTextView
+        android:id="@+id/expand_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adapter_circle_item_user_iv"
+        expandableTextView:animDuration="200"
+        expandableTextView:maxCollapsedLines="4">
+
+        <TextView
+            android:id="@id/expandable_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/blacktext"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@id/expand_collapse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:background="@android:color/transparent"
+            android:padding="16dp" />
+    </com.ms.square.android.expandabletextview.ExpandableTextView>
 </RelativeLayout>

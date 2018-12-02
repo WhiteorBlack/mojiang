@@ -30,6 +30,7 @@ import cn.idcby.commonlibrary.base.HeaderFooterAdapter;
 import cn.idcby.commonlibrary.utils.DialogUtils;
 import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
+import cn.idcby.commonlibrary.utils.SPUtils;
 import cn.idcby.jiajubang.Bean.AdvBanner;
 import cn.idcby.jiajubang.Bean.HomeWorkCount;
 import cn.idcby.jiajubang.Bean.NeedsList;
@@ -665,9 +666,9 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
             goNextActivity(SearchIndexActivity.class);
 
         } else if (i == R.id.frag_home_msg_iv) {
-
             SkipUtils.toMessageCenterActivity(mContext);
-
+            SPUtils.newIntance(mContext).resetUnreadMessage();
+            mMessageCountTv.setVisibility(View.GONE);
         } else if (i == R.id.frag_home_top_nav_one_lay) {//bg_index_cjzg
             goDirectDealActivity();
         } else if (i == R.id.frag_home_top_nav_two_lay) {//bg_index_hyxq

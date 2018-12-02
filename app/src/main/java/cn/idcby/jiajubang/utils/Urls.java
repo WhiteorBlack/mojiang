@@ -29,12 +29,13 @@ package cn.idcby.jiajubang.utils;
 
 public class Urls {
 
-    //    public static String BASE_URL = "http://123.56.158.181:33001";
-//    public static String PHOTO_BASE_URL = "http://123.56.158.181:33002";
+    //    public static String PHOTO_BASE_URL = "http://123.56.158.181:33002";
 //    public static String BASE_URL = "http://api.jajubang.com";
 //    public static String PHOTO_BASE_URL = "http://webfile.jajubang.com";
+//        public static String BASE_URL = "http://api.hmmojiang.com";
     public static String BASE_URL = "http://106.14.194.139:8888";
-    //    public static String BASE_URL = "http://api.hmmojiang.com";
+    //    public static String BASE_URL = "http://123.56.158.181:33001";
+
     public static String PHOTO_BASE_URL = "http://file.hmmojiang.com";
 
     //帮助中心、关于我们等通用h5功能列表集合
@@ -54,10 +55,18 @@ public class Urls {
     public static String GET_PHOTO_CODE = BASE_URL + "/Public/GetImage";
     //登录
     public static String LOGIN = BASE_URL + "/Account/Login";
+
+    //验证码登录
+    public static String LOGIN_SMS = BASE_URL + "/Account/LoginForSmsCode";
     //检查手机号
     public static String CHECK_PHONE = BASE_URL + "/Account/CheckExist";
     //注册
     public static String REGISTER = BASE_URL + "/Account/Register";
+
+    //登录获取验证码
+    public static String GET_MSG_CODE_FOR_LOGIN = BASE_URL + "/Sms/Register";
+    //通用获取验证码
+    public static String GET_MSG_CODE = BASE_URL + "/Sms/VerifiCode";
     //注册获取验证码
     public static String GET_MSG_CODE_FOR_REGISTER = BASE_URL + "/Sms/Register";
     //修改手机号获取验证码

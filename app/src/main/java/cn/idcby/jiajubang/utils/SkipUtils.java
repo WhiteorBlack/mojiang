@@ -373,6 +373,7 @@ public class SkipUtils {
 
 
     public static void toLoginActivity(Context context) {
+//        Intent intent = new Intent(context, LoginActivity.class);
         Intent intent = new Intent(context, LoginActivityNew.class);
         intent.putExtra("isGoMain", false);
         context.startActivity(intent);

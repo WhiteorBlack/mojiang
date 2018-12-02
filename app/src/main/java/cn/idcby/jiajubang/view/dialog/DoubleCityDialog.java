@@ -15,17 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 import cn.idcby.jiajubang.Bean.Address;
-import cn.idcby.jiajubang.Bean.SiftWorkPost;
 import cn.idcby.jiajubang.R;
-import cn.idcby.jiajubang.adapter.AddressAdapter;
 import cn.idcby.jiajubang.adapter.DoubleCityAdapter;
-import cn.idcby.jiajubang.adapter.DoubleSelectionAdapter;
 import cn.idcby.jiajubang.databinding.DialogDoubleSelectionBinding;
 import cn.idcby.jiajubang.interf.DoubleSelectionInterface;
 import cn.idcby.jiajubang.utils.NetUtils;
 import cn.idcby.jiajubang.utils.ParaUtils;
 import cn.idcby.jiajubang.utils.RequestListCallBack;
-import cn.idcby.jiajubang.utils.StringUtils;
 import cn.idcby.jiajubang.utils.Urls;
 
 public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
@@ -70,12 +66,14 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
     public void setUiBeforShow() {
         binding.tvTitle.setVisibility(View.VISIBLE);
     }
+
     Address post;
+
     public RecyclerView.OnItemTouchListener firstOnItemListener() {
         return new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-                 post = firstAdapter.getData().get(position);
+                post = firstAdapter.getData().get(position);
                 if (dataMap.get(post.AreaId) == null || dataMap.get(post.AreaId).isEmpty()) {
                     getSecondData(post.AreaId);
                 } else {
@@ -97,7 +95,7 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adaptera, View view, int position) {
                 if (doubleSelectionInterface != null) {
-                    Address address=secondAdapter.getData().get(position);
+                    Address address = secondAdapter.getData().get(position);
                     address.setParentId(post.AreaId);
                     address.setParentName(post.AreaName);
                     doubleSelectionInterface.onSelection(address);
@@ -116,7 +114,7 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
                     @Override
                     public void onSuccessResult(List<Address> bean) {
                         if (!bean.isEmpty()) {
-                            post=bean.get(0);
+                            post = bean.get(0);
                             bean.get(0).setSelected(true);
                             firstAdapter.setNewData(bean);
                             getSecondData(bean.get(0).getAreaId());
@@ -142,7 +140,7 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
                     @Override
                     public void onSuccessResult(List<Address> bean) {
                         secondAdapter.setNewData(bean);
-                        dataMap.put(workPostId,bean);
+                        dataMap.put(workPostId, bean);
                     }
 
                     @Override

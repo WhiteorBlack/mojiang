@@ -62,7 +62,7 @@ public class LoginHelper {
     }
 
     public static boolean isNotLogin(Context context){
-        return TextUtils.isEmpty(SPUtils.newIntance(context).getToken()) ;
+        return TextUtils.isEmpty(SPUtils.newIntance(context).getToken())||TextUtils.isEmpty(getUserId(context)) ;
     }
 
     public static void saveUserId(Context context, String userId){
@@ -88,6 +88,10 @@ public class LoginHelper {
     public static boolean isHasEnoughIntegral(Context context ,String editIntegral){
         return StringUtils.convertString2Count(editIntegral)
                 <= StringUtils.convertString2Count(SPUtils.newIntance(context).getUserIntegral()) ;
+    }
+
+    public static String getUserId(Context context){
+        return SPUtils.newIntance(context).getUserNumber();
     }
 
     public static void saveUserInfoToLocal(Context context ,UserInfo mUserInfo){

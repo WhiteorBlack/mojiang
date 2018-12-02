@@ -213,4 +213,17 @@ public class StringUtils {
         }
     }
 
+    public static String getDistance(double distance){
+        int disInte= (int) distance;
+        String disString="";
+        if (disInte<100){
+            disString="距离<100米";
+        }else if (disInte<1000){
+            disString="距离<1km";
+        }else {
+            disString="距离"+disInte/1000+"km";
+        }
+        return disString;
+    }
+
 }

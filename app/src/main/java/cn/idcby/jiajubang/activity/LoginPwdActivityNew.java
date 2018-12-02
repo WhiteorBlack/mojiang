@@ -14,6 +14,8 @@ import android.widget.EditText;
 import com.gyf.barlibrary.ImmersionBar;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 import java.util.Map;
@@ -49,6 +51,7 @@ public class LoginPwdActivityNew extends BaseActivity implements CompoundButton.
     @Override
     public void initView() {
         super.initView();
+        EventBus.getDefault().register(this);
         ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).flymeOSStatusBarFontColor(R.color.black).init();
         etPhone = findViewById(R.id.acti_login_number_ev);
         phone = getIntent().getExtras().getString("phone");
@@ -168,6 +171,13 @@ public class LoginPwdActivityNew extends BaseActivity implements CompoundButton.
                 });
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(BusEvent.HxLoginStateEvent stateEvent){
+        if (stateEvent!=null&&stateEvent.isReLogin()){
+            onBackPressed();
+        }
+    }
+
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         if (b) {
@@ -193,5 +203,11 @@ public class LoginPwdActivityNew extends BaseActivity implements CompoundButton.
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

@@ -38,6 +38,7 @@ import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.Address;
 import cn.idcby.jiajubang.Bean.LoginInfo;
+import cn.idcby.jiajubang.Bean.ResultBean;
 import cn.idcby.jiajubang.Bean.SiftWorkPost;
 import cn.idcby.jiajubang.Bean.UnusedCategory;
 import cn.idcby.jiajubang.Bean.UserInfo;
@@ -184,7 +185,7 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         } else if (R.id.acti_user_info_head_iv == vId) {
             checkPhoto();
         } else if (R.id.acti_user_info_birthday_tv == vId) {
-            datePicker( mBirthdayTv);
+            datePicker(mBirthdayTv);
         } else if (R.id.acti_user_info_area_tv == vId) {//区域
             showCityDialog();
 //            SelectedProvinceActivity.launch(mActivity, REQUEST_CODE_AREA);
@@ -213,9 +214,9 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
                         return;
                     }
                     Address address = (Address) post;
-                    mAreaTv.setText(address.getParentName()+" "+address.AreaName);
+                    mAreaTv.setText(address.getParentName() + " " + address.AreaName);
                     mCityId = address.AreaId;
-                    mProvinceId=address.getParentId();
+                    mProvinceId = address.getParentId();
                 }
             });
         }
@@ -557,10 +558,10 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         paramMap.put("PostText", postName);
         paramMap.put("CompanyName", companyName);
 
-        NetUtils.getDataFromServerByPost(mContext, Urls.MY_INFO_UPDATE,true, paramMap
-                , new RequestObjectCallBack<String>("submitModify", mContext, String.class) {
+        NetUtils.getDataFromServerByPost(mContext, Urls.MY_INFO_UPDATE, true, paramMap
+                , new RequestObjectCallBack<ResultBean>("submitModify", mContext, ResultBean.class) {
                     @Override
-                    public void onSuccessResult(String bean) {
+                    public void onSuccessResult(ResultBean bean) {
 //                        if (mDialog != null) {
 //                            mDialog.dismiss();
 //                        }
@@ -569,15 +570,13 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
 //                        if (!mActivity.isFinishing()) {
 //                            finish();
 //                        }
-
-                        login(phone, pwd);
+//                        login(phone, pwd);
+                        getUserInfo();
                     }
 
                     @Override
                     public void onErrorResult(String str) {
-                        if (mDialog != null) {
-                            mDialog.dismiss();
-                        }
+
 
 //                        DialogUtils.showCustomViewDialog(mContext, "温馨提示", "修改失败", null
 //                                , "确定", new DialogInterface.OnClickListener() {
@@ -650,20 +649,27 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
                 , new RequestObjectCallBack<UserInfo>("getMyInfo", mContext, UserInfo.class) {
                     @Override
                     public void onSuccessResult(UserInfo bean) {
-                        if (bean != null) {
-                            mUserInfo = bean;
+                        if (mDialog != null) {
+                            mDialog.dismiss();
                         }
-                        updateDisplay();
+                        if (bean != null) {
+                            Intent toSiIt = new Intent(RegisterInfoActivity.this, MainActivity.class);
+                            startActivity(toSiIt);
+                            mUserInfo = bean;
+                            LoginHelper.saveUserInfoToLocal(mContext, mUserInfo);
+                            onBackPressed();
+                        }
+//                        updateDisplay();
                     }
 
                     @Override
                     public void onErrorResult(String str) {
-                        updateDisplay();
+//                        updateDisplay();
                     }
 
                     @Override
                     public void onFail(Exception e) {
-                        updateDisplay();
+//                        updateDisplay();
                     }
                 });
     }

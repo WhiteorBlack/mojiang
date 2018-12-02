@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -50,99 +51,126 @@
                 android:layout_marginTop="12dp"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:textSize="@dimen/textSize_fourteen"
+                android:textSize="@dimen/textSize_fifteen"
                 android:textColor="@color/color_nomal_text"/>
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="60"
+                android:textColor="@color/red"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/acti_server_dt_title_tv" />
+
             <cn.idcby.jiajubang.view.FlowLayout
                 android:id="@+id/acti_server_dt_type_lay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
+                android:visibility="gone"
                 app:horizontalSpacing="10dp"
                 app:verticalSpacing="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/acti_server_dt_title_tv"
                 android:layout_marginTop="12dp"/>
+
             <LinearLayout
                 android:id="@+id/acti_server_dt_count_lay"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="12dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
                 android:orientation="horizontal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/acti_server_dt_type_lay"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp">
+                app:layout_constraintTop_toBottomOf="@id/tv_money">
+
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center_vertical|left"
                     android:orientation="horizontal">
+
                     <ImageView
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:scaleType="centerCrop"
+                        android:visibility="gone"
                         android:src="@mipmap/ic_server_jiedan" />
+
                     <TextView
                         android:id="@+id/acti_server_dt_count_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:textSize="@dimen/textSize_twelve"
+                        android:text="月接单：0"
                         android:textColor="@color/color_grey_text"
-                        android:text="月接单：0"/>
+                        android:textSize="@dimen/textSize_twelve" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
+
                     <ImageView
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:scaleType="centerCrop"
+                        android:visibility="gone"
                         android:src="@mipmap/ic_server_com_scale" />
+
                     <TextView
                         android:id="@+id/acti_server_dt_commScale_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:textSize="@dimen/textSize_twelve"
+                        android:text="好评率：0%"
                         android:textColor="@color/color_grey_text"
-                        android:text="好评率：0%"/>
+                        android:textSize="@dimen/textSize_twelve" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:gravity="center_vertical|right"
                     android:orientation="horizontal">
+
                     <ImageView
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:scaleType="centerCrop"
+                        android:visibility="gone"
                         android:src="@mipmap/ic_server_bond" />
+
                     <TextView
                         android:id="@+id/acti_server_dt_bond_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:textSize="@dimen/textSize_twelve"
+                        android:text="保证金：0"
                         android:textColor="@color/color_grey_text"
-                        android:text="保证金：0"/>
+                        android:textSize="@dimen/textSize_twelve" />
                 </LinearLayout>
             </LinearLayout>
             <View
                 android:id="@+id/acti_server_dt_title_dv"
                 android:layout_width="0dp"
-                android:layout_height="5dp"
+                android:layout_height="1dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintTop_toBottomOf="@id/acti_server_dt_count_lay"
                 android:background="@color/color_grey_f2"/>
 
@@ -150,6 +178,7 @@
                 android:id="@+id/acti_server_dt_server_apply_tips_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/acti_server_dt_title_dv"
                 android:layout_marginTop="12dp"
@@ -161,6 +190,7 @@
                 android:id="@+id/acti_server_dt_server_apply_lay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/acti_server_dt_server_apply_tips_tv"
@@ -171,6 +201,7 @@
             <View
                 android:id="@+id/acti_server_dt_apply_dv"
                 android:layout_width="0dp"
+                android:visibility="gone"
                 android:layout_height="5dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -210,6 +241,7 @@
             <TextView
                 android:id="@+id/acti_server_dt_server_address_tips_tv"
                 android:layout_width="wrap_content"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/acti_server_dt_server_time_tips_tv"
@@ -226,6 +258,7 @@
                 app:layout_constraintTop_toBottomOf="@id/acti_server_dt_server_time_tips_tv"
                 app:layout_constraintRight_toRightOf="parent"
                 android:gravity="left"
+                android:visibility="gone"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
@@ -267,7 +300,7 @@
                 android:layout_marginLeft="15dp"
                 android:textSize="@dimen/textSize_fourteen"
                 android:textColor="@color/color_nomal_text"
-                android:text="服务描述"/>
+                android:text="服务说明"/>
             <TextView
                 android:id="@+id/acti_server_dt_server_desc_tv"
                 android:layout_width="0dp"

@@ -34,6 +34,7 @@ public class UserActive {
     public int IsFollow ;
     public String Gender ;
     public String Age ;
+    public double distance;
 
     public String IndustryVAuthentication ;
 
@@ -167,5 +168,13 @@ public class UserActive {
 
     public CircleTransInfo getSourcePostInfo() {
         return SourcePostInfo;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }

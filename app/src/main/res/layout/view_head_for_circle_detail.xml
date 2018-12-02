@@ -4,109 +4,121 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:orientation="vertical">
+
     <RelativeLayout
         android:id="@+id/head_circle_dt_trans_top_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/head_circle_dt_trans_user_iv"
             android:layout_width="@dimen/circle_list_user_img_size"
             android:layout_height="@dimen/circle_list_user_img_size"
-            android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="6dp"
-            android:src="@mipmap/default_head_icon"/>
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/default_head_icon" />
+
         <TextView
             android:id="@+id/head_circle_dt_trans_focus_tv"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:layout_alignParentRight="true"
             android:gravity="center"
-            android:textSize="@dimen/textSize_fourteen"
+            android:text="关注"
             android:textColor="@color/color_theme"
-            android:text="关注"/>
+            android:textSize="@dimen/textSize_fourteen" />
+
         <ImageView
             android:id="@+id/head_circle_dt_trans_delete_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:visibility="gone"
-            android:padding="2dp"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/ic_delete_grey"/>
+            android:padding="2dp"
+            android:src="@mipmap/ic_delete_grey"
+            android:visibility="gone" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/head_circle_dt_trans_focus_tv"
             android:layout_alignTop="@id/head_circle_dt_trans_user_iv"
+            android:layout_toLeftOf="@id/head_circle_dt_trans_focus_tv"
             android:layout_toRightOf="@id/head_circle_dt_trans_user_iv"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/head_circle_dt_trans_user_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
                 android:ellipsize="end"
                 android:maxEms="10"
-                android:textSize="@dimen/textSize_fifteen"
-                android:textColor="@color/color_nomal_text"/>
+                android:singleLine="true"
+                android:textColor="@color/color_nomal_text"
+                android:textSize="@dimen/textSize_fifteen" />
+
             <ImageView
                 android:id="@+id/head_circle_dt_trans_user_v_iv"
                 android:layout_width="10dp"
                 android:layout_height="13dp"
-                android:visibility="invisible"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/ic_cirlce_user_v"/>
+                android:src="@mipmap/ic_cirlce_user_v"
+                android:visibility="invisible" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/head_circle_dt_trans_send_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/head_circle_dt_trans_user_iv"
             android:layout_alignBottom="@id/head_circle_dt_trans_user_iv"
-            android:textSize="@dimen/textSize_twelve"
-            android:textColor="@color/color_grey_text"/>
+            android:layout_toRightOf="@id/head_circle_dt_trans_user_iv"
+            android:textColor="@color/color_grey_text"
+            android:textSize="@dimen/textSize_twelve" />
+
         <TextView
             android:id="@+id/head_circle_dt_trans_send_company_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
+            android:layout_alignBottom="@id/head_circle_dt_trans_user_iv"
             android:layout_marginLeft="5dp"
-            android:singleLine="true"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@id/head_circle_dt_trans_send_time_tv"
             android:ellipsize="end"
             android:maxEms="15"
-            android:layout_alignBottom="@id/head_circle_dt_trans_user_iv"
-            android:layout_toRightOf="@id/head_circle_dt_trans_send_time_tv"
-            android:textSize="@dimen/textSize_twelve"
-            android:textColor="@color/color_grey_text"/>
+            android:singleLine="true"
+            android:textColor="@color/color_grey_text"
+            android:textSize="@dimen/textSize_twelve" />
+
         <TextView
             android:id="@+id/head_circle_dt_trans_see_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:singleLine="true"
-            android:ellipsize="end"
             android:layout_alignBottom="@id/head_circle_dt_trans_user_iv"
             android:layout_alignParentRight="true"
-            android:textSize="@dimen/textSize_twelve"
-            android:textColor="@color/color_grey_text"/>
+            android:layout_marginRight="15dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/color_grey_text"
+            android:textSize="@dimen/textSize_twelve" />
+
         <TextView
             android:id="@+id/head_circle_dt_trans_send_post_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:singleLine="true"
-            android:ellipsize="end"
             android:layout_alignBottom="@id/head_circle_dt_trans_user_iv"
-            android:layout_toRightOf="@id/head_circle_dt_trans_send_company_tv"
+            android:layout_marginRight="5dp"
             android:layout_toLeftOf="@id/head_circle_dt_trans_see_count_tv"
-            android:textSize="@dimen/textSize_twelve"
-            android:textColor="@color/color_grey_text"/>
+            android:layout_toRightOf="@id/head_circle_dt_trans_send_company_tv"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/color_grey_text"
+            android:textSize="@dimen/textSize_twelve" />
+
         <TextView
             android:id="@+id/head_circle_dt_trans_content_tv"
             android:layout_width="match_parent"
@@ -115,86 +127,93 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:ellipsize="end"
-            android:textSize="@dimen/textSize_fourteen"
-            android:textColor="@color/color_grey_5c"/>
+            android:textColor="@color/color_grey_5c"
+            android:textSize="@dimen/textSize_fourteen" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/head_circle_dt_img_rv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
         android:overScrollMode="never"
-        android:scrollbars="none"/>
+        android:scrollbars="none"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/head_circle_dt_four_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone">
+
         <ImageView
             android:id="@+id/head_circle_dt_item_one_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop" />
+
         <ImageView
             android:id="@+id/head_circle_dt_item_two_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:layout_toRightOf="@id/head_circle_dt_item_one_iv"
             android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_toRightOf="@id/head_circle_dt_item_one_iv"
+            android:scaleType="centerCrop" />
+
         <ImageView
             android:id="@+id/head_circle_dt_item_three_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
             android:layout_below="@id/head_circle_dt_item_one_iv"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="2dp"
+            android:scaleType="centerCrop" />
+
         <ImageView
             android:id="@+id/head_circle_dt_item_four_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
             android:layout_below="@id/head_circle_dt_item_one_iv"
-            android:layout_toRightOf="@id/head_circle_dt_item_three_iv"
             android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="2dp"/>
+            android:layout_toRightOf="@id/head_circle_dt_item_three_iv"
+            android:scaleType="centerCrop" />
     </RelativeLayout>
+
     <ImageView
         android:id="@+id/head_circle_dt_single_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"/>
+        android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/head_circle_dt_transport_dt_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="55dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="15dp"
-        android:background="@color/activity_bg_common">
+        android:background="@color/activity_bg_common"
+        android:visibility="gone">
+
         <ImageView
             android:id="@+id/head_circle_dt_transport_dt_iv"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@mipmap/default_icon"/>
+            android:src="@mipmap/default_icon" />
+
         <TextView
             android:id="@+id/head_circle_dt_transport_dt_title_tv"
             android:layout_width="match_parent"
@@ -202,10 +221,11 @@
             android:layout_marginTop="12dp"
             android:layout_marginRight="10dp"
             android:layout_toRightOf="@id/head_circle_dt_transport_dt_iv"
-            android:lines="2"
             android:ellipsize="end"
-            android:textSize="@dimen/textSize_fourteen"
-            android:textColor="@color/color_deep44_text"/>
+            android:lines="2"
+            android:textColor="@color/color_deep44_text"
+            android:textSize="@dimen/textSize_fourteen" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -216,39 +236,156 @@
             android:id="@+id/head_circle_dt_transport_dt_type_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/head_circle_dt_transport_dt_iv"
             android:layout_alignParentRight="true"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp"
-            android:layout_below="@id/head_circle_dt_transport_dt_iv"
-            android:textSize="@dimen/textSize_thirteen"
-            android:textColor="@color/color_deep44_text"/>
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/color_deep44_text"
+            android:textSize="@dimen/textSize_thirteen" />
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/head_circle_dt_transport_dt_deleted_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="55dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="15dp"
+        android:background="@color/activity_bg_common"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="@color/activity_bg_common">
+        android:visibility="gone">
+
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_circle_deleted"/>
+            android:src="@mipmap/ic_circle_deleted" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/textSize_fourteen"
+            android:text="该消息已被删除"
             android:textColor="@color/color_deep44_text"
-            android:text="该消息已被删除"/>
+            android:textSize="@dimen/textSize_fourteen" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/acti_circle_details_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/acti_circle_details_comment_count_iv"
+                style="@style/nomal_item_dt_ic_style"
+                android:src="@mipmap/gray_comment" />
+
+            <TextView
+                android:id="@+id/acti_circle_details_comment_count_tv"
+                style="@style/nomal_item_tv_style"
+                android:text="0"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/acti_circle_details_support_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/acti_circle_details_support_iv"
+                style="@style/nomal_item_dt_ic_style"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_support_nomal" />
+
+            <TextView
+                android:id="@+id/acti_circle_details_support_count_tv"
+                style="@style/nomal_item_tv_style"
+                android:layout_alignParentRight="true"
+                android:text="0" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.7dp"
+            android:layout_height="match_parent"
+            android:background="@color/line_gray"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/acti_circle_details_collect_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/acti_circle_details_collect_iv"
+                style="@style/nomal_item_dt_ic_style"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_collection_nomal" />
+
+            <TextView
+                android:id="@+id/tv_collection_tv"
+                style="@style/nomal_item_tv_style"
+                android:text="收藏" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.7dp"
+            android:layout_height="match_parent"
+            android:background="@color/line_gray"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/acti_circle_details_trans_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                style="@style/nomal_item_dt_ic_style"
+                android:layout_centerInParent="true"
+                android:padding="1.5dp"
+                android:src="@mipmap/ic_zhuanfa" />
+
+            <TextView
+                android:id="@+id/acti_circle_details_trans_count_tv"
+                style="@style/nomal_item_tv_style"
+                android:layout_alignParentRight="true"
+                android:visibility="visible" />
+
+
+        </LinearLayout>
     </LinearLayout>
 
     <View
@@ -256,20 +393,23 @@
         android:layout_height="@dimen/nomal_divider_height"
         android:layout_marginTop="10dp"
         android:background="@color/activity_bg_common" />
+
     <TextView
         android:id="@+id/header_circle_details_apply_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:textColor="@color/color_nomal_text"
         android:textSize="@dimen/textSize_fourteen"
-        android:textColor="@color/color_nomal_text"/>
+        android:visibility="gone" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:paddingBottom="8dp"
-        android:paddingTop="8dp">
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
         <TextView
             android:id="@+id/header_circle_details_comment_count_tv"
             android:layout_width="wrap_content"
@@ -277,24 +417,25 @@
             android:layout_centerVertical="true"
             android:text="0人参与讨论"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/textSize_fourteen"/>
+            android:textSize="@dimen/textSize_fourteen" />
 
         <ImageView
             android:layout_width="10dp"
             android:layout_height="10dp"
-            android:visibility="gone"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/arrow_right"/>
+            android:layout_centerVertical="true"
+            android:src="@mipmap/arrow_right"
+            android:visibility="gone" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
             android:text="全部评论"
             android:textColor="@color/color_grey_88"
-            android:textSize="@dimen/textSize_twelve"/>
+            android:textSize="@dimen/textSize_twelve"
+            android:visibility="gone" />
     </RelativeLayout>
 </LinearLayout>

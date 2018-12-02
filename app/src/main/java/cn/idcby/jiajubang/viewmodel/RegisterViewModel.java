@@ -48,6 +48,7 @@ public class RegisterViewModel extends BaseObservable implements ViewModel {
         if (!TextUtils.equals(pwd, pwdAgain)) {
             ToastUtils.showToast(activity, "两次输入的密码不一致");
         }
+        loadingDialog.show();
         Map<String, String> para = ParaUtils.getPara(activity);
         para.put("Phone", phone);
         para.put("SmsCode", code);
@@ -56,23 +57,32 @@ public class RegisterViewModel extends BaseObservable implements ViewModel {
                 new RequestObjectCallBack<ResultBean>("register", activity, ResultBean.class) {
                     @Override
                     public void onSuccessResult(ResultBean bean) {
+                        if (loadingDialog != null) {
+                            loadingDialog.dismiss();
+                        }
                         Intent intent = new Intent(activity, RegisterInfoActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("phone", phone);
                         bundle.putString("pwd", pwd);
                         intent.putExtras(bundle);
                         activity.startActivity(intent);
+                        activity.onBackPressed();
 //                        login(phone, pwd);
                     }
 
                     @Override
                     public void onErrorResult(String str) {
+                        if (loadingDialog != null) {
+                            loadingDialog.dismiss();
+                        }
                         ToastUtils.showToast(activity, str);
                     }
 
                     @Override
                     public void onFail(Exception e) {
-
+                        if (loadingDialog != null) {
+                            loadingDialog.dismiss();
+                        }
                     }
                 });
     }

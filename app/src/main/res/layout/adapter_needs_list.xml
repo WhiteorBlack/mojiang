@@ -27,7 +27,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="15dp"
         android:gravity="center"
-        android:textSize="@dimen/textSize_ten"
+        android:textSize="@dimen/textSize_12"
         android:textColor="@color/color_grey_text"/>
     <TextView
         android:id="@+id/adapter_needs_list_title_tv"
@@ -38,10 +38,11 @@
         android:layout_marginRight="15dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
+        android:textStyle="bold"
         android:gravity="center_vertical"
         android:singleLine="true"
         android:ellipsize="end"
-        android:textSize="@dimen/textSize_fourteen"
+        android:textSize="@dimen/textSize_fifteen"
         android:textColor="@color/color_nomal_text"/>
     <TextView
         android:id="@+id/adapter_needs_list_content_tv"
@@ -55,7 +56,7 @@
         android:gravity="center_vertical"
         android:singleLine="true"
         android:ellipsize="end"
-        android:textSize="@dimen/textSize_thirteen"
+        android:textSize="@dimen/textSize_fourteen"
         android:textColor="@color/color_nomal_text"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/adapter_needs_list_pic_lay"
@@ -82,7 +83,7 @@
         android:layout_marginTop="11dp"
         android:layout_below="@id/adapter_needs_list_pic_lay"
         android:textSize="@dimen/textSize_thirteen"
-        android:textColor="@color/lv_item_bot_tv_color"/>
+        android:textColor="@color/text_gray"/>
     <LinearLayout
         android:id="@+id/adapter_needs_list_comment_lay"
         android:layout_width="wrap_content"

@@ -57,7 +57,7 @@
     <!--常规列表底部图标的大小-->
     <dimen name="lv_item_bot_ic_width">15dp</dimen>
     <dimen name="lv_item_bot_ic_height">15dp</dimen>
-    <dimen name="lv_item_bot_tv_size">12dp</dimen>
+    <dimen name="lv_item_bot_tv_size">13dp</dimen>
 
 
     <dimen name="good_comment_star_wid">20dp</dimen>

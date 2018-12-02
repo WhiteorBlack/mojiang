@@ -38,7 +38,6 @@ public class SplashActivity extends BaseActivity {
                         if (LoginHelper.isNotLogin(SplashActivity.this)){
                             SkipUtils.toLoginActivity(SplashActivity.this);
                         }else {
-
                             goNextActivity(MainActivity.class);
                         }
                     }

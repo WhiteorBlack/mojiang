@@ -7,9 +7,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,10 +28,13 @@ import cn.idcby.commonlibrary.base.BaseMoreStatusActivity;
 import cn.idcby.commonlibrary.dialog.LoadingDialog;
 import cn.idcby.commonlibrary.utils.MyUtils;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
+import cn.idcby.commonlibrary.utils.SPUtils;
+import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.CircleDetail;
 import cn.idcby.jiajubang.Bean.CircleTransInfo;
 import cn.idcby.jiajubang.Bean.Collect;
 import cn.idcby.jiajubang.Bean.CommentCircleList;
+import cn.idcby.jiajubang.Bean.CommentResult;
 import cn.idcby.jiajubang.Bean.FocusResult;
 import cn.idcby.jiajubang.Bean.ImageThumb;
 import cn.idcby.jiajubang.Bean.SupportResult;
@@ -88,6 +93,8 @@ public class CircleDetailActivity extends BaseMoreStatusActivity {
     private ImageView mImgSupportIv;
     private View mImgCollectLay;
     private ImageView mImgCollectIv;
+    private EditText etComment;
+    private TextView tvSend;
 
     //基本信息
     private ImageView mAutherIv ;
@@ -143,7 +150,13 @@ public class CircleDetailActivity extends BaseMoreStatusActivity {
     private static final int REQUEST_CODE_CIRCLE_COMMENT_REPLY = 1004 ;
     private static final int REQUEST_CODE_CIRCLE_TO_TRANSPORT = 1005 ;
     private static final int REQUEST_CODE_FOCUS = 1006 ;
-
+    private int mCommentLevel=1;
+    private String mParentID;
+    private int mCommentType = 0 ;// 0 资讯 1 圈子 2 需求 3闲置
+    public static final int COMMENT_TYPE_NEWS = 0 ;
+    public static final int COMMENT_TYPE_CIRCLE = 1 ;
+    public static final int COMMENT_TYPE_NEED = 2 ;
+    public static final int COMMENT_TYPE_UNUSE = 3 ;
 
     @Override
     public void requestData() {
@@ -226,12 +239,10 @@ public class CircleDetailActivity extends BaseMoreStatusActivity {
         mFooterTv = ViewUtil.getLoadingLvFooterView(mContext) ;
         mListView.addFooterView(mFooterTv) ;
 
-        mTvCommentNumber = findViewById(R.id.acti_circle_details_comment_count_tv);
-        mTvSupportNumber = findViewById(R.id.acti_circle_details_support_count_tv);
-        mSupportLay = findViewById(R.id.acti_circle_details_support_lay);
-        mImgCollectLay = findViewById(R.id.acti_circle_details_collect_lay);
-        mImgSupportIv = findViewById(R.id.acti_circle_details_support_iv);
-        mImgCollectIv = findViewById(R.id.acti_circle_details_collect_iv);
+        etComment=findViewById(R.id.et_comment);
+        tvSend=findViewById(R.id.tv_send);
+        tvSend.setOnClickListener(this);
+
         View mTransLay = findViewById(R.id.acti_circle_details_trans_lay) ;
         mTvTransNumber = findViewById(R.id.acti_circle_details_trans_count_tv) ;
         mTransLay.setOnClickListener(this);
@@ -258,9 +269,14 @@ public class CircleDetailActivity extends BaseMoreStatusActivity {
 
     private void addHeadView() {
         View headView = View.inflate(mContext, R.layout.view_head_for_circle_detail, null);
+        mSupportLay = headView.findViewById(R.id.acti_circle_details_support_lay);
+        mImgCollectLay = headView.findViewById(R.id.acti_circle_details_collect_lay);
+        mImgSupportIv = headView.findViewById(R.id.acti_circle_details_support_iv);
+        mImgCollectIv = headView.findViewById(R.id.acti_circle_details_collect_iv);
         mApplyTv = headView.findViewById(R.id.header_circle_details_apply_tv);
         mHeadCommentCountTv = headView.findViewById(R.id.header_circle_details_comment_count_tv) ;
-
+        mTvCommentNumber = headView.findViewById(R.id.acti_circle_details_comment_count_tv);
+        mTvSupportNumber = headView.findViewById(R.id.acti_circle_details_support_count_tv);
         mAutherIv = headView.findViewById(R.id.head_circle_dt_trans_user_iv);
         mAutherVIv = headView.findViewById(R.id.head_circle_dt_trans_user_v_iv);
         mAutherNameTv = headView.findViewById(R.id.head_circle_dt_trans_user_name_tv);
@@ -337,7 +353,81 @@ public class CircleDetailActivity extends BaseMoreStatusActivity {
             SkipUtils.toOtherUserInfoActivity(mContext ,mCircleDetail.getCreateUserId()) ;
         }else if(i == R.id.head_circle_dt_trans_focus_tv){
             changeFocusState() ;
+        }else if (i==R.id.tv_send){
+
+            sendComment();
         }
+    }
+
+    private void sendComment() {
+        if (LoginHelper.isNotLogin(mActivity)) {
+            SkipUtils.toLoginActivity(mActivity);
+            return;
+        }
+
+        String content = etComment.getText().toString().trim();
+        if (TextUtils.isEmpty(content)) {
+            ToastUtils.showErrorToast(mActivity, "请输入内容");
+            return;
+        }
+        if (loadingDialog==null){
+            loadingDialog=new LoadingDialog(this);
+        }
+
+        loadingDialog.show();
+
+        Map<String, String> para = ParaUtils.getParaWithToken(mActivity);
+        if (mCommentLevel == 2) {
+            para.put("ParentID", StringUtils.convertNull(mParentID));
+        }
+        para.put("Id", StringUtils.convertNull(articleID));
+        para.put("CommentLevel", String.valueOf(mCommentLevel));
+        para.put("CommitContent", content);
+
+//        String urls = Urls.ADD_COMMENT_ARTICLE_DETAIL ;
+//
+//        if(COMMENT_TYPE_CIRCLE == mCommentType){
+//            urls = Urls.CIRCLE_COMMENT_ADD ;
+//        }else if(COMMENT_TYPE_NEED == mCommentType){
+//            urls = Urls.NEEDS_COMMENT_ADD ;
+//        }else if(COMMENT_TYPE_UNUSE == mCommentType){
+//            urls = Urls.UNUSE_COMMENT_ADD ;
+//        }
+
+        NetUtils.getDataFromServerByPost(mActivity, Urls.CIRCLE_COMMENT_ADD, false, para,
+                new RequestObjectCallBack<CommentResult>("sendComment-->type=" + mCommentType, mActivity, CommentResult.class) {
+                    @Override
+                    public void onSuccessResult(CommentResult bean) {
+
+                        if (loadingDialog !=null)
+                            loadingDialog.dismiss();
+                        CommentCircleList commentCircleList=new CommentCircleList();
+                        commentCircleList.PostID=articleID;
+                        commentCircleList.CommentContent=content;
+                        commentCircleList.setCreateDate("刚刚");
+                        commentCircleList.setCreateUserId(SPUtils.newIntance(mContext).getUserNumber());
+                        commentCircleList.setCreateUserId(SPUtils.newIntance(mContext).getUserNickName());
+                        commentCircleList.setCreateUserHeadIcon(SPUtils.newIntance(mContext).getUserAvatar());
+                        mCommentList.add(commentCircleList);
+                        mCommentAdapter.notifyDataSetChanged();
+                        mTvCommentNumber.setText(bean.CommentNumber);
+                        mHeadCommentCountTv.setText("留言（" + bean.CommentNumber + "）");
+                        etComment.setText("");
+                        ToastUtils.showOkToast(mActivity, "提交成功");
+                    }
+
+                    @Override
+                    public void onErrorResult(String str) {
+                        if (loadingDialog !=null)
+                            loadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        if (loadingDialog !=null)
+                            loadingDialog.dismiss();
+                    }
+                });
     }
 
     /**
@@ -367,6 +457,8 @@ public class CircleDetailActivity extends BaseMoreStatusActivity {
                         mTvCommentNumber.setVisibility(View.VISIBLE);
                         mTvCommentNumber.setText(commentNum) ;
                         mHeadCommentCountTv.setText("留言（" + commentNum + "）");
+                    }else {
+                        mTvCommentNumber.setText("0") ;
                     }
                 }
             }) ;
@@ -847,5 +939,6 @@ public class CircleDetailActivity extends BaseMoreStatusActivity {
         NetUtils.cancelTag("supportCircle") ;
         NetUtils.cancelTag("collectionCircle") ;
         NetUtils.cancelTag("getCommentList") ;
+        NetUtils.cancelTag("sendComment-->type=" + mCommentType);
     }
 }

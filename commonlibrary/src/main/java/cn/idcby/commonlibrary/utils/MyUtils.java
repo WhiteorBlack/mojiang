@@ -281,7 +281,8 @@ public class MyUtils {
 
     public static void setBageShow(TextView tv, int number) {
         if (number == 0) {
-            tv.setVisibility(View.INVISIBLE);
+            tv.setText("0");
+//            tv.setVisibility(View.INVISIBLE);
         } else {
             tv.setVisibility(View.VISIBLE);
             if (number <= 99) {
