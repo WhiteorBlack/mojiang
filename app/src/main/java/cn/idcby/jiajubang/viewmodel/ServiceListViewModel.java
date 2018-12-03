@@ -15,6 +15,7 @@ import cn.idcby.commonlibrary.base.BaseBindActivity;
 import cn.idcby.jiajubang.BR;
 import cn.idcby.jiajubang.Bean.Address;
 import cn.idcby.jiajubang.Bean.ServiceList;
+import cn.idcby.jiajubang.activity.ServerActivity;
 import cn.idcby.jiajubang.adapter.ServiceAdapter;
 import cn.idcby.jiajubang.application.MyApplication;
 import cn.idcby.jiajubang.interf.DoubleSelectionInterface;
@@ -31,21 +32,30 @@ public class ServiceListViewModel extends BaseObservable implements ViewModel {
     private BaseBindActivity activity;
     private ServiceAdapter adapter;
     private int mCurPage = 1;
-    private String mSortType;
-    private String mSearchKey;
+    private int mSortType=1;
+    private String mSearchKey="";
     private String mCheckedCateId;
-    private String mCategoryLayer;
+    private int mCategoryLayer=1;
     private boolean mIsInstallSer = false;
     private boolean mIsArrowUp = false;
-    private String areaId=MyApplication.getCurrentCityId();
+    private String areaId;
+    private String aredType="2";
 
     private String selectCity="";
 
     public ServiceListViewModel(BaseBindActivity activity, ServiceAdapter adapter) {
         this.activity = activity;
         this.adapter = adapter;
-        mCheckedCateId = activity.getIntent().getBundleExtra("bundle").getString(SkipUtils.INTENT_CATEGOTY_ID);
+
         setSelectCity(MyApplication.LOCATION_CITY);
+        initData();
+    }
+
+    private void initData() {
+        areaId=MyApplication.getCurrentCityId();
+        mCheckedCateId = activity.getIntent().getExtras().getString(SkipUtils.INTENT_CATEGOTY_ID);
+        mIsInstallSer = ServerActivity.SERVER_TYPE_INSTALL == activity.getIntent().getExtras().getInt(SkipUtils.INTENT_SERVER_TYPE) ;
+        aredType=MyApplication.getCurrentCityType();
     }
 
     public void getData() {
@@ -57,7 +67,7 @@ public class ServiceListViewModel extends BaseObservable implements ViewModel {
         paramMap.put("Page", "" + mCurPage);
         paramMap.put("PageSize", "10");
         paramMap.put("AreaId", areaId);
-        paramMap.put("AreaType", "2");
+        paramMap.put("AreaType", aredType);
 
         String url = mIsInstallSer ? Urls.SERVER_LIST_INSTALL : Urls.SERVER_LIST_SERVER;
 
@@ -66,7 +76,6 @@ public class ServiceListViewModel extends BaseObservable implements ViewModel {
                         , activity, ServiceList.class) {
                     @Override
                     public void onSuccessResult(List<ServiceList> bean) {
-                        bean.add(new ServiceList());
                         adapter.setPagingData(bean, mCurPage);
                         activity.refreshOk();
                     }

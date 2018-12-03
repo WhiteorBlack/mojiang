@@ -98,6 +98,7 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
     private TextView mServerDescTv;
 
     private LinearLayout mPromiseLay;
+    private FlowLayout promiseLayout;
 
     private TextView mCommentCountTv;
     private View mCommentMoreTv;
@@ -179,11 +180,14 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
         mServerDescTv = findViewById(R.id.acti_server_dt_server_desc_tv);
 
         mPromiseLay = findViewById(R.id.acti_server_dt_promise_lay);
+        promiseLayout = findViewById(R.id.acti_server_fl_promise_lay);
         TextView mSubsTv = findViewById(R.id.acti_server_dt_subs_tv);
         TextView mBuyTv = findViewById(R.id.acti_server_dt_bt_tv);
         mSubsTv.setOnClickListener(this);
         mBuyTv.setOnClickListener(this);
         mPromiseLay.setOnClickListener(this);
+        promiseLayout.setOnClickListener(this);
+        promiseLayout.setSingleLine(true);
 
         mCommentCountTv = findViewById(R.id.acti_server_dt_comment_count_tv);
         mCommentMoreTv = findViewById(R.id.acti_server_dt_comment_count_more_tv);
@@ -204,6 +208,7 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
         mSupportTv = findViewById(R.id.acti_server_dt_support_tv);
         mConnectTv = findViewById(R.id.acti_server_dt_connection_tv);
         mSendServerTv = findViewById(R.id.acti_server_dt_send_tv);
+        findViewById(R.id.acti_server_dt_service_lay).setOnClickListener(this);
 
         cartLay.setOnClickListener(this);
         supportLay.setOnClickListener(this);
@@ -267,21 +272,34 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
                 Intent toCtIt = new Intent(mContext, ShoppingCartActivity.class);
                 startActivity(toCtIt);
             }
-        } else if (i == R.id.acti_server_dt_connection_tv) {//联系TA
+        } else if (i == R.id.acti_server_dt_connection_tv) {//下单付款
+//            if (!mIsSelf) {
+//                String phonePer = Manifest.permission.CALL_PHONE;
+//                if (!EasyPermissions.hasPermissions(mContext, phonePer)) {
+//                    EasyPermissions.requestPermissions(this, "需要拨打电话权限，禁止会导致该功能异常",
+//                            100, phonePer);
+//                } else {
+//                    if (LoginHelper.isNotLogin(mContext)) {
+//                        SkipUtils.toLoginActivityForResult(mActivity, REQUEST_CODE_CONNECT);
+//                    } else {
+//                        toCallPhone();
+//                    }
+//                }
+//            }
+        } else if (i == R.id.acti_server_dt_send_tv) {//预约
             if (!mIsSelf) {
-                String phonePer = Manifest.permission.CALL_PHONE;
-                if (!EasyPermissions.hasPermissions(mContext, phonePer)) {
-                    EasyPermissions.requestPermissions(this, "需要拨打电话权限，禁止会导致该功能异常",
-                            100, phonePer);
-                } else {
-                    if (LoginHelper.isNotLogin(mContext)) {
-                        SkipUtils.toLoginActivityForResult(mActivity, REQUEST_CODE_CONNECT);
-                    } else {
-                        toCallPhone();
-                    }
-                }
+                ServerConfirmActivity.launch(mActivity, mServerUserId
+                        , mIsInstall, REQUEST_CODE_SUBMIT);
             }
-        } else if (i == R.id.acti_server_dt_send_tv) {//客服
+//            if (!mIsSelf) {
+//                if (LoginHelper.isNotLogin(mContext)) {
+//                    SkipUtils.toLoginActivityForResult(mActivity, REQUEST_CODE_CUSTOMER);
+//                } else {
+//                    String userHxId = mServerDetails.getHxName();
+//                    SkipUtils.toMessageChatActivity(mActivity, userHxId);
+//                }
+//            }
+        } else if (i == R.id.acti_server_dt_service_lay) {//客服
             if (!mIsSelf) {
                 if (LoginHelper.isNotLogin(mContext)) {
                     SkipUtils.toLoginActivityForResult(mActivity, REQUEST_CODE_CUSTOMER);
@@ -305,9 +323,12 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
             ServerCommentActivity.launch(mContext, mIsInstall, mServerUserId);
 
         } else if (i == R.id.acti_server_dt_promise_lay) {//服务承诺
-            showPromiseDialog();
+//            showPromiseDialog();
         } else if (i == R.id.acti_server_dt_edit_iv) {//编辑相册
             MyServerPictureEditActivity.launch(mActivity, mIsInstall);
+        }else if (i==R.id.acti_server_fl_promise_lay){
+            promiseLayout.setSingleLine(false);
+            promiseLayout.invalidate();
         }
     }
 
@@ -702,9 +723,10 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
         //服务承诺
         mPromiseList.clear();
         mPromiseList.addAll(mServerDetails.getPromiseList());
-        mPromiseLay.removeAllViews();
+//        mPromiseLay.removeAllViews();
+        promiseLayout.removeAllViews();
         int promiseSize = mPromiseList.size();
-        int rightPad = ResourceUtils.dip2px(mContext, 20);
+        int rightPad = ResourceUtils.dip2px(mContext, 10);
         int drawPad = ResourceUtils.dip2px(mContext, 8);
         for (int x = 0; x < promiseSize; x++) {
             WordType wordType = mPromiseList.get(x);
@@ -716,22 +738,22 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
                 tv.setPadding(0, 0, rightPad, 0);
                 tv.setSingleLine(true);
                 tv.setGravity(Gravity.CENTER_VERTICAL);
-                Drawable drawable = getResources().getDrawable(R.mipmap.ic_server_promise);// 找到资源图片
-                // 这一步必须要做，否则不会显示。
-                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());// 设置图片宽高
-                tv.setCompoundDrawablePadding(drawPad);
-                tv.setCompoundDrawables(drawable, null, null, null);
+//                Drawable drawable = getResources().getDrawable(R.mipmap.ic_server_promise);// 找到资源图片
+//                // 这一步必须要做，否则不会显示。
+//                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());// 设置图片宽高
+//                tv.setCompoundDrawablePadding(drawPad);
+//                tv.setCompoundDrawables(drawable, null, null, null);
                 tv.setEllipsize(TextUtils.TruncateAt.END);
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
-                tv.setTextColor(mContext.getResources().getColor(R.color.color_deep33_text));
+                tv.setTextColor(mContext.getResources().getColor(R.color.red));
                 tv.setText(wordType.getItemName());
-
-                mPromiseLay.addView(tv);
+                promiseLayout.addView(tv);
+//                mPromiseLay.addView(tv);
             }
         }
 
         //dialog的内容填充
-        updatePromiseDialog(false);
+//        updatePromiseDialog(false);
 
         mCommentList.clear();
         mCommentList.addAll(mServerDetails.getEvaluateList());

@@ -63,9 +63,6 @@ public class ServiceViewModel implements ViewModel {
                         , activity, ServiceList.class) {
                     @Override
                     public void onSuccessResult(List<ServiceList> bean) {
-                        for (int i = 0; i < 10; i++) {
-                            bean.add(new ServiceList());
-                        }
                         adapter.setPagingData(bean, mCurPage);
                         activity.refreshOk();
                     }

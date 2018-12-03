@@ -21,6 +21,7 @@ import cn.idcby.jiajubang.BR;
 import cn.idcby.jiajubang.Bean.AdvBanner;
 import cn.idcby.jiajubang.Bean.BaseCategory;
 import cn.idcby.jiajubang.Bean.ServerCategory;
+import cn.idcby.jiajubang.activity.ServerActivity;
 import cn.idcby.jiajubang.activity.ServiceListNewActivity;
 import cn.idcby.jiajubang.adapter.ServiceClassAdapter;
 import cn.idcby.jiajubang.application.MyApplication;
@@ -110,8 +111,9 @@ public class ServiceHeaderViewModel extends BaseObservable implements ViewModel,
                 ServerCategory category=classAdapter.getData().get(position);
                 Intent intent=new Intent(activity,ServiceListNewActivity.class);
                 Bundle bundle=new Bundle();
+                bundle.putInt(SkipUtils.INTENT_SERVER_TYPE, 1);
                 bundle.putString(SkipUtils.INTENT_CATEGOTY_ID,category.getServiceCategoryID());
-                intent.putExtra("bundle",bundle);
+                intent.putExtras(bundle);
                 activity.startActivity(intent);
             }
         };

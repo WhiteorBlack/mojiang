@@ -7,6 +7,8 @@
 
         <import type="cn.idcby.jiajubang.utils.StringUtil" />
 
+        <import type="cn.idcby.jiajubang.utils.StringUtils" />
+
         <import type="cn.idcby.jiajubang.R" />
 
         <variable
@@ -27,6 +29,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +46,7 @@
             android:layout_marginRight="8dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="TextView"
+            android:text="@{item.NickName}"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:typeface="sans"
@@ -57,13 +60,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="@{item.singleAmount}"
+            android:text="@{StringUtil.getDealCount(item.singleAmount)}"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <LinearLayout
+        <cn.idcby.jiajubang.view.FlowLayout
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
             android:layout_height="20dp"
@@ -71,7 +74,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/textView5"
             app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"></LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
             android:id="@+id/textView6"
@@ -81,7 +84,7 @@
             android:textColor="@color/red"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="@+id/linearLayout2"
-            tools:text="价格" />
+            tools:text="@{StringUtil.getServerMoney(item.PraiseRate)}" />
 
         <TextView
             android:id="@+id/textView7"
@@ -89,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:text="TextView"
+            android:text="@{StringUtils.getDistance(item.Distance)}"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView6"
             app:layout_constraintEnd_toEndOf="parent"

@@ -170,4 +170,10 @@ public class StringUtil {
         }
     }
 
+    public static String getDealCount(String count){
+        return "成交"+count+"单";
+    }
+    public static String getServerMoney(String count){
+        return "¥"+count+"起";
+    }
 }
