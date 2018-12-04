@@ -15,8 +15,9 @@ import cn.idcby.jiajubang.R;
  *     version: 1.0
  * </pre>
  */
-public class MyStoreActivity extends BaseActivity{
+public class MyStoreActivity extends BaseActivity {
     private TextView mOpenStoreTV;
+
     @Override
     public int getLayoutID() {
         return R.layout.activity_my_store;
@@ -24,7 +25,7 @@ public class MyStoreActivity extends BaseActivity{
 
     @Override
     public void initView() {
-mOpenStoreTV=(TextView)findViewById(R.id.acti_mystore_right_tv);
+        mOpenStoreTV = (TextView) findViewById(R.id.acti_mystore_right_tv);
     }
 
     @Override
@@ -34,13 +35,13 @@ mOpenStoreTV=(TextView)findViewById(R.id.acti_mystore_right_tv);
 
     @Override
     public void initListener() {
-mOpenStoreTV.setOnClickListener(this);
+        mOpenStoreTV.setOnClickListener(this);
     }
 
     @Override
     public void dealOhterClick(View view) {
-if (view.getId()==R.id.acti_mystore_right_tv){
-    goNextActivity(OpenStoreActivity.class);
-}
+        if (view.getId() == R.id.acti_mystore_right_tv) {
+            goNextActivity(OpenStoreActivity.class);
+        }
     }
 }

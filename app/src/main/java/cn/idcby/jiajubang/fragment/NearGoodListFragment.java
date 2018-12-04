@@ -107,7 +107,7 @@ public class NearGoodListFragment extends BaseFragment implements View.OnClickLi
         mLatestDv = view.findViewById(R.id.acti_unuse_good_list_nav_latest_dv);
         mNearlyLay.setOnClickListener(this);
         mLatestLay.setOnClickListener(this);
-        mNavLay.setVisibility(mIsSpec ? View.GONE : View.VISIBLE);
+        mNavLay.setVisibility(mIsSpec ? View.GONE : View.GONE);
 
 
 //        searchLay.setOnClickListener(this);

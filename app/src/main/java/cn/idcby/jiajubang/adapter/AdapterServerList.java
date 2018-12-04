@@ -84,6 +84,7 @@ public class AdapterServerList extends BaseAdapter {
 
             holder.mTypeLay.removeAllViews();
             holder.mPromiseLay.removeAllViews();
+            holder.tvPrice.setText("¥" + info.getPraiseRate() + "起");
 
             List<WordType> mTypeList = info.getTypeList();
             if (mTypeList != null && mTypeList.size() > 0) {
@@ -96,13 +97,14 @@ public class AdapterServerList extends BaseAdapter {
                     WordType wordType = mTypeList.get(x);
 
                     if (wordType != null) {
-                        MyCornerTextView tv = new MyCornerTextView(context);
+                        TextView tv = new TextView(context);
                         tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT
                                 , ViewGroup.LayoutParams.WRAP_CONTENT));
                         tv.setPadding(flTvPadding * 4, flTvPadding, flTvPadding * 4, flTvPadding);
-                        tv.setfilColor(Color.parseColor(wordType.getColorValue())).setCornerSize(15);
+//                        tv.setfilColor(Color.parseColor(wordType.getColorValue())).setCornerSize(15);
+                        tv.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.bg_server_list_promise_tv));
                         tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
-                        tv.setTextColor(context.getResources().getColor(R.color.color_white));
+                        tv.setTextColor(context.getResources().getColor(R.color.yancy_green500));
                         tv.setText(wordType.getItemName());
                         holder.mTypeLay.addView(tv);
                     }
@@ -158,6 +160,7 @@ public class AdapterServerList extends BaseAdapter {
         private FlowLayout mTypeLay;
         private FlowLayout mPromiseLay;
         private TextView tvDistance;
+        private TextView tvPrice;
 
         public SerHolder(View view) {
             mIconIv = view.findViewById(R.id.adapter_server_list_iv);
@@ -167,6 +170,7 @@ public class AdapterServerList extends BaseAdapter {
             mTypeLay = view.findViewById(R.id.adapter_server_list_type_lay);
             mPromiseLay = view.findViewById(R.id.adapter_server_list_promise_lay);
             tvDistance = view.findViewById(R.id.adapter_server_list_distance);
+            tvPrice = view.findViewById(R.id.tv_price);
         }
     }
 

@@ -4,6 +4,8 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
+import com.gyf.barlibrary.ImmersionBar;
+
 import cn.idcby.commonlibrary.base.BaseBindActivity;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.jiajubang.R;
@@ -29,6 +31,7 @@ public class ServiceListNewActivity extends BaseBindActivity {
     @Override
     public void initView() {
         super.initView();
+        ImmersionBar.with(this).statusBarColor(R.color.transparent).statusBarDarkFont(true).flymeOSStatusBarFontColor(R.color.black).keyboardEnable(false).init();
         binding.viewBar.getLayoutParams().height=ResourceUtils.getStatusBarHeight(this);
         binding.rvList.setLayoutManager(new LinearLayoutManager(this));
         binding.rvList.setAdapter(adapter);

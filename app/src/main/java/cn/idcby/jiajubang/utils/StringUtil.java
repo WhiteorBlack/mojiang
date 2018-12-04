@@ -29,7 +29,6 @@ public class StringUtil {
         return ContextCompat.getColor(MyApplication.getInstance(), resId == 0 ? R.color.transparent : resId);
     }
 
-
     public static Drawable getDrawable(int resId) {
         return resId == 0 ? null : ContextCompat.getDrawable(MyApplication.getInstance(), resId);
     }

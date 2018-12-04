@@ -16,6 +16,7 @@ import cn.idcby.jiajubang.Bean.ImageThumb;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.utils.GlideUtils;
 import cn.idcby.jiajubang.utils.SkipUtils;
+import cn.idcby.jiajubang.utils.StringUtil;
 import cn.idcby.jiajubang.utils.StringUtils;
 
 /**
@@ -54,7 +55,7 @@ public class NearStoreListAdapter extends RecyclerView.Adapter<NearStoreListAdap
 
             viewHolder.mStorenameTV.setText(name);
             viewHolder.mStoreLocationTV.setText(location);
-            viewHolder.mStoreSaleCountTV.setText("销量" + saleCount);
+            viewHolder.mStoreSaleCountTV.setText(StringUtils.getDistance(storeBean.getDistance()));
             viewHolder.mStoreGoodCountTV.setText("共" + goodCount + "件商品");
             viewHolder.mStoreTypeTV.setText(type);
             viewHolder.mStoreTypeTV.setVisibility("".equals(type) ? View.GONE : View.VISIBLE);

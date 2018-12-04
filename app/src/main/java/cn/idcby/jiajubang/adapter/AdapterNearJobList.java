@@ -1,7 +1,7 @@
 package cn.idcby.jiajubang.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,19 +21,18 @@ import cn.idcby.jiajubang.interf.RvItemViewClickListener;
 import cn.idcby.jiajubang.utils.GlideUtils;
 import cn.idcby.jiajubang.utils.StringUtils;
 import cn.idcby.jiajubang.view.FlowLayout;
-import cn.idcby.jiajubang.view.MyCornerTextView;
 
 /**
  * Created on 2018/2/28.
  */
 
-public class AdapterJobList extends BaseAdapter {
+public class AdapterNearJobList extends BaseAdapter {
     private Context mContext;
     private List<JobsList> mDataList;
     private RvItemViewClickListener mClickListener;
     private int flTvPadding;
 
-    public AdapterJobList(Context mContext, List<JobsList> mDataList
+    public AdapterNearJobList(Context mContext, List<JobsList> mDataList
             , RvItemViewClickListener mClickListener) {
         this.mContext = mContext;
         this.mDataList = mDataList;
@@ -62,7 +61,7 @@ public class AdapterJobList extends BaseAdapter {
 
         JobHolder holder;
         if (null == convertView) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.view_item_for_give_job, viewGroup, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.view_item_for_near_job, viewGroup, false);
             holder = new JobHolder(convertView);
             convertView.setTag(holder);
         } else {
@@ -82,15 +81,19 @@ public class AdapterJobList extends BaseAdapter {
             if (!"".equals(workYear)) {
                 content += workYear;
             }
-            if (salary != null && !"".equals(salary)) {
-                content += ("/¥" + salary);
-            }
+//            if (salary != null && !"".equals(salary)) {
+//                content += ("/¥" + salary);
+//            }
             holder.tvAuthor.setText("公司已认证");
             holder.tvName.setText(info.Address);
             holder.titleTv.setText(title);
-            holder.timeTv.setText(time);
+            if (TextUtils.isEmpty(info.MinAmount) || TextUtils.isEmpty(info.MaxAmount)) {
+                holder.timeTv.setText("面议");
+            } else {
+                holder.timeTv.setText(info.MinAmount + "-" + info.MaxAmount);
+            }
             holder.contentTv.setText(content);
-            holder.locationTv.setText(location);
+            holder.locationTv.setText(StringUtils.getDistance(info.getDistance()));
             GlideUtils.loader(MyApplication.getInstance(), imgUrl, holder.companyIv);
 
             boolean isTypeAll = info.isWorkAll();
@@ -169,7 +172,7 @@ public class AdapterJobList extends BaseAdapter {
             this.locationTv = view.findViewById(R.id.adapter_give_job_location_tv);
             this.fuliLay = view.findViewById(R.id.adapter_give_job_fuli_lay);
             tvName = view.findViewById(R.id.tv_name);
-            tvAuthor=view.findViewById(R.id.tv_author);
+            tvAuthor = view.findViewById(R.id.tv_author);
         }
     }
 }

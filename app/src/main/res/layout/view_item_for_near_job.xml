@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
-        android:text="2018-03-26 10:55:15"
-        android:textColor="@color/color_grey_text"
-        android:textSize="@dimen/textSize_twelve" />
+        android:text="30"
+        android:textColor="@color/red"
+        android:textSize="@dimen/textSize_fourteen" />
 
     <LinearLayout
         android:id="@+id/adapter_give_job_title_lay"
@@ -64,19 +64,35 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/adapter_give_job_location_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adapter_give_job_time_tv"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:maxEms="6"
+        android:singleLine="true"
+        android:text="河南郑州"
+        android:textColor="@color/color_grey_text"
+        android:textSize="@dimen/textSize_twelve" />
+
+    <TextView
         android:id="@+id/adapter_give_job_sub_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/adapter_give_job_title_lay"
+        android:layout_below="@id/adapter_give_job_location_tv"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
         android:background="@drawable/round_theme_small_bg"
-        android:ems="3"
         android:gravity="center"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        android:text="申请"
+        android:paddingLeft="3dp"
+        android:paddingTop="1dp"
+        android:paddingRight="3dp"
+        android:paddingBottom="1dp"
+        android:text="当前在线"
         android:textColor="@color/color_white"
-        android:textSize="@dimen/textSize_thirteen" />
+        android:textSize="@dimen/textSize_ten" />
 
     <TextView
         android:id="@+id/adapter_give_job_content_tv"
@@ -91,19 +107,6 @@
         android:textColor="@color/color_deep44_text"
         android:textSize="@dimen/textSize_twelve" />
 
-    <TextView
-        android:id="@+id/adapter_give_job_location_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/adapter_give_job_content_tv"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="6dp"
-        android:ellipsize="end"
-        android:maxEms="6"
-        android:singleLine="true"
-        android:text="河南郑州"
-        android:textColor="@color/color_grey_text"
-        android:textSize="@dimen/textSize_twelve" />
 
     <cn.idcby.jiajubang.view.FlowLayout
         android:id="@+id/adapter_give_job_fuli_lay"

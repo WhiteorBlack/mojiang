@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="cn.idcby.jiajubang.utils.StringUtil" />
+
+        <variable
+            name="item"
+            type="cn.idcby.jiajubang.Bean.PublishClass" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/acti_publish_hywd_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_class"
+            style="@style/publish_img_style" />
+
+        <TextView
+            style="@style/publish_text_style"
+            android:text="@{item.name}" />
+    </LinearLayout>
+</layout>

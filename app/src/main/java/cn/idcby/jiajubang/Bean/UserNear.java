@@ -15,6 +15,15 @@ public class UserNear {
     public String PersonalitySignature ;
     public String Gender ;
     public String Age ;
+    public double Distance=0.00;
+
+    public double getDistance() {
+        return Distance;
+    }
+
+    public void setDistance(double distance) {
+        Distance = distance;
+    }
 
     public String getCreateUserId() {
         return StringUtils.convertNull(CreateUserId);

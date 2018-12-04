@@ -4,44 +4,62 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bg_white_greyf2_selector"
     android:padding="15dp">
+
     <ImageView
         android:id="@+id/adapter_near_user_list_iv"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="12dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/default_head_icon"/>
+        android:src="@mipmap/default_head_icon" />
+
     <TextView
         android:id="@+id/adapter_near_user_list_age_tv"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:gravity="center"
-        android:textSize="@dimen/textSize_ten"
-        android:textColor="@color/color_white"
         android:layout_alignRight="@id/adapter_near_user_list_iv"
-        android:layout_alignBottom="@id/adapter_near_user_list_iv"/>
+        android:layout_alignBottom="@id/adapter_near_user_list_iv"
+        android:gravity="center"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/textSize_ten" />
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/ll_info"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/adapter_near_user_list_iv"
         android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/adapter_near_user_list_iv"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/adapter_near_user_list_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:ellipsize="end"
-            android:textSize="@dimen/textSize_fifteen"
-            android:textColor="@color/color_nomal_text"/>
+            android:singleLine="true"
+            android:textColor="@color/color_nomal_text"
+            android:textSize="@dimen/textSize_fifteen" />
+
         <TextView
-            android:id="@+id/adapter_near_user_list_content_tv"
+            android:id="@+id/adapter_near_user_list_distance_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:singleLine="true"
             android:ellipsize="end"
-            android:textSize="@dimen/textSize_twelve"
-            android:textColor="@color/color_grey_text"/>
+            android:singleLine="true"
+            android:textColor="@color/color_grey_text"
+            android:textSize="@dimen/textSize_twelve" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/adapter_near_user_list_content_tv"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_grey_f8_bg"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="3dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/color_grey_text"
+        android:textSize="@dimen/textSize_twelve" />
 </RelativeLayout>

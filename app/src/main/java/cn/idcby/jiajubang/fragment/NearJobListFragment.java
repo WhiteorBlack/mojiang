@@ -21,6 +21,7 @@ import cn.idcby.jiajubang.Bean.ResumeList;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.activity.ChooseResumeActivity;
 import cn.idcby.jiajubang.adapter.AdapterJobList;
+import cn.idcby.jiajubang.adapter.AdapterNearJobList;
 import cn.idcby.jiajubang.application.MyApplication;
 import cn.idcby.jiajubang.interf.RvItemViewClickListener;
 import cn.idcby.jiajubang.utils.NetUtils;
@@ -44,7 +45,7 @@ public class NearJobListFragment extends BaseFragment {
     private ListView mLv ;
     private MaterialRefreshLayout mRefreshLay ;
 
-    private AdapterJobList mAdapter ;
+    private AdapterNearJobList mAdapter ;
     private List<JobsList> mDataList = new ArrayList<>() ;
 
     private int mCurPage = 1 ;
@@ -70,7 +71,7 @@ public class NearJobListFragment extends BaseFragment {
         mLv = view.findViewById(R.id.acti_near_job_list_lv) ;
         mRefreshLay = view.findViewById(R.id.acti_near_job_list_refresh_lay) ;
 
-        mAdapter = new AdapterJobList(mContext, mDataList, new RvItemViewClickListener() {
+        mAdapter = new AdapterNearJobList(mContext, mDataList, new RvItemViewClickListener() {
             @Override
             public void onItemClickListener(int type, int position) {
                 if(0 == type){

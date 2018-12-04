@@ -21,6 +21,15 @@ public class JobsList {
     public String ReleaseTime ;
     public String Address ;
     public List<WelfareList> WelfareList ;
+    private double Distance=0.00;
+
+    public double getDistance() {
+        return Distance;
+    }
+
+    public void setDistance(double distance) {
+        Distance = distance;
+    }
 
     public String getRecruitID() {
         return null == RecruitId ? StringUtils.convertNull(RecruitID) : RecruitId;

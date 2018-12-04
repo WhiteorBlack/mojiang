@@ -9,12 +9,12 @@
 
     <ImageView
         android:id="@+id/adapter_server_list_iv"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
-        android:scaleType="centerCrop"
         android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
         android:src="@mipmap/default_icon" />
 
     <TextView
@@ -67,11 +67,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/adapter_server_list_type_lay"
         android:layout_marginTop="3dp"
-        android:visibility="gone"
         android:layout_toRightOf="@id/adapter_server_list_iv"
+        android:visibility="gone"
         app:horizontalSpacing="3dp"
         app:verticalSpacing="3dp" />
 
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp"
+        android:layout_toRightOf="@+id/adapter_server_list_iv"
+        android:text="100"
+        android:textColor="@color/red"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/adapter_server_list_distance"

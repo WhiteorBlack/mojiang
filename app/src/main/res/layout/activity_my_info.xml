@@ -233,9 +233,11 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-            <View style="@style/user_info_item_dv_style" />
+            <View style="@style/user_info_item_dv_style"
+                android:visibility="gone"/>
 
-            <LinearLayout style="@style/user_info_item_line_lay_style">
+            <LinearLayout style="@style/user_info_item_line_lay_style"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/user_info_item_left_style"

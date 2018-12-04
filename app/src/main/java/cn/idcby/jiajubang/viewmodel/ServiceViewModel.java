@@ -13,6 +13,7 @@ import cn.idcby.commonlibrary.base.BaseBindActivity;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.ServiceList;
 import cn.idcby.jiajubang.R;
+import cn.idcby.jiajubang.activity.ServerDetailActivity;
 import cn.idcby.jiajubang.adapter.ServiceAdapter;
 import cn.idcby.jiajubang.application.MyApplication;
 import cn.idcby.jiajubang.utils.NetUtils;
@@ -83,8 +84,9 @@ public class ServiceViewModel implements ViewModel {
     public RecyclerView.OnItemTouchListener onItemTouchListener() {
         return new OnItemClickListener() {
             @Override
-            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+            public void onSimpleItemClick(BaseQuickAdapter adapters, View view, int position) {
+                ServiceList serviceList=adapter.getData().get(position);
+                ServerDetailActivity.launch(activity ,serviceList.ServiceId,false) ;
             }
         };
     }

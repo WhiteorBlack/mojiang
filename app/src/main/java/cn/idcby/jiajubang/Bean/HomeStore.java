@@ -22,6 +22,15 @@ public class HomeStore {
     public String ShopPostion ;
     public String isCompanyAuthentication ;
     public List<ImageThumb> ProductAlbumsList ;
+    public double Distance;
+
+    public double getDistance() {
+        return Distance;
+    }
+
+    public void setDistance(double distance) {
+        Distance = distance;
+    }
 
     public int getSaleCount() {
         return StringUtils.convertString2Count(ShopOrderCount);
