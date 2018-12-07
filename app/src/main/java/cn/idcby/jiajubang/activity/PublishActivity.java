@@ -2,6 +2,7 @@ package cn.idcby.jiajubang.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -48,6 +49,7 @@ public class PublishActivity extends BaseActivity {
         View hyxqLay = findViewById(R.id.acti_publish_hyxq_lay);
         View hywdLay = findViewById(R.id.acti_publish_hywd_lay);
         View closeLay = findViewById(R.id.acti_publish_close_lay);
+        rvList=findViewById(R.id.rv_list);
 
         cjzgLay.setOnClickListener(this);
         fbjlLay.setOnClickListener(this);
@@ -60,7 +62,7 @@ public class PublishActivity extends BaseActivity {
         closeLay.setOnClickListener(this);
 
         adapter = new PublishClassAdapter(R.layout.item_publish_class);
-        rvList.setLayoutManager(new LinearLayoutManager(this));
+        rvList.setLayoutManager(new GridLayoutManager(this,4));
         rvList.setAdapter(adapter);
         rvList.addOnItemTouchListener(new OnItemClickListener() {
             @Override
@@ -95,7 +97,7 @@ public class PublishActivity extends BaseActivity {
                         }
                         break;
                     case 4:
-
+                        SkipUtils.goActivity(mContext,ServicePublish.class);
                         break;
                     case 5:
                         if (LoginHelper.isNotLogin(mContext)) {
