@@ -311,8 +311,8 @@
 
     <!--圈子列表底部图标样式-->
     <style name="circle_item_bot_ic_style">
-        <item name="android:layout_width">18dp</item>
-        <item name="android:layout_height">18dp</item>
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
     </style>
     <style name="circle_item_bot_tv_style">
         <item name="android:layout_width">wrap_content</item>

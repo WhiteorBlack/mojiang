@@ -80,11 +80,11 @@ public class AdapterServerList extends BaseAdapter {
             GlideUtils.loaderRound(context, imgUrl, holder.mIconIv);
             holder.mTitleTv.setText(title);
             holder.mLocationTv.setText(location);
-            holder.mCountTv.setText("成交" + count + "单  " + "好评 99%");
+            holder.mCountTv.setText("成交" + count + "单  " + "好评 "+info.getPraiseRate());
 
             holder.mTypeLay.removeAllViews();
             holder.mPromiseLay.removeAllViews();
-            holder.tvPrice.setText("¥" + info.getPraiseRate() + "起");
+            holder.tvPrice.setText("¥" + info.getPayMoney() + "起");
 
             List<WordType> mTypeList = info.getTypeList();
             if (mTypeList != null && mTypeList.size() > 0) {

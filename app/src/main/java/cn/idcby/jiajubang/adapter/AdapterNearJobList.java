@@ -81,11 +81,15 @@ public class AdapterNearJobList extends BaseAdapter {
             if (!"".equals(workYear)) {
                 content += workYear;
             }
+
+            if (!TextUtils.isEmpty(info.getEducation())){
+                content+=" | "+info.getEducation();
+            }
 //            if (salary != null && !"".equals(salary)) {
 //                content += ("/¥" + salary);
 //            }
-            holder.tvAuthor.setText("公司已认证");
-            holder.tvName.setText(info.Address);
+            holder.tvAuthor.setText(info.getAuthentication()==1?"公司已认证":"公司未认证");
+            holder.tvName.setText(info.getCompanyName());
             holder.titleTv.setText(title);
             if (TextUtils.isEmpty(info.MinAmount) || TextUtils.isEmpty(info.MaxAmount)) {
                 holder.timeTv.setText("面议");

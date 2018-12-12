@@ -1,6 +1,7 @@
 package cn.idcby.jiajubang.Bean;
 
 import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 
 import java.io.Serializable;
 
@@ -51,6 +52,7 @@ public class BaseCategory extends BaseObservable implements Serializable {
         return StringUtils.convertNull(ParentID);
     }
 
+    @Bindable
     public String getCategoryTitle() {
         return StringUtils.convertNull(CategoryTitle);
     }

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="cn.idcby.jiajubang.utils.StringUtil" />
+
+        <import type="cn.idcby.jiajubang.R" />
+
         <variable
             name="viewModel"
-            type="cn.idcby.jiajubang.viewmodel.ServiceListViewModel"/>
+            type="cn.idcby.jiajubang.viewmodel.ServiceListViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -71,25 +76,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingLeft="5dp"
                 android:gravity="center"
                 android:onClick="onClick"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.selectCity}"
                     android:maxLength="3"
-                    android:textColor="@color/blacktext"
+                    android:text="@{viewModel.selectCity}"
+                    android:textColor="@{viewModel.selectPos==0?StringUtil.getColor(R.color.yancy_green500):StringUtil.getColor(R.color.blacktext)}"
                     android:textSize="14sp" />
 
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
                     android:background="@null"
-                    android:button="@drawable/chb_arrow_up_down" />
+                    android:button="@drawable/chb_arrow_up_down"
+                    android:clickable="false" />
 
 
             </LinearLayout>
@@ -107,7 +112,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="综合"
-                    android:textColor="@color/blacktext"
+                    android:textColor="@{viewModel.selectPos==1?StringUtil.getColor(R.color.yancy_green500):StringUtil.getColor(R.color.blacktext)}"
+
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -125,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="销量"
-                    android:textColor="@color/blacktext"
+                    android:textColor="@{viewModel.selectPos==2?StringUtil.getColor(R.color.yancy_green500):StringUtil.getColor(R.color.blacktext)}"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -148,7 +154,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="好评"
-                    android:textColor="@color/blacktext"
+                    android:textColor="@{viewModel.selectPos==3?StringUtil.getColor(R.color.yancy_green500):StringUtil.getColor(R.color.blacktext)}"
+
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -165,16 +172,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="郑州"
-                    android:textColor="@color/blacktext"
+                    android:text="@{viewModel.typeString}"
+                    android:textColor="@{viewModel.selectPos==4?StringUtil.getColor(R.color.yancy_green500):StringUtil.getColor(R.color.blacktext)}"
                     android:textSize="14sp" />
 
                 <CheckBox
                     android:layout_width="wrap_content"
-                    android:clickable="false"
-                    android:background="@null"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/chb_arrow_up_down" />
+                    android:background="@null"
+                    android:button="@drawable/chb_arrow_up_down"
+                    android:clickable="false" />
 
 
             </LinearLayout>

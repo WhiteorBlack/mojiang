@@ -15,9 +15,11 @@ public class ServiceClassAdapter extends EasyBindQuickAdapter<ServerCategory> {
 
     @Override
     protected void easyConvert(BindingViewHolder holder, ServerCategory item) {
-        holder.getBinding().setVariable(BR.item,item);
+        holder.getBinding().setVariable(BR.item, item);
         holder.getBinding().executePendingBindings();
-
-        GlideUtils.loader(item.IconUrl, (ImageView) holder.getView(R.id.iv_class));
+        ImageView imageView = holder.getView(R.id.iv_class);
+        if (imageView != null) {
+            GlideUtils.loader(item.IconUrl, imageView);
+        }
     }
 }

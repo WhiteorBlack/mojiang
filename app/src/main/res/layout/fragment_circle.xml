@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_bg_common">
+
     <View
         android:id="@+id/frag_circle_status_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="20dp" />
+
     <LinearLayout
         android:id="@+id/frag_circle_nav_lay"
         android:layout_width="match_parent"
@@ -14,27 +17,42 @@
         android:layout_below="@id/frag_circle_status_view"
         android:background="@android:color/white"
         android:gravity="center_vertical">
-        <net.lucode.hackware.magicindicator.MagicIndicator
+
+        <android.support.design.widget.TabLayout
             android:id="@+id/magic_indicator"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
+            android:layout_width="0dp"
             android:layout_height="@dimen/titleBar_height"
-            android:layout_weight="1"/>
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            app:tabMode="scrollable" />
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/green_msg" />
+        </LinearLayout>
     </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
-        android:layout_below="@id/frag_circle_nav_lay"
-        android:layout_marginTop="1dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/frag_circle_nav_lay"
+        android:layout_marginTop="1dp" />
 
     <ImageView
         android:id="@+id/img_circle_left"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:src="@mipmap/ic_circle_index_send" />

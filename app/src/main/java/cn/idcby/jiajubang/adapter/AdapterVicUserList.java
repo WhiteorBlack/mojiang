@@ -65,7 +65,7 @@ public class AdapterVicUserList extends BaseAdapter {
             String imgUrl = userVic.getHeadIcon() ;
             String name = userVic.getRealName() ;
             String location = userVic.getPosition() ;
-            String fans = userVic.getFollowerNumber() + "人关注" ;
+            String fans = userVic.getFollowerNumber() + "粉丝" ;
 
             holder.mNameTv.setText(name) ;
             holder.mFansTv.setText(fans);

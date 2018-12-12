@@ -77,7 +77,7 @@ public class DoubleCityDownDialog extends BaseDialog<DoubleCityDownDialog> {
     public void setUiBeforShow() {
         dimEnabled(false);
         showAnim(new BounceTopToBottomEnter());
-        float height = (ScreenUtil.dip2px(82) + ResourceUtils.getStatusBarHeight(mContext)) * 1.0f / ScreenUtil.getWidthAndHeight().heightPixels;
+        float height = (ScreenUtil.dip2px(62) + ResourceUtils.getStatusBarHeight(mContext)) * 1.0f / ScreenUtil.getWidthAndHeight().heightPixels;
         heightScale(1 - height);
         setCanceledOnTouchOutside(true);
     }

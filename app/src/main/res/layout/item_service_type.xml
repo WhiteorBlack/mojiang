@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="cn.idcby.jiajubang.utils.StringUtil" />
+
+        <import type="cn.idcby.jiajubang.R" />
+
+        <variable
+            name="item"
+            type="cn.idcby.jiajubang.Bean.ServerCategory" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:paddingTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_service_type"
+            android:ellipsize="end"
+            android:ems="6"
+            android:enabled="@{item.selected}"
+            android:gravity="center"
+            android:maxEms="6"
+            android:singleLine="true"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="@{item.categoryTitle}"
+            android:textColor="@{item.selected?StringUtil.getColor(R.color.white):StringUtil.getColor(R.color.blacktext)}"
+            android:textSize="14sp"
+            tools:text="类别类别类别" />
+    </FrameLayout>
+</layout>

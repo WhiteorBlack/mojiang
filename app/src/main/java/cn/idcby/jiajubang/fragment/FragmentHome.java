@@ -52,6 +52,7 @@ import cn.idcby.jiajubang.activity.SelectProvinceBySortActivity;
 import cn.idcby.jiajubang.activity.ServerActivity;
 import cn.idcby.jiajubang.activity.ServerListActivity;
 import cn.idcby.jiajubang.activity.ServiceActivity;
+import cn.idcby.jiajubang.activity.ServiceListNewActivity;
 import cn.idcby.jiajubang.activity.TopicDetailActivity;
 import cn.idcby.jiajubang.activity.UnuseGoodListActivity;
 import cn.idcby.jiajubang.activity.UnusedActivity;
@@ -283,9 +284,10 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
                     ServerCategory serviceList = mHotServiceList.get(position);
                     if (serviceList != null) {
                         String serId = serviceList.getServiceCategoryID();
-                        Intent toLtIt = new Intent(mContext, ServerListActivity.class);
+                        Intent toLtIt = new Intent(mContext, ServiceListNewActivity.class);
                         toLtIt.putExtra(SkipUtils.INTENT_SERVER_TYPE, ServerActivity.SERVER_TYPE_SERVER);
                         toLtIt.putExtra(SkipUtils.INTENT_CATEGOTY_ID, serId);
+                        toLtIt.putExtra(SkipUtils.INTENT_TITLE,serviceList.getCategoryTitle());
                         startActivity(toLtIt);
                     }
                 }

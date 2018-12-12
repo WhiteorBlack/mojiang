@@ -25,6 +25,15 @@ public class ServiceList{
     public List<WordType> TypeList ;//注意：虽然用的字典项bean，但是服务分类已经不用字典项了，为了偷懒，要求的接口返回字典项同字段的返回
     public List<WordType> PromiseList ;
     public List<ImageThumb> AlbumsList ;
+    private String PayMoney;
+
+    public String getPayMoney() {
+        return PayMoney;
+    }
+
+    public void setPayMoney(String payMoney) {
+        PayMoney = payMoney;
+    }
 
     public double getDistance() {
         return Distance;

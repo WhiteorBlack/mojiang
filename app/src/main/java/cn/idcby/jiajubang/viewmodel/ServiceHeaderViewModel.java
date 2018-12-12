@@ -113,6 +113,7 @@ public class ServiceHeaderViewModel extends BaseObservable implements ViewModel,
                 Bundle bundle=new Bundle();
                 bundle.putInt(SkipUtils.INTENT_SERVER_TYPE, 1);
                 bundle.putString(SkipUtils.INTENT_CATEGOTY_ID,category.getServiceCategoryID());
+                bundle.putString(SkipUtils.INTENT_TITLE,category.getCategoryTitle());
                 intent.putExtras(bundle);
                 activity.startActivity(intent);
             }

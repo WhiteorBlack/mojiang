@@ -11,6 +11,7 @@ import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.adapter.ServiceAdapter;
 import cn.idcby.jiajubang.databinding.ActivityServiceListActivityBinding;
+import cn.idcby.jiajubang.utils.SkipUtils;
 import cn.idcby.jiajubang.view.refresh.MaterialRefreshLayout;
 import cn.idcby.jiajubang.view.refresh.MaterialRefreshListener;
 import cn.idcby.jiajubang.viewmodel.ServiceListViewModel;
@@ -33,6 +34,7 @@ public class ServiceListNewActivity extends BaseBindActivity {
         super.initView();
         ImmersionBar.with(this).statusBarColor(R.color.transparent).statusBarDarkFont(true).flymeOSStatusBarFontColor(R.color.black).keyboardEnable(false).init();
         binding.viewBar.getLayoutParams().height=ResourceUtils.getStatusBarHeight(this);
+        binding.tvTitle.setText(getIntent().getStringExtra(SkipUtils.INTENT_TITLE));
         binding.rvList.setLayoutManager(new LinearLayoutManager(this));
         binding.rvList.setAdapter(adapter);
         adapter.setEnableLoadMore(true);
@@ -66,16 +68,16 @@ public class ServiceListNewActivity extends BaseBindActivity {
                 viewModel.showCityDialog(view);
                 break;
             case R.id.ll_total:
-
+                viewModel.total();
                 break;
             case R.id.ll_sell:
-
+                viewModel.sellCount();
                 break;
             case R.id.ll_good:
-
+                viewModel.praise();
                 break;
             case R.id.ll_other:
-
+                viewModel.others(view);
                 break;
         }
     }

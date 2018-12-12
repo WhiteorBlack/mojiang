@@ -17,15 +17,20 @@
     <TextView
         android:id="@+id/adapter_circle_item_focus_tv"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/adapter_circle_item_user_iv"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
+        android:background="@drawable/round_theme_bg"
         android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingTop="1dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="1dp"
         android:text="关注"
-        android:textColor="@color/color_theme"
-        android:textSize="@dimen/textSize_fourteen"
-        android:visibility="invisible" />
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:visibility="visible" />
 
     <ImageView
         android:id="@+id/adapter_circle_item_delete_iv"
@@ -54,8 +59,9 @@
             android:ellipsize="end"
             android:maxEms="10"
             android:singleLine="true"
+            android:text="名字"
             android:textColor="@color/color_nomal_text"
-            android:textSize="@dimen/textSize_fifteen" />
+            android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/adapter_circle_item_user_v_iv"
@@ -106,8 +112,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/adapter_circle_item_user_iv"
-        android:layout_marginRight="5dp"
-        android:layout_toRightOf="@id/adapter_circle_item_send_post_tv"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
         android:ellipsize="end"
         android:singleLine="true"
         android:text="2km"

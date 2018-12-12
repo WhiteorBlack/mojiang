@@ -2,6 +2,7 @@ package cn.idcby.jiajubang.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -18,6 +19,8 @@ import cn.idcby.commonlibrary.base.BaseFragment;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.commonlibrary.utils.StatusBarUtil;
 import cn.idcby.jiajubang.R;
+import cn.idcby.jiajubang.adapter.FragmentPagerAdapter;
+import cn.idcby.jiajubang.adapter.FragmentPagerOtherAdapter;
 import cn.idcby.jiajubang.adapter.IndicatorFragmentAdapter;
 import cn.idcby.jiajubang.adapter.MyGreenIndicatorAdapter;
 import cn.idcby.jiajubang.utils.LoginHelper;
@@ -55,12 +58,12 @@ public class CircleFragment extends BaseFragment implements View.OnClickListener
 
     private String[] titles = {"关注", "热门", "同城"};
     private MyGreenIndicatorAdapter myIndicatorAdapter;
-    private IndicatorFragmentAdapter orderFragmentAdapter;
+    private FragmentPagerOtherAdapter orderFragmentAdapter;
     private List<Fragment> fragmentList;
     private CircleSameCityFragment mSameCityCircleFragment;
 
 
-    private MagicIndicator magicIndicator;
+    private TabLayout magicIndicator;
     private ViewPager mViewPager;
     private ImageView mBackIv;
 
@@ -74,13 +77,13 @@ public class CircleFragment extends BaseFragment implements View.OnClickListener
     }
 
     private void initIndicator() {
-        myIndicatorAdapter = new MyGreenIndicatorAdapter(titles, mViewPager);
-        CommonNavigator commonNavigator = new CommonNavigator(mContext);
-        commonNavigator.setAdjustMode(true);
-        commonNavigator.setSkimOver(true);
-        commonNavigator.setAdapter(myIndicatorAdapter);
-        magicIndicator.setNavigator(commonNavigator);
-
+//        myIndicatorAdapter = new MyGreenIndicatorAdapter(titles, mViewPager);
+//        CommonNavigator commonNavigator = new CommonNavigator(mContext);
+//        commonNavigator.setAdjustMode(true);
+//        commonNavigator.setSkimOver(true);
+//        commonNavigator.setAdapter(myIndicatorAdapter);
+//        magicIndicator.setNavigator(commonNavigator);
+        magicIndicator.setupWithViewPager(mViewPager);
         if (fragmentList == null)
             fragmentList = new ArrayList<>();
         CircleFollowFragment followCircleFragment = new CircleFollowFragment();
@@ -91,10 +94,10 @@ public class CircleFragment extends BaseFragment implements View.OnClickListener
         fragmentList.add(mSameCityCircleFragment);
 
         orderFragmentAdapter
-                = new IndicatorFragmentAdapter(getChildFragmentManager(), fragmentList);
+                = new FragmentPagerOtherAdapter(getChildFragmentManager(), fragmentList,titles);
         mViewPager.setAdapter(orderFragmentAdapter);
         mViewPager.setOffscreenPageLimit(4) ;
-        ViewPagerHelper.bind(magicIndicator, mViewPager);
+//        ViewPagerHelper.bind(magicIndicator, mViewPager);
         mViewPager.setCurrentItem(1) ;
     }
 

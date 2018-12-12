@@ -22,6 +22,101 @@ public class JobsList {
     public String Address ;
     public List<WelfareList> WelfareList ;
     private double Distance=0.00;
+    private String Education;
+    private String CompanyName;
+    private int Authentication;
+
+    public void setRecruitID(String recruitID) {
+        RecruitID = recruitID;
+    }
+
+    public String getRecruitId() {
+        return RecruitId;
+    }
+
+    public void setRecruitId(String recruitId) {
+        RecruitId = recruitId;
+    }
+
+    public void setWorkPostName(String workPostName) {
+        WorkPostName = workPostName;
+    }
+
+    public void setWorkYears(String workYears) {
+        WorkYears = workYears;
+    }
+
+    public String getWorkType() {
+        return WorkType;
+    }
+
+    public void setWorkType(String workType) {
+        WorkType = workType;
+    }
+
+    public String getIsFace() {
+        return IsFace;
+    }
+
+    public void setIsFace(String isFace) {
+        IsFace = isFace;
+    }
+
+    public String getMinAmount() {
+        return MinAmount;
+    }
+
+    public void setMinAmount(String minAmount) {
+        MinAmount = minAmount;
+    }
+
+    public String getMaxAmount() {
+        return MaxAmount;
+    }
+
+    public void setMaxAmount(String maxAmount) {
+        MaxAmount = maxAmount;
+    }
+
+    public void setCompanyLogoImage(String companyLogoImage) {
+        CompanyLogoImage = companyLogoImage;
+    }
+
+    public void setReleaseTime(String releaseTime) {
+        ReleaseTime = releaseTime;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public void setWelfareList(List<cn.idcby.jiajubang.Bean.WelfareList> welfareList) {
+        WelfareList = welfareList;
+    }
+
+    public String getEducation() {
+        return Education;
+    }
+
+    public void setEducation(String education) {
+        Education = education;
+    }
+
+    public String getCompanyName() {
+        return CompanyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        CompanyName = companyName;
+    }
+
+    public int getAuthentication() {
+        return Authentication;
+    }
+
+    public void setAuthentication(int authentication) {
+        Authentication = authentication;
+    }
 
     public double getDistance() {
         return Distance;
