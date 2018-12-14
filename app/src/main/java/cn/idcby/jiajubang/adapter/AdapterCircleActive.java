@@ -35,6 +35,8 @@ import cn.idcby.jiajubang.interf.RecyclerViewClickListener;
 import cn.idcby.jiajubang.utils.GlideUtils;
 import cn.idcby.jiajubang.utils.ImageWidthUtils;
 import cn.idcby.jiajubang.utils.SkipUtils;
+import cn.idcby.jiajubang.utils.StringUtil;
+import cn.idcby.jiajubang.utils.StringUtils;
 
 /**
  * 圈子
@@ -179,6 +181,7 @@ public class AdapterCircleActive extends RecyclerView.Adapter<RecyclerView.ViewH
                 parentHolder.mTimeTv.setText(data);
                 parentHolder.mCompanyNameTv.setText(companyName);
                 parentHolder.mPostNameTv.setText(postName);
+                parentHolder.tvDistance.setText(StringUtils.getDistance(info.getDistance()));
 
                 if (isLatest || isSelf) {
                     parentHolder.mAttentionTv.setVisibility(View.INVISIBLE);
@@ -584,6 +587,7 @@ public class AdapterCircleActive extends RecyclerView.Adapter<RecyclerView.ViewH
         View mTransContentLay;//转载
         TextView mTransCountTv; //转载数量
         TextView mCommentContentTv;
+        TextView tvDistance;
         View mShareLay;
         ExpandableTextView etvContent;
 
@@ -612,6 +616,7 @@ public class AdapterCircleActive extends RecyclerView.Adapter<RecyclerView.ViewH
             mTransContentLay = itemView.findViewById(R.id.adapter_circle_item_trans_lay);
             mTransCountTv = itemView.findViewById(R.id.adapter_circle_trans_count_tv);
             mShareLay = itemView.findViewById(R.id.adapter_circle_item_share_lay);
+            tvDistance=itemView.findViewById(R.id.adapter_circle_item_distance);
         }
     }
 }

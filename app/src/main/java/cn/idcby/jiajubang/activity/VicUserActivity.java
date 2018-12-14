@@ -36,40 +36,40 @@ import cn.idcby.jiajubang.view.refresh.MaterialRefreshListener;
 public class VicUserActivity extends BaseActivity {
     private LoadingDialog loadingDialog;
 
-    private TextView mSearchKeyTv ;
-    private MaterialRefreshLayout mRefreshLay ;
-    private ListView mLv ;
+    private TextView mSearchKeyTv;
+    private MaterialRefreshLayout mRefreshLay;
+    private ListView mLv;
 
-    private String mSearchKey ;
+    private String mSearchKey;
 
     private AdapterVicUserList mAdapter;
-    private List<UserVic> mDataList = new ArrayList<>() ;
-    private int mCurPage = 1 ;
-    private boolean mIsMore = true ;
-    private boolean mIsLoading = false ;
+    private List<UserVic> mDataList = new ArrayList<>();
+    private int mCurPage = 1;
+    private boolean mIsMore = true;
+    private boolean mIsLoading = false;
 
-    private int mCurPosition ;
+    private int mCurPosition;
 
-    private static final int REQUEST_CODE_SEARCH = 1001 ;
+    private static final int REQUEST_CODE_SEARCH = 1001;
 
 
     private void init() {
-        loadingDialog = new LoadingDialog(mContext) ;
+        loadingDialog = new LoadingDialog(mContext);
 
-        View mSearchLay = findViewById(R.id.acti_vic_user_list_search_lay) ;
-        mSearchKeyTv = findViewById(R.id.acti_vic_user_list_search_key_tv) ;
-        View mApplyTv = findViewById(R.id.acti_vic_user_right_tv) ;
+        View mSearchLay = findViewById(R.id.acti_vic_user_list_search_lay);
+        mSearchKeyTv = findViewById(R.id.acti_vic_user_list_search_key_tv);
+        View mApplyTv = findViewById(R.id.acti_vic_user_right_tv);
         mSearchLay.setOnClickListener(this);
         mApplyTv.setOnClickListener(this);
 
-        mRefreshLay = findViewById(R.id.acti_vic_user_refresh_lay) ;
-        mLv = findViewById(R.id.acti_vic_user_lv) ;
+        mRefreshLay = findViewById(R.id.acti_vic_user_refresh_lay);
+        mLv = findViewById(R.id.acti_vic_user_lv);
 
         mRefreshLay.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-                mCurPage = 1 ;
-                getVicUserList() ;
+                mCurPage = 1;
+                getVicUserList();
             }
         });
 
@@ -77,39 +77,41 @@ public class VicUserActivity extends BaseActivity {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
             }
+
             @Override
             public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-                if(mIsMore && !mIsLoading && i2 > 5 && i1 + i >= i2){
-                    getVicUserList() ;
+                if (mIsMore && !mIsLoading && i2 > 5 && i1 + i >= i2) {
+                    getVicUserList();
                 }
             }
         });
 
-       mAdapter = new AdapterVicUserList(mContext, mDataList, new RecyclerViewClickListener() {
-           @Override
-           public void onItemClickListener(int type, int position) {
-                if(0 == type){
-                    mCurPosition = position ;
-                    if(LoginHelper.isNotLogin(mContext)){
-                        SkipUtils.toLoginActivityForResult(mActivity ,1000) ;
-                    }else{
-                        changeFocusState() ;
+        mAdapter = new AdapterVicUserList(mContext, mDataList, new RecyclerViewClickListener() {
+            @Override
+            public void onItemClickListener(int type, int position) {
+                if (0 == type) {
+                    mCurPosition = position;
+                    if (LoginHelper.isNotLogin(mContext)) {
+                        SkipUtils.toLoginActivityForResult(mActivity, 1000);
+                    } else {
+                        changeFocusState();
                     }
-                }else if(1 == type){
-                    String userId = mDataList.get(position).getUserId() ;
-                    SkipUtils.toOtherUserInfoActivity(mContext ,userId) ;
+                } else if (1 == type) {
+                    String userId = mDataList.get(position).getUserId();
+                    SkipUtils.toOtherUserInfoActivity(mContext, userId);
                 }
-           }
-           @Override
-           public void onItemLongClickListener(int type, int position) {
-           }
-       }) ;
-       mLv.setAdapter(mAdapter) ;
+            }
+
+            @Override
+            public void onItemLongClickListener(int type, int position) {
+            }
+        });
+        mLv.setAdapter(mAdapter);
     }
 
     @Override
     public int getLayoutID() {
-        return  R.layout.activity_vic_user_list;
+        return R.layout.activity_vic_user_list;
     }
 
     @Override
@@ -129,18 +131,18 @@ public class VicUserActivity extends BaseActivity {
         super.initData();
 
         loadingDialog.show();
-        getVicUserList() ;
+        getVicUserList();
     }
 
     @Override
     public void dealOhterClick(View view) {
-        int vId = view.getId() ;
+        int vId = view.getId();
 
-        if(R.id.acti_vic_user_list_search_lay == vId){
-            SkipUtils.toSearchNomalActivity(mActivity ,mSearchKey ,REQUEST_CODE_SEARCH) ;
-        }else if(R.id.acti_vic_user_right_tv == vId){
-            Intent mApIt = new Intent(mContext ,IndustryVApplyActivity.class) ;
-            startActivity(mApIt) ;
+        if (R.id.acti_vic_user_list_search_lay == vId) {
+            SkipUtils.toSearchNomalActivity(mActivity, mSearchKey, REQUEST_CODE_SEARCH);
+        } else if (R.id.acti_vic_user_right_tv == vId) {
+            Intent mApIt = new Intent(mContext, IndustryVApplyActivity.class);
+            startActivity(mApIt);
         }
 
     }
@@ -148,47 +150,49 @@ public class VicUserActivity extends BaseActivity {
     /**
      * 大咖列表
      */
-    private void getVicUserList(){
-        mIsLoading = true ;
+    private void getVicUserList() {
+        mIsLoading = true;
 
-        Map<String,String> paramMap = ParaUtils.getParaNece(mContext) ;
-        paramMap.put("PageSize" , "20") ;
-        paramMap.put("Page" , "" + mCurPage) ;
-        paramMap.put("Keyword" , StringUtils.convertNull(mSearchKey)) ;
+        Map<String, String> paramMap = ParaUtils.getParaNece(mContext);
+        paramMap.put("PageSize", "20");
+        paramMap.put("Page", "" + mCurPage);
+        paramMap.put("Keyword", StringUtils.convertNull(mSearchKey));
 
         NetUtils.getDataFromServerByPost(mContext, Urls.USER_FOCUS_LIST, false, paramMap
-                , new RequestListCallBack<UserVic>("getVicUserList" , mContext ,UserVic.class) {
+                , new RequestListCallBack<UserVic>("getVicUserList", mContext, UserVic.class) {
                     @Override
                     public void onSuccessResult(List<UserVic> bean) {
                         mRefreshLay.finishRefresh();
-                        loadingDialog.dismiss() ;
+                        loadingDialog.dismiss();
 
-                        if(1 == mCurPage){
+                        if (1 == mCurPage) {
                             mDataList.clear();
                         }
 
-                        mDataList.addAll(bean) ;
-                        mAdapter.notifyDataSetChanged() ;
+                        mDataList.addAll(bean);
+                        mAdapter.notifyDataSetChanged();
 
-                        if(bean.size() == 0){
-                            mIsMore = false ;
-                        }else{
-                            mIsMore = true ;
-                            mCurPage ++ ;
+                        if (bean.size() == 0) {
+                            mIsMore = false;
+                        } else {
+                            mIsMore = true;
+                            mCurPage++;
                         }
 
-                        mIsLoading = false ;
+                        mIsLoading = false;
                     }
+
                     @Override
                     public void onErrorResult(String str) {
-                        loadingDialog.dismiss() ;
-                        mIsLoading = false ;
+                        loadingDialog.dismiss();
+                        mIsLoading = false;
                         mRefreshLay.finishRefresh();
                     }
+
                     @Override
                     public void onFail(Exception e) {
-                        loadingDialog.dismiss() ;
-                        mIsLoading = false ;
+                        loadingDialog.dismiss();
+                        mIsLoading = false;
                         mRefreshLay.finishRefresh();
                     }
                 });
@@ -197,35 +201,37 @@ public class VicUserActivity extends BaseActivity {
     /**
      * 关注、取消关注
      */
-    private void changeFocusState(){
+    private void changeFocusState() {
         if (loadingDialog == null)
             loadingDialog = new LoadingDialog(mContext);
         loadingDialog.show();
 
-        Map<String,String> paramMap = ParaUtils.getParaWithToken(mContext) ;
-        paramMap.put("FollowType" , "1") ;
-        paramMap.put("ResourceId" , mDataList.get(mCurPosition).getUserId()) ;
+        Map<String, String> paramMap = ParaUtils.getParaWithToken(mContext);
+        paramMap.put("FollowType", "1");
+        paramMap.put("ResourceId", mDataList.get(mCurPosition).getUserId());
 
         NetUtils.getDataFromServerByPost(mContext, Urls.FOCUS_OR_CANCEL_USER, false, paramMap
-                , new RequestObjectCallBack<FocusResult>("changeFocusState" , mContext ,FocusResult.class) {
+                , new RequestObjectCallBack<FocusResult>("changeFocusState", mContext, FocusResult.class) {
                     @Override
                     public void onSuccessResult(FocusResult bean) {
-                        if(loadingDialog != null){
+                        if (loadingDialog != null) {
                             loadingDialog.dismiss();
                         }
 
                         mDataList.get(mCurPosition).setIsFollow(bean);
-                        mAdapter.notifyDataSetChanged() ;
+                        mAdapter.notifyDataSetChanged();
                     }
+
                     @Override
                     public void onErrorResult(String str) {
-                        if(loadingDialog != null){
+                        if (loadingDialog != null) {
                             loadingDialog.dismiss();
                         }
                     }
+
                     @Override
                     public void onFail(Exception e) {
-                        if(loadingDialog != null){
+                        if (loadingDialog != null) {
                             loadingDialog.dismiss();
                         }
                     }
@@ -236,22 +242,22 @@ public class VicUserActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(1000 == requestCode){
-            if(RESULT_OK == resultCode){
-                changeFocusState() ;
+        if (1000 == requestCode) {
+            if (RESULT_OK == resultCode) {
+                changeFocusState();
             }
-        }else if(REQUEST_CODE_SEARCH == requestCode){
-            if(RESULT_OK == resultCode && data != null){
-                mSearchKey = data.getStringExtra(SkipUtils.INTENT_SEARCH_KEY) ;
-                if("".equals(StringUtils.convertNull(mSearchKey))){
+        } else if (REQUEST_CODE_SEARCH == requestCode) {
+            if (RESULT_OK == resultCode && data != null) {
+                mSearchKey = data.getStringExtra(SkipUtils.INTENT_SEARCH_KEY);
+                if ("".equals(StringUtils.convertNull(mSearchKey))) {
                     mSearchKeyTv.setText("搜索昵称/手机号");
-                }else{
+                } else {
                     mSearchKeyTv.setText(mSearchKey);
                 }
 
-                loadingDialog.show() ;
-                mCurPage = 1 ;
-                getVicUserList() ;
+                loadingDialog.show();
+                mCurPage = 1;
+                getVicUserList();
             }
         }
     }

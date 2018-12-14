@@ -66,10 +66,11 @@ public class AdapterVicUserList extends BaseAdapter {
             String name = userVic.getRealName() ;
             String location = userVic.getPosition() ;
             String fans = userVic.getFollowerNumber() + "粉丝" ;
-
+            holder.tvIntroduce.setText(userVic.getDescription());
             holder.mNameTv.setText(name) ;
             holder.mFansTv.setText(fans);
             holder.mLocationTv.setText(location);
+            holder.tvInfo.setText(userVic.getLastVisit()+"    "+userVic.getCompanyName()+"    "+userVic.getPostText());
 
             boolean isFocused = 1 == userVic.getIsFollow() ;
             holder.mFocusTv.setText(isFocused ? "已关注" : "+关注");
@@ -109,6 +110,8 @@ public class AdapterVicUserList extends BaseAdapter {
         private TextView mNameTv ;
         private TextView mLocationTv;
         private TextView mFansTv ;
+        private TextView tvInfo;
+        private TextView tvIntroduce;
 
         public VicHolder(View view) {
             mHeadIv = view.findViewById(R.id.adapter_vic_user_head_iv) ;
@@ -116,6 +119,8 @@ public class AdapterVicUserList extends BaseAdapter {
             mNameTv = view.findViewById(R.id.adapter_vic_user_name_tv) ;
             mLocationTv = view.findViewById(R.id.adapter_vic_user_location_tv) ;
             mFansTv = view.findViewById(R.id.adapter_vic_user_fans_tv) ;
+            tvInfo=view.findViewById(R.id.tv_info);
+            tvIntroduce=view.findViewById(R.id.tv_intro);
         }
     }
 

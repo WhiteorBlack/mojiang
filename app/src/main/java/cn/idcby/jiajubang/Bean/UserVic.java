@@ -15,6 +15,74 @@ public class UserVic {
     public String Position ;
     public int FollowerNumber ;
     public int IsFollow ;
+    private String CompanyName;
+    private String PostText;
+    private String LastVisit;
+    private String Description;
+
+    public void setUserId(String userId) {
+        UserId = userId;
+    }
+
+    public void setRealName(String realName) {
+        RealName = realName;
+    }
+
+    public String getNickName() {
+        return NickName;
+    }
+
+    public void setNickName(String nickName) {
+        NickName = nickName;
+    }
+
+    public void setHeadIcon(String headIcon) {
+        HeadIcon = headIcon;
+    }
+
+    public void setPosition(String position) {
+        Position = position;
+    }
+
+    public void setFollowerNumber(int followerNumber) {
+        FollowerNumber = followerNumber;
+    }
+
+    public void setIsFollow(int isFollow) {
+        IsFollow = isFollow;
+    }
+
+    public String getCompanyName() {
+        return CompanyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        CompanyName = companyName;
+    }
+
+    public String getPostText() {
+        return PostText;
+    }
+
+    public void setPostText(String postText) {
+        PostText = postText;
+    }
+
+    public String getLastVisit() {
+        return LastVisit;
+    }
+
+    public void setLastVisit(String lastVisit) {
+        LastVisit = lastVisit;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
 
     public String getUserId() {
         return StringUtils.convertNull(UserId);

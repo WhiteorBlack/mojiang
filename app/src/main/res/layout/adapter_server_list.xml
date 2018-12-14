@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/adapter_server_list_count_tv"
         android:layout_marginTop="5dp"
+        app:singleLine="true"
         android:layout_toRightOf="@id/adapter_server_list_iv"
         app:horizontalSpacing="3dp"
         app:verticalSpacing="3dp" />

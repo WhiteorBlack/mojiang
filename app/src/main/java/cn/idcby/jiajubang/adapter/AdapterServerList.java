@@ -2,6 +2,7 @@ package cn.idcby.jiajubang.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,7 +85,11 @@ public class AdapterServerList extends BaseAdapter {
 
             holder.mTypeLay.removeAllViews();
             holder.mPromiseLay.removeAllViews();
-            holder.tvPrice.setText("¥" + info.getPayMoney() + "起");
+            String payMoney=info.getPayMoney();
+            if (TextUtils.isEmpty(payMoney)){
+                payMoney="0.00";
+            }
+            holder.tvPrice.setText("¥" + payMoney + "起");
 
             List<WordType> mTypeList = info.getTypeList();
             if (mTypeList != null && mTypeList.size() > 0) {

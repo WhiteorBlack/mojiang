@@ -30,11 +30,12 @@ public class UserActive {
     public int LikeNumber = 0 ;
     public int CommentNumber = 0 ;
 
+
     public int IsLike ;
     public int IsFollow ;
     public String Gender ;
     public String Age ;
-    public double distance;
+    public double Distance;
 
     public String IndustryVAuthentication ;
 
@@ -171,10 +172,10 @@ public class UserActive {
     }
 
     public double getDistance() {
-        return distance;
+        return Distance;
     }
 
     public void setDistance(double distance) {
-        this.distance = distance;
+        this.Distance = distance;
     }
 }
