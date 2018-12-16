@@ -33,6 +33,8 @@ import cn.idcby.commonlibrary.dialog.LoadingDialog;
 import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
+import cn.idcby.jiajubang.Bean.BaseResultBean;
+import cn.idcby.jiajubang.Bean.ResultBean;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.adapter.ImageSelectorResultAdapter;
 import cn.idcby.jiajubang.application.MyApplication;
@@ -282,9 +284,9 @@ public class CircleSendActivity extends BaseMoreStatusActivity implements EasyPe
         paramMap.put("Albums" , thumbList) ;
 
         NetUtils.getDataFromServerByPost(mContext, Urls.SEND_CIRCLE, false, paramMap,
-                new RequestObjectCallBack<String>("sendCircleContent" , mContext , String.class) {
+                new RequestObjectCallBack<ResultBean>("sendCircleContent" , mContext , ResultBean.class) {
                     @Override
-                    public void onSuccessResult(String bean) {
+                    public void onSuccessResult(ResultBean bean) {
                         loadingDialog.dismiss();
 
                         ToastUtils.showToast(mContext , "发布成功") ;
@@ -294,6 +296,7 @@ public class CircleSendActivity extends BaseMoreStatusActivity implements EasyPe
 
                     @Override
                     public void onErrorResult(String str) {
+                        ToastUtils.showErrorToast(CircleSendActivity.this,str);
                         loadingDialog.dismiss();
                     }
 

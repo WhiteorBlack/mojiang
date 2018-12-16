@@ -70,7 +70,8 @@ public class PublishActivity extends BaseActivity {
                 PublishClass publishClass=adapter.getData().get(position);
                 switch (publishClass.getPos()){
                     case 0:
-
+                        Intent toCrIts = new Intent(mContext, OpenStoreActivity.class);
+                        startActivity(toCrIts);
                         break;
                     case 1:
                         if (LoginHelper.isNotLogin(mContext)) {
@@ -97,7 +98,7 @@ public class PublishActivity extends BaseActivity {
                         }
                         break;
                     case 4:
-                        SkipUtils.goActivity(mContext,ServicePublish.class);
+                        SkipUtils.goActivity(mContext,ServicePublishCategory.class);
                         break;
                     case 5:
                         if (LoginHelper.isNotLogin(mContext)) {

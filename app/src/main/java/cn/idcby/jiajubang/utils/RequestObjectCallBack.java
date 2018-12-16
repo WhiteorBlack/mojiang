@@ -52,7 +52,7 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
     private Context mContext;
     private Activity mActivity;
     private String tag;
-    private boolean showToast = true ;
+    private boolean showToast = true;
     private Class<T> cla;
 
     public RequestObjectCallBack(String tag, Context mContext
@@ -63,7 +63,7 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
         this.cla = cla;
     }
 
-    public RequestObjectCallBack(String tag,boolean showToast, Context mContext
+    public RequestObjectCallBack(String tag, boolean showToast, Context mContext
             , Class<T> cla) {
         this.tag = tag;
         this.showToast = showToast;
@@ -89,10 +89,10 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
 
     @Override
     public void onError(Call call, Exception e, int id) {
-        if(showToast){
+        if (showToast) {
             ToastUtils.showServerErrorToast(null == mContext ? mActivity : mContext);
         }
-        LogUtils.showLog("RequestManage" ,"onFail=" + e.getMessage());
+        LogUtils.showLog("RequestManage", "onFail=" + e.getMessage());
         onFail(e);
     }
 
@@ -110,14 +110,14 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
         //        999：请求内部处理错误；
 
 
-        LogUtils.showLog("RequestManage" , tag + ">>>>" +"result=" + response);
+        LogUtils.showLog("RequestManage", tag + ">>>>" + "result=" + response);
 
         try {
-            ResultBean resultBean = JSON.parseObject(response,ResultBean.class);
+            ResultBean resultBean = JSON.parseObject(response, ResultBean.class);
 
-            String message = resultBean.message ;
-            if(message.isEmpty()){
-                message = response ;
+            String message = resultBean.message;
+            if (message.isEmpty()) {
+                message = response;
             }
 
             if (0 == resultBean.errorCode && resultBean.type == 1) {
@@ -128,18 +128,26 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
                     onSuccessResult(t);
 
                 } else {
-                    onSuccessResult((T) resultBean);
+                    if (cla == String.class) {
+                        onSuccessResult((T) response);
+                    } else {
+                        onSuccessResult((T) resultBean);
+                    }
                 }
 
-            } else if (103 == resultBean.errorCode) {
-                if(showToast){
+            }else if (102==resultBean.errorCode) {
+                if (showToast){
+                    ToastUtils.showErrorToast(mContext,resultBean.message);
+                }
+            }else if (103 == resultBean.errorCode) {
+                if (showToast) {
                     showTokenOutTimeDialog();
                 }
-            }  else if (108 == resultBean.errorCode) {//未通过实名认证
-                showNoApplyDialog(resultBean.message) ;
+            } else if (108 == resultBean.errorCode) {//未通过实名认证
+                showNoApplyDialog(resultBean.message);
                 onErrorResult(message);
-            }  else {
-                if(showToast){
+            } else {
+                if (showToast) {
                     ToastUtils.showErrorToast(null == mContext ? mActivity : mContext, resultBean.message);
                 }
                 onErrorResult(message);
@@ -152,50 +160,38 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
 
     private void showTokenOutTimeDialog() {
         DialogUtils.showCustomViewDialog(null == mContext ? mActivity : mContext, "温馨提示", "您的帐号已经在其他设备登录", null
-                , "重新登录", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
+                , "重新登录", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
 
-                        Intent toLoIt = new Intent(null == mContext ? mActivity : mContext , LoginActivityNew.class) ;
-                        toLoIt.putExtra("isGoMain" ,false) ;
-                        (null == mContext ? mActivity : mContext).startActivity(toLoIt) ;
-                    }
-                }, "取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        EventBus.getDefault().post(new BusEvent.LoginOutEvent(true)) ;
+                    Intent toLoIt = new Intent(null == mContext ? mActivity : mContext, LoginActivityNew.class);
+                    toLoIt.putExtra("isGoMain", false);
+                    (null == mContext ? mActivity : mContext).startActivity(toLoIt);
+                }, "取消", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                    EventBus.getDefault().post(new BusEvent.LoginOutEvent(true));
 
 //                        Intent toMiIt = new Intent(null == mContext ? mActivity : mContext , MainActivity.class) ;
 //                        toMiIt.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                        toMiIt.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 //                        (null == mContext ? mActivity : mContext).startActivity(toMiIt) ;
-                    }
                 });
     }
 
 
     private void showNoApplyDialog(String message) {
-        if("".equals(StringUtils.convertNull(message))){
-            message = "您尚未完成实名认证，是否去认证？" ;
+        if ("".equals(StringUtils.convertNull(message))) {
+            message = "您尚未完成实名认证，是否去认证？";
         }
-        DialogUtils.showCustomViewDialog(null == mContext ? mActivity : mContext, "温馨提示", message , null
-                , "去认证", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
+        DialogUtils.showCustomViewDialog(null == mContext ? mActivity : mContext, "温馨提示", message, null
+                , "去认证", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
 
-                        Intent toApIt = new Intent(null == mContext ? mActivity : mContext , MyApplyInfoActivity.class) ;
-                        (null == mContext ? mActivity : mContext).startActivity(toApIt) ;
-                    }
-                }, "取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        if(mActivity != null){
-                            mActivity.finish() ;
-                        }
+                    Intent toApIt = new Intent(null == mContext ? mActivity : mContext, MyApplyInfoActivity.class);
+                    (null == mContext ? mActivity : mContext).startActivity(toApIt);
+                }, "取消", (dialogInterface, i) -> {
+                    dialogInterface.dismiss();
+                    if (mActivity != null) {
+                        mActivity.finish();
                     }
                 });
     }

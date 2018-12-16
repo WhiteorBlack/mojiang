@@ -273,7 +273,7 @@ public class CircleHotFragment extends BaseFragment {
         Map<String,String> paramMap = ParaUtils.getParaNece(mContext) ;
         paramMap.put("PageSize" , "10") ;
         paramMap.put("Page" , "" + mCurPage) ;
-        paramMap.put("CategoryID" , "") ;
+//        paramMap.put("Keyword" , "") ;
 
         NetUtils.getDataFromServerByPost(mContext, Urls.HOT_POST_LIST, false, paramMap
                 , new RequestListCallBack<UserActive>("getHotActive" , mContext ,UserActive.class) {

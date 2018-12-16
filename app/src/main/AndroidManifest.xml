@@ -492,6 +492,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name="cn.idcby.jiajubang.activity.ServicePublishCategory"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name="cn.idcby.jiajubang.activity.ChooseAddressActivity"
             android:screenOrientation="portrait" />
 

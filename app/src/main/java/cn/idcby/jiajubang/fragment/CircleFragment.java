@@ -7,22 +7,28 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.idcby.commonlibrary.base.BaseFragment;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
+import cn.idcby.commonlibrary.utils.SPUtils;
 import cn.idcby.commonlibrary.utils.StatusBarUtil;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.adapter.FragmentPagerAdapter;
 import cn.idcby.jiajubang.adapter.FragmentPagerOtherAdapter;
 import cn.idcby.jiajubang.adapter.IndicatorFragmentAdapter;
 import cn.idcby.jiajubang.adapter.MyGreenIndicatorAdapter;
+import cn.idcby.jiajubang.events.BusEvent;
 import cn.idcby.jiajubang.utils.LoginHelper;
 import cn.idcby.jiajubang.utils.SkipUtils;
 
@@ -62,7 +68,7 @@ public class CircleFragment extends BaseFragment implements View.OnClickListener
     private List<Fragment> fragmentList;
     private CircleSameCityFragment mSameCityCircleFragment;
 
-
+    private TextView mMessageCountTv;
     private TabLayout magicIndicator;
     private ViewPager mViewPager;
     private ImageView mBackIv;
@@ -103,6 +109,7 @@ public class CircleFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     protected void initView(View view) {
+        mMessageCountTv=view.findViewById(R.id.frag_home_msg_tv);
         magicIndicator = view.findViewById(R.id.magic_indicator);
         mViewPager = view.findViewById(R.id.viewpager);
         mBackIv = view.findViewById(R.id.img_circle_left);
@@ -127,6 +134,11 @@ public class CircleFragment extends BaseFragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.img_circle_left:
                 sendCircle() ;
+                break;
+            case R.id.iv_msg:
+                SkipUtils.toMessageCenterActivity(mContext);
+                SPUtils.newIntance(mContext).resetUnreadMessage();
+                mMessageCountTv.setVisibility(View.GONE);
                 break;
         }
     }
@@ -153,6 +165,13 @@ public class CircleFragment extends BaseFragment implements View.OnClickListener
             mSameCityCircleFragment.updateInfoByCityChange() ;
         }
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void updateEventBus(BusEvent.UnreadMsgEvent ev) {
+        mMessageCountTv.setVisibility(ev.isHas() ? View.VISIBLE : View.GONE);
+//        mMessageCountTv.setText("") ;
+    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
