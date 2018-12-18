@@ -1,12 +1,14 @@
 package cn.idcby.jiajubang.Bean;
 
+import java.io.Serializable;
+
 import cn.idcby.jiajubang.utils.StringUtils;
 
 /**
  * Created on 2018/3/26.
  */
 
-public class ImageThumb {
+public class ImageThumb implements Serializable {
     public String OriginalImgUrl ;
     public String ThumbImgUrl ;
 

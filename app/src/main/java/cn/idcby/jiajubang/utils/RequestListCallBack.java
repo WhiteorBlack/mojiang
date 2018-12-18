@@ -18,6 +18,7 @@ import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.ResultBean;
 import cn.idcby.jiajubang.activity.LoginActivity;
+import cn.idcby.jiajubang.activity.LoginActivityNew;
 import cn.idcby.jiajubang.activity.MainActivity;
 import cn.idcby.jiajubang.activity.MyApplyInfoActivity;
 import cn.idcby.jiajubang.events.BusEvent;
@@ -135,7 +136,7 @@ public abstract class RequestListCallBack<T> extends StringCallback {
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.dismiss();
 
-                Intent toLoIt = new Intent(null == mContext ? mActivity : mContext , LoginActivity.class) ;
+                Intent toLoIt = new Intent(null == mContext ? mActivity : mContext , LoginActivityNew.class) ;
                 toLoIt.putExtra("isGoMain" ,false) ;
                 (null == mContext ? mActivity : mContext).startActivity(toLoIt) ;
             }

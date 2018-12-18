@@ -76,7 +76,7 @@ public class NearNewFragment extends BaseFragment {
     private List<Fragment> getFragemnts() {
         List<Fragment> fragments = new ArrayList<>();
         Fragment serviceFragment = new NearServerListFragment();
-        titls.add("附近服务");
+        titls.add("安装师傅");
         fragments.add(serviceFragment);
         Fragment storeFragment = new NearStoreFragment();
         titls.add("附近商家");

@@ -75,6 +75,7 @@
     <ImageView
         android:id="@+id/img_circle_left"
         android:layout_width="35dp"
+        android:visibility="gone"
         android:layout_height="35dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"

@@ -1,5 +1,7 @@
 package cn.idcby.jiajubang.Bean;
 
+import java.io.Serializable;
+
 import cn.idcby.jiajubang.utils.StringUtils;
 
 /**
@@ -7,7 +9,7 @@ import cn.idcby.jiajubang.utils.StringUtils;
  * Created on 2018/5/24.
  */
 
-public class ServerComment {
+public class ServerComment implements Serializable {
     public String OrderEvaluateId ;
     public String EvaluateContent ;
     public String EvaluateLevel ;

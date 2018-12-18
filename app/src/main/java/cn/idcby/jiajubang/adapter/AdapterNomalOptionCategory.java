@@ -2,6 +2,7 @@ package cn.idcby.jiajubang.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,9 @@ import cn.idcby.jiajubang.interf.RvItemViewClickListener;
  */
 
 public class AdapterNomalOptionCategory extends RecyclerView.Adapter<AdapterNomalOptionCategory.QaCtHolder> {
-    private Context context ;
-    private List<NomalRvCategory> mDataList ;
-    private RvItemViewClickListener mClickListener ;
+    private Context context;
+    private List<NomalRvCategory> mDataList;
+    private RvItemViewClickListener mClickListener;
 
     public AdapterNomalOptionCategory(Context context, List<NomalRvCategory> mDataList
             , RvItemViewClickListener mClickListener) {
@@ -32,44 +33,48 @@ public class AdapterNomalOptionCategory extends RecyclerView.Adapter<AdapterNoma
     @Override
     public QaCtHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new QaCtHolder(LayoutInflater.from(context)
-                .inflate(R.layout.adapter_question_category_item ,parent ,false) ,mClickListener);
+                .inflate(R.layout.adapter_question_category_item, parent, false), mClickListener);
     }
 
     @Override
     public void onBindViewHolder(QaCtHolder holder, int position) {
-        NomalRvCategory category = mDataList.get(position) ;
-        if(category != null){
-            String title = category.getCategoryTitle() ;
-            boolean isSelected = category.isSelected() ;
+        NomalRvCategory category = mDataList.get(position);
+        if (category != null) {
+            String title = category.getCategoryTitle();
+            boolean isSelected = category.isSelected();
 
             holder.mNameTv.setText(title);
-            holder.mNameTv.setTextColor(context.getResources().getColor(isSelected
-                    ? R.color.color_nav_checked_two
-                    : R.color.color_nav_normal_two));
-            holder.mInditorView.setVisibility(isSelected ? View.VISIBLE : View.INVISIBLE);
+//            holder.mNameTv.setTextColor(context.getResources().getColor(isSelected
+//                    ? R.color.color_nav_checked_two
+//                    : R.color.color_nav_normal_two));
+            holder.mNameTv.setTextColor(context.getResources().getColor(R.color.color_nav_normal_two));
+            holder.mNameTv.setTextSize(isSelected ? 16 : 14);
+            TextPaint tp = holder.mNameTv.getPaint();
+            tp.setFakeBoldText(isSelected);
+            holder.mInditorView.setVisibility(View.INVISIBLE);
         }
     }
 
     @Override
     public int getItemCount() {
-        return null == mDataList ? 0 : mDataList.size() ;
+        return null == mDataList ? 0 : mDataList.size();
     }
 
-    static class QaCtHolder extends RecyclerView.ViewHolder{
-        private TextView mNameTv ;
-        private View mInditorView ;
+    static class QaCtHolder extends RecyclerView.ViewHolder {
+        private TextView mNameTv;
+        private View mInditorView;
 
         public QaCtHolder(View itemView, final RvItemViewClickListener mClickListener) {
             super(itemView);
 
-            mNameTv = itemView.findViewById(R.id.adapter_question_category_item_name_tv) ;
-            mInditorView = itemView.findViewById(R.id.adapter_question_category_item_inditor_iv) ;
+            mNameTv = itemView.findViewById(R.id.adapter_question_category_item_name_tv);
+            mInditorView = itemView.findViewById(R.id.adapter_question_category_item_inditor_iv);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(mClickListener != null){
-                        mClickListener.onItemClickListener(0 ,getAdapterPosition()) ;
+                    if (mClickListener != null) {
+                        mClickListener.onItemClickListener(0, getAdapterPosition());
                     }
                 }
             });

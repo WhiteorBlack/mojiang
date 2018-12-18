@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -76,7 +77,8 @@ public class CircleHotFragment extends BaseFragment {
     private TextView mFooterTv ;
     private View mToTopIv ;
 
-
+    private ImageView ivHeader;
+    private static final int REQUEST_CODE_SEND_CIRCLE = 1001 ;
 
     public List<CircleCategory> getCircleCate(){
         return mCategoryList ;
@@ -173,11 +175,26 @@ public class CircleHotFragment extends BaseFragment {
         mCategoryRv.setNestedScrollingEnabled(false);
         mCategoryRv.setFocusable(false);
         mCategoryRv.setAdapter(mCategoryAdapter) ;
-
+        ivHeader=headerView.findViewById(R.id.iv_header);
+        headerView.findViewById(R.id.ll_publish).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendCircle();
+            }
+        });
         mAdapter.addHeader(headerView);
 
         mFooterTv = ViewUtil.getLoadingLvFooterView(mContext) ;
         mAdapter.addFooter(mFooterTv);
+    }
+
+    private void sendCircle() {
+        if(LoginHelper.isNotLogin(mContext)){
+            SkipUtils.toLoginActivityForResult(mFragment ,REQUEST_CODE_SEND_CIRCLE);
+            return ;
+        }
+
+        SkipUtils.toSendCircleActivity(mContext);
     }
 
     @Override

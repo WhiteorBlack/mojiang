@@ -176,6 +176,8 @@ public class SkipUtils {
     public static final String INTENT_SERVER_IS_MORE = "serverIsMore";
     public static final String INTENT_SERVER_ID = "serverId";
     public static final String INTENT_SERVER_USER_ID = "serverUserId";
+    public static final String INTENT_SERVER_USER_NAME = "serverUserName";
+    public static final String SERVICE_DETIALS="serviceDetial";
 
     public static final String INTENT_CATEGORY_INFO = "categoryInfo";
 
@@ -380,13 +382,13 @@ public class SkipUtils {
     }
 
     public static void toLoginActivityForResult(Activity context, int requestCode) {
-        Intent intent = new Intent(context, LoginActivity.class);
+        Intent intent = new Intent(context, LoginActivityNew.class);
         intent.putExtra("isGoMain", false);
         context.startActivityForResult(intent, requestCode);
     }
 
     public static void toLoginActivityForResult(Fragment context, int requestCode) {
-        Intent intent = new Intent(context.getContext(), LoginActivity.class);
+        Intent intent = new Intent(context.getContext(), LoginActivityNew.class);
         intent.putExtra("isGoMain", false);
         context.startActivityForResult(intent, requestCode);
     }

@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.activity.MainActivity;
+import cn.idcby.jiajubang.activity.SplashActivity;
+import cn.idcby.jiajubang.utils.LoginHelper;
+import cn.idcby.jiajubang.utils.SkipUtils;
 
 /**
  * 首次启动导航
@@ -19,12 +22,12 @@ import cn.idcby.jiajubang.activity.MainActivity;
  */
 
 public class PagerAdapterGuide extends PagerAdapter {
-    private Activity context ;
+    private Activity context;
     private int[] mDataList = new int[]{R.drawable.ic_start_nav_one
-            ,R.drawable.ic_start_nav_two
-            ,R.drawable.ic_start_nav_three
-            ,R.drawable.ic_start_nav_four
-            ,R.drawable.ic_start_nav_five} ;
+            , R.drawable.ic_start_nav_two
+            , R.drawable.ic_start_nav_three
+            , R.drawable.ic_start_nav_four
+            , R.drawable.ic_start_nav_five};
 
     public PagerAdapterGuide(Activity context) {
         this.context = context;
@@ -32,35 +35,40 @@ public class PagerAdapterGuide extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return null == mDataList ? 0 : mDataList.length ;
+        return null == mDataList ? 0 : mDataList.length;
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == object ;
+        return view == object;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = LayoutInflater.from(context).inflate(R.layout.adapter_first_guide_img ,container,false) ;
-        ImageView iv = view.findViewById(R.id.adapter_first_guide_iv) ;
-        TextView tv = view.findViewById(R.id.adapter_first_guide_tv) ;
+        View view = LayoutInflater.from(context).inflate(R.layout.adapter_first_guide_img, container, false);
+        ImageView iv = view.findViewById(R.id.adapter_first_guide_iv);
+        TextView tv = view.findViewById(R.id.adapter_first_guide_tv);
 
-        iv.setBackgroundDrawable(context.getResources().getDrawable(mDataList[position])) ;
+        iv.setBackgroundDrawable(context.getResources().getDrawable(mDataList[position]));
 
         tv.setVisibility(mDataList.length == position + 1 ? View.VISIBLE : View.GONE);
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent toMiIt = new Intent(context , MainActivity.class) ;
-                context.startActivity(toMiIt) ;
-                context.finish() ;
+        tv.setOnClickListener(view1 -> {
+
+            if (LoginHelper.isNotLogin(context)) {
+                SkipUtils.toLoginActivity(context);
+            } else {
+                goNextActivity(MainActivity.class);
             }
         });
 
-        container.addView(view) ;
-        return view ;
+        container.addView(view);
+        return view;
+    }
+
+    public void goNextActivity(Class activity) {
+        Intent intent = new Intent(context, activity);
+        context.startActivity(intent);
     }
 
     @Override

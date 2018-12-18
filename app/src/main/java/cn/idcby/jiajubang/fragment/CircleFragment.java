@@ -113,7 +113,7 @@ public class CircleFragment extends BaseFragment implements View.OnClickListener
         magicIndicator = view.findViewById(R.id.magic_indicator);
         mViewPager = view.findViewById(R.id.viewpager);
         mBackIv = view.findViewById(R.id.img_circle_left);
-
+        view.findViewById(R.id.iv_msg).setOnClickListener(this);
         View statusView = view.findViewById(R.id.frag_circle_status_view);
         statusView.getLayoutParams().height = ResourceUtils.getStatusBarHeight(mContext) ;
         statusView.setBackgroundColor(StatusBarUtil.DEFAULT_STATUS_BAR_COLOR);

@@ -2,7 +2,6 @@ package cn.idcby.jiajubang.utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 
 import com.alibaba.fastjson.JSON;
@@ -14,9 +13,7 @@ import cn.idcby.commonlibrary.utils.DialogUtils;
 import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.ResultBean;
-import cn.idcby.jiajubang.activity.LoginActivity;
 import cn.idcby.jiajubang.activity.LoginActivityNew;
-import cn.idcby.jiajubang.activity.MainActivity;
 import cn.idcby.jiajubang.activity.MyApplyInfoActivity;
 import cn.idcby.jiajubang.events.BusEvent;
 import okhttp3.Call;
@@ -139,6 +136,7 @@ public abstract class RequestObjectCallBack<T> extends StringCallback {
                 if (showToast){
                     ToastUtils.showErrorToast(mContext,resultBean.message);
                 }
+                onErrorResult(response);
             }else if (103 == resultBean.errorCode) {
                 if (showToast) {
                     showTokenOutTimeDialog();

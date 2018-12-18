@@ -180,7 +180,7 @@
 
                 <TextView
                     style="@style/user_info_item_left_style"
-                    android:text="行业类别" />
+                    android:text="行业角色" />
 
                 <TextView
                     android:id="@+id/acti_user_info_category_tv"
@@ -199,7 +199,7 @@
 
                 <TextView
                     style="@style/user_info_item_left_style"
-                    android:text="公司" />
+                    android:text="公司名称" />
 
                 <EditText
                     android:id="@+id/acti_user_info_company_name_ev"

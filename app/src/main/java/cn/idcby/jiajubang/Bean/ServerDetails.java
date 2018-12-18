@@ -1,5 +1,6 @@
 package cn.idcby.jiajubang.Bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import cn.idcby.jiajubang.utils.StringUtils;
  * Created on 2018/4/11.
  */
 
-public class ServerDetails {
+public class ServerDetails implements Serializable {
     public String IsCollection ;
     public String IsLike ;
     public String CreateUserId ;

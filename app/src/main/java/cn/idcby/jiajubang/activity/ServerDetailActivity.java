@@ -288,8 +288,7 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
 //            }
         } else if (i == R.id.acti_server_dt_send_tv) {//预约
             if (!mIsSelf) {
-                ServerConfirmActivity.launch(mActivity, mServerUserId
-                        , mIsInstall, REQUEST_CODE_SUBMIT);
+                ServerConfirmActivity.launch(mActivity, mServerDetails, REQUEST_CODE_SUBMIT);
             }
 //            if (!mIsSelf) {
 //                if (LoginHelper.isNotLogin(mContext)) {
@@ -314,8 +313,7 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
             }
         } else if (i == R.id.acti_server_dt_bt_tv) {//买单
             if (!mIsSelf) {
-                ServerConfirmActivity.launch(mActivity, mServerUserId
-                        , mIsInstall, REQUEST_CODE_SUBMIT);
+                ServerConfirmActivity.launch(mActivity, mServerDetails, REQUEST_CODE_SUBMIT);
             }
         } else if (i == R.id.acti_server_dt_comment_count_more_tv
                 || i == R.id.acti_server_dt_comment_more_tv) {//更多服务评价

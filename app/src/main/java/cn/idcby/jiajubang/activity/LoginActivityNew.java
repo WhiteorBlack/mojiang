@@ -78,12 +78,16 @@ public class LoginActivityNew extends BaseActivity {
      * @param phone
      */
     private void checkPhone(String phone) {
+        if (loadingDialog == null)
+            loadingDialog = new LoadingDialog(mContext);
+        loadingDialog.show();
         Map<String, String> paramMap = new HashMap<>();
         paramMap.put("Phone", phone);
         NetUtils.getDataFromServerByPost(this, Urls.CHECK_PHONE, paramMap,
-                new RequestObjectCallBack<ResultBean>("checkPhone",false, this, ResultBean.class) {
+                new RequestObjectCallBack<ResultBean>("checkPhone", false, this, ResultBean.class) {
                     @Override
                     public void onSuccessResult(ResultBean bean) {
+                        loadingDialog.dismiss();
                         if (bean.getErrorCode() == 0) {
                             Bundle bundle = new Bundle();
                             bundle.putString("phone", phone);
@@ -94,12 +98,13 @@ public class LoginActivityNew extends BaseActivity {
 
                     @Override
                     public void onErrorResult(String str) {
-                            if (str.contains("已被注册")){
-                                Bundle bundle = new Bundle();
-                                bundle.putString("phone", phone);
-                                SkipUtils.goActivity(mContext,LoginPwdActivityNew.class,bundle);
-                                onBackPressed();
-                            }
+                        loadingDialog.dismiss();
+                        if (str.contains("已被注册")) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("phone", phone);
+                            SkipUtils.goActivity(mContext, LoginPwdActivityNew.class, bundle);
+                            onBackPressed();
+                        }
 //                        ToastUtils.showToast(LoginActivityNew.this, str);
                     }
 

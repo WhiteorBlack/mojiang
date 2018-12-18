@@ -424,7 +424,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
 
-                        Intent toLoIt = new Intent(context, LoginActivity.class);
+                        Intent toLoIt = new Intent(context, LoginActivityNew.class);
                         toLoIt.putExtra("isGoMain", false);
                         context.startActivityForResult(toLoIt, 1234);
                     }

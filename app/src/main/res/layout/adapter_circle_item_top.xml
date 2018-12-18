@@ -136,6 +136,7 @@
         android:id="@+id/expand_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/adapter_circle_item_user_iv"
         android:layout_below="@id/adapter_circle_item_user_iv"
         expandableTextView:animDuration="200"
         expandableTextView:maxCollapsedLines="4">
@@ -144,7 +145,6 @@
             android:id="@id/expandable_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:textColor="@color/blacktext"
             android:textSize="15sp" />

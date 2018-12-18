@@ -516,7 +516,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/iv_order_count_more"
-                    android:text="已于预约"
+                    android:text="30人已预约"
                     android:textColor="@color/gray_normal"
                     android:textSize="12sp" />
 
