@@ -101,7 +101,6 @@ public abstract class BaseBindActivity extends AppCompatActivity implements View
         int id = view.getId();
         if (id == R.id.back) {//处理返回键
             finish();
-
         } else {
             dealOhterClick(view);
 

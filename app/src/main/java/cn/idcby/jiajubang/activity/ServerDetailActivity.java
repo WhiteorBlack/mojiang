@@ -42,6 +42,7 @@ import cn.idcby.commonlibrary.utils.StatusBarUtil;
 import cn.idcby.jiajubang.Bean.Admire;
 import cn.idcby.jiajubang.Bean.Collect;
 import cn.idcby.jiajubang.Bean.ImageThumb;
+import cn.idcby.jiajubang.Bean.RequestServiceConfirm;
 import cn.idcby.jiajubang.Bean.ServerComment;
 import cn.idcby.jiajubang.Bean.ServerDetails;
 import cn.idcby.jiajubang.Bean.WordType;
@@ -288,7 +289,13 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
 //            }
         } else if (i == R.id.acti_server_dt_send_tv) {//预约
             if (!mIsSelf) {
-                ServerConfirmActivity.launch(mActivity, mServerDetails, REQUEST_CODE_SUBMIT);
+                RequestServiceConfirm confirm=new RequestServiceConfirm();
+                confirm.setServiceAmount(mServerDetails.getPayMoney());
+                confirm.setServiceUserAccount(mServerDetails.getHxName());
+                confirm.setServiceUserHeadIcon(mServerDetails.getHeadIcon());
+                confirm.setServiceUserNickName(mServerDetails.getNickName());
+                confirm.setServiceUserRealName(mServerDetails.getRealName());
+                ServiceConfirmActivity.launch(mActivity, confirm, REQUEST_CODE_SUBMIT);
             }
 //            if (!mIsSelf) {
 //                if (LoginHelper.isNotLogin(mContext)) {
@@ -313,7 +320,14 @@ public class ServerDetailActivity extends BaseActivity implements EasyPermission
             }
         } else if (i == R.id.acti_server_dt_bt_tv) {//买单
             if (!mIsSelf) {
-                ServerConfirmActivity.launch(mActivity, mServerDetails, REQUEST_CODE_SUBMIT);
+//                ServerConfirmActivity.launch(mActivity, mServerDetails, REQUEST_CODE_SUBMIT);
+                RequestServiceConfirm confirm=new RequestServiceConfirm();
+                confirm.setServiceAmount(mServerDetails.getPayMoney());
+                confirm.setServiceUserAccount(mServerDetails.getHxName());
+                confirm.setServiceUserHeadIcon(mServerDetails.getHeadIcon());
+                confirm.setServiceUserNickName(mServerDetails.getNickName());
+                confirm.setServiceUserRealName(mServerDetails.getRealName());
+                ServiceConfirmActivity.launch(mActivity, confirm, REQUEST_CODE_SUBMIT);
             }
         } else if (i == R.id.acti_server_dt_comment_count_more_tv
                 || i == R.id.acti_server_dt_comment_more_tv) {//更多服务评价

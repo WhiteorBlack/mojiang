@@ -1,6 +1,5 @@
 package cn.idcby.jiajubang.activity;
 
-
 import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,23 +9,17 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-
 import com.gyf.barlibrary.ImmersionBar;
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import java.util.List;
 import java.util.Map;
-
 import cn.idcby.commonlibrary.base.BaseActivity;
 import cn.idcby.commonlibrary.dialog.LoadingDialog;
-import cn.idcby.commonlibrary.utils.MyUtils;
 import cn.idcby.commonlibrary.utils.SPUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.LoginInfo;
-import cn.idcby.jiajubang.Bean.NewsDetail;
 import cn.idcby.jiajubang.Bean.UserInfo;
 import cn.idcby.jiajubang.R;
 import cn.idcby.jiajubang.events.BusEvent;
@@ -73,7 +66,7 @@ public class LoginPwdActivityNew extends BaseActivity implements CompoundButton.
                 login();
                 break;
             case R.id.tv_forgetPwd:
-
+                ChangeLoginActivity.launch(mActivity, ChangeLoginActivity.CHANGE_TYPE_LOGIN_PASS_FORGET, 1001);
                 break;
 
             case R.id.tv_code:
@@ -172,8 +165,8 @@ public class LoginPwdActivityNew extends BaseActivity implements CompoundButton.
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(BusEvent.HxLoginStateEvent stateEvent){
-        if (stateEvent!=null&&stateEvent.isReLogin()){
+    public void onEvent(BusEvent.HxLoginStateEvent stateEvent) {
+        if (stateEvent != null && stateEvent.isReLogin()) {
             onBackPressed();
         }
     }

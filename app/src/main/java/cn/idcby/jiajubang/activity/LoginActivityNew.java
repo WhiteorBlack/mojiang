@@ -5,17 +5,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-
 import com.gyf.barlibrary.ImmersionBar;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import cn.idcby.commonlibrary.base.BaseActivity;
 import cn.idcby.commonlibrary.dialog.LoadingDialog;
-import cn.idcby.commonlibrary.utils.AppManager;
 import cn.idcby.commonlibrary.utils.ToastUtils;
-import cn.idcby.jiajubang.Bean.CheckPhone;
 import cn.idcby.jiajubang.Bean.NewsDetail;
 import cn.idcby.jiajubang.Bean.ResultBean;
 import cn.idcby.jiajubang.R;
@@ -105,7 +100,6 @@ public class LoginActivityNew extends BaseActivity {
                             SkipUtils.goActivity(mContext, LoginPwdActivityNew.class, bundle);
                             onBackPressed();
                         }
-//                        ToastUtils.showToast(LoginActivityNew.this, str);
                     }
 
                     @Override

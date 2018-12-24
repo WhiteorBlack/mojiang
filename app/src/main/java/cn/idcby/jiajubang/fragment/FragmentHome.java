@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -69,6 +70,7 @@ import cn.idcby.jiajubang.interf.OnLayClickListener;
 import cn.idcby.jiajubang.interf.RvDecorationHiddenCallBack;
 import cn.idcby.jiajubang.interf.RvItemViewClickListener;
 import cn.idcby.jiajubang.utils.BannerImageLoader;
+import cn.idcby.jiajubang.utils.GlideUtils;
 import cn.idcby.jiajubang.utils.ImageWidthUtils;
 import cn.idcby.jiajubang.utils.NetUtils;
 import cn.idcby.jiajubang.utils.ParaUtils;
@@ -173,7 +175,7 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
     private int mHeaderCateLimit = 0;
     private int mFirstItemLocation[] = new int[2];
     private RecycleViewUtils mRecyUtils;
-
+    private ImageView ivInstallCate;
 
     /**
      * 城市切换监听，可以放到MainActivity中使用，此处放到fragment
@@ -287,7 +289,7 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
                         Intent toLtIt = new Intent(mContext, ServiceListNewActivity.class);
                         toLtIt.putExtra(SkipUtils.INTENT_SERVER_TYPE, ServerActivity.SERVER_TYPE_SERVER);
                         toLtIt.putExtra(SkipUtils.INTENT_CATEGOTY_ID, serId);
-                        toLtIt.putExtra(SkipUtils.INTENT_TITLE,serviceList.getCategoryTitle());
+                        toLtIt.putExtra(SkipUtils.INTENT_TITLE, serviceList.getCategoryTitle());
                         startActivity(toLtIt);
                     }
                 }
@@ -499,6 +501,9 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
         initSpecUnuseRecyclerView();
         initHotServerRecyclerView();
         initHomeNewsData(headerLay);
+
+        ivInstallCate = headerLay.findViewById(R.id.iv_hot);
+        headerLay.findViewById(R.id.tv_find_install).setOnClickListener(this);
     }
 
     /**
@@ -506,7 +511,7 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
      * 修改为固定三个图标
      */
     private void initHotServerRecyclerView() {
-        GridLayoutManager linearLayoutManager = new GridLayoutManager(mContext,3);
+        GridLayoutManager linearLayoutManager = new GridLayoutManager(mContext, 3);
 //        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRvHotServer.setLayoutManager(linearLayoutManager);
         mRvHotServer.setHasFixedSize(true);
@@ -702,8 +707,22 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
 //            goNextActivity(ServerActivity.class);
         } else if (i == R.id.frag_home_unuse_send_lay) {//闲置发布
             goNextActivity(UnusedSendActivity.class);
+        } else if (i == R.id.tv_find_install) {
+            if (mHotServiceList.isEmpty()) {
+                return;
+            }
+            ServerCategory serviceList = mHotServiceList.get(0);
+            if (serviceList != null) {
+                String serId = serviceList.getServiceCategoryID();
+                Intent toLtIt = new Intent(mContext, ServiceListNewActivity.class);
+                toLtIt.putExtra(SkipUtils.INTENT_SERVER_TYPE, ServerActivity.SERVER_TYPE_SERVER);
+                toLtIt.putExtra(SkipUtils.INTENT_CATEGOTY_ID, serId);
+                toLtIt.putExtra(SkipUtils.INTENT_TITLE, serviceList.getCategoryTitle());
+                startActivity(toLtIt);
+            }
         }
     }
+
 
     /**
      * 填充热门话题
@@ -936,6 +955,7 @@ public class FragmentHome extends BaseFragment implements View.OnClickListener {
                         } else {
                             mHotServiceList.addAll(bean);
                         }
+                        GlideUtils.loader(mHotServiceList.get(0).getImgUrl(),ivInstallCate);
                         mHomeHotServerAdapter.notifyDataSetChanged();
                         if (mIsRefresh) {
                             requestAppWorkHead();

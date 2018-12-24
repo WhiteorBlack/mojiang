@@ -115,7 +115,7 @@ public abstract class RequestListCallBack<T> extends StringCallback {
                     onSuccessResult(new ArrayList<T>()) ;
                 }
             } else if (103 == resultBean.errorCode) {
-                showTokenOutTimeDialog();
+//                showTokenOutTimeDialog();
             }  else if (108 == resultBean.errorCode) {//未通过认证
                 showNoApplyDialog(resultBean.message) ;
                 onErrorResult(response);

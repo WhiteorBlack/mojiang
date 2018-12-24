@@ -246,6 +246,75 @@
             android:textSize="@dimen/textSize_twelve" />
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/rl_hot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frag_home_server_tips_tv">
+
+        <ImageView
+            android:id="@+id/iv_hot"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:id="@+id/tv_cate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_hot"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/iv_hot"
+            android:text="安装师傅"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_cate_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cate"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/iv_hot"
+            android:text="已有4000用户通过平台完成服务"
+            android:textColor="@color/gray_normal"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_hot"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toRightOf="@+id/iv_hot"
+            android:text="下单赢苹果"
+            android:textColor="@color/holo_orange_light"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_find_install"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/tv_cate_info"
+            android:layout_marginRight="15dp"
+            android:onClick="onClick"
+            android:background="@drawable/round_green_f8_bg"
+            android:paddingLeft="8dp"
+            android:paddingTop="2dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="2dp"
+            android:text="找师傅安装"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_hot_server"
         android:layout_width="match_parent"
@@ -254,13 +323,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:overScrollMode="never" />
+        android:overScrollMode="never"
+        android:visibility="gone" />
 
     <View
         android:id="@+id/frag_home_hot_server_dv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nomal_divider_height"
-        android:layout_below="@id/rv_hot_server"
+        android:layout_below="@id/rl_hot"
         android:layout_marginTop="5dp"
         android:background="@color/activity_bg_common" />
 

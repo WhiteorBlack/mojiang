@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
+        android:background="@mipmap/me_top_bg"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -233,10 +233,12 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-            <View style="@style/user_info_item_dv_style"
-                android:visibility="gone"/>
+            <View
+                style="@style/user_info_item_dv_style"
+                android:visibility="gone" />
 
-            <LinearLayout style="@style/user_info_item_line_lay_style"
+            <LinearLayout
+                style="@style/user_info_item_line_lay_style"
                 android:visibility="gone">
 
                 <TextView
