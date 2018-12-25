@@ -35,6 +35,7 @@ import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.Address;
+import cn.idcby.jiajubang.Bean.CategoryBean;
 import cn.idcby.jiajubang.Bean.SiftWorkPost;
 import cn.idcby.jiajubang.Bean.UnusedCategory;
 import cn.idcby.jiajubang.Bean.UserInfo;
@@ -50,6 +51,7 @@ import cn.idcby.jiajubang.utils.SkipUtils;
 import cn.idcby.jiajubang.utils.StringUtils;
 import cn.idcby.jiajubang.utils.Urls;
 import cn.idcby.jiajubang.view.dialog.DatePop;
+import cn.idcby.jiajubang.view.dialog.DoubleCategoryDialog;
 import cn.idcby.jiajubang.view.dialog.DoubleCityDialog;
 import cn.idcby.jiajubang.view.dialog.DoubleSelectionDialog;
 import cn.idcby.jiajubang.view.dialog.SingleSelectionDialog;
@@ -194,23 +196,24 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         }
     }
 
-    private SingleSelectionDialog categoryDialog;
-
+    private DoubleCategoryDialog categoryDialog;
+    private String workTypeName;
     private void showCategoryDialog() {
         if (categoryDialog == null) {
-            categoryDialog = new SingleSelectionDialog(this);
+            categoryDialog = new DoubleCategoryDialog(this);
             categoryDialog.setDoubleSelectionInterface(new DoubleSelectionInterface() {
                 @Override
                 public void onSelection(Object post) {
                     if (post == null) {
                         return;
                     }
-                    UnusedCategory category = (UnusedCategory) post;
-                    mCategoryIds = category.CategoryID;
-                    mWorkTypeTv.setText(category.CategoryTitle);
+                    CategoryBean category = (CategoryBean) post;
+                    mCategoryIds = category.getItemId();
+                    mWorkTypeTv.setText(category.getItemName());
+                    workTypeName=category.getItemName();
                 }
             });
-            categoryDialog.getCategory();
+            categoryDialog.getFirstData(SkipUtils.WORD_TYPE_POST);
         }
 
         categoryDialog.show();
@@ -229,9 +232,9 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
                         return;
                     }
                     Address address = (Address) post;
-                    mAreaTv.setText(address.getParentName()+" "+address.AreaName);
+                    mAreaTv.setText(address.getParentName() + " " + address.AreaName);
                     mCityId = address.AreaId;
-                    mProvinceId=address.getParentId();
+                    mProvinceId = address.getParentId();
                 }
             });
         }
@@ -239,6 +242,7 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
     }
 
     private DoubleSelectionDialog workDialog;
+    private String postId;
 
     private void showWordDialog() {
         if (workDialog == null) {
@@ -252,6 +256,7 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
                     }
                     SiftWorkPost workPost = (SiftWorkPost) post;
                     tvWorkName.setText(workPost.getName());
+                    postId=workPost.getWorkPostID();
                 }
             });
         }
@@ -303,9 +308,10 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         mCategoryIds = mUserInfo.getIndustryIds();
         if (!"".equals(mCategoryIds)) {
             mWorkTypeTv.setText(mUserInfo.getIndustryNames());
-        }else {
+        } else {
             mWorkTypeTv.setText("请选择");
         }
+        mWorkTypeTv.setText(TextUtils.isEmpty(mUserInfo.getIndustryNames()) ? "请选择" : mUserInfo.getIndustryNames());
         mWorkNameEv.setText(mUserInfo.getPostText());
         mCompanyNameEv.setText(mUserInfo.getCompanyName());
 
@@ -316,7 +322,7 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         mNickNameEv.setText(StringUtils.convertNull(nickName));
         mSexTv.setText(1 == mSex ? "男" : (2 == mSex ? "女" : "请选择"));
         mBirthdayTv.setText("".equals(StringUtils.convertNull(mBirthday)) ? "请选择" : mBirthday);
-        tvWorkName.setText(TextUtils.isEmpty(mUserInfo.getPostText())?"请选择":mUserInfo.getPostText());
+        tvWorkName.setText(TextUtils.isEmpty(mUserInfo.getPostText()) ? "请选择" : mUserInfo.getPostText());
         mQQEv.setText(StringUtils.convertNull(mUserInfo.getMobile()));
         mWeChatEv.setText(StringUtils.convertNull(weChat));
         mEmailEv.setText(StringUtils.convertNull(email));
@@ -453,17 +459,11 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         }
 
         if (TextUtils.isEmpty(mCategoryIds)) {
-            ToastUtils.showToast(mContext, "请选择行业类别");
+            ToastUtils.showToast(mContext, "请选择行业角色");
             return;
         }
 
-        String postName = mWorkNameEv.getText().toString().trim();
-        if ("".equals(postName)) {
-            ToastUtils.showToast(mContext, "职位不能为空");
-            mWorkNameEv.setText("");
-            mWorkNameEv.requestFocus();
-            return;
-        }
+        String postName = tvWorkName.getText().toString().trim();
 
         String desc = mDescEv.getText().toString().trim();
 
@@ -476,7 +476,7 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
             mDialog = new LoadingDialog(mContext);
         }
         mDialog.show();
-        String industryName=mWorkTypeTv.getText().toString();
+        String industryName = mWorkTypeTv.getText().toString();
         Map<String, String> paramMap = ParaUtils.getParaWithToken(mContext);
         paramMap.put("Gender", "" + mSex);
         paramMap.put("Birthday", StringUtils.convertNull(mBirthday));
@@ -485,17 +485,18 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         paramMap.put("Mobile", qq);
         paramMap.put("WeChat", weChat);
         paramMap.put("Email", email);
-        paramMap.put("IndustryName",industryName);
+        paramMap.put("PostName", industryName);
+        paramMap.put("IndustryNames", industryName);
         paramMap.put("ProvinceId", StringUtils.convertNull(mProvinceId));
         paramMap.put("CityId", StringUtils.convertNull(mCityId));
         paramMap.put("CountyId", StringUtils.convertNull(mAreaId));
         paramMap.put("PersonalitySignature", desc);
-        paramMap.put("IndustryId", StringUtils.convertNull(mCategoryIds));
+        paramMap.put("IndustryId", mCategoryIds);
         paramMap.put("PostText", postName);
+        paramMap.put("PostId",postId);
         paramMap.put("CompanyName", companyName);
-        paramMap.put("IndustryTypeId", StringUtils.convertNull(mCategoryIds));
 
-        NetUtils.getDataFromServerByPost(mContext, Urls.MY_INFO_UPDATE, paramMap
+        NetUtils.getDataFromServerByPost(mContext, Urls.LOGIN_PERFAECT_INFO, paramMap
                 , new RequestObjectCallBack<String>("submitModify", mContext, String.class) {
                     @Override
                     public void onSuccessResult(String bean) {

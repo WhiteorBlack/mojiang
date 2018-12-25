@@ -299,6 +299,8 @@ public class Urls {
     public static String MY_INFO = BASE_URL + "/PersonalInfo/GetInfo";
     //个人信息--修改
     public static String MY_INFO_UPDATE = BASE_URL + "/PersonalInfo/ModifyInfo";
+    //个人信息--修改
+    public static String LOGIN_PERFAECT_INFO = BASE_URL + "/PersonalInfo/LoginPerfectInfo";
     //保证金信息
     public static String MY_BONDS = BASE_URL + "/UserInfo/UserBond";
     //保证金--退保

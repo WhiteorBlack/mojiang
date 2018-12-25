@@ -300,13 +300,13 @@ public class ChangeLoginActivity extends BaseActivity {
             }
         }
 
-        String photoCode = mImageCodeEv.getText().toString().trim();
-        if (TextUtils.isEmpty(photoCode)) {
-            ToastUtils.showToast(mContext, "请输入验证码");
-            mImageCodeEv.requestFocus();
-            mImageCodeEv.setText("");
-            return;
-        }
+//        String photoCode = mImageCodeEv.getText().toString().trim();
+//        if (TextUtils.isEmpty(photoCode)) {
+//            ToastUtils.showToast(mContext, "请输入验证码");
+//            mImageCodeEv.requestFocus();
+//            mImageCodeEv.setText("");
+//            return;
+//        }
 
         String msgCode = mPhoneCodeEv.getText().toString().trim();
         if (TextUtils.isEmpty(msgCode)) {

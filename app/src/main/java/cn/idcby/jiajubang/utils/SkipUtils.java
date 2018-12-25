@@ -169,6 +169,9 @@ public class SkipUtils {
     public static final String WORD_TYPE_AFTER_SALE_REASON = "RefundsReason";//售后退款原因
     public static final String WORD_TYPE_DELIVERY_TYPE = "DeliveryType";//配送方式
     public static final String WORD_TYPE_PERSON_WORK = "DeliveryType";//个人资料--职位
+    public static final String WORD_TYPE_INDUSTRY = "IndustryType";//个人资料--职位
+    public static final String WORD_TYPE_COMPANY_INDUSTRY = "CompanyIndustry ";//
+    public static final String WORD_TYPE_POST = "Post ";//
 
     public static final String INTENT_SERVER_ORDER_INDEX = "serverOrderIndex";
     public static final String INTENT_SERVER_TYPE = "serverType";

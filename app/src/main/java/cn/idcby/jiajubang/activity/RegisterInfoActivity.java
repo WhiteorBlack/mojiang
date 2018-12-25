@@ -37,6 +37,7 @@ import cn.idcby.commonlibrary.utils.LogUtils;
 import cn.idcby.commonlibrary.utils.ResourceUtils;
 import cn.idcby.commonlibrary.utils.ToastUtils;
 import cn.idcby.jiajubang.Bean.Address;
+import cn.idcby.jiajubang.Bean.CategoryBean;
 import cn.idcby.jiajubang.Bean.LoginInfo;
 import cn.idcby.jiajubang.Bean.ResultBean;
 import cn.idcby.jiajubang.Bean.SiftWorkPost;
@@ -54,6 +55,7 @@ import cn.idcby.jiajubang.utils.SkipUtils;
 import cn.idcby.jiajubang.utils.StringUtils;
 import cn.idcby.jiajubang.utils.Urls;
 import cn.idcby.jiajubang.view.dialog.DatePop;
+import cn.idcby.jiajubang.view.dialog.DoubleCategoryDialog;
 import cn.idcby.jiajubang.view.dialog.DoubleCityDialog;
 import cn.idcby.jiajubang.view.dialog.DoubleSelectionDialog;
 import cn.idcby.jiajubang.view.dialog.SingleSelectionDialog;
@@ -151,7 +153,7 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         mAreaTv = findViewById(R.id.acti_user_info_area_tv);
         mDescEv = findViewById(R.id.acti_user_info_desc_ev);
 
-        mWorkNameEv = findViewById(R.id.acti_user_info_work_name_tv);
+//        mWorkNameEv = findViewById(R.id.acti_user_info_work_name_tv);
         mWorkTypeTv = findViewById(R.id.acti_user_info_category_tv);
         mCompanyNameEv = findViewById(R.id.acti_user_info_company_name_ev);
         mSubmitTv = findViewById(R.id.acti_user_info_submit_tv);
@@ -219,30 +221,30 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         cityDialog.show();
     }
 
-    private SingleSelectionDialog categoryDialog;
+    private DoubleCategoryDialog categoryDialog;
 
     private void showCategoryDialog() {
         if (categoryDialog == null) {
-            categoryDialog = new SingleSelectionDialog(this);
+            categoryDialog = new DoubleCategoryDialog(this);
             categoryDialog.setDoubleSelectionInterface(new DoubleSelectionInterface() {
                 @Override
                 public void onSelection(Object post) {
                     if (post == null) {
                         return;
                     }
-                    UnusedCategory category = (UnusedCategory) post;
-                    mCategoryIds = category.CategoryID;
-                    mWorkTypeTv.setText(category.CategoryTitle);
+                    CategoryBean category = (CategoryBean) post;
+                    mCategoryIds = category.getItemId();
+                    mWorkTypeTv.setText(category.getItemName());
                 }
             });
-            categoryDialog.getCategory();
+            categoryDialog.getFirstData(SkipUtils.WORD_TYPE_INDUSTRY);
         }
 
         categoryDialog.show();
     }
 
     private DoubleSelectionDialog workDialog;
-
+    private String postId;
     private void showWordDialog() {
         if (workDialog == null) {
             workDialog = new DoubleSelectionDialog(this);
@@ -255,6 +257,7 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
                     }
                     SiftWorkPost workPost = (SiftWorkPost) post;
                     tvWorkName.setText(workPost.getName());
+                    postId=workPost.getWorkPostID();
                 }
             });
         }
@@ -307,7 +310,7 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         if (!"".equals(mCategoryIds)) {
             mWorkTypeTv.setText(mUserInfo.getIndustryNames());
         }
-        mWorkNameEv.setText(mUserInfo.getPostText());
+//        mWorkNameEv.setText(mUserInfo.getPostText());
         mCompanyNameEv.setText(mUserInfo.getCompanyName());
         tvWorkName.setText(TextUtils.isEmpty(mUserInfo.getPostText()) ? "请选择" : mUserInfo.getPostText());
         String desc = mUserInfo.getPersonalitySignature();
@@ -517,13 +520,13 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
             return;
         }
 
-        String postName = mWorkNameEv.getText().toString().trim();
-        if ("".equals(postName)) {
-            ToastUtils.showToast(mContext, "职位不能为空");
-            mWorkNameEv.setText("");
-            mWorkNameEv.requestFocus();
-            return;
-        }
+//        String postName = mWorkNameEv.getText().toString().trim();
+//        if ("".equals(postName)) {
+//            ToastUtils.showToast(mContext, "职位不能为空");
+//            mWorkNameEv.setText("");
+//            mWorkNameEv.requestFocus();
+//            return;
+//        }
 
         String desc = mDescEv.getText().toString().trim();
 
@@ -551,12 +554,12 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         paramMap.put("CityId", StringUtils.convertNull(mCityId));
         paramMap.put("CountyId", StringUtils.convertNull(mAreaId));
         paramMap.put("PersonalitySignature", desc);
-        paramMap.put("IndustryId", StringUtils.convertNull(mCategoryIds));
         paramMap.put("IndustryTypeId", StringUtils.convertNull(mCategoryIds));
-        paramMap.put("PostText", postName);
+//        paramMap.put("PostText", postName);
+        paramMap.put("PostId",postId);
         paramMap.put("CompanyName", companyName);
 
-        NetUtils.getDataFromServerByPost(mContext, Urls.MY_INFO_UPDATE, true, paramMap
+        NetUtils.getDataFromServerByPost(mContext, Urls.LOGIN_PERFAECT_INFO, true, paramMap
                 , new RequestObjectCallBack<ResultBean>("submitModify", mContext, ResultBean.class) {
                     @Override
                     public void onSuccessResult(ResultBean bean) {
