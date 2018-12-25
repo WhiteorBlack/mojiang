@@ -52,7 +52,7 @@ public class DoubleSelectionDialog extends BottomBaseDialog<DoubleSelectionDialo
 
     private void initView() {
 //        getWindow().setDimAmount(0f);
-        heightScale(2f / 5);
+        heightScale(1f / 2);
         firstAdapter = new DoubleSelectionAdapter(R.layout.item_double_first);
         binding.rvFirst.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvFirst.setAdapter(firstAdapter);

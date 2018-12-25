@@ -1,6 +1,7 @@
 package cn.idcby.jiajubang.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,14 +72,14 @@ public class AdapterNearUserList extends BaseAdapter {
 
             holder.mTitleTv.setText(title);
             holder.mContentTv.setText(desc);
+            if (TextUtils.isEmpty(desc)) {
+                holder.mContentTv.setVisibility(View.INVISIBLE);
+            } else {
+                holder.mContentTv.setVisibility(View.VISIBLE);
+            }
             GlideUtils.loaderUser(imgUrl, holder.mIconIv);
             holder.tvDistance.setText(StringUtils.getDistance(info.getDistance()));
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    SkipUtils.toOtherUserInfoActivity(context, userId);
-                }
-            });
+            view.setOnClickListener(view1 -> SkipUtils.toOtherUserInfoActivity(context, userId));
         }
 
         return view;

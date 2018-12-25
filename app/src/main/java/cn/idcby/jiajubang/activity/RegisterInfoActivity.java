@@ -188,12 +188,8 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
             datePicker(mBirthdayTv);
         } else if (R.id.acti_user_info_area_tv == vId) {//区域
             showCityDialog();
-//            SelectedProvinceActivity.launch(mActivity, REQUEST_CODE_AREA);
         } else if (vId == R.id.acti_user_info_category_tv) {
             showCategoryDialog();
-//            ChooseUnuesdCategoryActivity.launch(mActivity, mIsHasChild, mIsMoreCheck
-//                    , mSelectedCategory, REQUEST_CODE_FOR_CATEGORY);
-
         } else if (R.id.acti_user_info_submit_tv == vId) {//提交
             submitModify();
         } else if (R.id.acti_user_info_work_name_tv == vId) {
@@ -313,14 +309,14 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
         }
         mWorkNameEv.setText(mUserInfo.getPostText());
         mCompanyNameEv.setText(mUserInfo.getCompanyName());
-
+        tvWorkName.setText(TextUtils.isEmpty(mUserInfo.getPostText()) ? "请选择" : mUserInfo.getPostText());
         String desc = mUserInfo.getPersonalitySignature();
 
         GlideUtils.loaderRound(StringUtils.convertNull(mHeadUrl), mUserIv, 3);
         mNickNameEv.setText(StringUtils.convertNull(nickName));
         mSexTv.setText(1 == mSex ? "男" : (2 == mSex ? "女" : "请选择"));
         mBirthdayTv.setText("".equals(StringUtils.convertNull(mBirthday)) ? "请选择" : mBirthday);
-        mQQEv.setText(StringUtils.convertNull(qq));
+        mQQEv.setText(StringUtils.convertNull(mUserInfo.getMobile()));
         mWeChatEv.setText(StringUtils.convertNull(weChat));
         mEmailEv.setText(StringUtils.convertNull(email));
         if ("".equals(StringUtils.convertNull(mProvinceId))
@@ -540,21 +536,23 @@ public class RegisterInfoActivity extends BaseActivity implements EasyPermission
             mDialog = new LoadingDialog(mContext);
         }
         mDialog.show();
-
+        String industryName = mWorkTypeTv.getText().toString();
 
         Map<String, String> paramMap = ParaUtils.getParaWithToken(mContext);
         paramMap.put("Gender", "" + mSex);
         paramMap.put("Birthday", StringUtils.convertNull(mBirthday));
         paramMap.put("HeadIcon", StringUtils.convertNull(mHeadUrl));
         paramMap.put("NickName", nickName);
-        paramMap.put("OICQ", qq);
+        paramMap.put("Mobile", qq);
         paramMap.put("WeChat", weChat);
         paramMap.put("Email", email);
+        paramMap.put("IndustryName", industryName);
         paramMap.put("ProvinceId", StringUtils.convertNull(mProvinceId));
         paramMap.put("CityId", StringUtils.convertNull(mCityId));
         paramMap.put("CountyId", StringUtils.convertNull(mAreaId));
         paramMap.put("PersonalitySignature", desc);
-        paramMap.put("IndustryIds", StringUtils.convertNull(mCategoryIds));
+        paramMap.put("IndustryId", StringUtils.convertNull(mCategoryIds));
+        paramMap.put("IndustryTypeId", StringUtils.convertNull(mCategoryIds));
         paramMap.put("PostText", postName);
         paramMap.put("CompanyName", companyName);
 

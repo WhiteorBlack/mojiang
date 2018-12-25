@@ -303,6 +303,8 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         mCategoryIds = mUserInfo.getIndustryIds();
         if (!"".equals(mCategoryIds)) {
             mWorkTypeTv.setText(mUserInfo.getIndustryNames());
+        }else {
+            mWorkTypeTv.setText("请选择");
         }
         mWorkNameEv.setText(mUserInfo.getPostText());
         mCompanyNameEv.setText(mUserInfo.getCompanyName());
@@ -314,7 +316,8 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         mNickNameEv.setText(StringUtils.convertNull(nickName));
         mSexTv.setText(1 == mSex ? "男" : (2 == mSex ? "女" : "请选择"));
         mBirthdayTv.setText("".equals(StringUtils.convertNull(mBirthday)) ? "请选择" : mBirthday);
-        mQQEv.setText(StringUtils.convertNull(qq));
+        tvWorkName.setText(TextUtils.isEmpty(mUserInfo.getPostText())?"请选择":mUserInfo.getPostText());
+        mQQEv.setText(StringUtils.convertNull(mUserInfo.getMobile()));
         mWeChatEv.setText(StringUtils.convertNull(weChat));
         mEmailEv.setText(StringUtils.convertNull(email));
         if ("".equals(StringUtils.convertNull(mProvinceId))
@@ -358,40 +361,6 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         actionSheetDialog.show();
     }
 
-//    /**
-//     * 选择性别
-//     */
-//    private void showSexDialog() {
-//        if (null == mSexDialog) {
-//            mSexDialog = new Dialog(mContext, cn.idcby.commonlibrary.R.style.my_custom_dialog);
-//            View v = LayoutInflater.from(mContext).inflate(R.layout.dialog_check_sex, null);
-//            mSexDialog.setContentView(v);
-//
-//            v.getLayoutParams().width = (int) (ResourceUtils.getScreenWidth(mContext) * 0.6F);
-//
-//            TextView sexM = v.findViewById(R.id.dialog_check_sex_man_tv);
-//            TextView sexW = v.findViewById(R.id.dialog_check_sex_women_tv);
-//
-//            sexM.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    mSex = 1;
-//                    mSexTv.setText("男");
-//                    mSexDialog.dismiss();
-//                }
-//            });
-//            sexW.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    mSex = 2;
-//                    mSexTv.setText("女");
-//                    mSexDialog.dismiss();
-//                }
-//            });
-//        }
-//
-//        mSexDialog.show();
-//    }
 
     private DatePop datePop;
 
@@ -412,37 +381,6 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
         }
     }
 
-//    //日期选择器
-//    private void datePicker(String str, final TextView view) {
-//        view.setEnabled(false);
-//        dialogDatePicker = new DialogDatePicker(this, false);
-//        dialogDatePicker.setTitle(str);
-//        dialogDatePicker.setOnNegativeListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                view.setEnabled(true);
-//                dialogDatePicker.dismiss();
-//            }
-//        });
-//        dialogDatePicker.setOnPositiveListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //格式化时间
-//                SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//                String currentDate = sDateFormat.format(new java.util.Date());
-//                if (DateCompareUtils.compareDay(currentDate, dialogDatePicker.getDate())) {
-//                    view.setEnabled(true);
-//                    view.setText(dialogDatePicker.getDate());
-//                    mBirthday = dialogDatePicker.getDate();
-//                    dialogDatePicker.dismiss();
-//                } else {
-//                    ToastUtils.showErrorToast(mContext, "出生日期不能大于当前时间");
-//                    return;
-//                }
-//            }
-//        });
-//        dialogDatePicker.show();
-//    }
 
     private void checkPhoto() {
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
@@ -538,23 +476,24 @@ public class UserInfoActivity extends BaseActivity implements EasyPermissions.Pe
             mDialog = new LoadingDialog(mContext);
         }
         mDialog.show();
-
-
+        String industryName=mWorkTypeTv.getText().toString();
         Map<String, String> paramMap = ParaUtils.getParaWithToken(mContext);
         paramMap.put("Gender", "" + mSex);
         paramMap.put("Birthday", StringUtils.convertNull(mBirthday));
         paramMap.put("HeadIcon", StringUtils.convertNull(mHeadUrl));
         paramMap.put("NickName", nickName);
-        paramMap.put("OICQ", qq);
+        paramMap.put("Mobile", qq);
         paramMap.put("WeChat", weChat);
         paramMap.put("Email", email);
+        paramMap.put("IndustryName",industryName);
         paramMap.put("ProvinceId", StringUtils.convertNull(mProvinceId));
         paramMap.put("CityId", StringUtils.convertNull(mCityId));
         paramMap.put("CountyId", StringUtils.convertNull(mAreaId));
         paramMap.put("PersonalitySignature", desc);
-        paramMap.put("IndustryIds", StringUtils.convertNull(mCategoryIds));
+        paramMap.put("IndustryId", StringUtils.convertNull(mCategoryIds));
         paramMap.put("PostText", postName);
         paramMap.put("CompanyName", companyName);
+        paramMap.put("IndustryTypeId", StringUtils.convertNull(mCategoryIds));
 
         NetUtils.getDataFromServerByPost(mContext, Urls.MY_INFO_UPDATE, paramMap
                 , new RequestObjectCallBack<String>("submitModify", mContext, String.class) {

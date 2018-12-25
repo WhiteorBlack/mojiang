@@ -51,7 +51,7 @@ public class DoubleCityDialog extends BottomBaseDialog<DoubleCityDialog> {
 
     private void initView() {
 //        getWindow().setDimAmount(0f);
-        heightScale(2f / 5);
+        heightScale(1f / 2);
         firstAdapter = new DoubleCityAdapter(R.layout.item_city_first);
         binding.rvFirst.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.rvFirst.setAdapter(firstAdapter);

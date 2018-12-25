@@ -192,9 +192,7 @@ public class AdapterCircleActive extends RecyclerView.Adapter<RecyclerView.ViewH
                     parentHolder.mAttentionTv.setVisibility(View.VISIBLE);
 
                     parentHolder.mAttentionTv.setText(isFocused ? "已关注" : "关注");
-                    parentHolder.mAttentionTv.setTextColor(context.getResources().getColor(isFocused
-                            ? R.color.color_grey_88
-                            : R.color.color_theme));
+                    parentHolder.mAttentionTv.setTextColor(context.getResources().getColor(R.color.white));
                 }
 
                 String supportCount = info.getLikeNumber() + "";

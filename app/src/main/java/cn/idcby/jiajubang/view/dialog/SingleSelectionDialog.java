@@ -73,7 +73,7 @@ public class SingleSelectionDialog extends BottomBaseDialog<SingleSelectionDialo
 
     @Override
     public void setUiBeforShow() {
-        heightScale(0.6f);
+        heightScale(0.5f);
     }
 
     /**
@@ -88,7 +88,6 @@ public class SingleSelectionDialog extends BottomBaseDialog<SingleSelectionDialo
                 , new RequestListCallBack<UnusedCategory>("getCategory", mContext, UnusedCategory.class) {
                     @Override
                     public void onSuccessResult(List<UnusedCategory> bean) {
-
                         adapter.setNewData(bean);
                     }
 

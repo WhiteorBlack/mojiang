@@ -229,12 +229,12 @@ public class ChangeLoginActivity extends BaseActivity {
             return;
         }
 
-        String photoCode = mImageCodeEv.getText().toString();
-        if (TextUtils.isEmpty(photoCode.trim())) {
-            ToastUtils.showToast(mContext, "请输入图形验证码");
-            mImageCodeEv.setText("");
-            return;
-        }
+//        String photoCode = mImageCodeEv.getText().toString();
+//        if (TextUtils.isEmpty(photoCode.trim())) {
+//            ToastUtils.showToast(mContext, "请输入图形验证码");
+//            mImageCodeEv.setText("");
+//            return;
+//        }
 
         mDialog.show();
         Map<String, String> para ;
@@ -243,12 +243,12 @@ public class ChangeLoginActivity extends BaseActivity {
             para = ParaUtils.getPara(mContext);
             para.put("Phone", phone);
             para.put("imageID", photoCodeId);
-            para.put("imageCode", photoCode);
+//            para.put("imageCode", photoCode);
         }else {
             para =  ParaUtils.getParaWithToken(mContext);
             para.put("Phone", SPUtils.newIntance(mContext).getUserAccount());
             para.put("imageID", photoCodeId);
-            para.put("imageCode", photoCode);
+//            para.put("imageCode", photoCode);
         }
 
         String url = Urls.GET_MSG_CODE_FOR_CHANGE_PHONE;
